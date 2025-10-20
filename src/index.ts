@@ -69,8 +69,8 @@ async function runPipeline(options: { config: string; resume: boolean; clean: bo
     logger.info('');
     logger.info('Processing CSV data...');
     const dataProcessor = new DataProcessor(config.paths.csvInput);
-    const categories = await dataProcessor.extractCategories(config.pipeline.categories);
-    logger.success(`✓ Extracted ${categories.length} categories`);
+    const problems = await dataProcessor.extractProblems(config.pipeline.categories);
+    logger.success(`✓ Extracted ${problems.length} problems`);
 
     // Initialize generators
     const templates = new Map();
@@ -91,23 +91,24 @@ async function runPipeline(options: { config: string; resume: boolean; clean: bo
     logger.info('='.repeat(60));
     logger.info('');
 
-    for (const category of categories) {
+    for (const userProblem of problems) {
       for (const templateId of config.pipeline.templates) {
-        const videoId = generateVideoId(category, templateId as any);
+        const videoId = generateVideoId(userProblem.category, templateId as any);
 
         // Skip if already completed
         if (stateManager.isVideoCompleted(state, videoId)) {
-          logger.info(`⏭️  Skipping completed video: ${category} × ${templateId}`);
+          logger.info(`⏭️  Skipping completed video: ${userProblem.category} × ${templateId}`);
           continue;
         }
 
         logger.info('');
-        logger.info(`📹 Processing: ${category} × ${templateId}`);
+        logger.info(`📹 Processing: ${userProblem.category} × ${templateId}`);
+        logger.info(`   Problem: "${userProblem.problem}"`);
         logger.info(`   Video ID: ${videoId}`);
 
         // Add video to state if not exists
         if (!state.videos.find(v => v.id === videoId)) {
-          stateManager.addVideo(state, category, templateId as any, videoId, config.pipeline.scenesPerVideo);
+          stateManager.addVideo(state, userProblem.category, templateId as any, videoId, config.pipeline.scenesPerVideo);
         }
 
         try {
@@ -117,7 +118,7 @@ async function runPipeline(options: { config: string; resume: boolean; clean: bo
 
           // Generate script
           logger.info('   Step 1/2: Generating script...');
-          const script = await scriptGenerator.generateScript(category, templateId as any);
+          const script = await scriptGenerator.generateScript(userProblem, templateId as any);
           stateManager.updateVideoStatus(state, videoId, 'video-generation', script.id);
           await stateManager.saveState(state);
           logger.success(`   ✓ Script generated`);

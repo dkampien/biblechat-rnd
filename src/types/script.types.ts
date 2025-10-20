@@ -17,6 +17,12 @@ export type ProblemCategory =
   | "Health or healing"
   | "Grief or loss";
 
+// User problem data
+export interface UserProblem {
+  category: ProblemCategory;
+  problem: string;  // Actual user-written problem text
+}
+
 // Template types
 export type TemplateType = "direct-to-camera" | "text-visuals";
 
@@ -49,7 +55,9 @@ export interface Template {
   id: TemplateType;
   name: string;
   description: string;
-  systemPrompt: string;           // LLM system prompt for script gen
+  systemPromptCall1: string;    // For content generation (Call 1)
+  systemPromptCall2: string;    // For prompt optimization (Call 2)
+  promptRules: PromptRules;     // Template-specific prompt rules
   sceneStructure: SceneDefinition[];
 }
 
@@ -57,6 +65,13 @@ export interface SceneDefinition {
   sceneNumber: number;
   purpose: string;                // e.g., "Acknowledge struggle"
   guidanceForLLM: string;         // How to generate this scene
+}
+
+// Prompt generation rules per template
+export interface PromptRules {
+  description: string;
+  instructions: string[];
+  veo3Format?: string;  // Specific Veo 3 format requirements
 }
 
 // Zod schemas for OpenAI structured output

@@ -5,9 +5,10 @@
 
 import * as fs from 'fs/promises';
 import * as path from 'path';
+import { z } from 'zod';
 import OpenAI from 'openai';
 import { zodResponseFormat } from 'openai/helpers/zod';
-import { ProblemCategory, TemplateType, VideoScript, VideoScriptSchema, Scene, SceneStatus } from '../types/script.types';
+import { ProblemCategory, TemplateType, VideoScript, Scene, SceneStatus, UserProblem } from '../types/script.types';
 import { Template } from '../types/script.types';
 import { Config } from '../types/config.types';
 import { ScriptGenerationError } from '../utils/errors';
@@ -31,48 +32,48 @@ export class ScriptGenerator {
   }
 
   /**
-   * Generate a video script for a category and template
+   * Generate a video script for a problem and template (two-step process)
    */
   async generateScript(
-    category: ProblemCategory,
+    userProblem: UserProblem,
     template: TemplateType
   ): Promise<VideoScript> {
     try {
-      logger.info(`Generating script: ${category} × ${template}`);
+      logger.info(`Generating script: ${userProblem.category} × ${template}`);
+      logger.debug(`Problem: "${userProblem.problem}"`);
 
       // Get template
       const templateDef = this.templates.get(template);
       if (!templateDef) {
         throw new ScriptGenerationError(
           `Template not found: ${template}`,
-          { category, template }
+          { category: userProblem.category, template }
         );
       }
 
-      // Generate with retry logic
-      const scriptResponse = await withRetry(
-        async () => await this.callOpenAI(category, templateDef),
-        {
-          maxRetries: this.config.apis.openai.maxTokens ? 3 : 2,
-          backoff: 'exponential',
-          baseDelay: 1000,
-          onRetry: (attempt, error) => {
-            logger.warn(`Script generation retry ${attempt}:`, error.message);
-          }
-        }
+      // CALL 1: Generate content (overallScript + scenes[].content)
+      logger.info('  Step 1/2: Generating content...');
+      const contentResponse = await this.generateContent(userProblem, templateDef);
+
+      // CALL 2: Generate prompts (scenes[].prompt from scenes[].content)
+      logger.info('  Step 2/2: Generating prompts...');
+      const scenesWithPrompts = await this.generatePrompts(
+        contentResponse.scenes,
+        templateDef
       );
 
       // Build VideoScript object
       const videoScript = this.buildVideoScript(
-        scriptResponse,
-        category,
+        contentResponse.overallScript,
+        scenesWithPrompts,
+        userProblem.category,
         template
       );
 
       // Save script to disk
       const scriptPath = generateScriptPath(
         this.config.paths.scriptsDir,
-        category,
+        userProblem.category,
         template
       );
       await this.saveScript(videoScript, scriptPath);
@@ -82,94 +83,164 @@ export class ScriptGenerator {
       return videoScript;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error);
-      logger.error(`Script generation failed for ${category} × ${template}:`, errorMessage);
+      logger.error(`Script generation failed for ${userProblem.category} × ${template}:`, errorMessage);
 
       throw new ScriptGenerationError(
         `Failed to generate script: ${errorMessage}`,
-        { category, template }
+        { category: userProblem.category, template }
       );
     }
   }
 
   /**
-   * Call OpenAI API with structured output
-   * Returns raw scenes from API (without status field)
+   * CALL 1: Generate content (overallScript + scenes[].content)
    */
-  private async callOpenAI(
-    category: ProblemCategory,
+  private async generateContent(
+    userProblem: UserProblem,
     template: Template
-  ): Promise<Array<{ sceneNumber: number; content: string; prompt: string }>> {
+  ): Promise<{ overallScript: string; scenes: Array<{ sceneNumber: number; content: string }> }> {
     try {
-      // Replace category placeholder in system prompt
-      const systemPrompt = template.systemPrompt.replace('{category}', category);
+      const systemPrompt = template.systemPromptCall1;
 
-      logger.debug(`Calling OpenAI API (model: ${this.config.apis.openai.model})`);
+      const userPrompt = `Category: ${userProblem.category}
+Problem: ${userProblem.problem}
 
-      // Make API call with structured output
-      const completion = await this.client.chat.completions.create({
-        model: this.config.apis.openai.model,
-        messages: [
-          {
-            role: 'system',
-            content: systemPrompt
-          },
-          {
-            role: 'user',
-            content: `Generate a 3-scene video script for someone struggling with "${category}".`
-          }
-        ],
-        response_format: zodResponseFormat(VideoScriptSchema, 'video_script'),
-        temperature: this.config.apis.openai.temperature,
-        max_tokens: this.config.apis.openai.maxTokens
+Generate a 3-scene video script addressing this specific problem.`;
+
+      logger.debug(`Calling OpenAI API (Call 1) - model: ${this.config.apis.openai.model}`);
+
+      // Define Zod schema for Call 1 response
+      const ContentSchema = z.object({
+        overallScript: z.string().min(50),
+        scenes: z.array(z.object({
+          sceneNumber: z.number().int().min(1).max(3),
+          content: z.string().min(10)
+        })).length(3)
       });
 
-      // Extract and parse response
-      const message = completion.choices[0]?.message;
+      // Make API call with retry
+      const response = await withRetry(
+        async () => {
+          const completion = await this.client.chat.completions.create({
+            model: this.config.apis.openai.model,
+            messages: [
+              { role: 'system', content: systemPrompt },
+              { role: 'user', content: userPrompt }
+            ],
+            response_format: zodResponseFormat(ContentSchema, 'content_generation'),
+            temperature: this.config.apis.openai.temperature,
+            max_tokens: this.config.apis.openai.maxTokens
+          });
 
-      if (!message) {
-        throw new ScriptGenerationError('No response from OpenAI', { category, template: template.id });
-      }
+          const message = completion.choices[0]?.message;
+          if (!message?.content) {
+            throw new ScriptGenerationError('No response from OpenAI (Call 1)', {
+              category: userProblem.category,
+              template: template.id
+            });
+          }
 
-      // Check for refusal (if API supports it)
-      const refusal = (message as any).refusal;
-      if (refusal) {
-        throw new ScriptGenerationError(
-          `OpenAI refused to generate content: ${refusal}`,
-          { category, template: template.id }
-        );
-      }
+          return ContentSchema.parse(JSON.parse(message.content));
+        },
+        {
+          maxRetries: 3,
+          backoff: 'exponential',
+          baseDelay: 1000,
+          onRetry: (attempt, error) => {
+            logger.warn(`Content generation retry ${attempt}:`, error.message);
+          }
+        }
+      );
 
-      // Parse the JSON content
-      const content = message.content;
-      if (!content) {
-        throw new ScriptGenerationError(
-          'No content in OpenAI response',
-          { category, template: template.id }
-        );
-      }
-
-      // Parse and validate with Zod
-      const parsed = VideoScriptSchema.parse(JSON.parse(content));
-
-      logger.debug(`OpenAI response received: ${parsed.scenes.length} scenes`);
-
-      return parsed.scenes;
+      logger.debug(`Content generated: ${response.scenes.length} scenes`);
+      return response;
     } catch (error) {
-      if (error instanceof OpenAI.APIError) {
-        throw new ScriptGenerationError(
-          `OpenAI API error: ${error.message}`,
-          { category, template: template.id, status: error.status }
-        );
-      }
-      throw error;
+      throw new ScriptGenerationError(
+        `Content generation failed (Call 1): ${error instanceof Error ? error.message : String(error)}`,
+        { category: userProblem.category, template: template.id }
+      );
     }
   }
 
   /**
-   * Build VideoScript object from API response
+   * CALL 2: Generate prompts from content
+   */
+  private async generatePrompts(
+    scenes: Array<{ sceneNumber: number; content: string }>,
+    template: Template
+  ): Promise<Array<{ sceneNumber: number; content: string; prompt: string }>> {
+    try {
+      const systemPrompt = template.systemPromptCall2;
+
+      const scenesWithPrompts = [];
+
+      for (const scene of scenes) {
+        const userPrompt = `Scene ${scene.sceneNumber} content:\n${scene.content}\n\nGenerate an optimized Veo 3 prompt for this scene.`;
+
+        logger.debug(`Generating prompt for scene ${scene.sceneNumber}...`);
+
+        // Define Zod schema for Call 2 response
+        const PromptSchema = z.object({
+          prompt: z.string().min(20)
+        });
+
+        const response = await withRetry(
+          async () => {
+            const completion = await this.client.chat.completions.create({
+              model: this.config.apis.openai.model,
+              messages: [
+                { role: 'system', content: systemPrompt },
+                { role: 'user', content: userPrompt }
+              ],
+              response_format: zodResponseFormat(PromptSchema, 'prompt_generation'),
+              temperature: 0.7,
+              max_tokens: 500
+            });
+
+            const message = completion.choices[0]?.message;
+            if (!message?.content) {
+              throw new ScriptGenerationError('No response from OpenAI (Call 2)', {
+                sceneNumber: scene.sceneNumber,
+                template: template.id
+              });
+            }
+
+            return PromptSchema.parse(JSON.parse(message.content));
+          },
+          {
+            maxRetries: 3,
+            backoff: 'exponential',
+            baseDelay: 1000,
+            onRetry: (attempt, error) => {
+              logger.warn(`Prompt generation retry ${attempt} (scene ${scene.sceneNumber}):`, error.message);
+            }
+          }
+        );
+
+        scenesWithPrompts.push({
+          sceneNumber: scene.sceneNumber,
+          content: scene.content,
+          prompt: response.prompt
+        });
+
+        logger.debug(`Prompt generated for scene ${scene.sceneNumber}`);
+      }
+
+      return scenesWithPrompts;
+    } catch (error) {
+      throw new ScriptGenerationError(
+        `Prompt generation failed (Call 2): ${error instanceof Error ? error.message : String(error)}`,
+        { template: template.id }
+      );
+    }
+  }
+
+  /**
+   * Build VideoScript object from generated content
    */
   private buildVideoScript(
-    scenes: any[],
+    overallScript: string,
+    scenes: Array<{ sceneNumber: number; content: string; prompt: string }>,
     category: ProblemCategory,
     template: TemplateType
   ): VideoScript {
@@ -192,18 +263,9 @@ export class ScriptGenerator {
       category,
       template,
       timestamp,
-      overallScript: this.generateOverallScript(processedScenes),
+      overallScript,  // Use LLM-generated overallScript (don't generate locally)
       scenes: processedScenes
     };
-  }
-
-  /**
-   * Generate overall script description from scenes
-   */
-  private generateOverallScript(scenes: Scene[]): string {
-    return scenes.map((scene, i) => {
-      return `Scene ${i + 1}: ${scene.content.substring(0, 100)}${scene.content.length > 100 ? '...' : ''}`;
-    }).join('\n\n');
   }
 
   /**

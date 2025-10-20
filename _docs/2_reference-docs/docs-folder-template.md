@@ -7,7 +7,7 @@ _docs/
 ├── 1_development-docs/          # Active development docs tied to product lifecycle
 │   ├── core-docs/               # Foundational "source of truth" documents
 │   │   ├── 1-product-requirements.md
-│   │   ├── 2-ux-requirements.md
+│   │   ├─
 │   │   └── 3-technical-specs.md
 │   └── cycle-{N}/               # Iterative development cycles
 │       ├── 1-exploration.md

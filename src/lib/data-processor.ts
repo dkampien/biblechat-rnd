@@ -5,7 +5,7 @@
 
 import * as fs from 'fs/promises';
 import { parse } from 'csv-parse/sync';
-import { ProblemCategory } from '../types/script.types';
+import { ProblemCategory, UserProblem } from '../types/script.types';
 import { CSVReadError, CSVParseError } from '../utils/errors';
 import { logger } from '../utils/logger';
 
@@ -62,6 +62,69 @@ export class DataProcessor {
       }
       throw new CSVReadError(
         `Failed to extract categories: ${error instanceof Error ? error.message : String(error)}`,
+        { csvPath: this.csvPath }
+      );
+    }
+  }
+
+  /**
+   * Extract category + sample problem pairs from CSV
+   */
+  async extractProblems(filterList?: string[] | "all"): Promise<UserProblem[]> {
+    try {
+      logger.debug(`Reading CSV from: ${this.csvPath}`);
+
+      // Read and parse CSV
+      const fileContent = await this.readCSV();
+      const rows = this.parseCSV(fileContent);
+
+      logger.info(`Parsed ${rows.length} rows from CSV`);
+
+      // Extract unique categories
+      const uniqueCategories = this.extractUniqueCategories(rows);
+      logger.info(`Found ${uniqueCategories.size} unique categories`);
+
+      // Filter categories
+      const filteredCategories = this.filterCategories(
+        Array.from(uniqueCategories),
+        filterList
+      );
+
+      logger.info(`Using ${filteredCategories.length} categories for generation`);
+
+      // For each category, find one sample problem
+      const problems: UserProblem[] = [];
+
+      for (const category of filteredCategories) {
+        // Find first row with this category that has a problem
+        const row = rows.find(r =>
+          r.lifeChallengeOption?.replace(/^"+|"+$/g, '').trim() === category &&
+          r.onboardingV7_lifeChallenge?.trim()
+        );
+
+        if (row && row.onboardingV7_lifeChallenge) {
+          problems.push({
+            category,
+            problem: row.onboardingV7_lifeChallenge.trim()
+          });
+          logger.debug(`  - ${category}: "${row.onboardingV7_lifeChallenge.trim().substring(0, 50)}..."`);
+        } else {
+          // Fallback: use category as problem if no specific problem found
+          logger.warn(`No specific problem found for category: ${category}, using generic`);
+          problems.push({
+            category,
+            problem: `Struggling with ${category.toLowerCase()}`
+          });
+        }
+      }
+
+      return problems;
+    } catch (error) {
+      if (error instanceof CSVReadError || error instanceof CSVParseError) {
+        throw error;
+      }
+      throw new CSVReadError(
+        `Failed to extract problems: ${error instanceof Error ? error.message : String(error)}`,
         { csvPath: this.csvPath }
       );
     }
