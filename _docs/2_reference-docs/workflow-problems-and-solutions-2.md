@@ -1,13 +1,20 @@
 # Video Generation: Problem-Solving Framework
 
-**Date**: October 20, 2025
-**Status**: Active - Updated with testing findings
+**Date**: October 23, 2025
+**Status**: Active - Updated with POC decision and template design
 **Purpose**: Comprehensive decision tracking and problem-solving documentation
 **Replaces**: `solution-decision-tree.md`, `workflow-problems-and-solutions.md`
 
 ---
 
 ## Decision Overview (Visual)
+
+**Testing Status**: Decisions validated through testing and template design (Oct 20-23, 2025)
+- Frame chaining: ✅ Validated with minimal prompts (Oct 22)
+- Veo audio: ✅ Acceptable for POC with `negative_prompt` (Oct 23)
+- External TTS: 📋 Deferred to production (voice changes acceptable for POC)
+- Simplified prompts: ✅ Strongly validated (prevents mid-scene changes)
+- Template design: ✅ Complete framework documented (Oct 23)
 
 ```mermaid
 flowchart TD
@@ -29,12 +36,12 @@ flowchart TD
     LLM --> Q4{"Voice generation?"}
     Rules --> Q4
     NoBreak --> Q4
-    Q4 -->|Veo generates audio| VeoAudio["Use Veo generate_audio<br/>❌ NOT CHOSEN - tested, failed"]
-    Q4 -->|External TTS| External["External TTS<br/>✅ CHOSEN - tested, works"]
+    Q4 -->|Veo generates audio| VeoAudio["Use Veo generate_audio<br/>✅ POC: OK with negative_prompt<br/>📋 Production: Use external TTS"]
+    Q4 -->|External TTS| External["External TTS<br/>📋 Deferred to production"]
 
     VeoAudio --> Q5{"Character consistency?"}
     External --> Q5
-    Q5 -->|Frame chaining| Chain["Use image + last_frame<br/>✅ CHOSEN - validated"]
+    Q5 -->|Frame chaining| Chain["Use image + last_frame<br/>✅ CHOSEN - validated Oct 20/22"]
     Q5 -->|Reference images| Ref["Use reference_images<br/>🚫 BLOCKED - needs 16:9"]
 
     Chain --> Q6{"Neutral pose approach?"}
@@ -44,38 +51,52 @@ flowchart TD
 
     FirstFrame --> Q7{"Prompt strategy?"}
     T2I --> Q7
-    Q7 -->|Full prompts all scenes| FullPrompts["Full descriptive all scenes<br/>❌ NOT CHOSEN - tested, worse"]
-    Q7 -->|Simplified scenes 2-3| SimplifiedPrompts["Scene 1: full, Scenes 2-3: minimal<br/>✅ CHOSEN - tested, 10% better"]
+    Q7 -->|Full prompts all scenes| FullPrompts["Full descriptive all scenes<br/>❌ NOT CHOSEN - causes mid-scene changes"]
+    Q7 -->|Simplified scenes 2-3| SimplifiedPrompts["Scene 1: full, Scenes 2-3: minimal<br/>✅ CHOSEN - strongly validated Oct 22"]
 
-    SimplifiedPrompts --> Q8{"Lipsync approach?"}
-    Q8 -->|Lipsync model| LipsyncModel["Use lipsync model<br/>✅ CHOSEN - required"]
-    Q8 -->|No lipsync| NoLipsync["Accept mismatched lip movement<br/>❌ NOT CHOSEN"]
-
-    LipsyncModel --> Q9{"Dialogue in prompts?"}
+    SimplifiedPrompts --> Q9{"Dialogue in prompts?"}
     Q9 -->|Include dialogue| WithDialogue["Include dialogue in prompts<br/>✅ CHOSEN - tested, works"]
     Q9 -->|No dialogue| NoDialogue["Generic 'speaking' prompts<br/>❌ NOT CHOSEN"]
 
-    WithDialogue --> End["Current Solution Design"]
+    WithDialogue --> End["POC Solution Design<br/>(TTS+Lipsync deferred to production)"]
 
     style Start fill:#ff69b4,stroke:#fff,stroke-width:3px,color:#000
     style FullDialogue fill:#9f9,stroke:#333,stroke-width:2px
     style Fixed fill:#9f9,stroke:#333,stroke-width:2px
     style NoBreak fill:#9f9,stroke:#333,stroke-width:2px
-    style External fill:#9f9,stroke:#333,stroke-width:2px
+    style VeoAudio fill:#9f9,stroke:#333,stroke-width:2px
+    style External fill:#ff9,stroke:#333,stroke-width:2px
     style Chain fill:#9f9,stroke:#333,stroke-width:2px
     style FirstFrame fill:#9f9,stroke:#333,stroke-width:2px
     style SimplifiedPrompts fill:#9f9,stroke:#333,stroke-width:2px
-    style LipsyncModel fill:#9f9,stroke:#333,stroke-width:2px
     style WithDialogue fill:#9f9,stroke:#333,stroke-width:2px
     style Chunks fill:#f99,stroke:#333,stroke-width:2px
-    style VeoAudio fill:#f99,stroke:#333,stroke-width:2px
     style Rules fill:#f99,stroke:#333,stroke-width:2px
     style Ref fill:#f99,stroke:#333,stroke-width:2px
     style FullPrompts fill:#f99,stroke:#333,stroke-width:2px
-    style NoLipsync fill:#f99,stroke:#333,stroke-width:2px
     style NoDialogue fill:#f99,stroke:#333,stroke-width:2px
     style End fill:#9ff,stroke:#333,stroke-width:3px
 ```
+
+---
+
+## POC vs Production Approach
+
+**POC Decision (October 23, 2025)**: Use Veo audio with `negative_prompt` for proof of concept
+
+**Reasoning**:
+- Testing showed 99% quality with dialogue in prompts + `negative_prompt: "background music"`
+- Voice changes between scenes present but acceptable for POC
+- Significantly simpler implementation (no TTS or lipsync integration)
+- Faster iteration and validation
+
+**Production Recommendation**: External TTS + Lipsync
+- Guarantees consistent voice across all scenes
+- Better audio quality control
+- Eliminates voice change issue
+- Adds complexity but improves production quality
+
+**Current Status**: POC using Veo audio; TTS+lipsync deferred to backlog
 
 ---
 
@@ -124,9 +145,29 @@ Result: ❌ Cut off mid-sentence
 ### Hypotheses Tested
 
 #### Hypothesis 1.1: Veo audio is consistent across clips
-**Test method**: Generate 2 clips with Veo audio, compare levels
-**Result**: ❌ **FAILED** - Audio levels and quality vary between clips
-**Evidence**: Manual testing revealed noticeable jumps when clips combined
+**Test method**:
+- Initial test (Oct 20): Generate 2 clips with Veo audio, compare levels
+- Extended test (Oct 22): Generate multiple scenes with negative_prompt and same seed
+
+**Results**:
+❌ **FAILED** - Audio levels and quality vary between clips
+- Volume levels differ (Oct 20 finding)
+- Voice quality varies (Oct 20 finding)
+- Music intrusion in some scenes (Oct 22 finding - Test 8)
+- Speaker characteristics change even with same seed (Oct 22 finding - Test 10)
+  - Pitch/tone differences
+  - Accent variations
+  - Speaking style inconsistencies
+
+**Mitigations tested**:
+- ✅ `negative_prompt: "background music"` eliminates music (Test 9)
+- ⚠️ Same seed provides minimal improvement (Test 10)
+- ❌ Voice characteristics still change despite optimizations
+
+**Evidence**: Multiple rounds of manual testing (Oct 20, Oct 22); comprehensive evaluation in Test 12
+
+**Conclusion**: Veo audio fundamentally inconsistent across separate API calls
+
 **Decision impact**: Must use external TTS
 
 #### Hypothesis 1.2: External TTS provides consistent audio
@@ -222,13 +263,25 @@ Each Veo clip is generated independently with no reference to previous clips, re
 **Decision impact**: Frame chaining validated, can proceed with implementation
 
 #### Hypothesis 2.2: Simplified prompts improve transitions
-**Test method**: Compare full vs minimal prompts for Scene 2
-- Full prompt: Complete scene description (setting, lighting, expression)
-- Minimal prompt: Dialogue-only ("Person continues speaking: 'dialogue'")
+**Test method**:
+- Initial test (Oct 20): Compare full vs minimal prompts
+- Validation test (Oct 22): Test prompt override behavior (Test 6, Test 7)
 
-**Result**: ✅ Minimal prompt 10% better transition quality
-**Reasoning**: `image` parameter provides visual context, verbose prompts create conflicts
-**Decision impact**: Use simplified prompts for scenes 2-3
+**Results**:
+- ✅ Minimal prompt: 10% better transition quality (Oct 20)
+- ✅ Minimal prompt: Perfect visual continuity (Oct 22 - Test 7)
+- ❌ Full prompt: Causes mid-scene setting changes (Oct 22 - Test 6)
+
+**Evidence**:
+- Test 6: Full prompt with kitchen description caused unwanted scene transition
+- Test 7: Minimal prompt maintained all visual elements from `image` parameter
+
+**Reasoning**:
+- `image` parameter provides visual context
+- Verbose prompts create conflicts, overriding image mid-scene
+- Minimal prompts let image dominate, only adding dialogue/expression
+
+**Decision impact**: **Strongly validates** Decision 2.3 - Use simplified prompts for scenes 2-3
 
 #### Hypothesis 2.3: Pose continuity problem
 **Discovery**: Scene 1 can end in any random pose (e.g., cup at mouth, hand mid-gesture)
@@ -962,17 +1015,28 @@ This solution directly reflects our decisions:
 
 ### Idea 6.5: Seed parameter for consistency
 
-**Status**: ❓ Inconclusive
-**Why parked**: Unclear if seed helps cross-generation consistency
+**Status**: ⚠️ **Tested - Partially Helpful**
+**Date tested**: October 22, 2025
 
 **Hypothesis**: Using same seed for all scenes might improve consistency
 
-**Why uncertain**:
-- Seed controls randomness within single generation
-- Unclear if seed=X for Scene 2 + Scene 1's last frame = more consistency
-- Frame chaining already provides consistency
+**Test results** (Test 10):
+- ✅ Slight improvement in overall consistency
+- ✅ May help with visual consistency (character, setting)
+- ❌ Doesn't solve audio voice change problem
+- ❌ Speaker characteristics still vary (pitch, tone, accent)
 
-**When to test**: If seeing consistency issues despite frame chaining
+**Updated understanding**:
+- Seed controls randomness within single generation
+- Seed may help visual consistency across scenes
+- Seed does NOT ensure consistent audio voice across separate API calls
+
+**Recommendation**:
+- Use same seed for scenes 2-3 for potential visual consistency boost
+- Do NOT rely on seed for audio consistency
+- External TTS still required for voice consistency
+
+**When to use**: Include in frame chaining implementation for visual benefits
 
 ---
 
@@ -1071,6 +1135,173 @@ This solution directly reflects our decisions:
 - Validates approach: dialogue prompts + no Veo audio + external TTS + lipsync
 - Modern lipsync models can work with existing mouth movement (may improve quality vs static mouths)
 
+### Test 6: Prompt Override Mid-Scene
+**Date**: October 22, 2025
+**Objective**: Determine if full prompts can override image parameter during scene
+
+**Method**:
+1. Generate Scene 1 with standard prompt
+2. Extract last frame
+3. Generate Scene 2 with:
+   - `image`: scene1_last_frame.jpg
+   - Full prompt describing different setting (bright kitchen, different framing)
+4. Observe behavior
+
+**Results**:
+- ✅ Scene 2 started correctly from Scene 1's last frame
+- ❌ Mid-scene, video transitioned to kitchen setting as described in prompt
+- ❌ Unwanted scene change during 8-second clip
+
+**Conclusion**: Full descriptive prompts can override `image` parameter mid-scene, causing jarring transitions
+
+**Impact on decisions**:
+- **Strongly validates Decision 2.3**: Use simplified prompts for scenes 2-3
+- Confirms that `image` parameter honored at start but prompt dominates during generation
+- Verbose scene descriptions (setting, lighting, framing) conflict with frame chaining
+
+### Test 7: Minimal Continuation Prompt Validation
+**Date**: October 22, 2025
+**Objective**: Validate that minimal prompts work smoothly with frame chaining
+
+**Method**:
+1. Generate Scene 1 with full prompt
+2. Extract last frame
+3. Generate Scene 2 with:
+   - `image`: scene1_last_frame.jpg
+   - Minimal prompt: "Person continues speaking: '[dialogue]'. Gentle smile, reassuring expression."
+4. Evaluate visual continuity
+
+**Results**:
+- ✅ Perfect visual continuity (character, setting, lighting maintained)
+- ✅ Smooth transition from Scene 1
+- ✅ No unwanted scene changes
+- ✅ Expression/emotion changes applied naturally
+
+**Conclusion**: Minimal prompts + image parameter = smooth, consistent transitions
+
+**Impact on decisions**:
+- Validates Decision 2.3 in practice
+- Confirms simplified prompt strategy works as designed
+
+### Test 8: Music Intrusion Problem
+**Date**: October 22, 2025
+**Objective**: Evaluate background music consistency across scenes
+
+**Method**:
+1. Generate Scene 1 with `generate_audio: true`
+2. Generate Scene 2 with `generate_audio: true` and minimal prompt
+3. Listen for background music
+
+**Results**:
+- ❌ Scene 2 added background music even with minimal prompt
+- ❌ Music not present in Scene 1, creating inconsistency
+- ❌ Unpredictable music intrusion
+
+**Conclusion**: Veo adds background music unpredictably, creating audio inconsistency beyond voice changes
+
+**Impact on decisions**:
+- New finding: Music is a separate audio consistency problem
+- Further validates Decision 1.1 (external TTS approach)
+- Adds another reason to use `generate_audio: false`
+
+### Test 9: Negative Prompt for Music Suppression
+**Date**: October 22, 2025
+**Objective**: Test if negative_prompt can suppress background music
+
+**Method**:
+1. Generate scenes with `generate_audio: true`
+2. Add `negative_prompt: "background music"`
+3. Evaluate audio output
+
+**Results**:
+- ✅ Background music successfully eliminated
+- ✅ Negative prompt parameter works as expected
+- ⚠️ Voice consistency still an issue (separate from music)
+
+**Conclusion**: `negative_prompt` effective for music suppression
+
+**Impact on decisions**:
+- Validates `negative_prompt` parameter usage
+- However, doesn't solve voice change problem
+- Still requires external TTS for full audio consistency
+
+### Test 10: Same Seed for Consistency
+**Date**: October 22, 2025
+**Objective**: Determine if same seed improves audio consistency across scenes
+
+**Method**:
+1. Generate all scenes with `generate_audio: true`
+2. Use same seed value for all scenes (e.g., seed: 12345)
+3. Use `negative_prompt: "background music"`
+4. Compare audio quality and voice characteristics
+
+**Results**:
+- ✅ No background music (negative prompt worked)
+- ⚠️ Slight improvement in overall consistency
+- ❌ Speaker characteristics still changed between scenes
+  - Pitch/tone differences noticeable
+  - Accent/speaking style variations
+  - Not same "voice" across scenes
+
+**Conclusion**: Seed provides minimal improvement but doesn't solve voice change problem
+
+**Impact on decisions**:
+- Seed may help with visual consistency
+- Insufficient for audio consistency
+- External TTS still required for consistent voice
+
+### Test 11: Ending Pose Control via Prompting
+**Date**: October 22, 2025
+**Objective**: Test if prompting can control scene ending poses to reduce awkward transitions
+
+**Method**:
+1. Observe Scene 1 ended with person holding cup at mouth
+2. Generate Scene 2 with prompt: "After lowering the cup, person continues speaking: '[dialogue]'"
+3. Evaluate if prompt controlled timing/transition
+
+**Results**:
+- ⚠️ Timing slightly better than random
+- ⚠️ Not reliable or predictable
+- ❌ Can't know scene ending state in production to craft appropriate prompt
+- ❌ Would require vision model to analyze last frame (adds complexity)
+
+**Conclusion**: Prompt-based ending control not viable for production workflow
+
+**Impact on decisions**:
+- Confirms need for `last_frame` parameter approach (Decision 2.2)
+- Or accept one awkward transition moment (Scene 1 → Scene 2)
+- Vision model approach too complex for POC
+
+### Test 12: Overall Veo Audio Production Viability
+**Date**: October 22, 2025
+**Objective**: Evaluate if Veo audio is production-ready with optimal prompting
+
+**Method**:
+Combined evaluation using:
+- Negative prompts for music suppression (Test 9)
+- Same seed for consistency (Test 10)
+- Minimal prompts to reduce conflicts (Test 7)
+
+**Results**:
+- ✅ Music suppression works (`negative_prompt`)
+- ✅ Seed provides minimal visual consistency boost
+- ❌ Voice still changes between scenes (pitch, tone, accent)
+- ❌ Can't control dialogue timing (no start/stop control)
+- ❌ Can't predict ending poses for smooth transitions
+
+**Conclusion**: **Veo audio not usable for production** despite prompt engineering efforts
+
+**Reasoning**:
+- Each API call generates independent audio
+- Even with same seed, audio model has inherent randomness
+- Fundamental limitation, not solvable with prompting
+- External TTS provides guaranteed voice consistency
+
+**Impact on decisions**:
+- Strongly validates Decision 1.1 (external TTS)
+- Confirms external TTS approach is necessary, not optional
+- Veo audio suitable for single-clip generation only
+
 ---
 
 ## 9. Cost & Time Estimates
@@ -1107,6 +1338,8 @@ This solution directly reflects our decisions:
 ## 10. Related Documents
 
 ### Current Documents
+- **Template Design (Full)**: `template-design-full.md` - Complete framework for designing templates
+- **Template Design (Short)**: `template-design-short.md` - Quick reference cheat sheet
 - **Workflow v1**: `workflow_v1.md` - Visual workflow diagram
 - **Workflow Fields**: `workflow-fields.md` - Field reference and manifest structure
 - **Dry-Run Complete**: `../1_development-docs/cycle-3/IMPLEMENTATION-COMPLETE.md`
@@ -1135,3 +1368,27 @@ This solution directly reflects our decisions:
 - Resolved Decision 3.1: Include dialogue in prompts (tested and confirmed)
 - Updated decision diagram: Q9 changed from "TO TEST" to "CHOSEN"
 - Added note that modern lipsync models can work with existing mouth movement
+
+**October 22, 2025** - Updated with comprehensive frame chaining and audio testing
+- Added Test 6: Prompt Override Mid-Scene (validates simplified prompt strategy)
+- Added Test 7: Minimal Continuation Prompt Validation (confirms smooth transitions)
+- Added Test 8: Music Intrusion Problem (new finding - unpredictable music)
+- Added Test 9: Negative Prompt Effectiveness (validates negative_prompt parameter)
+- Added Test 10: Same Seed for Consistency (seed helps visually, not audio)
+- Added Test 11: Ending Pose Control via Prompting (not production-viable)
+- Added Test 12: Overall Veo Audio Assessment (conclusion: not production-ready)
+- Updated Hypothesis 1.1 with extended audio testing results
+- Updated Hypothesis 2.2 with prompt override validation
+- Updated Idea 6.5 (Seed parameter) with test findings
+- **Key finding**: Veo audio deemed "not usable for production" after extensive testing
+- **Strong validation**: External TTS approach confirmed necessary (not optional)
+
+**October 23, 2025** - POC decision and template design integration
+- **Major decision**: Veo audio acceptable for POC with `negative_prompt: "background music"`
+- Updated decision diagram (Q4, Q8) to reflect POC vs Production approach
+- Added "POC vs Production Approach" section documenting the decision split
+- Template design framework completed and documented separately
+- Added references to template design documentation (`template-design-full.md`, `template-design-short.md`)
+- External TTS + lipsync deferred to production backlog
+- Updated testing status summary to show POC validation results
+- Simplified diagram flow (removed Q8 lipsync question for POC)
