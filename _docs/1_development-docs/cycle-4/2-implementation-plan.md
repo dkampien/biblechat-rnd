@@ -411,7 +411,7 @@ Enable all problems extraction with proper fallback handling.
 
 ## Phase 6: Video Generation (Veo 3.1 + Frame Chaining)
 
-Implement frame extraction, chaining, and video combining.
+Integration requires changes across video-generator.ts, index.ts, and state-manager.ts.
 
 ### Step 6.1: Add negative_prompt to Veo calls `[ ]`
 - **Priority:** High
@@ -435,12 +435,41 @@ Implement frame extraction, chaining, and video combining.
   };
   ```
 
-### Step 6.2: Implement frame extraction utility `[ ]`
+### Step 6.2: Update generateVideoClip signature `[ ]`
 - **Priority:** Critical
-- **Task:** Create utility function to extract last frame from video using ffmpeg.
+- **Task:** Add optional previousFramePath parameter to generateVideoClip method.
 - **Files:**
-  - `src/lib/video-generator.ts` or new `src/utils/ffmpeg.ts`
-- **Step Dependencies:** None (can be parallel with other steps)
+  - `src/lib/video-generator.ts`
+- **Step Dependencies:** None
+- **User Instructions / Validation:**
+  ```bash
+  npm run build
+  # Should compile without errors
+  ```
+- **Implementation Notes:**
+  ```typescript
+  // CURRENT signature
+  async generateVideoClip(scene: Scene, videoId: string)
+
+  // NEW signature
+  async generateVideoClip(
+    scene: Scene,
+    videoId: string,
+    previousFramePath?: string
+  ): Promise<{ videoPath: string; predictionId: string; predictTime?: number }>
+
+  // Inside method: Add image parameter if frame provided
+  if (previousFramePath && scene.sceneNumber > 1) {
+    input.image = previousFramePath;
+  }
+  ```
+
+### Step 6.3: Implement extractLastFrame method `[ ]`
+- **Priority:** Critical
+- **Task:** Add method to extract last frame from video using ffmpeg.
+- **Files:**
+  - `src/lib/video-generator.ts` or `src/utils/ffmpeg.ts`
+- **Step Dependencies:** None
 - **User Instructions / Validation:**
   ```bash
   # Test extraction standalone
@@ -449,85 +478,71 @@ Implement frame extraction, chaining, and video combining.
   ```
 - **Implementation Notes:**
   ```typescript
-  async extractLastFrame(videoPath: string, outputPath: string): Promise<void> {
+  async extractLastFrame(
+    videoPath: string,
+    videoId: string,
+    sceneNumber: number
+  ): Promise<string> {
+    const framesDir = path.join(
+      this.config.paths.videosDir,
+      videoId,
+      'frames'
+    );
+    await fs.mkdir(framesDir, { recursive: true });
+
+    const outputPath = path.join(framesDir, `scene${sceneNumber}_last.jpg`);
     const command = `ffmpeg -i "${videoPath}" -vf "select='eq(n,191)'" -frames:v 1 "${outputPath}"`;
-    // Execute command, handle errors
+
+    // Execute command with error handling
     // Retry once on failure
+    // Return outputPath
   }
   ```
   - Frame 191 = last frame of 8s @ 24fps video
-  - Output as JPEG
-  - Store in `videos/{videoId}/frames/`
+  - Use child_process.exec or similar
+  - Store in `videos/{videoId}/frames/` directory
 
-### Step 6.3: Update directory structure creation `[ ]`
-- **Priority:** High
-- **Task:** Create `videos/{videoId}/scenes/` and `videos/{videoId}/frames/` directories before generation.
-- **Files:**
-  - `src/lib/video-generator.ts`
-- **Step Dependencies:** Step 2.4 (config paths added)
-- **User Instructions / Validation:**
-  ```bash
-  npm run generate -- --limit 1
-  # Check directories created: output/videos/{videoId}/scenes/ and frames/
-  ```
-- **Implementation Notes:**
-  ```typescript
-  const videoDir = path.join(config.paths.videosDir, videoId);
-  const scenesDir = path.join(videoDir, 'scenes');
-  const framesDir = path.join(videoDir, 'frames');
-
-  await fs.mkdir(scenesDir, { recursive: true });
-  await fs.mkdir(framesDir, { recursive: true });
-  ```
-
-### Step 6.4: Implement frame chaining logic `[ ]`
+### Step 6.4: Update generateClipPath helper `[ ]`
 - **Priority:** Critical
-- **Task:** Add logic to use previous scene's last frame as `image` parameter for scenes 2 and 3.
+- **Task:** Update generateClipPath helper to use nested directory structure.
 - **Files:**
-  - `src/lib/video-generator.ts`
-- **Step Dependencies:** Steps 6.2, 6.3
+  - `src/utils/helpers.ts`
+- **Step Dependencies:** None
 - **User Instructions / Validation:**
   ```bash
-  npm run generate -- --limit 1
-  # Check visual continuity between scenes manually
-  # Scene 2 and 3 should maintain character/setting from previous
+  npm run build
+  # Should compile without errors
   ```
 - **Implementation Notes:**
   ```typescript
-  let previousLastFrame: string | undefined;
+  // CURRENT (line 94-101)
+  export function generateClipPath(
+    videosDir: string,
+    videoId: string,
+    sceneNumber: number
+  ): string {
+    const timestamp = generateTimestamp();
+    return path.join(videosDir, `${videoId}_scene${sceneNumber}_${timestamp}.mp4`);
+  }
 
-  for (const scene of script.scenes) {
-    const input: any = {
-      prompt: scene.prompt,
-      // ... other params
-    };
-
-    // Add image parameter for scenes 2-3
-    if (scene.sceneNumber > 1 && previousLastFrame) {
-      input.image = previousLastFrame;
-    }
-
-    // Generate video
-    const result = await this.generateVideoClip(input, videoId, scene.sceneNumber);
-
-    // Extract last frame for next scene
-    if (scene.sceneNumber < 3) {
-      const lastFramePath = path.join(framesDir, `scene${scene.sceneNumber}_last.jpg`);
-      await this.extractLastFrame(result.videoPath, lastFramePath);
-      previousLastFrame = lastFramePath;
-    }
+  // UPDATE TO
+  export function generateClipPath(
+    videosDir: string,
+    videoId: string,
+    sceneNumber: number
+  ): string {
+    const scenesDir = path.join(videosDir, videoId, 'scenes');
+    return path.join(scenesDir, `scene${sceneNumber}.mp4`);
   }
   ```
-  - Scene 1: No image parameter
-  - Scene 2: image = scene1_last.jpg
-  - Scene 3: image = scene2_last.jpg
+  **Why:** Requirements specify nested folder structure (videos/{videoId}/scenes/) not flat structure
 
-### Step 6.5: Implement video combining `[ ]`
+### Step 6.5: Implement combineScenes method `[ ]`
 - **Priority:** Critical
-- **Task:** Concatenate 3 scene videos into single 24-second video using ffmpeg.
+- **Task:** Add method to concatenate 3 scene videos into single 24-second video.
 - **Files:**
-  - `src/lib/video-generator.ts` or new `src/lib/video-assembler.ts`
-- **Step Dependencies:** Step 6.4 (all scenes generated)
+  - `src/lib/video-generator.ts`
+- **Step Dependencies:** Step 6.4 (helper updated)
 - **User Instructions / Validation:**
   ```bash
   npm run generate -- --limit 1
@@ -536,84 +551,259 @@ Implement frame extraction, chaining, and video combining.
   ```
 - **Implementation Notes:**
   ```typescript
-  async combineScenes(videoId: string, scenePaths: string[]): Promise<string> {
-    const videoDir = path.join(config.paths.videosDir, videoId);
+  async combineScenes(videoId: string): Promise<string> {
+    const videoDir = path.join(this.config.paths.videosDir, videoId);
     const concatFile = path.join(videoDir, 'concat.txt');
     const outputPath = path.join(videoDir, 'final.mp4');
 
-    // Create concat.txt
-    const concatContent = scenePaths.map(p => `file '${p}'`).join('\n');
+    // Find scene files (use updated helper: generateClipPath)
+    const scenePaths = [1, 2, 3].map(n =>
+      generateClipPath(this.config.paths.videosDir, videoId, n)
+    );
+
+    // Create concat.txt with relative paths
+    const concatContent = scenePaths
+      .map(p => `file '${path.relative(videoDir, p)}'`)
+      .join('\n');
     await fs.writeFile(concatFile, concatContent);
 
-    // Run ffmpeg
-    const command = `ffmpeg -f concat -safe 0 -i "${concatFile}" -c copy "${outputPath}"`;
-    // Execute, handle errors, retry once on failure
+    // Run ffmpeg using child_process
+    const { exec } = require('child_process');
+    const { promisify } = require('util');
+    const execAsync = promisify(exec);
+
+    try {
+      await execAsync(`ffmpeg -f concat -safe 0 -i "${concatFile}" -c copy "${outputPath}"`);
+    } catch (error) {
+      // Retry once
+      await execAsync(`ffmpeg -f concat -safe 0 -i "${concatFile}" -c copy "${outputPath}"`);
+    }
 
     return outputPath;
   }
   ```
+  **Note:** Use child_process.exec for ffmpeg commands
 
-### Step 6.6: Update scene generation flow `[ ]`
-- **Priority:** High
-- **Task:** Refactor generateVideoClip to handle sequential generation with frame extraction between scenes.
+### Step 6.6: Update index.ts scene loop for frame chaining `[ ]`
+- **Priority:** Critical
+- **Task:** Modify main scene loop to pass frames between scenes.
 - **Files:**
-  - `src/lib/video-generator.ts`
-- **Step Dependencies:** Steps 6.2, 6.4, 6.5
+  - `src/index.ts`
+- **Step Dependencies:** Steps 6.2, 6.3
 - **User Instructions / Validation:**
   ```bash
   npm run generate -- --limit 1
-  # Full video generation should work end-to-end
-  # Check: 3 scenes + frames + final.mp4 all present
+  # Check frames directory exists
+  # Check visual continuity manually
   ```
 - **Implementation Notes:**
-  - May need to restructure main generation method
-  - Sequential: Scene 1 → extract → Scene 2 → extract → Scene 3 → combine
-  - Error handling: retry frame extraction, log failures, continue without chaining if extraction fails
+  ```typescript
+  // Scene loop: lines 187-235
+  // ADD before loop (around line 186):
+  let previousFramePath: string | undefined;
+
+  // MODIFY generateVideoClip call (line 205):
+  // CURRENT:
+  const result = await videoGenerator.generateVideoClip(scene, videoId);
+
+  // UPDATE TO:
+  const result = await videoGenerator.generateVideoClip(
+    scene,
+    videoId,
+    previousFramePath  // NEW PARAMETER
+  );
+
+  // ADD after line 213 (after stateManager.updateSceneStatus completion):
+  if (scene.sceneNumber < 3) {
+    previousFramePath = await videoGenerator.extractLastFrame(
+      result.videoPath,
+      videoId,
+      scene.sceneNumber
+    );
+  }
+  ```
+  **Exact location:** Inside the scene loop, after state update (line 208-213), before success log (line 215)
+
+### Step 6.7: Add video combining call to index.ts `[ ]`
+- **Priority:** Critical
+- **Task:** Call combineScenes after all scenes complete.
+- **Files:**
+  - `src/index.ts`
+- **Step Dependencies:** Steps 6.5, 6.6
+- **User Instructions / Validation:**
+  ```bash
+  npm run generate -- --limit 1
+  # Check final.mp4 exists in videos/{videoId}/
+  ```
+- **Implementation Notes:**
+  ```typescript
+  // INSERT after line 235 (after scene loop closes), before line 237 (empty line before "Mark video as completed")
+  // ADD:
+
+  // Combine all scenes into final video
+  logger.info('   Combining scenes...');
+  const finalVideoPath = await videoGenerator.combineScenes(videoId);
+  logger.success(`   ✓ Final video created: ${path.basename(finalVideoPath)}`);
+
+  // Update state with combined video path
+  // (requires Step 7.0 - state manager update)
+  stateManager.updateVideoFinalPath(state, videoId, finalVideoPath);
+  await stateManager.saveState(state);
+
+  // EXISTING line 237-239 stays:
+  // Mark video as completed
+  stateManager.updateVideoStatus(state, videoId, 'completed');
+  await stateManager.saveState(state, true);
+  logger.success(`   ✓ Video complete: ${videoId}`);
+  ```
+  **Exact location:** Between line 235 (scene loop end) and line 237 (Mark video as completed comment)
+
+### Step 6.8: Add ffmpeg execution helper `[ ]`
+- **Priority:** High
+- **Task:** Implement ffmpeg command execution with error handling.
+- **Files:**
+  - `src/lib/video-generator.ts` (or `src/utils/ffmpeg.ts` if extracting)
+- **Step Dependencies:** Steps 6.3, 6.5
+- **User Instructions / Validation:**
+  ```bash
+  # Check ffmpeg available
+  ffmpeg -version
+  ```
+- **Implementation Notes:**
+  ```typescript
+  import { exec } from 'child_process';
+  import { promisify } from 'util';
+
+  const execAsync = promisify(exec);
+
+  async executeFFmpeg(command: string, retries: number = 1): Promise<void> {
+    for (let attempt = 0; attempt <= retries; attempt++) {
+      try {
+        const { stdout, stderr } = await execAsync(command);
+        if (stderr && !stderr.includes('frame=')) {
+          logger.debug(`ffmpeg stderr: ${stderr}`);
+        }
+        return;
+      } catch (error) {
+        if (attempt === retries) {
+          throw new VideoGenerationError(
+            `ffmpeg command failed: ${error instanceof Error ? error.message : String(error)}`,
+            { command }
+          );
+        }
+        logger.warn(`ffmpeg attempt ${attempt + 1} failed, retrying...`);
+        await sleep(1000);
+      }
+    }
+  }
+  ```
+  **Note:** Use this helper in both extractLastFrame and combineScenes methods
 
 ---
 
 ## Phase 7: Output Assemblers
 
-Update manifest and dry-run outputs to match new schema.
+Update state management, create per-video manifests, and update dry-run outputs.
 
-### Step 7.1: Update OutputAssembler for new manifest structure `[ ]`
-- **Priority:** High
-- **Task:** Update manifest generation to use new field names and flexible content structure.
+### Step 7.0: Update state-manager for final video path `[ ]`
+- **Priority:** Critical
+- **Task:** Add field and method to track combined video path.
 - **Files:**
-  - `src/lib/output-assembler.ts`
-- **Step Dependencies:** Phase 1 (types defined), Phase 4 (script structure updated)
+  - `src/types/state.types.ts`
+  - `src/lib/state-manager.ts`
+- **Step Dependencies:** None
 - **User Instructions / Validation:**
   ```bash
-  npm run generate -- --limit 1
-  # Check output/manifests/{videoId}.json structure
-  # Should have: videoId, problemCategory, contentTemplate, content.videoScript, content.voiceScript
+  npm run build
+  # Should compile without errors
   ```
 - **Implementation Notes:**
   ```typescript
-  const manifest: Manifest = {
-    videoId: script.id,
-    problemCategory: script.category,  // renamed
-    contentTemplate: script.template,  // renamed
-    timestamp: script.timestamp,
-    userProblem: userProblem.problem,
-    content: {
-      videoScript: script.videoScript,
-      voiceScript: script.voiceScript
-    },
-    scenes: script.scenes.map(s => ({
-      sceneNumber: s.sceneNumber,
-      prompt: s.prompt
-    })),
-    finalVideoPath: `output/videos/${script.id}/final.mp4`
-  };
+  // src/types/state.types.ts
+  export interface VideoState {
+    id: string;
+    category: ProblemCategory;
+    template: TemplateType;
+    status: 'pending' | 'script-generation' | 'video-generation' | 'completed' | 'failed';
+    scriptPath?: string;
+    finalVideoPath?: string;  // NEW FIELD
+    error?: string;
+    scenes: SceneState[];
+  }
+
+  // src/lib/state-manager.ts
+  updateVideoFinalPath(
+    state: PipelineState,
+    videoId: string,
+    finalVideoPath: string
+  ): void {
+    const video = state.videos.find(v => v.id === videoId);
+    if (!video) {
+      throw new StateError(`Video not found: ${videoId}`, { videoId });
+    }
+    video.finalVideoPath = finalVideoPath;
+  }
   ```
 
-### Step 7.2: Create manifests directory and save manifests `[ ]`
+### Step 7.1: Create ManifestCreator class `[ ]`
 - **Priority:** High
-- **Task:** Ensure manifests directory exists and save manifest JSON files there.
+- **Task:** Create new class for per-video manifest generation (NOT OutputAssembler).
 - **Files:**
-  - `src/lib/output-assembler.ts`
-- **Step Dependencies:** Step 7.1, Step 2.4 (config paths)
+  - `src/lib/manifest-creator.ts` (NEW FILE)
+- **Step Dependencies:** Phase 1 (types defined), Step 7.0 (state updated)
+- **User Instructions / Validation:**
+  ```bash
+  npm run generate -- --limit 1
+  # Check output/manifests/{videoId}.json exists
+  # Validate structure matches requirements
+  ```
+- **Implementation Notes:**
+  ```typescript
+  // New file: src/lib/manifest-creator.ts
+  export class ManifestCreator {
+    constructor(private config: Config) {}
+
+    async create(
+      script: VideoScript,
+      userProblem: UserProblem,
+      finalVideoPath: string
+    ): Promise<void> {
+      const manifest: Manifest = {
+        videoId: script.id,
+        problemCategory: script.category,
+        contentTemplate: script.template,
+        timestamp: script.timestamp,
+        userProblem: userProblem.problem,
+        content: {
+          videoScript: script.videoScript,
+          voiceScript: script.voiceScript
+        },
+        scenes: script.scenes.map(s => ({
+          sceneNumber: s.sceneNumber,
+          prompt: s.prompt
+        })),
+        finalVideoPath
+      };
+
+      // Save to manifestsDir
+      const manifestsDir = this.config.paths.manifestsDir;
+      await fs.mkdir(manifestsDir, { recursive: true });
+
+      const manifestPath = path.join(manifestsDir, `${script.id}.json`);
+      await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+
+      logger.debug(`Manifest saved: ${manifestPath}`);
+    }
+  }
+  ```
+  **Note:** OutputAssembler stays unchanged - it runs at pipeline END for aggregate output
+
+### Step 7.2: Integrate ManifestCreator in index.ts `[ ]`
+- **Priority:** High
+- **Task:** Call ManifestCreator after video combining completes.
+- **Files:**
+  - `src/index.ts`
+- **Step Dependencies:** Step 7.1, Step 6.6
 - **User Instructions / Validation:**
   ```bash
   npm run generate -- --limit 1
@@ -622,11 +812,17 @@ Update manifest and dry-run outputs to match new schema.
   ```
 - **Implementation Notes:**
   ```typescript
-  const manifestsDir = this.config.paths.manifestsDir;
-  await fs.mkdir(manifestsDir, { recursive: true });
+  // At top of index.ts
+  import { ManifestCreator } from './lib/manifest-creator';
 
-  const manifestPath = path.join(manifestsDir, `${videoId}.json`);
-  await fs.writeFile(manifestPath, JSON.stringify(manifest, null, 2));
+  // After config load (around line 58)
+  const manifestCreator = new ManifestCreator(config);
+
+  // In video generation loop, AFTER combining (Step 6.6)
+  // AFTER stateManager.updateVideoFinalPath(...)
+  // ADD:
+  await manifestCreator.create(script, userProblem, finalVideoPath);
+  logger.success(`   ✓ Manifest created: ${videoId}.json`);
   ```
 
 ### Step 7.3: Update DryRunAssembler to match manifest structure `[ ]`

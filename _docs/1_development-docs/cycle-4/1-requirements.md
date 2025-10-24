@@ -166,7 +166,7 @@ output/
     "csvInput": "./data/bquxjob_696709f0_199c894db50.csv",
     "outputDir": "./output",
     "scriptsDir": "./output/scripts",
-    "videosDir": "./output/videos",      // NEW
+    "videosDir": "./output/videos",      // Already exists
     "manifestsDir": "./output/manifests", // NEW
     "stateFile": "./output/state.json",
     "finalOutput": "./output/final-output.json"
@@ -371,6 +371,110 @@ async extractProblems(filterList?: string[] | "all"): Promise<UserProblem[]> {
 **Concat file location:**
 - Temporary: `output/videos/{videoId}/concat.txt`
 - Can be retained for debugging or deleted after use
+
+#### Integration with index.ts
+
+**Scene loop changes:**
+The main scene loop in `index.ts` (currently lines 187-234) orchestrates frame extraction and chaining.
+
+```typescript
+// index.ts main scene loop
+let previousFramePath: string | undefined;
+
+for (const scene of script.scenes) {
+  // Pass frame to generator
+  const result = await videoGenerator.generateVideoClip(
+    scene,
+    videoId,
+    previousFramePath  // NEW PARAMETER
+  );
+
+  // Extract frame for next scene
+  if (scene.sceneNumber < 3) {
+    previousFramePath = await videoGenerator.extractLastFrame(
+      result.videoPath,
+      videoId,
+      scene.sceneNumber
+    );
+  }
+
+  // Update state (existing logic)
+  stateManager.updateSceneStatus(...);
+}
+
+// After all scenes complete
+const finalVideoPath = await videoGenerator.combineScenes(videoId);
+stateManager.updateVideoFinalPath(state, videoId, finalVideoPath);
+
+// Create manifest
+await manifestCreator.create(script, userProblem, finalVideoPath);
+```
+
+**video-generator.ts interface:**
+```typescript
+// Updated signature
+async generateVideoClip(
+  scene: Scene,
+  videoId: string,
+  previousFramePath?: string
+): Promise<{ videoPath: string; predictionId: string; predictTime?: number }>
+
+// New methods
+async extractLastFrame(
+  videoPath: string,
+  videoId: string,
+  sceneNumber: number
+): Promise<string>
+
+async combineScenes(videoId: string): Promise<string>
+```
+
+**state-manager.ts additions:**
+```typescript
+// src/types/state.types.ts
+interface VideoState {
+  // ... existing fields
+  finalVideoPath?: string;  // NEW
+}
+
+// src/lib/state-manager.ts
+updateVideoFinalPath(
+  state: PipelineState,
+  videoId: string,
+  finalVideoPath: string
+): void
+```
+
+**manifest-creator.ts (new file):**
+```typescript
+// src/lib/manifest-creator.ts
+export class ManifestCreator {
+  async create(
+    script: VideoScript,
+    userProblem: UserProblem,
+    finalVideoPath: string
+  ): Promise<void> {
+    const manifest: Manifest = {
+      videoId: script.id,
+      problemCategory: script.category,
+      contentTemplate: script.template,
+      timestamp: script.timestamp,
+      userProblem: userProblem.problem,
+      content: {
+        videoScript: script.videoScript,
+        voiceScript: script.voiceScript
+      },
+      scenes: script.scenes.map(s => ({
+        sceneNumber: s.sceneNumber,
+        prompt: s.prompt
+      })),
+      finalVideoPath
+    };
+
+    // Save to manifestsDir/{videoId}.json
+  }
+}
+```
 
 ---
 

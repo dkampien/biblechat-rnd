@@ -189,8 +189,9 @@ Scene 3: { prompt, image: scene2_last_frame.jpg, duration, ... }
 - Validated in testing (workflow doc Test 1, Test 7)
 
 **Impact:**
-- File: `src/lib/video-generator.ts`
-- Conditional logic: if (sceneNumber > 1) add image parameter
+- File: `src/lib/video-generator.ts` - Update generateVideoClip signature to accept previousFramePath parameter; add image parameter when provided
+- File: `src/index.ts` - Update scene loop to pass frames between scenes
+- Conditional logic: if (sceneNumber > 1 && previousFramePath) add image parameter
 - File path management for extracted frames
 
 #### 4d. Video Combining (ffmpeg Concatenation)
@@ -214,7 +215,10 @@ Combine 3 scene clips into single 24-second video.
 - Consider renaming to `combined_video.mp4` or `final_video.mp4`
 
 **Impact:**
-- File: `src/lib/video-generator.ts` or new `src/lib/video-assembler.ts`
+- File: `src/lib/video-generator.ts` - Add combineScenes() method
+- File: `src/index.ts` - Call combineScenes() after all scenes complete
+- File: `src/lib/state-manager.ts` - Add updateVideoFinalPath() method
+- File: `src/types/state.types.ts` - Add finalVideoPath field to VideoState
 - Create concat file programmatically
 - Execute ffmpeg command
 - Return path to combined video
@@ -252,9 +256,11 @@ Add TypeScript types for new Veo 3.1 parameters.
 - ❌ Scene 1 regeneration with neutral pose
 
 **Files impacted:**
-- `src/lib/video-generator.ts` (primary changes)
-- `src/types/prediction.types.ts` (type updates)
-- Possibly new: `src/lib/video-assembler.ts` (if separating concerns)
+- `src/lib/video-generator.ts` (primary changes - extractLastFrame, combineScenes methods, generateVideoClip signature update)
+- `src/index.ts` (scene loop integration - frame passing, combining call, manifest creation)
+- `src/lib/state-manager.ts` (add finalVideoPath tracking)
+- `src/types/state.types.ts` (add finalVideoPath field)
+- `src/types/prediction.types.ts` (type updates for Veo 3.1)
 
 ---
 
@@ -474,14 +480,18 @@ interface D2CManifestContent {
 **Files to update:**
 - `src/types/script.types.ts` - Interface updates
 - `src/types/output.types.ts` - Manifest structure (create if doesn't exist)
+- `src/types/state.types.ts` - Add finalVideoPath to VideoState
 - `src/lib/script-generator.ts` - Generate new fields
-- `src/lib/output-assembler.ts` - Use new manifest structure
+- `src/lib/manifest-creator.ts` - NEW FILE for per-video manifest creation
+- `src/index.ts` - Call manifest creator after video combining
+- `src/lib/output-assembler.ts` - Unchanged (runs at pipeline END for aggregate output)
 - `src/lib/dry-run-assembler.ts` - Align with manifest
-- `src/lib/state-manager.ts` - May need field name updates
+- `src/lib/state-manager.ts` - Add updateVideoFinalPath() method
 
 **Dependencies:**
 - Item 9 (system prompts) must align with schema changes
 - Item 5 (dry-run) depends on manifest design
+- Item 4d (video combining) must complete before manifest creation
 
 ---
 
