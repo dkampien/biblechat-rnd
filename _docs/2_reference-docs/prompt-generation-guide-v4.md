@@ -1,7 +1,7 @@
 # AI Content Generation Models: A Model-Agnostic Framework
 
-**Version**: 3.0
-**Date**: 2025-10-29
+**Version**: 4.0
+**Date**: 2025-10-30
 
 ---
 
@@ -9,7 +9,7 @@
 
 ### Why Model-Agnostic?
 
-The AI model landscape changes constantly - new models release monthly, "best" models change weekly, specific names become outdated quickly. Instead of learning "Veo 3.1" or "DALL-E 4", focus on:
+The AI model landscape changes constantly - new models release monthly, "best" models change weekly, specific names become outdated quickly. Instead of learning "Veo 3.1" or "Sora 2", focus on:
 
 1. **Modalities** - What can models do?
 2. **Workflows** - How do we chain capabilities?
@@ -31,9 +31,11 @@ This framework works regardless of which specific models exist.
 - Handle API access, billing, infrastructure
 
 **Selection process:**
-1. Identify modality needed (text-to-image, image-to-video, etc.)
-2. Choose best model for specific purpose
-3. Access via appropriate platform
+1. Identify purpose and scope (what you need created)
+2. Chose best model for specific purpose
+3. Identify modality needed (text-to-image, image-to-video, etc.)
+4. Acccess via appropiate platform
+
 
 ---
 
@@ -41,14 +43,14 @@ This framework works regardless of which specific models exist.
 
 **Modality = A specific input→output capability**
 
-Modern models often support multiple modalities. Understanding modalities helps you choose the right tool, design effective workflows, and switch between models easily.
+Understanding modalities helps you choose the right tool, design effective workflows, and switch between models easily.
 
 ### Image Generation Modalities
 
 - **text-to-image (t2i)** - Text → generated image
 - **image-to-image (i2i)** - Image + text → transformed image (style transfer, variations)
-- **image-to-image_edit (i2i_edit)** - Image + text + region → edited image
-- **realtime-canvas** - Live text/image input → real-time generation
+- **image-to-image_edit (i2i_edit)** - text + reference images -> edited image
+
 
 ### Video Generation Modalities
 
@@ -121,13 +123,33 @@ Formulas needed: 6 different
 - Duration limits drive multi-step approaches
 
 **Note on Workflow Components:**
-While this framework focuses on generation modalities, real-world workflows can also include:
-- Upscaling (enhance resolution)
-- Lip sync (dialogue synchronization)
-- Audio processing (mixing, effects)
-- Color grading
-- Background removal
-- Other utilities and post-processing
+While this framework focuses on generation modalities (text-to-image,
+image-to-video, text-to-video), workflows are built by combining reusable
+techniques to achieve larger outcomes.
+
+**Techniques** are subworkflows that accomplish specific tasks such as:
+- Character consistency
+- Relighting images
+- Inpainting
+- Lip syncing
+- Product placement
+- LoRA training
+- Upscaling
+
+Each technique may use:
+- Generation modalities (text-to-image, image-to-video, etc.)
+- Specialized models and tools
+- Multiple internal steps/nodes
+
+**Workflow hierarchy:**
+- Workflow = Overall outcome (e.g., "Generate final video")
+- Techniques = Reusable subworkflows for specific tasks (e.g., upscaling, character consistency)
+- Steps = Individual operations within each technique
+
+Workflows chain techniques together, where each technique's output becomes
+the next technique's input.
+
+
 
 ### Frame Chaining for Continuity
 
@@ -194,56 +216,52 @@ Scene planning:
 Technique: Frame chaining between scenes 2-5 for continuity
 ```
 
-**Key Considerations:**
-- Plan before generating (saves cost)
-- Account for model duration limits
-- Design transitions in advance
-- Test frame chaining early (visual continuity check)
-
 ---
 
 ## 4. Prompts & Modalities
 
 **Critical insight: Different modalities require fundamentally different prompts**
 
-### Why Prompts Differ
+### Prompting Approach
 
-Each modality has different information needs:
-- **text-to-image**: No visuals exist → describe everything
-- **image-to-video**: Visuals exist (from image) → describe motion only
-- **text-to-video**: Nothing exists → describe both visuals and motion
+For each modality, your prompting approach consists of three components:
 
-### The Selection Flow
+**1. FOCUS** - What to describe (determined by modality)
+- text-to-image: Describe what exists (visuals)
+- image-to-video: Describe what happens (motion only)
+- text-to-video: Describe both (visuals + motion)
 
-**How to choose blocks for your prompt:**
+**2. PHRASING STYLE** - How to write it
+- **Descriptive**: Lists what exists (static, like painting a picture)
+  - Example: "A man cleaning a car engine, wiping sweat from his brow, exhausted expression"
+  - Within descriptive, two writing styles exist:
+    - **Direct/Compact**: "blue sports car", "person in blood-splattered jacket"
+    - **Verbose/Predicative**: "the car is blue and sporty", "the person has blood streaming"
+    - Note: Direct style is generally more efficient; worth testing which works better for your model
 
+- **Narrative**: Tells what happens (sequential, story-like)
+  - Example: "A man leans over the hood, wipes his brow, then looks at the camera and says 'This is hard work'"
+
+**3. FORMULA** - Which structure to use
+- Block structure (which blocks)
+- Block order (arrangement)
+- Block level of detail (depth)
+
+**Key relationships:**
+- Block-based formulas → Descriptive phrasing (by nature)
+- Narrative → Freeform prompts (not compatible with blocks)
+
+**The flow:**
 ```
-1. MODALITY
-   What capability are you using?
-   (text-to-image, image-to-video, text-to-video, etc.)
-
-2. APPROACH
-   What's the prompting strategy for this modality?
-   - text-to-image: Describe what exists (visuals)
-   - image-to-video: Describe what happens (motion only)
-   - text-to-video: Describe both (visuals + motion)
-
-3. BLOCK SETS
-   Which blocks do you select based on the approach?
-   - For visuals: [Medium] [Subject] [Environment] [Lighting] [Style]
-   - For motion: [Motion.Action] [Camera.Movement] [Duration]
-   - For both: Combine visual and motion blocks
+Modality → Focus (what to describe) → Phrasing Style (how to write)
+→ Formula (structure) → Blocks → Detail Level → Final Prompt
 ```
-
-**Example:**
-- Modality: image-to-video
-- Approach: Describe motion only (image has visuals)
-- Block sets: Select motion, camera, duration blocks (NOT visual description blocks)
 
 ### Text-to-Image
 
-**What:** Describing what exists
-**Focus:** Subject + environment + composition + lighting + style
+**Focus:** Describing what exists
+**Phrasing:** Descriptive (typically)
+**Blocks:** Subject + environment + composition + lighting + style
 
 **Example:**
 ```
@@ -253,21 +271,43 @@ neutral studio backdrop, soft diffused lighting, photorealistic
 
 ### Image-to-Video
 
-**What:** Describing what happens (motion)
-**Focus:** Action + camera movement + duration + motion style
+**Focus:** Describing what happens (motion)
+**Phrasing:** Descriptive (typically)
+**Blocks:** Motion/Action + camera movement + motion style
 
 **Example:**
 ```
 Person slowly turns head toward camera, subtle smile forming,
-slight camera push-in, 5 seconds, smooth natural motion
+slight camera push-in, smooth natural motion
 ```
 
 **Key:** Do NOT describe visuals (image already has them). Describing visuals creates conflict → poor results.
 
+**Prompting Techniques:**
+
+**Insinuated motion** (implicit):
+```
+"The subject runs across the dusty desert"
+(Implies dust will move/trail)
+```
+
+**Described motion** (explicit):
+```
+"The subject runs across the desert. Dust trails behind them as they move."
+(Explicitly states the dust behavior)
+```
+
+**When to use:**
+- Insinuating creates more natural results
+- Describing creates emphasis on specific elements
+- Combine both approaches for stronger effect
+- Test which works better for your specific model/scene
+
 ### Text-to-Video
 
-**What:** Describing visuals AND motion
-**Focus:** Complete scene + action
+**Focus:** Describing visuals AND motion
+**Phrasing:** Descriptive (typically)
+**Blocks:** Complete scene + action
 
 **Example:**
 ```
@@ -278,17 +318,19 @@ photorealistic
 
 ### Modality Prompt Summary
 
-| Modality | Visuals? | Motion? | Why? |
-|----------|----------|---------|------|
-| text-to-image | ✅ | ❌ | Static image |
-| image-to-video | ❌ | ✅ | Image has visuals |
-| text-to-video | ✅ | ✅ | Creating everything |
+| Modality | Visuals? | Motion? | Phrasing | Why? |
+|----------|----------|---------|----------|------|
+| text-to-image | ✅ | ❌ | Descriptive | Static image |
+| image-to-video | ❌ | ✅ | Descriptive | Image has visuals |
+| text-to-video | ✅ | ✅ | Descriptive | Creating everything |
 
 ---
 
 ## 5. Prompt Formulas
 
 **Formula = A systematic template for creating prompts**
+
+> See `prompt-formula-framework.md` for detailed methodology on formulas and blocks.
 
 Formulas provide structure, consistency, scalability, and optimize-ability.
 
@@ -304,8 +346,8 @@ A formula defines:
 For the character consistency workflow (Part 3), we need 6 different formulas:
 
 1. **Character Persona** (LLM) - Background, personality, motivation
-2. **Character Appearance** (t2i) - Main reference portrait
-3. **Character Consistency** (i2i) - Variations (angles, expressions)
+2. **Character Appearance** (text-to-image) - Main reference portrait
+3. **Character Consistency** (image-to-image) - Variations (angles, expressions)
 4. **Scene Breakdown** (LLM) - Activity → filmable scenes
 5. **Lifestyle T2I** (t2i + refs) - Scene images with character
 6. **Lifestyle I2V** (i2v) - Animate scene images
@@ -373,7 +415,7 @@ Libraries contain:
 - Platform-specific considerations
 - Best practices
 
-**For complete block methodology:** See [Prompt Formula Methodology Documentation](./prompt-formula-methodology.md)
+**For complete block methodology:** See Prompt Formula Methodology Documentation
 
 **For block library database:** A comprehensive block library database exists as a separate document with organized blocks, categories, and values for various use cases.
 
@@ -406,6 +448,18 @@ the peacock's rich colors.
 - More detail ≠ always better
 - Test to find optimal detail level for your model and use case
 
+**How to control detail level:**
+- **Add more blocks** - Include additional aspects (lighting, camera angle, texture)
+- **Enrich existing blocks** - Add more descriptive content within each block
+- **Combine both** - More blocks + richer descriptions = maximum control
+
+**Important caveats:**
+- More detail = more control, but diminishing returns exist
+- Even perfect detailed prompts are limited by model prompt adherence (see Part 7)
+- Test to find the optimal detail level for your specific model
+
+The goal is finding the balance: enough detail to guide the model, not so much that you exceed its adherence capabilities.
+
 ---
 
 ## 7. Prompting Best Practices
@@ -418,14 +472,21 @@ the peacock's rich colors.
 
 ### Modality-Specific Formulas
 
-**Text-to-Image Structure:**
+**Note:** These are example block structures for common use cases. Block selection should be based on your specific task requirements, not treated as fixed standards.
+
+**Text-to-Image Example:**
 `[Medium] [Subject] [Details] [Environment] [Lighting] [Composition] [Style]`
 
-**Image-to-Video Structure:**
-`[Motion.Action] [Camera.Movement] [Duration] [Motion.Style]`
+**Image-to-Video Example:**
+`[Motion.Action] [Camera.Movement] [Motion.Style]`
 
-**Text-to-Video Structure:**
-`[Medium] [Subject] [Action] [Environment] [Lighting] [Camera] [Duration] [Style]`
+**Text-to-Video Example:**
+`[Medium] [Subject] [Action] [Environment] [Lighting] [Camera] [Style]`
+
+**Note:** For models with audio generation capabilities (e.g., Veo 3), text-to-video formulas can also include audio blocks:
+- `[Dialogue]` - Quoted speech
+- `[SFX]` - Sound effects descriptions
+- `[Ambient]` - Environmental soundscape
 
 ### Block Order Matters
 
@@ -444,29 +505,70 @@ Good: Young woman sits in cozy room, warm light streaming through
 Poor: Woman, book, smile, young, cozy, room, window, warm, light
 ```
 
-### Key Tips
+### Model-Specific Considerations
 
-**For text-to-image:**
-- Be specific about composition and lighting
-- Include style/mood references
+Different platforms and models may have specific preferences. Common patterns include:
 
-**For image-to-video:**
-- Focus on verbs (action words)
-- Don't describe what's in the image
-- Specify timing/duration
+**Negative Prompts:**
+Some models (e.g., Veo 3) support a separate `negativePrompt` parameter to specify what you DON'T want in the output:
+```
+Prompt: "Generate a short animation of a large oak tree with leaves blowing in wind"
+Negative Prompt: "urban background, man-made structures, dark, stormy atmosphere"
+```
+Note: When using negative prompts, describe what to avoid (not instructive language like "no" or "don't").
 
-**For text-to-video:**
-- Combine text-to-image and image-to-video approaches
-- Ensure visual and motion descriptions align
+**Phrasing Preferences:**
+- **Use positive phrasing** - Describe what should happen, not what to avoid
+  - ❌ "No camera movement. The camera doesn't move."
+  - ✅ "Locked camera. The camera remains still."
+
+**Language Style:**
+- **Avoid conversational language** - Skip greetings, pleasantries, questions
+  - ❌ "Can you please add a dog to the scene?"
+  - ✅ "A dog runs into the scene from off-camera"
+
+- **Avoid command-based prompts** - Describe instead of instructing
+  - ❌ "Add more lighting" or "Make it brighter"
+  - ✅ "Bright natural sunlight fills the room"
+
+**Prompt Complexity:**
+- **Keep prompts direct and simple** - Avoid overly conceptual language
+  - ❌ "The subject embodies the essence of joyful greeting"
+  - ✅ "The woman smiles and waves"
+
+- **Single scene focus** - Consider duration limits (5-10s = one scene)
+  - ❌ "Cat transforms into dragon while jumping through forest that changes seasons..."
+  - ✅ "Cat transforms into dragon while running through forest"
 
 **Always consult:**
 - Platform documentation
-- Prompting guides
+- Model-specific prompting guides
 - Community best practices
+- Recent updates and changes
+
+### Model Prompt Adherence
+
+Different models have varying levels of **prompt adherence** - how accurately they follow your instructions.
+
+**Key points:**
+- Even well-crafted prompts may not work equally well across all models
+- Some models excel at complex instructions, others work better with simplicity
+- Certain elements (specific angles, subtle emotions, precise positioning) are harder for models to follow
+- Prompt adherence varies between models and even between model versions
+
+**Testing approach:**
+- Test the same prompt across different models to compare results
+- Identify which prompt elements the model follows vs. ignores
+- Adjust prompting strategy based on model strengths and limitations
+- Sometimes simplification improves adherence more than adding detail
+
+**Bottom line:** A "perfect" prompt for one model may fail on another. Testing is essential.
 
 ---
 
 ## 8. Complete Workflow Examples
+
+> These examples use the format structures from `prompt-output-formats.md`. Reference that document for detailed format explanations.
 
 ### Example 1: Controlled Video (Two-Step)
 
@@ -498,13 +600,12 @@ centered from slightly elevated angle, high-end commercial style
 ```
 [Motion] = bottle rotates slowly clockwise
 [Camera.Movement] = subtle dolly-in
-[Duration] = 8 seconds
 [Motion.Style] = smooth, luxurious
 ```
 
 **Step 2 Prompt:**
 ```
-Bottle rotates slowly clockwise, subtle camera dolly-in, 8 seconds,
+Bottle rotates slowly clockwise, subtle camera dolly-in,
 smooth luxurious motion
 ```
 
@@ -561,7 +662,7 @@ Scenes: [gym entrance, stretching, bench press, treadmill, water break, leaving]
 ```
 [Motion] = lifts barbell, chest to extended arms, steady form
 [Camera.Movement] = subtle push-in
-[Duration] = 5 seconds
+ = 5 seconds
 [Motion.Style] = smooth, powerful, realistic
 ```
 
@@ -579,14 +680,17 @@ WORKFLOW → Chain of modalities
 FOR EACH STEP:
   MODALITY → text-to-image? image-to-video? text-to-video?
     ↓
-  FORMULA → Which template?
-    ↓
-  BLOCKS → Which components?
-    ↓
-  VALUES → Fill blocks
-    ↓
-  PROMPT → Natural text
-    ↓
+  PROMPTING APPROACH
+    ├─ Focus (what to describe)
+    ├─ Phrasing Style (descriptive or narrative)
+    └─ Formula (structure)
+      ↓
+    BLOCKS → Which components?
+      ↓
+    DETAIL LEVEL → How much depth?
+      ↓
+    FINAL PROMPT → Natural text
+      ↓
   MODEL → Execute
     ↓
   OUTPUT → Next step input
@@ -600,23 +704,39 @@ FINAL → Combine outputs
 
 - **Modalities** define capabilities
 - **Workflows** chain modalities
-- **Prompts** communicate with modalities
-- **Formulas** systematize prompts
+- **Prompting Approach** has three components: Focus, Phrasing Style, Formula
+- **Formulas** systematize prompts via blocks
 - **Blocks** are reusable components
-- **Values** populate blocks
+- **Detail levels** control prompt depth
 - **Testing** refines everything
+
+---
+
+## Generation Rules
+
+> See `prompt-formula-framework.md` for detailed block methodology and core block concepts.
+
+When generating prompts:
+
+1. **Block subdivision:** Stop subdividing when further breakdown becomes impractical to maintain or too granular for reusability. A block that can't be meaningfully subdivided is a "core block" and has creative freedom in its values. When in doubt, keep it as a core block with natural language values.
+
+2. **Contextual awareness:** When modifying one block in an existing prompt, ensure other blocks remain coherent with the change. For example, if changing [Action], verify [Camera.Movement] still makes sense.
+
+3. **Prompt independence:** Each prompt generation is separate unless explicitly instructed to carry over variations. Don't automatically apply changes from one prompt to the next.
 
 ---
 
 ## Applying This Framework
 
-1. **Define goal** - Final output requirements
+1. **Define goal** - Establish concept and final output requirements
 2. **Map workflow** - Modalities needed, in order
-3. **Select formulas** - Prompts for each step
-4. **Build/use blocks** - Reference block library database
-5. **Test & refine** - Iterate on outputs
-6. **Document** - Capture what works
+3. **Choose prompting approach** - Focus, phrasing style, formula structure
+4. **Identify and build blocks** - Select blocks for your use case, reference block library if available
+5. **Test initial prompts** - Adjust detail level until you get desired look/vibe
+6. **Systematic testing** - Vary specific elements to refine results
+7. **Refine formula** - Iterate based on learnings
+8. **Document** - Capture what works for future use
 
 ---
 
-**End of Framework Documentation v3.0**
+**End of Framework Documentation v4.0**
