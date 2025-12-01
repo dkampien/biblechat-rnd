@@ -1,0 +1,21 @@
+{
+  "name": "comic-books-standard",
+  "datasource": "backlog",
+  "settings": {
+    "pageCount": { "min": 3, "max": 5 },
+    "panelsPerPage": 3
+  },
+  "style": {
+    "artStyle": "children's book illustration",
+    "inkStyle": "bold ink lines",
+    "colorTreatment": "flat colors"
+  },
+  "generation": {
+    "service": "replicate",
+    "model": "bytedance/seedream-4",
+    "params": {
+      "size": "2K",
+      "aspect_ratio": "9:16"
+    }
+  }
+}

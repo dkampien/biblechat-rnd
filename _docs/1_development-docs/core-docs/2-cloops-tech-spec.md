@@ -63,7 +63,25 @@ MVP writes bundles to local disk. For cloud deployment (e.g., Firebase Functions
 
 ---
 
-## 1. System Overview
+## 1. System Architecture
+
+### 1.1 Core Principle: Hybrid Template System
+
+Templates are self-contained units with their own workflow logic. The system provides shared services as building blocks.
+
+**Three layers:**
+1. **Services (shared)** - LLM, Replicate, ComfyUI, Storage - reusable building blocks
+2. **Workflow (per-template)** - `workflow.ts` defines the logic, uses services
+3. **Config (per-template)** - `config.json` defines settings, parameters, variations
+
+**Why this architecture:**
+- Templates can have variable LLM calls (1, 2, 5, or more)
+- Templates can have complex generation chains (text→image→video)
+- Templates can use different backends (Replicate, ComfyUI)
+- New templates don't require engine changes
+- Settings are easy to tweak (config), logic is flexible (code)
+
+### 1.2 System Overview
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -74,20 +92,29 @@ MVP writes bundles to local disk. For cloud deployment (e.g., Firebase Functions
                       ▼
 ┌─────────────────────────────────────────────────────────────┐
 │                   Execution Engine                          │
-│  - Loads template config                                    │
+│  - Loads template (config + workflow)                       │
 │  - Fetches input from datasource                            │
-│  - Runs steps sequentially                                  │
-│  - Passes state between steps                               │
+│  - Runs template workflow                                   │
+└─────────────────────┬───────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────┐
+│                  Template Workflow                          │
+│            (workflow.ts - per template)                     │
+│  - Defines steps and order                                  │
+│  - Uses services as building blocks                         │
+│  - Reads config for settings                                │
 └──────┬──────────────┬──────────────┬───────────────────────┘
        │              │              │
        ▼              ▼              ▼
 ┌────────────┐ ┌────────────┐ ┌────────────┐
 │ LLM Service│ │ Gen Service│ │Storage Svc │
-│  (OpenAI)  │ │ (Replicate)│ │  (Files)   │
+│  (OpenAI)  │ │(Replicate) │ │  (Files)   │
+│            │ │ (ComfyUI)  │ │            │
 └────────────┘ └────────────┘ └────────────┘
 ```
 
-**Data flow:** CLI → Load template → Fetch input → Run steps (LLM → LLM → LLM → Generate) → Write bundle
+**Data flow:** CLI → Load template → Fetch input → Execute workflow.ts → (workflow uses services) → Output bundle
 
 ---
 
@@ -98,26 +125,30 @@ cloops/
 ├── src/
 │   ├── cli.ts                # Entry point
 │   ├── engine/
-│   │   └── runner.ts         # Step orchestration
-│   ├── services/
+│   │   └── runner.ts         # Loads template, executes workflow
+│   ├── services/             # SHARED building blocks
 │   │   ├── llm.ts            # OpenAI API calls
-│   │   ├── generation.ts     # Replicate API calls
+│   │   ├── replicate.ts      # Replicate API calls
+│   │   ├── comfyui.ts        # ComfyUI API calls (future)
 │   │   └── storage.ts        # File operations
 │   ├── datasource/
 │   │   ├── backlog.ts        # JSON backlog
-│   │   └── csv.ts            # CSV datasource
+│   │   └── csv.ts            # CSV datasource (future)
 │   ├── utils/
 │   │   └── config.ts         # Config loading, variable injection
 │   └── types/
 │       └── index.ts          # Shared type definitions
 ├── templates/
 │   └── comic-books-standard/
-│       ├── config.json
-│       ├── production-plan.md
-│       └── prompts/
-│           ├── step1-system.txt
-│           ├── step2-system.txt
-│           └── step3-system.txt
+│       ├── config.json       # Settings, parameters, variations
+│       ├── workflow.ts       # Workflow logic (uses services)
+│       ├── prompts/          # LLM prompts
+│       │   ├── narrative.txt
+│       │   ├── planning.txt
+│       │   └── prompts.txt
+│       └── schemas/          # Output schemas for structured LLM responses
+│           ├── narrative.json
+│           └── planning.json
 ├── data/
 │   └── backlogs/
 │       └── comic-books-standard.json
@@ -155,51 +186,118 @@ cloops status <template>        # Show backlog status
 
 **Template discovery:**
 - Scan `templates/` folder
-- Each subfolder with `config.json` is a valid template
+- Each subfolder with `config.json` AND `workflow.ts` is a valid template
+
+**Template structure:**
+```
+templates/my-template/
+├── config.json       # Settings, parameters (no step definitions)
+├── workflow.ts       # Workflow logic (the "brain" of the template)
+├── prompts/          # LLM prompts (loaded by workflow)
+│   └── *.txt
+└── schemas/          # JSON schemas for structured outputs
+    └── *.json
+```
 
 **Template loading:**
 ```typescript
 interface Template {
+  name: string;
   config: TemplateConfig;
+  workflow: WorkflowFunction;
   prompts: Record<string, string>;
+  schemas: Record<string, object>;
 }
 
-function loadTemplate(name: string): Template {
+async function loadTemplate(name: string): Promise<Template> {
   const basePath = `templates/${name}`;
+
+  // Import workflow function
+  const workflowModule = await import(`${basePath}/workflow.ts`);
+
   return {
+    name,
     config: JSON.parse(readFileSync(`${basePath}/config.json`, 'utf-8')),
-    prompts: {
-      step1: readFileSync(`${basePath}/prompts/step1-system.txt`, 'utf-8'),
-      step2: readFileSync(`${basePath}/prompts/step2-system.txt`, 'utf-8'),
-      // ...
-    }
+    workflow: workflowModule.run,
+    prompts: loadAllPrompts(`${basePath}/prompts`),
+    schemas: loadAllSchemas(`${basePath}/schemas`),
   };
 }
 ```
 
-**Prompts:** Stored as plain text files. Loaded at runtime, variables injected.
+**Workflow function interface:**
+```typescript
+type WorkflowFunction = (
+  input: StoryInput,
+  config: TemplateConfig,
+  services: Services,
+  context: WorkflowContext
+) => Promise<void>;
+
+interface WorkflowContext {
+  prompts: Record<string, string>;
+  schemas: Record<string, object>;
+  templatePath: string;
+  dry: boolean;
+}
+```
+
+**Example workflow.ts:**
+```typescript
+import type { WorkflowFunction } from 'cloops/types';
+
+export const run: WorkflowFunction = async (input, config, services, ctx) => {
+  // Step 1: Generate narrative
+  const narrative = await services.llm.call({
+    prompt: ctx.prompts['narrative'],
+    schema: ctx.schemas['narrative'],
+    variables: { ...input, wordCount: config.settings.wordCount }
+  });
+
+  // Step 2: Plan pages
+  const pages = await services.llm.call({
+    prompt: ctx.prompts['planning'],
+    schema: ctx.schemas['planning'],
+    variables: { narrative, ...config.settings }
+  });
+
+  // Step 3: Generate images (skip in dry run)
+  if (!ctx.dry) {
+    const images = await services.replicate.generateImages(
+      pages.prompts,
+      config.generation
+    );
+
+    // Step 4: Write bundle
+    await services.storage.writeBundle(input.title, images, pages);
+  }
+};
+```
 
 ---
 
 ## 5. Config System
+
+Config defines **settings and parameters** only. Workflow logic is in `workflow.ts`.
 
 **Config structure (config.json):**
 ```json
 {
   "name": "comic-books-standard",
   "datasource": "backlog",
-  "steps": ["narrative", "planning", "prompts", "thumbnail", "generation", "bundle"],
   "settings": {
+    "wordCount": 150,
     "pageCount": { "min": 3, "max": 5 },
     "panelsPerPage": 3
   },
   "style": {
     "artStyle": "children's book illustration",
-    "inkStyle": "bold ink lines"
+    "inkStyle": "bold ink lines",
+    "colorTreatment": "flat colors"
   },
   "generation": {
     "service": "replicate",
-    "model": "bytedance/seedream-3.0",
+    "model": "bytedance/seedream-4",
     "params": {
       "size": "2K",
       "aspect_ratio": "9:16"
@@ -207,6 +305,8 @@ function loadTemplate(name: string): Template {
   }
 }
 ```
+
+**Note:** No `steps` array. The workflow.ts determines what steps run and in what order.
 
 **Variable injection:**
 ```typescript
@@ -226,48 +326,47 @@ function injectVariables(template: string, variables: Record<string, unknown>): 
 
 ## 6. Execution Engine
 
-**Step orchestration:**
+The engine is thin. It loads the template and executes its workflow.
+
+**Runner:**
 ```typescript
 interface RunOptions {
   dry: boolean;
+  item?: string;
 }
 
-interface State {
-  input: StoryInput;
-  narrative?: string;
-  pages?: Page[];
-  prompts?: string[];
-  images?: string[];
-}
+async function runTemplate(
+  template: Template,
+  input: StoryInput,
+  options: RunOptions
+): Promise<void> {
+  // Build services object
+  const services: Services = {
+    llm: createLLMService(),
+    replicate: createReplicateService(),
+    storage: createStorageService(template.name),
+  };
 
-async function runTemplate(template: Template, input: StoryInput, options: RunOptions): Promise<State> {
-  let state: State = { input };
+  // Build context
+  const context: WorkflowContext = {
+    prompts: template.prompts,
+    schemas: template.schemas,
+    templatePath: `templates/${template.name}`,
+    dry: options.dry,
+  };
 
-  for (const stepName of template.config.steps) {
-    // Skip generation step in dry run
-    if (options.dry && stepName === 'generation') {
-      console.log(`[DRY RUN] Skipping: ${stepName}`);
-      continue;
-    }
-
-    console.log(`Running: ${stepName}`);
-    state = await runStep(stepName, template, state);
-  }
-
-  return state;
+  // Execute the template's workflow
+  await template.workflow(input, template.config, services, context);
 }
 ```
 
-**State passing:** Each step receives previous state, returns updated state.
-```typescript
-// State shape evolves through steps:
-// After step1: { input, narrative }
-// After step2: { input, narrative, pages }
-// After step3: { input, narrative, pages, prompts }
-// etc.
-```
+**Key points:**
+- Engine doesn't know what steps exist
+- Engine doesn't define step logic
+- Template workflow has full control
+- Services are injected, not imported directly (easier testing)
 
-**Error handling:** On failure, log error with step name and context, then exit.
+**Error handling:** Workflow can handle errors however it wants. Engine catches unhandled errors and marks item as failed.
 
 ---
 
@@ -324,7 +423,19 @@ Backlog and CSV implement this interface. New datasources can be added.
 
 ---
 
-## 8. Services
+## 8. Services (Shared Building Blocks)
+
+Services are **shared** across all templates. They handle API calls and common operations.
+Templates use services via the `services` object passed to their workflow.
+
+```typescript
+interface Services {
+  llm: LLMService;
+  replicate: ReplicateService;
+  comfyui?: ComfyUIService;  // Optional, future
+  storage: StorageService;
+}
+```
 
 ### 8.1 LLM Service
 
@@ -507,20 +618,36 @@ All shared types in `src/types/index.ts`:
 // ===================
 
 interface Template {
+  name: string;
   config: TemplateConfig;
+  workflow: WorkflowFunction;
   prompts: Record<string, string>;
+  schemas: Record<string, object>;
+}
+
+type WorkflowFunction = (
+  input: StoryInput,
+  config: TemplateConfig,
+  services: Services,
+  context: WorkflowContext
+) => Promise<void>;
+
+interface WorkflowContext {
+  prompts: Record<string, string>;
+  schemas: Record<string, object>;
+  templatePath: string;
+  dry: boolean;
 }
 
 interface TemplateConfig {
   name: string;
   datasource: 'backlog' | 'csv';
-  steps: StepName[];
   settings: TemplateSettings;
   style: StyleConfig;
   generation: GenerationConfig;
 }
 
-type StepName = 'narrative' | 'planning' | 'prompts' | 'thumbnail' | 'generation' | 'bundle';
+// Note: No StepName type - steps are defined in workflow.ts, not config
 
 interface TemplateSettings {
   pageCount: { min: number; max: number };
@@ -615,10 +742,30 @@ interface State {
 // Service Types
 // ===================
 
+interface Services {
+  llm: LLMService;
+  replicate: ReplicateService;
+  comfyui?: ComfyUIService;
+  storage: StorageService;
+}
+
+interface LLMService {
+  call<T>(params: LLMCallParams): Promise<T>;
+}
+
+interface ReplicateService {
+  generateImage(prompt: string, params: GenerationConfig): Promise<string>;
+  generateImages(prompts: string[], params: GenerationConfig): Promise<string[]>;
+}
+
+interface StorageService {
+  writeBundle(storyId: string, data: BundleData): void;
+}
+
 interface LLMCallParams {
-  systemPrompt: string;
-  userMessage: string;
+  prompt: string;
   schema?: object;
+  variables?: Record<string, unknown>;
 }
 
 interface GenerateImageParams {
@@ -653,4 +800,11 @@ interface StoryDataJson {
 
 ---
 
-*v1 - 2025-11-28*
+## Changelog
+
+- **v2 (2025-12-01):** Hybrid architecture - templates have workflow.ts for logic, config.json for settings. Services are shared building blocks. No hardcoded steps in engine.
+- **v1 (2025-11-28):** Initial spec with hardcoded step registry (superseded).
+
+---
+
+*v2 - 2025-12-01*

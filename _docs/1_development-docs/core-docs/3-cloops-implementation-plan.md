@@ -6,7 +6,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
 
 ## Phase 1: Project Foundation
 
-### Step 1.1: Project Setup `[ ]`
+### Step 1.1: Project Setup `[x]`
 - **Task:** Initialize Node.js project with TypeScript configuration, folder structure, and dependencies.
 - **Files:**
   - `cloops/package.json`
@@ -19,7 +19,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
   - Dependencies: `typescript`, `openai`, `replicate`, `commander` (CLI), `dotenv`
   - Dev dependencies: `@types/node`, `tsx` (for running TS directly during dev)
 
-### Step 1.2: Type Definitions `[ ]`
+### Step 1.2: Type Definitions `[x]`
 - **Task:** Create all shared TypeScript interfaces from tech spec Section 12.
 - **Files:**
   - `cloops/src/types/index.ts`
@@ -27,7 +27,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
 - **Validation:** Types compile without errors, can be imported in other files.
 - **Implementation Notes:** Copy types from tech spec, export all interfaces.
 
-### Step 1.3: Environment Config `[ ]`
+### Step 1.3: Environment Config `[x]`
 - **Task:** Set up environment variable handling for API keys.
 - **Files:**
   - `cloops/.env.example`
@@ -40,7 +40,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
 
 ## Phase 2: Services
 
-### Step 2.1: LLM Service `[ ]`
+### Step 2.1: LLM Service `[x]`
 - **Task:** Implement OpenAI API wrapper with structured output support.
 - **Files:**
   - `cloops/src/services/llm.ts`
@@ -51,7 +51,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
   - Use `gpt-4o` as default model
   - Handle API errors gracefully
 
-### Step 2.2: Generation Service `[ ]`
+### Step 2.2: Generation Service `[x]`
 - **Task:** Implement Replicate API wrapper for image generation.
 - **Files:**
   - `cloops/src/services/generation.ts`
@@ -62,7 +62,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
   - Download generated image to temp location
   - Return local file path
 
-### Step 2.3: Storage Service `[ ]`
+### Step 2.3: Storage Service `[x]`
 - **Task:** Implement file operations for bundle output.
 - **Files:**
   - `cloops/src/services/storage.ts`
@@ -77,7 +77,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
 
 ## Phase 3: Datasource
 
-### Step 3.1: Datasource Interface `[ ]`
+### Step 3.1: Datasource Interface `[x]`
 - **Task:** Define abstract datasource interface and types.
 - **Files:**
   - `cloops/src/datasource/types.ts`
@@ -85,7 +85,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
 - **Validation:** Interface compiles, can be implemented.
 - **Implementation Notes:** Interface with `getNextItem`, `markComplete`, `markFailed`, `markInProgress`
 
-### Step 3.2: Backlog Datasource `[ ]`
+### Step 3.2: Backlog Datasource `[x]`
 - **Task:** Implement JSON file backlog datasource.
 - **Files:**
   - `cloops/src/datasource/backlog.ts`
@@ -101,7 +101,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
 
 ## Phase 4: Template System
 
-### Step 4.1: Config Loader `[ ]`
+### Step 4.1: Config Loader `[x]`
 - **Task:** Implement template config loading and variable injection.
 - **Files:**
   - `cloops/src/utils/config.ts`
@@ -112,7 +112,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
   - `injectVariables` function with `{variable.path}` syntax
   - `getNestedValue` helper for dot notation
 
-### Step 4.2: Template Loader `[ ]`
+### Step 4.2: Template Loader `[x]`
 - **Task:** Implement template discovery and loading.
 - **Files:**
   - `cloops/src/template/loader.ts`
@@ -127,7 +127,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
 
 ## Phase 5: Execution Engine
 
-### Step 5.1: Step Runner `[ ]`
+### Step 5.1: Step Runner `[x]`
 - **Task:** Implement individual step execution logic.
 - **Files:**
   - `cloops/src/engine/steps.ts`
@@ -138,7 +138,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
   - Steps: narrative, planning, prompts, thumbnail, generation, bundle
   - Use services for LLM and generation calls
 
-### Step 5.2: Template Runner `[ ]`
+### Step 5.2: Template Runner `[x]`
 - **Task:** Implement main orchestration loop that runs steps sequentially.
 - **Files:**
   - `cloops/src/engine/runner.ts`
@@ -154,7 +154,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
 
 ## Phase 6: CLI
 
-### Step 6.1: CLI Commands `[ ]`
+### Step 6.1: CLI Commands `[x]`
 - **Task:** Implement CLI with commander: run, templates, status commands.
 - **Files:**
   - `cloops/src/cli.ts`
@@ -170,7 +170,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
   - Support `--item <id>` for specific item
   - Add to package.json bin field
 
-### Step 6.2: Logging & Error Handling `[ ]`
+### Step 6.2: Logging & Error Handling `[x]`
 - **Task:** Add structured logging and error handling throughout.
 - **Files:**
   - `cloops/src/utils/logger.ts`
@@ -187,7 +187,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
 
 ## Phase 7: Template Integration
 
-### Step 7.1: Comic Books Template Setup `[ ]`
+### Step 7.1: Comic Books Template Setup `[x]`
 - **Task:** Create comic-books-standard template folder with config and prompts.
 - **Files:**
   - `cloops/templates/comic-books-standard/config.json`
@@ -201,7 +201,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
   - Copy prompts from production-template-plan.md
   - Configure generation settings for Replicate/Seedream
 
-### Step 7.2: Sample Backlog `[ ]`
+### Step 7.2: Sample Backlog `[x]`
 - **Task:** Create sample backlog with test stories.
 - **Files:**
   - `cloops/data/backlogs/comic-books-standard.json`
@@ -211,9 +211,89 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
 
 ---
 
-## Phase 8: End-to-End Testing
+## Phase 8: Architecture Refactor (Hybrid Template System)
 
-### Step 8.1: Dry Run Test `[ ]`
+**Context:** Initial implementation used hardcoded steps in the engine. This refactor implements the hybrid architecture where templates have their own workflow.ts files.
+
+### Step 8.1: Update Type Definitions `[x]`
+- **Task:** Update types to reflect new architecture (WorkflowFunction, Services, WorkflowContext).
+- **Files:**
+  - Update: `cloops/src/types/index.ts`
+- **Dependencies:** None
+- **Validation:** Types compile without errors.
+- **Implementation Notes:**
+  - Add WorkflowFunction type
+  - Add Services interface
+  - Add WorkflowContext interface
+  - Remove StepName type (no longer needed)
+  - Update Template interface
+
+### Step 8.2: Refactor Services Layer `[x]`
+- **Task:** Update services to work as injectable building blocks.
+- **Files:**
+  - Update: `cloops/src/services/llm.ts` (export service factory)
+  - Rename: `cloops/src/services/generation.ts` → `cloops/src/services/replicate.ts`
+  - Update: `cloops/src/services/storage.ts` (export service factory)
+  - New: `cloops/src/services/index.ts` (Services interface, factory)
+- **Dependencies:** Step 8.1
+- **Validation:** Services can be instantiated and used.
+- **Implementation Notes:**
+  - Services should be created via factory functions
+  - LLM service accepts prompt + schema + variables
+  - Replicate service has generateImage and generateImages methods
+
+### Step 8.3: Simplify Engine `[x]`
+- **Task:** Remove hardcoded steps, make engine just load and run template workflow.
+- **Files:**
+  - Delete: `cloops/src/engine/steps.ts`
+  - Update: `cloops/src/engine/runner.ts`
+- **Dependencies:** Step 8.2
+- **Validation:** Engine loads template and calls its workflow function.
+- **Implementation Notes:**
+  - Engine no longer knows about step types
+  - Engine creates services, builds context, calls template.workflow()
+
+### Step 8.4: Update Template Loader `[x]`
+- **Task:** Update loader to import workflow.ts and load schemas.
+- **Files:**
+  - Update: `cloops/src/template/loader.ts`
+- **Dependencies:** Step 8.3
+- **Validation:** Template loads with workflow function, prompts, and schemas.
+- **Implementation Notes:**
+  - Dynamic import of workflow.ts
+  - Load all .json files from schemas/ folder
+  - Validate template has required files
+
+### Step 8.5: Create Template Workflow `[x]`
+- **Task:** Create workflow.ts for comic-books-standard template.
+- **Files:**
+  - New: `cloops/templates/comic-books-standard/workflow.ts`
+  - New: `cloops/templates/comic-books-standard/schemas/narrative.json`
+  - New: `cloops/templates/comic-books-standard/schemas/planning.json`
+  - New: `cloops/templates/comic-books-standard/schemas/prompts.json`
+  - Update: `cloops/templates/comic-books-standard/config.json` (remove steps array)
+- **Dependencies:** Step 8.4
+- **Validation:** Template workflow runs end-to-end.
+- **Implementation Notes:**
+  - Workflow uses services.llm, services.replicate, services.storage
+  - Workflow reads config for settings
+  - Workflow handles dry run logic internally
+
+### Step 8.6: Update CLI `[x]`
+- **Task:** Update CLI to work with new template/runner structure.
+- **Files:**
+  - Update: `cloops/src/cli.ts`
+- **Dependencies:** Step 8.5
+- **Validation:** CLI commands work with refactored code.
+- **Implementation Notes:**
+  - Minimal changes expected
+  - Ensure async template loading works
+
+---
+
+## Phase 9: End-to-End Testing
+
+### Step 9.1: Dry Run Test `[ ]`
 - **Task:** Run full pipeline in dry mode, verify LLM outputs.
 - **Files:** None (manual testing)
 - **Dependencies:** All previous steps
@@ -223,10 +303,10 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
   - No image generation calls made
 - **Implementation Notes:** Review generated prompts for quality.
 
-### Step 8.2: Full Run Test `[ ]`
+### Step 9.2: Full Run Test `[ ]`
 - **Task:** Run full pipeline with image generation.
 - **Files:** None (manual testing)
-- **Dependencies:** Step 8.1
+- **Dependencies:** Step 9.1
 - **Validation:**
   - `cloops run comic-books-standard` completes
   - Images generated and saved
@@ -238,21 +318,34 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
 
 ## Summary
 
-**Total Steps:** 16
-**Phases:** 8
+**Total Steps:** 22
+**Phases:** 9
+
+**Architecture:**
+- **Services (shared):** LLM, Replicate, Storage - reusable building blocks
+- **Workflow (per-template):** workflow.ts defines logic, uses services
+- **Config (per-template):** config.json defines settings/parameters
 
 **Key Considerations:**
 1. Each step is atomic - can be implemented and tested independently
-2. Services are built first so engine can use them
-3. Template integration comes last - needs all infrastructure ready
-4. Testing phases validate the complete pipeline
+2. Services are built first so templates can use them
+3. Templates are self-contained with their own workflow logic
+4. Engine is thin - just loads template and runs its workflow
 
 **After MVP:**
 - Add CSV datasource
+- Add ComfyUI service
 - Add parallel image generation
 - Add post-processing (cloud upload, AdLoops integration)
 - Add more templates
 
 ---
 
-*Created: 2025-12-01*
+## Changelog
+
+- **2025-12-01:** Added Phase 8 (Architecture Refactor) for hybrid template system
+- **2025-12-01:** Initial plan created
+
+---
+
+*Last updated: 2025-12-01*

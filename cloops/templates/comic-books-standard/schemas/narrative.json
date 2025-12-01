@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "properties": {
+    "narrative": {
+      "type": "string",
+      "description": "The narrative adaptation of the story"
+    }
+  },
+  "required": ["narrative"],
+  "additionalProperties": false
+}

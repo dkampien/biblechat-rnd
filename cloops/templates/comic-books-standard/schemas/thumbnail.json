@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "properties": {
+    "prompt": {
+      "type": "string",
+      "description": "Image generation prompt for the thumbnail"
+    }
+  },
+  "required": ["prompt"],
+  "additionalProperties": false
+}
