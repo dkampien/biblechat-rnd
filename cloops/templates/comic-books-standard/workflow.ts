@@ -5,8 +5,10 @@ import type {
   WorkflowContext,
   Page,
   PagePrompt,
+  DebugMdData,
 } from '../../src/types/index.js';
 import { injectVariables } from '../../src/utils/config.js';
+import { writeDebugMd, readDebugMd } from '../../src/services/storage.js';
 
 // ===== Workflow Implementation =====
 
@@ -24,134 +26,134 @@ export async function run(
   let images: string[] | undefined;
   let thumbnailImage: string | undefined;
 
-  // ===== Step 1: Narrative =====
-  console.log('\n--- NARRATIVE ---');
-  {
-    const systemPrompt = ctx.prompts['step1-narrative'] || 'Generate a narrative adaptation.';
-    const userMessage = `
-Story Title: ${input.title}
+  // ===== REPLAY MODE: Load from debug.md =====
+  if (ctx.replay) {
+    console.log('\n[REPLAY] Loading from debug.md...');
+    const replayData = readDebugMd(config.name, ctx.storyId);
+
+    if (!replayData) {
+      throw new Error(`No debug.md found for ${ctx.storyId}. Run with --debug first.`);
+    }
+
+    // Use saved data instead of running LLM calls
+    pages = replayData.pages;
+    prompts = replayData.imagePrompts.map((prompt, i) => ({
+      pageNumber: i + 1,
+      prompt,
+    }));
+    thumbnailPrompt = replayData.thumbnailPrompt;
+
+    console.log(`✓ Loaded ${pages.length} pages`);
+    console.log(`✓ Loaded ${prompts.length} image prompts`);
+    console.log(`✓ Loaded thumbnail prompt`);
+
+    // Skip to generation
+  } else {
+    // ===== Step 1: Narrative =====
+    console.log('\n--- NARRATIVE ---');
+    {
+      const systemPrompt = ctx.prompts['step1-narrative'] || 'Generate a narrative adaptation.';
+      const userMessage = `Write the Bible story narrative for:
+
+Title: ${input.title}
 Summary: ${input.summary}
-Key Moments: ${input.keyMoments.join(', ')}
+Key moments to include: ${input.keyMoments.join(', ')}`;
 
-Create a narrative adaptation of this story.
-`;
+      const result = await services.llm.call<{ narrative: string }>({
+        systemPrompt,
+        userMessage,
+        schema: ctx.schemas['narrative'],
+      });
 
-    const result = await services.llm.call<{ narrative: string }>({
-      systemPrompt,
-      userMessage,
-      schema: ctx.schemas['narrative'],
-    });
+      narrative = result.narrative;
+      console.log(`✓ Narrative generated (${narrative.length} chars)`);
+    }
 
-    narrative = result.narrative;
-    console.log(`✓ Narrative generated (${narrative.length} chars)`);
-  }
+    // ===== Step 2: Planning =====
+    console.log('\n--- PLANNING ---');
+    {
+      const systemPrompt = ctx.prompts['step2-planning'] || 'Break the narrative into pages and panels.';
+      const userMessage = `Break this narrative into comic book pages and panels:
 
-  // ===== Step 2: Planning =====
-  console.log('\n--- PLANNING ---');
-  {
-    const { pageCount, panelsPerPage } = config.settings;
+${narrative}`;
 
-    let systemPrompt = ctx.prompts['step2-planning'] || `
-Plan the visual story with ${pageCount.min}-${pageCount.max} pages, each with ${panelsPerPage} panels.
-`;
+      const result = await services.llm.call<{ pages: Page[] }>({
+        systemPrompt,
+        userMessage,
+        schema: ctx.schemas['planning'],
+      });
 
-    // Inject settings variables
-    systemPrompt = injectVariables(systemPrompt, {
-      'pageCount.min': pageCount.min,
-      'pageCount.max': pageCount.max,
-      panelsPerPage,
-    });
+      pages = result.pages;
+      console.log(`✓ Planning complete (${pages.length} pages)`);
+    }
 
-    const userMessage = `
-Narrative:
-${narrative}
+    // ===== Step 3: Prompts =====
+    console.log('\n--- PROMPTS ---');
+    {
+      const styleVars = {
+        ...config.style,
+        ...config.settings,
+      };
 
-Plan out the visual story with pages and panels.
-`;
+      let systemPrompt = ctx.prompts['step3-prompts'] || 'Generate image prompts for each page.';
+      systemPrompt = injectVariables(systemPrompt, styleVars);
 
-    const result = await services.llm.call<{ pages: Page[] }>({
-      systemPrompt,
-      userMessage,
-      schema: ctx.schemas['planning'],
-    });
+      const pagesJson = JSON.stringify(pages, null, 2);
+      const userMessage = `Generate image prompts from these panels using the blocks provided.
 
-    pages = result.pages;
-    console.log(`✓ Planning complete (${pages.length} pages)`);
-  }
+${pagesJson}`;
 
-  // ===== Step 3: Prompts =====
-  console.log('\n--- PROMPTS ---');
-  {
-    const styleVars = {
-      ...config.style,
-      ...config.settings,
-    };
+      const result = await services.llm.call<{ prompts: PagePrompt[] }>({
+        systemPrompt,
+        userMessage,
+        schema: ctx.schemas['prompts'],
+      });
 
-    let systemPrompt = ctx.prompts['step3-prompts'] || `
-Generate image prompts for each page. Style: {artStyle}, {inkStyle}.
-`;
+      prompts = result.prompts;
+      console.log(`✓ Prompts generated (${prompts.length} prompts)`);
 
-    systemPrompt = injectVariables(systemPrompt, styleVars);
+      // Log each prompt for review
+      prompts.forEach((p) => {
+        console.log(`  Page ${p.pageNumber}: ${p.prompt.slice(0, 60)}...`);
+      });
+    }
 
-    const pagesJson = JSON.stringify(pages, null, 2);
-    const userMessage = `
-Pages to generate prompts for:
-${pagesJson}
+    // ===== Step 4: Thumbnail =====
+    console.log('\n--- THUMBNAIL ---');
+    {
+      const systemPrompt = ctx.prompts['step4-thumbnail'] || 'Generate a thumbnail prompt.';
+      const userMessage = `Create a thumbnail prompt for this comic:
 
-Generate a detailed image prompt for each page.
-`;
+Title: ${input.title}`;
 
-    const result = await services.llm.call<{ prompts: PagePrompt[] }>({
-      systemPrompt,
-      userMessage,
-      schema: ctx.schemas['prompts'],
-    });
+      const result = await services.llm.call<{ prompt: string }>({
+        systemPrompt,
+        userMessage,
+        schema: ctx.schemas['thumbnail'],
+      });
 
-    prompts = result.prompts;
-    console.log(`✓ Prompts generated (${prompts.length} prompts)`);
-
-    // Log each prompt for review
-    prompts.forEach((p) => {
-      console.log(`  Page ${p.pageNumber}: ${p.prompt.slice(0, 60)}...`);
-    });
-  }
-
-  // ===== Step 4: Thumbnail =====
-  console.log('\n--- THUMBNAIL ---');
-  {
-    const styleVars = {
-      ...config.style,
-      ...config.settings,
-    };
-
-    let systemPrompt = ctx.prompts['step4-thumbnail'] || `
-Generate a thumbnail prompt for the story cover. Style: {artStyle}.
-`;
-
-    systemPrompt = injectVariables(systemPrompt, styleVars);
-
-    const userMessage = `
-Story: ${input.title}
-Summary: ${input.summary}
-Narrative: ${narrative?.slice(0, 500)}...
-
-Create a thumbnail prompt that would make someone want to read this story.
-`;
-
-    const result = await services.llm.call<{ prompt: string }>({
-      systemPrompt,
-      userMessage,
-      schema: ctx.schemas['thumbnail'],
-    });
-
-    thumbnailPrompt = result.prompt;
-    console.log(`✓ Thumbnail prompt generated`);
-    console.log(`  ${thumbnailPrompt.slice(0, 80)}...`);
+      thumbnailPrompt = result.prompt;
+      console.log(`✓ Thumbnail prompt generated`);
+      console.log(`  ${thumbnailPrompt.slice(0, 80)}...`);
+    }
   }
 
   // ===== Step 5: Generation (skip in dry run) =====
   if (ctx.dry) {
     console.log('\n[DRY RUN] Skipping image generation\n');
+
+    // Save debug.md if requested (even in dry run)
+    if (ctx.debug && narrative && pages && prompts && thumbnailPrompt) {
+      const debugData: DebugMdData = {
+        storyId: ctx.storyId,
+        title: input.title,
+        narrative,
+        pages,
+        imagePrompts: prompts.map((p) => p.prompt),
+        thumbnailPrompt,
+      };
+      writeDebugMd(config.name, ctx.storyId, debugData);
+    }
     return;
   }
 
@@ -180,12 +182,7 @@ Create a thumbnail prompt that would make someone want to read this story.
       throw new Error('Missing pages or images for bundle');
     }
 
-    const storyId = input.title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, '');
-
-    services.storage.writeBundle(storyId, {
+    services.storage.writeBundle(ctx.storyId, {
       title: input.title,
       images,
       pages,
@@ -193,5 +190,18 @@ Create a thumbnail prompt that would make someone want to read this story.
     });
 
     console.log(`✓ Bundle written`);
+  }
+
+  // Save debug.md if requested
+  if (ctx.debug && narrative && pages && prompts && thumbnailPrompt) {
+    const debugData: DebugMdData = {
+      storyId: ctx.storyId,
+      title: input.title,
+      narrative,
+      pages,
+      imagePrompts: prompts.map((p) => p.prompt),
+      thumbnailPrompt,
+    };
+    writeDebugMd(config.name, ctx.storyId, debugData);
   }
 }

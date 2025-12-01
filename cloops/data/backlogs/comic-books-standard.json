@@ -3,7 +3,7 @@
   "items": [
     {
       "id": "david-and-goliath",
-      "status": "pending",
+      "status": "completed",
       "input": {
         "title": "David and Goliath",
         "summary": "A young shepherd boy defeats a giant warrior with faith and a sling",
@@ -14,11 +14,11 @@
           "David defeats Goliath with a single stone"
         ]
       },
-      "completedAt": null
+      "completedAt": "2025-12-01T11:10:04.850Z"
     },
     {
       "id": "noahs-ark",
-      "status": "pending",
+      "status": "in_progress",
       "input": {
         "title": "Noah's Ark",
         "summary": "Noah builds an ark to save his family and animals from a great flood",
@@ -34,7 +34,7 @@
     },
     {
       "id": "jonah-and-the-whale",
-      "status": "pending",
+      "status": "in_progress",
       "input": {
         "title": "Jonah and the Whale",
         "summary": "A prophet tries to run from God but learns obedience through a great fish",

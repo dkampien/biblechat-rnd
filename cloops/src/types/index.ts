@@ -22,6 +22,9 @@ export interface WorkflowContext {
   schemas: Record<string, object>;
   templatePath: string;
   dry: boolean;
+  debug: boolean;
+  replay: boolean;
+  storyId: string;
 }
 
 export interface TemplateConfig {
@@ -112,6 +115,8 @@ export interface PagePrompt {
 export interface RunOptions {
   dry: boolean;
   item?: string; // Specific item ID to run
+  debug?: boolean; // Save debug.json with all prompts
+  replay?: boolean; // Replay from debug.json (skip LLM calls)
 }
 
 export interface State {
@@ -187,4 +192,25 @@ export interface StoryDataJson {
     imageFile: string;
     narration: string;
   }[];
+}
+
+// ===================
+// Debug Types
+// ===================
+
+/** Data written to debug.md (all LLM responses) */
+export interface DebugMdData {
+  storyId: string;
+  title: string;
+  narrative: string;
+  pages: Page[];
+  imagePrompts: string[];
+  thumbnailPrompt: string;
+}
+
+/** Data needed for --replay (subset of debug) */
+export interface ReplayData {
+  pages: Page[];
+  imagePrompts: string[];
+  thumbnailPrompt: string;
 }

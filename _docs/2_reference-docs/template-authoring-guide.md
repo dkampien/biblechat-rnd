@@ -4,15 +4,43 @@ How to create new CLoops templates.
 
 ---
 
+## Development Process
+
+1. **Create a Production Plan** - Design and test prompts before coding
+2. **Implement the template** - Build config, workflow, system-prompts, schemas
+3. **Test with dry run** - Validate LLM outputs
+4. **Test with debug** - Review full prompt chain
+5. **Full run** - Generate images and verify output
+
+---
+
+## Production Plan
+
+Before implementing a template, create a production plan document to design and validate prompts.
+
+**Location:** `_templates/{template-name}/{template-name}_production-template-plan.md`
+
+**Purpose:**
+- Define each step's inputs, outputs, and constraints
+- Write and test system prompts + user messages in OpenAI Playground
+- Document JSON schemas for structured outputs
+- Validate prompt quality before implementing in code
+
+**Reference:** See `_templates/comic-books/comic-books_production-template-plan.md` for the expected format.
+
+Once prompts are validated in the production plan, transfer them to the template's `system-prompts/` folder and implement the workflow.
+
+---
+
 ## Folder Structure
 
 ```
 templates/my-template/
-├── config.json       # Settings, parameters, generation config
-├── workflow.ts       # Workflow logic (the brain)
-├── prompts/          # LLM prompts as .txt files
-│   └── *.txt
-└── schemas/          # JSON schemas for structured LLM outputs
+├── config.json        # Settings, parameters, generation config
+├── workflow.ts        # Workflow logic (the brain)
+├── system-prompts/    # LLM system prompts as .md files
+│   └── *.md
+└── schemas/           # JSON schemas for structured LLM outputs
     └── *.json
 ```
 
@@ -73,7 +101,7 @@ export async function run(
 | `input` | Story input from datasource (`title`, `summary`, `keyMoments`) |
 | `config` | Template config from config.json |
 | `services` | Injected services (`llm`, `replicate`, `storage`) |
-| `ctx` | Context (`prompts`, `schemas`, `dry`, `templatePath`) |
+| `ctx` | Context (`prompts`, `schemas`, `dry`, `debug`, `replay`, `storyId`, `templatePath`) |
 
 ### Using Services
 
@@ -95,7 +123,7 @@ const imagePaths = await services.replicate.generateImages(prompts, config.gener
 
 **Write bundle:**
 ```typescript
-services.storage.writeBundle(storyId, {
+services.storage.writeBundle(ctx.storyId, {
   title: input.title,
   images: imagePaths,
   pages: pagesData,
@@ -132,15 +160,24 @@ prompt = injectVariables(prompt, {
 
 ---
 
-## prompts/*.txt
+## system-prompts/*.md
 
-Plain text files. Access via `ctx.prompts['filename']` (without .txt extension).
+Markdown files containing system prompts. Access via `ctx.prompts['filename']` (without .md extension).
 
-Example `prompts/narrative.txt`:
-```
-You are a storyteller. Create a narrative for the given story.
-Style: {artStyle}
-Keep it under {wordCount} words.
+Example `system-prompts/step1-narrative.md`:
+```markdown
+<role>
+You are a storyteller creating narratives.
+</role>
+
+<task>
+Write a narrative for the given story.
+</task>
+
+<constraints>
+- Style: {artStyle}
+- Keep it under {wordCount} words
+</constraints>
 ```
 
 ---
@@ -157,13 +194,9 @@ Example `schemas/narrative.json`:
     "narrative": {
       "type": "string",
       "description": "The story narrative"
-    },
-    "keyMoments": {
-      "type": "array",
-      "items": { "type": "string" }
     }
   },
-  "required": ["narrative", "keyMoments"],
+  "required": ["narrative"],
   "additionalProperties": false
 }
 ```
@@ -197,10 +230,31 @@ Create `data/backlogs/my-template.json`:
 ## Running
 
 ```bash
+# Basic commands
 cloops run my-template --dry    # Test without generation
 cloops run my-template          # Full run
 cloops status my-template       # Check backlog status
+
+# Debug & replay (for prompt iteration)
+cloops run my-template --debug           # Save debug.md with all LLM responses
+cloops run my-template --replay -i id    # Load from debug.md, skip LLM, regenerate images
+
+# Combined
+cloops run my-template --dry --debug     # Dry run + save debug.md
 ```
+
+---
+
+## Debug & Replay Workflow
+
+For iterating on image prompts without re-running LLM calls:
+
+1. **Run with debug:** `cloops run my-template --debug`
+2. **Review output:** Check images and `output/{template}/{story-id}/debug.md`
+3. **Edit prompts:** Modify image prompts in debug.md
+4. **Replay:** `cloops run my-template --replay -i story-id`
+5. **Repeat** until satisfied
+6. **Update system prompts** with learnings
 
 ---
 

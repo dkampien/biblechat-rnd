@@ -12,9 +12,9 @@
     - Have a doc scraping agent
 
 
-
-Let's begin the implementation. After each step, run tests, write tests but only if you need to and then generate a brief step summary md file. Then start the next step. If tests fail more than couple of times, and you already iterated the errors, you have access to updated external reference docs through the context7 MCP server. But use this carefully. 
-
+<read-here>
+Let's begin the implementation. After each step, run tests, write tests but only if you need to and then generate a brief step summary md file. Then start the next step. If tests fail more than couple of times, and you already iterated the errors, you have access to updated external reference docs through the context7 MCP server. But use this carefully 
+</read-here>
 
 Insert some stuff about my role in claude md
 - Ex that im a product person not a programmer - if I want minimal code
@@ -25,6 +25,14 @@ ar fi misto un memory thread / agent care imi manageriaza un fisier despre evolu
 
 Ar fi misto si un seqrch across threads and across projects maybe? 
 - Bundle two similar projects under one folder if they need cross references amd contexts
+
+
+----
+
+
+
+
+
 
 ---
 

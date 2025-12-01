@@ -47,13 +47,13 @@ export function templateExists(templateName: string): boolean {
 }
 
 /**
- * Load prompts from a template's prompts directory
+ * Load system prompts from a template's system-prompts directory
  *
- * Reads all .txt files from the prompts folder and returns them
+ * Reads all .md files from the system-prompts folder and returns them
  * keyed by their filename (without extension).
  */
 function loadPrompts(templatePath: string): Record<string, string> {
-  const promptsDir = path.join(templatePath, 'prompts');
+  const promptsDir = path.join(templatePath, 'system-prompts');
   const prompts: Record<string, string> = {};
 
   if (!fs.existsSync(promptsDir)) {
@@ -63,8 +63,8 @@ function loadPrompts(templatePath: string): Record<string, string> {
   const files = fs.readdirSync(promptsDir);
 
   for (const file of files) {
-    if (file.endsWith('.txt')) {
-      const name = path.basename(file, '.txt');
+    if (file.endsWith('.md')) {
+      const name = path.basename(file, '.md');
       const content = fs.readFileSync(path.join(promptsDir, file), 'utf-8');
       prompts[name] = content;
     }

@@ -293,7 +293,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
 
 ## Phase 9: End-to-End Testing
 
-### Step 9.1: Dry Run Test `[ ]`
+### Step 9.1: Dry Run Test `[x]`
 - **Task:** Run full pipeline in dry mode, verify LLM outputs.
 - **Files:** None (manual testing)
 - **Dependencies:** All previous steps
@@ -303,7 +303,7 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
   - No image generation calls made
 - **Implementation Notes:** Review generated prompts for quality.
 
-### Step 9.2: Full Run Test `[ ]`
+### Step 9.2: Full Run Test `[x]`
 - **Task:** Run full pipeline with image generation.
 - **Files:** None (manual testing)
 - **Dependencies:** Step 9.1
@@ -316,10 +316,52 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
 
 ---
 
+## Phase 10: Refinements
+
+### Step 10.1: Production Prompts `[x]`
+- **Task:** Update prompts to match production template plan (XML format).
+- **Files:**
+  - Update: `cloops/templates/comic-books-standard/prompts/*.txt`
+- **Validation:** Prompts use `<role>`, `<task>`, `<constraints>`, `<output_format>` structure.
+- **Implementation Notes:** Copy from production-template-plan.md test prompts.
+
+### Step 10.2: Rename Prompts Folder `[x]`
+- **Task:** Rename prompts/ to system-prompts/ and .txt to .md for better organization.
+- **Files:**
+  - Rename: `prompts/` → `system-prompts/`
+  - Rename: `*.txt` → `*.md`
+  - Update: `cloops/src/template/loader.ts`
+- **Validation:** Template loader reads .md files from system-prompts/ folder.
+
+### Step 10.3: Debug Feature `[x]`
+- **Task:** Add --debug flag to save LLM responses for inspection.
+- **Files:**
+  - Update: `cloops/src/cli.ts` (add --debug flag)
+  - Update: `cloops/src/types/index.ts` (DebugMdData, ReplayData types)
+  - Update: `cloops/src/services/storage.ts` (writeDebugMd, readDebugMd)
+  - Update: `cloops/templates/comic-books-standard/workflow.ts`
+- **Validation:** `--debug` saves debug.md with all LLM responses in readable format.
+
+### Step 10.4: Replay Feature `[x]`
+- **Task:** Add --replay flag to skip LLM calls and regenerate images from debug.md.
+- **Files:**
+  - Update: `cloops/src/cli.ts` (add --replay flag)
+  - Update: `cloops/templates/comic-books-standard/workflow.ts`
+- **Validation:** `--replay` loads from debug.md, skips LLM, generates images.
+
+### Step 10.5: Replicate URL Fix `[x]`
+- **Task:** Fix FileOutput URL extraction from Replicate SDK.
+- **Files:**
+  - Update: `cloops/src/services/replicate.ts`
+- **Validation:** Images download correctly from Replicate.
+- **Implementation Notes:** Use `String(output[0])` to convert FileOutput to URL.
+
+---
+
 ## Summary
 
-**Total Steps:** 22
-**Phases:** 9
+**Total Steps:** 27
+**Phases:** 10
 
 **Architecture:**
 - **Services (shared):** LLM, Replicate, Storage - reusable building blocks
@@ -343,6 +385,8 @@ Based on PRD and Tech Spec. Steps are designed to be atomic and build on each ot
 
 ## Changelog
 
+- **2025-12-01:** Added Phase 10 (Refinements) - production prompts, debug/replay, Replicate fix
+- **2025-12-01:** Completed Phase 9 (End-to-End Testing)
 - **2025-12-01:** Added Phase 8 (Architecture Refactor) for hybrid template system
 - **2025-12-01:** Initial plan created
 

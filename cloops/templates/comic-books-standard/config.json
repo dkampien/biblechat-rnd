@@ -15,7 +15,7 @@
     "model": "bytedance/seedream-4",
     "params": {
       "size": "2K",
-      "aspect_ratio": "9:16"
+      "aspect_ratio": "3:4"
     }
   }
 }

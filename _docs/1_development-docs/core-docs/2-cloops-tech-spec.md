@@ -142,13 +142,16 @@ cloops/
 │   └── comic-books-standard/
 │       ├── config.json       # Settings, parameters, variations
 │       ├── workflow.ts       # Workflow logic (uses services)
-│       ├── prompts/          # LLM prompts
-│       │   ├── narrative.txt
-│       │   ├── planning.txt
-│       │   └── prompts.txt
-│       └── schemas/          # Output schemas for structured LLM responses
+│       ├── system-prompts/   # LLM system prompts (.md files)
+│       │   ├── step1-narrative.md
+│       │   ├── step2-planning.md
+│       │   ├── step3-prompts.md
+│       │   └── step4-thumbnail.md
+│       └── schemas/          # JSON schemas for structured LLM responses
 │           ├── narrative.json
-│           └── planning.json
+│           ├── planning.json
+│           ├── prompts.json
+│           └── thumbnail.json
 ├── data/
 │   └── backlogs/
 │       └── comic-books-standard.json
@@ -168,16 +171,24 @@ cloops/
 
 **Commands:**
 ```bash
-cloops run <template>           # Full run (default)
-cloops run <template> --dry     # Dry run (LLM only)
-cloops run <template> --item <id>  # Run specific item
-cloops templates                # List available templates
-cloops status <template>        # Show backlog status
+cloops run <template>              # Full run (default)
+cloops run <template> --dry        # Dry run (LLM only, skip image generation)
+cloops run <template> --debug      # Save debug.md with all LLM responses
+cloops run <template> --replay     # Load from debug.md, skip LLM, regenerate images
+cloops run <template> -i <id>      # Run specific item by ID
+cloops templates                   # List available templates
+cloops status <template>           # Show backlog status
+cloops cleanup                     # Clean up temporary files
+```
+
+**Flags can be combined:**
+```bash
+cloops run comic-books-standard --dry --debug   # Dry run + save debug.md
+cloops run comic-books-standard --replay -i noah-s-ark  # Replay specific item
 ```
 
 **Implementation:**
-- Use `commander` or `yargs` for arg parsing
-- Config overrides via flags: `--pages 3`
+- Use `commander` for arg parsing
 - Output: console logs for progress, errors to stderr
 
 ---
@@ -193,8 +204,8 @@ cloops status <template>        # Show backlog status
 templates/my-template/
 ├── config.json       # Settings, parameters (no step definitions)
 ├── workflow.ts       # Workflow logic (the "brain" of the template)
-├── prompts/          # LLM prompts (loaded by workflow)
-│   └── *.txt
+├── system-prompts/   # LLM system prompts (loaded by workflow)
+│   └── *.md
 └── schemas/          # JSON schemas for structured outputs
     └── *.json
 ```
@@ -608,7 +619,74 @@ async function postProcess(bundlePath: string, config: TemplateConfig): Promise<
 
 ---
 
-## 12. Type Definitions
+## 12. Debug & Replay System
+
+Debug and replay features enable prompt iteration without re-running expensive LLM calls.
+
+### 12.1 Debug Mode (`--debug`)
+
+Saves all LLM responses to a human-readable `debug.md` file in the output folder.
+
+**Usage:**
+```bash
+cloops run comic-books-standard --debug
+```
+
+**Output location:** `output/{template}/{story-id}/debug.md`
+
+**debug.md format:**
+```markdown
+# Debug: Story Title
+
+## Step 1: Narrative
+```
+The narrative response text...
+```
+
+## Step 2: Pages
+```json
+[{ "pageNumber": 1, "title": "...", ... }]
+```
+
+## Step 3: Image Prompts
+
+### Page 1
+```
+Full image prompt for page 1...
+```
+
+### Page 2
+```
+Full image prompt for page 2...
+```
+
+## Step 4: Thumbnail
+```
+Full thumbnail prompt...
+```
+```
+
+### 12.2 Replay Mode (`--replay`)
+
+Loads from existing `debug.md`, skips all LLM calls, and regenerates images.
+
+**Usage:**
+```bash
+cloops run comic-books-standard --replay -i story-id
+```
+
+**Use case:** Edit image prompts in `debug.md`, then replay to test changes without re-running LLM steps.
+
+**Workflow for prompt iteration:**
+1. Run with `--debug` to generate debug.md
+2. Review images - if bad, edit prompts in debug.md
+3. Run with `--replay` to regenerate images
+4. Repeat 2-3 until satisfied
+5. Update system prompts with learnings
+
+---
+
+## 13. Type Definitions
 
 All shared types in `src/types/index.ts`:
 
@@ -802,9 +880,10 @@ interface StoryDataJson {
 
 ## Changelog
 
+- **v3 (2025-12-01):** Added debug/replay system, renamed prompts/ to system-prompts/ with .md extension, added CLI flags (--debug, --replay, cleanup command).
 - **v2 (2025-12-01):** Hybrid architecture - templates have workflow.ts for logic, config.json for settings. Services are shared building blocks. No hardcoded steps in engine.
 - **v1 (2025-11-28):** Initial spec with hardcoded step registry (superseded).
 
 ---
 
-*v2 - 2025-12-01*
+*v3 - 2025-12-01*

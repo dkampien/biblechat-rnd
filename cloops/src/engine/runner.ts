@@ -2,6 +2,16 @@ import type { Template, StoryInput, RunOptions, WorkflowContext } from '../types
 import { createServices } from '../services/index.js';
 
 /**
+ * Generate a story ID from the title
+ */
+function generateStoryId(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+/**
  * Run a template workflow with the given input
  *
  * The engine is thin - it just:
@@ -13,17 +23,25 @@ import { createServices } from '../services/index.js';
  *
  * @param template - Loaded template with config, workflow, prompts, and schemas
  * @param input - Story input data
- * @param options - Run options (dry run, etc.)
+ * @param options - Run options (dry run, debug, replay, etc.)
  */
 export async function runTemplate(
   template: Template,
   input: StoryInput,
   options: RunOptions
 ): Promise<void> {
+  const storyId = generateStoryId(input.title);
+
+  // Determine mode for display
+  let mode = 'FULL RUN';
+  if (options.dry) mode = 'DRY RUN';
+  else if (options.replay) mode = 'REPLAY (from debug.json)';
+  else if (options.debug) mode = 'FULL RUN + DEBUG';
+
   console.log(`\n========================================`);
   console.log(`Running template: ${template.name}`);
   console.log(`Story: ${input.title}`);
-  console.log(`Mode: ${options.dry ? 'DRY RUN' : 'FULL RUN'}`);
+  console.log(`Mode: ${mode}`);
   console.log(`========================================\n`);
 
   // Create services
@@ -35,6 +53,9 @@ export async function runTemplate(
     schemas: template.schemas,
     templatePath: `templates/${template.name}`,
     dry: options.dry,
+    debug: options.debug ?? false,
+    replay: options.replay ?? false,
+    storyId,
   };
 
   try {

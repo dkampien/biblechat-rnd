@@ -21,7 +21,9 @@ program
   .description('Run a template to generate content')
   .option('-d, --dry', 'Dry run (skip image generation)', false)
   .option('-i, --item <id>', 'Run a specific item by ID')
-  .action(async (templateName: string, options: { dry: boolean; item?: string }) => {
+  .option('--debug', 'Save debug.json with all prompts to output folder', false)
+  .option('--replay', 'Replay from debug.json (skip LLM calls, regenerate images)', false)
+  .action(async (templateName: string, options: { dry: boolean; item?: string; debug: boolean; replay: boolean }) => {
     try {
       // Validate template exists
       if (!templateExists(templateName)) {
@@ -62,6 +64,8 @@ program
       const runOptions: RunOptions = {
         dry: options.dry,
         item: item.id,
+        debug: options.debug,
+        replay: options.replay,
       };
 
       try {

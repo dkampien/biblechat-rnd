@@ -80,33 +80,26 @@ async function generateImageInternal(params: GenerateImageParams): Promise<strin
     },
   });
 
-  // Output can be:
-  // - Array of FileOutput objects (with .url() method)
-  // - Array of URL strings
-  // - Single URL string
+  // FileOutput from SDK - just convert to string which gives the URL
+  // FileOutput implements toString() that returns the URL
   let imageUrl: string;
 
-  if (Array.isArray(output)) {
-    const firstOutput = output[0];
-    if (typeof firstOutput === 'string') {
-      imageUrl = firstOutput;
-    } else if (firstOutput && typeof firstOutput === 'object') {
-      // FileOutput object - try .url() method or direct access
-      if ('url' in firstOutput && typeof firstOutput.url === 'function') {
-        imageUrl = firstOutput.url();
-      } else if ('url' in firstOutput && typeof firstOutput.url === 'string') {
-        imageUrl = firstOutput.url;
-      } else {
-        imageUrl = String(firstOutput);
-      }
-    } else {
-      throw new Error(`Unexpected output format: ${typeof firstOutput}`);
-    }
-  } else if (typeof output === 'string') {
-    imageUrl = output;
+  if (Array.isArray(output) && output.length > 0) {
+    // Model returned array of outputs, get first one
+    imageUrl = String(output[0]);
+  } else if (output) {
+    // Single output
+    imageUrl = String(output);
   } else {
-    throw new Error(`Unexpected output type: ${typeof output}`);
+    throw new Error('No output from model');
   }
+
+  // Validate it's a URL
+  if (!imageUrl.startsWith('http')) {
+    throw new Error(`Invalid image URL: ${imageUrl.slice(0, 100)}`);
+  }
+
+  console.log('Image URL:', imageUrl.slice(0, 80) + '...');
 
   // Create temp directory if it doesn't exist
   const tempDir = path.join(process.cwd(), 'temp');
