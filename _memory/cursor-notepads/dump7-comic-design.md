@@ -7,10 +7,44 @@ OUTLINE
 - References
 
 
+
+
+----
+
+
 ## RECAP 
-- Tried to create the comics template but relized I need to work on the block library. How to organize library and which blocks to include and when to add new blocks. Explored various block lib designs. And what to do with testing blocks. 
-- I realized the template is not produciton ready and that the LLM (ex claude) can't follow the template precisely and I can't fix this currently. 
-[more info in notion]
+- I've been trying to create consistent and high quaity prompts for generating bible stories comicbooks. The goals was to write these prompts automatically by an LLM. This meant that I needed to teach an LLM how to do that. 
+- I wrote some docs about a prompting system (framework + guide) and a template doc for the comics. The comic template contained instructions for the LLM, rules and general references. The the LLM can't follow the instructions accurately enough. 
+- This was all done for a manual template workflow in a single LLM thread. The goal was to move to a production (automated) template where id had multiple LLM calls (agents), etc. 
+- I tried a custom gpt to see if it can follow the instructions better than a core LLM but it had mixed, mainly poor results (including context rot, max 5-10 stories per thread before it would become unusable and buggy). The other main downside of a customGPT is that it can't interact with the file system or other APIs. So its nor scalable or automatable. 
+- Then I got to the basics to see if I can nail consistent prompts manually. I referenced seedrea4 model guide. It had good results but I don't know how I can teach an LLM to write like a human. In the meantime, google released nano banana pro (25 nov 2025) and it performs better than seedream. Although slower and pricier. 
+- At this point, I realized that the manual template workflow, needed to be split in two "layers". The knowledge layer - which is the info about the prompting system and the application layer - which is, how we apply the prompting system to a use case (eg comics). The knowledge layer became the system prompt v1 and the application layer became the comicbook template v4.  
+- Then I needed to figure out the ways I can "plug" all this info into a bigger llm workflow, what are the available LLM api elements I can work with etc. Ex. the system message, user message, variables, etc. (using openai api). 
+- I analyed the adloops system to understand it better and to figure out where I can plug my content system (now called contentloops or cloops for short). I realized my system is kinda like an asset supplier to the adloops system. Which does the ads full assembly and pipeline (including posting etc).
+- Then I needed to translate the manual template to a production template plan. So then when I implement the cloops system, I move to a production template code implementation. The cloops system will work on a template basis. Eg doing comics is a content template. 
+- I created a draft for the production template plan and then I wanted to test the pipeline in openai playground (now called dashboard). To see how multiple llms would work together. I made separate llm calls with system prompts, user messages etc. But the results were very poor. I think mainly because I forgoten to include the knowldge layer in any llm inputs. Or the translation between the manual template and the produciton template plan was incomplete. 
+- While I designed the first draft of the produciton template plan, I also made some decisions about the cloops system. Because some were template level functionalities and some were system level. 
+- Now I need to go through the production template plan again and fix what is missing there, test the llm pipeline again in the playground. See how I split the knowledge and applicaiton layers in the produciton template plan. There are lots of unkowns here still. I can't remember if I moved the knowledge layer in the cloops system level so I forgot about it when tested the llm pipeline in openai dashboard. 
+
+In any case, there may be some discrepancies between the reference files so don't get biased that everything is correct if you read them. But don't read anything yet without my permission. 
+
+## REFERENCE FILES
+
+Manual Template Workflow
+- comic-books_template_v4 - application layer
+- system-prompt-v1 - knowledge layer
+
+Production Template Plan
+- comic-books_production-template-plan
+- openai-api-reference (!)
+
+Cloops info 
+- adloops-system-analysis
+- cloops_exploration-session
+- cloops_system-level-decisions
+
+
+
 
 ----
 
@@ -308,13 +342,74 @@ Guide Outline
 
 ----
 
-API structure and where to place differnt types of information
-
-
 
 OPTIONS moving forward
 - separate panels with seedream then stitch with comfyui api or programatic stitcher 0.03 * 3 = 0.09 per page = 0.39 per comic
 - generate with nano banana pro 0.14 per page (image) = 0.7 per comic
 
+
+
+----
+
+
+<claude-read-here>
+Decisonal flow tree when building produciton workflow plan
+- Made step 1 continuous (cloud chunk from the start) so step 2 has better input. 
+- Panel moments alone were too minimal for Step 3. Added visual anchor (one key compositional/emphasis hint)
+   to guide visual interpretation without being redundant with prompt generation.
+
+</claude-read-here>
+
+
+
+
+
+Remember to also do final workflow assembly. Does the format of the production template plan matter?
+Add cliffhangers.
+
+
+Step 3 design note -> YOU ARE HERE
+- Step 3 needs to first go through some steps - Discussed
+- Best input format from step 2 - solved by introducing visual anchors in step 2. But this introduces another fail point. The non-deterministic nature of llms.
+- Model otpmization - ex character definitions are no longer needed that much for nano bana
+  - Step 3 pulls rules based on which model is configured. Model specific rules live in a config not the template.
+
+
+
+----
+
+
+## NOTES AND IDEAS
+
+### Notes for future dennis wanting to design templates
+- If you don't know, find a way to test
+- Have patience with writing responses. Think about the llm answers
+- Tell the llm to think from simple to complex and your personal context - current system prompt
+- Tell the llm to list its thought process when you don't think its answer was good
+
+### Feedback and ideas for future features
+- The current step 1 does not make consistent stories. 
+- Add edge cases and error handling for each step. eg Regenerate step x only. 
+- There is a story accuracy issue. This can be handled somehow with bible api somehow
+- There is a variance problem but i forgot where (key moments to guide step 1 generaiton accurately?)
+- No blocks inserted in the pipeline
+- Decide if you still include story metadata output somewhere. Is is still needed?
+- Tweaking params
+  - step 1 cunking
+  - step 2 panel format (best for step 3)
+  - step 3 model specific instructions set (ex for nano it requries less rules)
+
+### OPENAI API structure and where to place differnt types of information
+- Available elements in dashboard 
+  - model-settings (model, reasoning lvl, verbosity-lvl)
+  - system-prompt (instructions, developer message)
+  - user-message
+  - variables
+  - response-format (json, text)
+  - tools (web_search, file_search, 
+- Other api elements
+
+
+----
 
 

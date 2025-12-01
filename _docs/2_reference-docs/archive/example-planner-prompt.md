@@ -41,19 +41,22 @@ When creating your plan, follow these guidelines:
 
 Present your plan using the following markdown-based format. This format is specifically designed to integrate with the subsequent code generation phase, where an AI will systematically implement each step and mark it as complete. Each step must be atomic and self-contained enough to be implemented in a single code generation iteration, and should modify no more than 20 files at once (ideally less) to ensure manageable changes. Make sure to include any instructions the user should follow for things you can't do like installing libraries, updating configurations on services, etc (Ex: Running a SQL script for storage bucket RLS policies in the Supabase editor).
 
-```md
-# Implementation Plan
+<output_format>
+## Phase {N}: {Phase Name}
+Provide phase context if grouping steps is helpful. Otherwise skip the phase wrapper and list steps directly.
 
-## [Section Name]
-- [ ] Step 1: [Brief title]
-  - **Task**: [Detailed explanation of what needs to be implemented]
-  - **Files**: [Maximum of 20 files, ideally less]
-    - `path/to/file1.ts`: [Description of changes]
-  - **Step Dependencies**: [Step Dependencies]
-  - **User Instructions**: [Instructions for User]
+### Step {number}: {Title} `[ ] / [x]`
+- **Status:** Optional timestamped note when completed (e.g., `Completed on Feb 3, 2025`).
+- **Task:** [Detailed explanation of what needs to be implemented].
+- **Files:** [Max of 20 files, ideally less]
+  - `frontend/...`
+  - `backend/...`
+- **Step Dependencies:** Previous steps, external approvals, or “None”.
+- **User Instructions / Validation:** How to verify the work (manual flow, command, acceptance criteria).
+- **Implementation Notes:** Decisions, shortcuts, or follow-ups that future you should know.
 
-[Additional steps...]
-```
+Repeat the step block for each planned deliverable. Keep checkboxes in sync (`- [ ]` / `- [x]`) so status is glanceable.
+</outputformat>
 
 After presenting your plan, provide a brief summary of the overall approach and any key considerations for the implementation process.
 

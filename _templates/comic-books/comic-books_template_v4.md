@@ -25,8 +25,6 @@
 
 # WORKFLOW STEPS
 
----
-
 ## Step 0: Story Selection
 
 ### Task/Instructions

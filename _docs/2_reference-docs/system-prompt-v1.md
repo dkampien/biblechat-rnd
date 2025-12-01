@@ -1,6 +1,6 @@
 # System Prompt - v1 (Knowledge Layer)
 
-**Purpose:** Universal knowledge for block-based prompt generation
+**Purpose:** Universal knowledge for block-based prompt generation, works with v4 template
 **Architecture:** Knowledge Layer (used across all templates)
 **Version:** 1.0
 **Date:** 2025-11-23
