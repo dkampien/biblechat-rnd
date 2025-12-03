@@ -3,7 +3,8 @@
   "datasource": "backlog",
   "settings": {
     "pageCount": { "min": 3, "max": 5 },
-    "panelsPerPage": 3
+    "panelsPerPage": 3,
+    "dialogue": true
   },
   "style": {
     "artStyle": "children's book illustration",

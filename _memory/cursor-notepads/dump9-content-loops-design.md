@@ -41,18 +41,6 @@ TEMPLATES
 - ADLOOPS template
 - CONTENTLOOPS template
 
-Let's discuss the system a bit more. Let me run you through a user story.
-  I first wanted comicbooks to use as in-app content. So in that case, I had stories, pages as images with
-  3 panels per image. I also had a story-data.json for the dev guys to implement the comics easier in app.
-  Also a thumbnail image. 
-
-  Then I needed a variant of comicbooks for kids. I changed the style, ran 15 stories and I also needed an
-  audio for each story that I did through eleven labs. So in the final bundle I had the stories folder
-  with pages, story data, voice mp3. 
-
-  Now, Adloops needs ads. So I would need to generate comicbook assets for ads made in adloops. 
-
-  Is it more clear now?
 
 
 ----
@@ -104,3 +92,29 @@ Start from the simplest to complex - added to system prompt.
 
 cloops_exploration-session
 cloops_system-level-decisions
+
+
+----
+
+
+
+Notes (post-implementation)
+- How would I explain this system to the CTO?
+- What happened to the scheduling part? How would it work?
+- What happened about the firestore storage?  
+- Adloops manifest 
+- How it would behave with another input source eg the csv parsing data?
+
+
+----
+
+
+User Story
+- I want a batch of 20 comics for kids to use in ads. Full naration bundled 
+
+Notes
+- Should the system also work outside adloops?
+- Can the system manage ads variants and in-app variants? What info is packaged? Different steps? 
+- How can the system manage already made stories? Can it redo existing story?
+- Need fal api key
+

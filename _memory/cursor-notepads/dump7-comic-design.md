@@ -413,3 +413,42 @@ Step 3 design note -> YOU ARE HERE
 ----
 
 
+- Production template plan
+- Testing and evals the prompts in agent builder
+- Production template code implementation - workflow.ts
+- Production template config
+
+
+When im planning the code I plan the content gen steps? What if I want to add another step like a character reference model? I dont' have comfyui at this point?
+
+What else should the production plan contain?
+Does it have a fixed structure? 
+
+When we plug into adloops should I be aware of the asset types that adloops it needs? Eg overlayed, just body, just hook etc? 
+
+
+What should a production plan contain? - workflow steps?
+
+
+----
+
+
+The STEP 1 problem
+- Step 1 needs to generate naration within a word constraint but its hit and miss and it varies how much of a story includes. It might miss important narative parts and/or it can make mistakes. It needs a story validation anchor. 
+- Defapt is a backlog problem for step 0. The backloog needs story validation?
+
+
+
+
+
+----
+
+
+
+User Story
+- I want a batch of 20 comics for kids to use in ads. Full naration bundled 
+
+Notes
+- Should the system also work outside adloops?
+- Can the system manage ads variants and in-app variants? What info is packaged? Different steps? 
+- How can the system manage already made stories? Can it redo existing story?

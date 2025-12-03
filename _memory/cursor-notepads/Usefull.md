@@ -31,7 +31,7 @@ Ar fi misto si un seqrch across threads and across projects maybe?
 
 
 
-
+add the backlog concept in the engineering workflow
 
 
 ---

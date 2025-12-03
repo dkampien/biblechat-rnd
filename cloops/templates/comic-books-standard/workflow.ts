@@ -100,7 +100,23 @@ ${narrative}`;
       let systemPrompt = ctx.prompts['step3-prompts'] || 'Generate image prompts for each page.';
       systemPrompt = injectVariables(systemPrompt, styleVars);
 
-      const pagesJson = JSON.stringify(pages, null, 2);
+      // Strip dialogue if disabled in config
+      let pagesForPrompts = pages;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const dialogueEnabled = (config.settings as any).dialogue;
+      if (!dialogueEnabled) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        pagesForPrompts = pages!.map((p: any) => ({
+          ...p,
+          panels: p.panels.map((panel: any) => {
+            const { dialogue, ...rest } = panel;
+            return rest;
+          })
+        }));
+        console.log('  (dialogue disabled - stripped from pages)');
+      }
+
+      const pagesJson = JSON.stringify(pagesForPrompts, null, 2);
       const userMessage = `Generate image prompts from these panels using the blocks provided.
 
 ${pagesJson}`;

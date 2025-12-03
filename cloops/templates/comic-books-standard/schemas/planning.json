@@ -1,53 +1,66 @@
+
 {
-  "type": "object",
-  "properties": {
-    "pages": {
-      "type": "array",
-      "description": "Array of planned pages",
-      "items": {
-        "type": "object",
-        "properties": {
-          "pageNumber": {
-            "type": "number",
-            "description": "Page number"
-          },
-          "title": {
-            "type": "string",
-            "description": "Title for this page"
-          },
-          "narration": {
-            "type": "string",
-            "description": "Narration text for this page"
-          },
-          "panels": {
-            "type": "array",
-            "description": "Panels on this page",
-            "items": {
-              "type": "object",
-              "properties": {
-                "panel": {
-                  "type": "number",
-                  "description": "Panel number within the page"
+  "name": "planning_with_dialogue",
+  "strict": true,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "pages": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "pageNumber": {
+              "type": "integer"
+            },
+            "title": {
+              "type": "string"
+            },
+            "narration": {
+              "type": "string"
+            },
+            "panels": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "panel": {
+                    "type": "integer"
+                  },
+                  "moment": {
+                    "type": "string"
+                  },
+                  "visualAnchor": {
+                    "type": "string"
+                  },
+                  "dialogue": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "character": {
+                          "type": "string"
+                        },
+                        "text": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["character", "text"],
+                      "additionalProperties": false
+                    }
+                  }
                 },
-                "moment": {
-                  "type": "string",
-                  "description": "Key moment being depicted"
-                },
-                "visualAnchor": {
-                  "type": "string",
-                  "description": "Main visual element in the panel"
-                }
-              },
-              "required": ["panel", "moment", "visualAnchor"],
-              "additionalProperties": false
+                "required": ["panel", "moment", "visualAnchor", "dialogue"],
+                "additionalProperties": false
+              }
             }
-          }
-        },
-        "required": ["pageNumber", "title", "narration", "panels"],
-        "additionalProperties": false
+          },
+          "required": ["pageNumber", "title", "narration", "panels"],
+          "additionalProperties": false
+        }
       }
-    }
-  },
-  "required": ["pages"],
-  "additionalProperties": false
+    },
+    "required": ["pages"],
+    "additionalProperties": false
+  }
 }
