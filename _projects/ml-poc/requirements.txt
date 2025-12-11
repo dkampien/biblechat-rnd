@@ -1,0 +1,3 @@
+kumoai
+pandas
+python-dotenv
