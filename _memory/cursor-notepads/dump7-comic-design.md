@@ -443,31 +443,20 @@ The STEP 1 problem
 
 ----
 
+STEP 3 OUTLINE (LLM CALL - Prompt)
+- System prompt
+  <role>
+  <task>
+  <constraints>
+  <knowledge>
+  <output_format>
+- User message 1
+  <blocks>
+- User message 2
+  Generate image frompts from these panels
+  {{page2-output}}
 
 
-OUTLINE - STEP 3 
-#system prompt
-<role>
-<task>
-<constraints>
-<knowledge>
-<output_format>
-
-#user message 1
-<blocks>
-
-#user message 2
-Generate image prompts from these panels
-
-{{page2-output}}
-
-
--------
-
-PAGE 1 In a children's book illustration style with bold ink lines and flat colors, this comic book page featuring three vertically arranged panels shows: First, a scene where from a high angle, divine light illuminates Noah, a bearded man with a flowing robe, amidst the darkness of a chaotic world. Next, in a medium shot, Noah’s focused face reflects determination as he listens intently, highlighted by soft ambient light. Finally, Noah stands with his family, their expressions unified and supportive, framed in a warm indoor setting from a waist-level angle.
-
-
--------
 
 
 

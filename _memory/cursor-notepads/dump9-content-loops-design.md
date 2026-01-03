@@ -130,3 +130,53 @@ Notes
 
 
 How does the system analyzez the story? It extracts the full text or based on the summary and key moments?
+
+
+
+---
+
+
+NEXT PHASE OF THE PROJECT
+
+Ok so I reviewed the notes and added some my own notes right now as I was reviewing. 
+
+- We have "faces" in adloops that are not used. We can make a template from that. We can give that assets as inputs (pics) and make a hook video asset with that person in various "settings" eg selfie, podcast, street etc. How would I structure the template for all these? 
+- We need to automate the existing carousel produciton. Im not sure how I can cover all types of carousels. They showed me a "god wants to tell you to put a verse on your lockscren". And a "god wants to show you a message".
+- Theme and content type - I don't remember what I meant here.
+- "you need to handle content pipelines" - I guess this means working with the marketing team / production teams closer and automate their needs
+- Scaled marketing on content generation - I don't remember what I meant here either. 
+- CTO - "I want to spend 500 dollars on each country with 150% at 12 mos". The discussion shifted here a bit toward "localization". 
+- CTO - "I want to make the app truly localaized, 40 languages". Im not sure what this means either.  
+- CTO - "I want to spend any amount of money without caring about the content" - Not sure what he meant here either. Could be related to content costs? 
+- Content localization on ads - random note.
+- Also the cto gave me a new possible use case. Not sure if this applies tho. I showed him the comic templates and he asked if the output assets could be reused without regenerating them. But im not sure if this is the cloops responsibility or adloops. 
+
+- CTO wants a more hand on approach on content. Involvement with the team. He acknowledges that I can build stuff but is not convinced I can do production code. 
+- Can I scan adloops and make a local copy to prove my point? -> should I integrate cloops in adloops by myself, should this be the problem?
+
+he want results
+---
+
+
+
+
+
+New template creation process. 
+
+OUTLINE
+1. Proudction plan (workflow needed, steps, ai models etc.)
+2. Implement the template (code config, workflow, system-prompt, schemas)
+3. Test with dry run (validate LLM calls)
+4. Test with debug (review full prompt chain)
+5. Full run (generate assets and verify output)
+
+Need an outline for the production plan. 
+Current reference: template-authoring-guide.md
+
+
+how to find toktok virals
+
+
+CLOOPS Template creation process
+AI CONTENT PROMPTING GUIDE -> bundle with prompt-generation-guide-v5.5.md, prompt-formula-framework-v2.md etc.
+

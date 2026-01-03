@@ -1,0 +1,34 @@
+[
+  {
+    "model": "kling-2-6",
+    "developer": "Kuaishou",
+    "apiAvailable": "yes",
+    "apiProvider": ["official", "fal"],
+    "schemaSource": "fal",
+    "schemaSourceLink": "https://fal.ai/models/fal-ai/kling-video/v2.6/pro/image-to-video/api",
+    "openSource": false,
+    "releaseDate": "2025-12-17",
+    "modalities": ["t2v", "i2v"],
+    "inputTypes": ["start_frame", "end_frame", "negative_prompt"],
+    "supportedDurations": [5, 10],
+    "supportedAspectRatios": ["16:9", "9:16", "1:1"],
+    "supportedResolutions": ["720p", "1080p"],
+    "notes": "Introduced native audio generation and 'Copy Any Action' motion control features [web:18][web:25]."
+  },
+  {
+    "model": "seedance-1-5-pro",
+    "developer": "ByteDance",
+    "apiAvailable": "yes",
+    "apiProvider": ["fal", "replicate", "official"],
+    "schemaSource": "fal",
+    "schemaSourceLink": "https://fal.ai/models/fal-ai/bytedance/seedance/v1.5/pro/image-to-video/api",
+    "openSource": false,
+    "releaseDate": "2025-12-22",
+    "modalities": ["t2v", "i2v"],
+    "inputTypes": ["start_frame", "end_frame", "negative_prompt"],
+    "supportedDurations": [4, 8, 12],
+    "supportedAspectRatios": ["16:9", "9:16", "1:1", "4:3", "3:4", "21:9"],
+    "supportedResolutions": ["480p", "720p", "1080p"],
+    "notes": "Utilizes MMDiT architecture for joint audio-video generation; officially hosted on Volcengine as 'doubao-1-5-thinking-vision-pro' [web:70][web:82]."
+  }
+]
