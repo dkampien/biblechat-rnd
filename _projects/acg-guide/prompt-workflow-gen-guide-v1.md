@@ -116,18 +116,9 @@ Think of workflows like ComfyUI node graphs - each output feeds into the next in
 ### Why Workflows?
 
 Certain constraints require multi-step approaches:
-
-**Duration Limits:**
-- Most models cap at 5-10 seconds per generation
-- Longer content requires multiple generations chained together
-
-**Consistency Requirements:**
-- Same character across scenes → need workflow patterns
-- Specific visual style → need controlled generation approach
-
-**Complexity:**
-- Staged creation for better control
-- Building blocks approach (foundation → refinement)
+- Duration Limits: Most video gen models cap at 5-12 seconds per generation. Longer content requries multiple generations chained together.
+- Consistency Requirements: Same character across scenes may require multiple modalities chained together e.g., t2i, i2i_reference, i2v, etc.
+- Complexity: An ad may require generating the scenes, editing the scenes, generating a character, placing a product, upscaling, etc. These may be all different modalities and nodes. 
 
 **Simple Workflow:**
 ```
@@ -149,7 +140,7 @@ Workflow:
    ├─ Step 1: Craft persona → Node: LLM
    ├─ Step 2: Create appearance → Node: text-to-image
    ├─ Step 3: Build reference library → Node: image-to-image (×3)
-   ├─ Step 4: Break down to scenes → Node: LLM
+   ├─ Step 4: Break down to 6 scenes → Node: LLM
    ├─ Step 5: Transform to prompts → Node: LLM (×6)
    ├─ Step 6: Generate scene images → Node: text-to-image (×6)
    ├─ Step 7: Animate scenes → Node: image-to-video (×6)
@@ -271,48 +262,58 @@ Technique: Frame chaining between scenes 2-5 for continuity
 
 ## 5. Workflow Planning Process
 
-### Planning Step 1: Define Your Goal
+Workflow planning is how you go from an idea → an executable pipeline.
 
-State what you want to create:
-- Final output (e.g., "30-second gym workout video")
-- Key requirements (character consistency, specific style, duration)
+The goal of planning is not to write prompts yet. It’s to remove ambiguity so execution is predictable.
 
-### Planning Step 2: Identify Constraints
+### Planning Step 1: Define the Goal (IDEA)
 
-**Duration:** Final length vs per-generation limit (typically 5-10s) = number of clips needed
+Write the final output spec:
+- Output type (image set, single video, multi-scene video)
+- Target format (duration, aspect ratio, resolution)
+- Key requirements (character consistency, specific style, must-have beats)
+- Success criteria (what “done” looks like)
+- Constraints (duration limits, tools available, quality requirements)
 
-**Consistency:** Same character? Specific visual style? Continuity between scenes?
+Also list any starting inputs you already have (script, voiceover, brand kit, references).
 
-### Planning Step 3: Break Into Scenes / Workflow Steps
+### Planning Step 2 (Optional): Gather Inspiration (INSPIRATION)
 
-Divide goal into logical units within single-generation constraints:
-- **Video:** Scenes, actions, or time segments
-- **Images:** Variations, angles, or compositions
+If you’re missing vocabulary or clarity, collect a small reference pack:
+- **Look/style** (lighting, composition, color, wardrobe)
+- **Motion/camera** (for video)
+- “Do this / avoid this” examples
 
-**Example:** 30-second video → 6 scenes × 5 seconds
+### Planning Step 3: Draft the Workflow Steps (MODALITIES → STEPS)
 
-### Planning Step 4: Map Nodes to Workflow Steps
+Break the goal into workflow steps (scenes/phases) you can execute within model constraints.
 
-For each workflow step, choose the node type(s) based on inputs/outputs.
+Guidelines:
+- For video, duration ÷ per-generation limit (usually 5–10s) ≈ number of scenes/clips.
+- For video, assume **one scene ≈ one video generation** unless your model supports multi-shot.
+- Use patterns when needed (Character Consistency, Frame Chaining, Multi-Scene Content).
 
-- **Generation nodes** → choose modality (t2t, t2i, i2v, t2v, etc.)
-- **Supporting nodes** → choose utility/editing/tool (extract frame, stitch, upscale, etc.)
+### Planning Step 4: Map Nodes + Data Flow (NODES)
 
-**Example:**
-```
-1. Character appearance → text-to-image
-2. Character references → image-to-image (variations)
-3. Scene 1 image → text-to-image (with refs)
-4. Scene 1 video → image-to-video
-... (repeat per scene)
-```
+This is where you make the workflow executable.
 
-### Planning Step 5: Plan Continuity
+**Minimum (recommended):** a wiring diagram in text. For each step, list nodes in order and capture:
+- Node type: **generation** (prompt required) vs **supporting** (no prompt)
+- Inputs → outputs (what each node consumes/produces)
 
-How will steps connect?
-- **Frame chaining:** Last frame → first frame of next
-- **Reference images:** Maintain character/style consistency
-- **Editing:** Cuts, fades, transitions in post
+**Add briefs only when needed (to avoid rework):**
+- For each **generation node**, add a short **prompt brief**:
+  - `Modality | Intent | Inputs/Refs | Constraints | Output requirement`
+- For each **supporting node**, add a short **operation brief**:
+  - `Operation/Tool | Inputs | Outputs | Key settings`
+
+### Planning Step 5: Plan Continuity + Integration
+
+Decide how steps connect and how you’ll assemble the final output:
+- **Frame chaining** vs **reference images** vs **editing plan** (cuts/transitions)
+- Any required post steps (stitching, upscaling, audio sync)
+
+Quick check: every node has clear inputs/outputs, and your continuity approach is explicit.
 
 ---
 

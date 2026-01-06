@@ -18,13 +18,17 @@ This guide teaches you how to create effective prompts for AI content generation
 - You're planning multi-step projects
 - You need to choose which modalities to use
 
-**Flow:** Plan workflow (Workflow guide) → Generate prompts per step (this guide)
+**Flow:** Plan workflow (Workflow guide) → Generate prompts for each generation node (this guide)
+
+**Handoff note:** In workflows, prompts are written per generation node (modality execution). Supporting nodes (utilities/editing/tools) do not require prompts. This guide assumes you have a prompt brief: modality + intent + inputs/refs + constraints.
 
 ---
 
 ## 2. How Modalities Require Different Prompts
 
 **Critical insight:** Different modalities need fundamentally different prompts.
+
+**Note:** This section uses representative modalities. Apply the same focus logic to other modalities (i2i, v2v, edits, lipsync, etc.). See the Workflow Architecture Guide for the full list.
 
 ### Text-to-Image
 
@@ -80,7 +84,7 @@ For each modality, your prompting approach consists of three components:
 - image-to-video: Describe what happens (motion only)
 - text-to-video: Describe both (visuals + motion)
 
-### 2. PHRASING STYLE - How to Write
+### 2. PHRASING STYLE - How to write block values
 
 **Descriptive:** Lists what exists (compact, direct)
 - Example: "A man cleaning a car engine, wiping sweat from his brow, exhausted expression"
@@ -100,7 +104,7 @@ For each modality, your prompting approach consists of three components:
 - Block order (arrangement)
 - Block level of detail (depth)
 
-> See `prompt-formula-framework-v2.md` for detailed methodology on formulas and blocks.
+> See `prompt-formula-framework-v3.md` for detailed methodology on formulas and blocks.
 
 ### The Flow
 
@@ -243,7 +247,7 @@ Intent describes what the modality generates:
 ## 6. Next Steps
 
 **For detailed formula and block methodology:**
-- Reference **Formula Framework** (`prompt-formula-framework-v2.md`)
+- Reference **Formula Framework** (`prompt-formula-framework-v3.md`)
 - Covers block structure, hierarchies, output formats, and LLM usage rules
 
 **For workflow planning:**

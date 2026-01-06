@@ -1,4 +1,11 @@
-## Overview
+# AI Content Generation: Prompt Formula Framework
+
+**Version**: 3.0
+**Date**: 2025-12-31
+
+---
+
+## 1. Overview
 
 This framework provides a systematic approach to generating AI prompts using modular, reusable components called **blocks**.
 
@@ -6,7 +13,7 @@ This framework provides a systematic approach to generating AI prompts using mod
 
 **Key concept:** A Prompt Formula is a structured template that combines specific blocks to generate prompts for a particular task or output type. Each formula is optimized for a specific goal (text generation, image creation, video production, etc.).
 
-## Core Concepts
+## 2. Core Concepts
 
 ### What is a Prompt Formula?
 
@@ -58,11 +65,11 @@ Core blocks are the terminal/leaf nodes in a block hierarchy.
 
 Because core blocks can't be subdivided, they often have **creative freedom** in how their values are expressed - especially when the block represents complex, open-ended concepts like actions or expressions.
 
-## Formula Types
+## 3. Formula Types
 
 Formulas can be created for any AI modality. Below are representative examples:
 
-> See `prompt-generation-guide-v5.md` for comprehensive coverage of all AI generation modalities (text-to-video, image-to-video, video-to-video, etc.)
+> See `prompt-generation-guide-v6.md` for comprehensive coverage of all AI generation modalities (text-to-video, image-to-video, video-to-video, etc.)
 
 ### 1. Text Output Formulas
 
@@ -112,7 +119,7 @@ Formulas can be created for any AI modality. Below are representative examples:
 
 **Note:** Different platforms (RunwayML, Kling, Veo, etc.) may have unique requirements, so formulas should be adapted per platform when needed.
 
-## Formula Construction Process
+## 4. Formula Construction Process
 
 1. **Define Goal:** Determine the intended outcome (e.g., "character portrait") and generation method (e.g., text-to-image)
 2. **Select Relevant Blocks:** Choose blocks that serve the specific goal. Use only what's needed - you're not required to use every available block from a category or hierarchy.
@@ -132,7 +139,7 @@ Formulas can be created for any AI modality. Below are representative examples:
      - ✅ [lighting.quality]=soft + [lighting.type]=natural → [lighting] = "soft natural lighting"
 6. **Test & Refine:** Adjust blocks based on output quality
 
-## Detail Levels
+## 5. Detail Levels
 
 **The same formula can produce prompts with different detail levels.**
 
@@ -173,7 +180,7 @@ the peacock's rich colors.
 
 The goal is finding the balance: enough detail to guide the model, not so much that you exceed its adherence capabilities.
 
-## Block Library
+## 6. Block Library
 
 This framework relies on a **Block Library** - a structured reference of available blocks organized by category and use case.
 
@@ -213,7 +220,7 @@ Scene (Block Category)
 
 *Note: The example values shown above illustrate what an LLM might generate. In `prompt-blocks.json`, values remain empty.*
 
-## Output Formats
+## 7. Output Formats
 
 When documenting prompts using formulas and blocks, there are different ways to display the information depending on whether you're showing a template structure or an actual generated output.
 
@@ -400,7 +407,7 @@ Shows hierarchical block structure in machine-readable JSON format.
 - Machine-readable format ready for programmatic use
 - Easy to copy-paste for LLM processing
 
-## LLM Usage Rules
+## 8. LLM Usage Rules
 
 These rules guide AI systems (like LLMs) when using this framework to generate prompts.
 
@@ -442,7 +449,7 @@ When generating prompts:
 
 4. **Library gaps:** When using a block library, if needed blocks don't exist in the library, generate appropriate blocks as needed. Flag new blocks inline with (NEW) notation so they can be evaluated for library inclusion.
 
-## Example Formula
+## 9. Example Formula
 
 **Character Appearance (Text-to-Image):**
 
@@ -464,7 +471,7 @@ When generating prompts:
 
 "Portrait photograph of a young adult female with oval face and high cheekbones, striking green eyes, long wavy auburn hair, minimalist makeup and natural look, neutral studio backdrop, medium format camera, soft diffused lighting, photorealistic, high resolution"
 
-## Key Advantages
+## 10. Key Advantages
 
 - **Consistency:** Same blocks produce similar quality across generations
 - **Efficiency:** Reusable components reduce prompt creation time
@@ -473,7 +480,7 @@ When generating prompts:
 - **Model Agnostic:** Works with any text-based AI system
 - **Optimizable:** Block order can be adjusted for different model priorities
 
-## Framework Applications
+## 11. Framework Applications
 
 This system can be adapted for any prompt-driven AI task:
 

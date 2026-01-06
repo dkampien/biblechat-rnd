@@ -56,11 +56,10 @@ text-to-image → image-to-video
 
 **Note:** For prompt details and formulas, see Prompt Generation Reference
 
----
-
---------
+----
 
 
+CHARACTER CONSISTENCY "TECHNIQUE"
 1. Craft character persona (LLM)
 2. Craft character main reference / appearence
 3. Generate character reference collection / reference library
@@ -80,17 +79,6 @@ Prompts needed
 
 ----
 
-
-- Remove sections 7 with examples. Add back details in section 4?
-- Workflow techniques conflict? Need to define techniques better?
-- In the 5.5 what are the workflow components? vs our conclusion?
-- In 5.5 we have some stuff I don't know where they fit, or what to do with them. They seem important but help me place them and rephrase them accordingly if needede. 
-    - Workflow hierarchy line 202
-    - System hierarchy on line 670 and also key relationships that seem to be similar to our workflow components
-    - Applying this framework line 712. Single generation vs multi step workflows. Haven't we talked about these earlier? I know intent is very importat but its about workflows or prompting?
-
------
-
 Techniques
 - Relighting
 - Intpainting
@@ -105,67 +93,12 @@ Techniques
 
 ----
 
-possible next steps
-1. Continue reviewing workflow guide
-    - workflow planning process
-2. Review prompt generation guide v6
-3. Create the glue doc - how the 3 guides work togehter
-4. Deal with the quick start guide. Delete.
 
+NEXT
+- Revoew the quick start guide and delete
+- Review workflow guide
+    - Re-write workflow planning process
+- Review prompt gen guide v6
+    - Review modalities prompting
+- Review the system prompt for custom gpt (the glue doc)
 
-
-
- **Workflow = Chaining modalities to achieve a final output**
-
-Think of workflows like ComfyUI node graphs - each step uses a specific modality, feeding outputs to the next step.
-
-Workflows are built by combining reusable techniques to achieve larger outcomes.
-
-### Workflow Components
-
-**Workflow**
-- The complete pipeline from start to final output (e.g., "30-second character video")
-- Can be simple (one step) or complex (multiple techniques)
-- Workflows chain techniques together: each technique's output → next technique's input
-
-
-----
-
-
-  1. Understanding AI Models
-  2. Modalities: Model Capabilities
-  3. AI Generation Workflows
-  4. Prompts & Modalities
-  5. Formulas & Blocks
-  6. Detail Levels
-  7. Prompting Best Practices
-  8. Complete Workflow Examples
-  - System Hierarchy
-  - Applying This Framework
-
-
-  ⏺ Workflow Architecture Guide
-
-  1. Introduction
-  2. Understanding Modalities (Capability Reference)
-  3. Single vs Multi-Step Workflows
-  4. Workflow Planning Process
-  5. Continuity Techniques
-  6. Multi-Scene Content Planning
-  7. Common Workflow Patterns
-  8. Complete Workflow Examples
-  9. Next Steps
-
-  ---
-  Prompt Generation Reference
-
-  1. Introduction
-  2. Understanding AI Models
-  3. How Modalities Require Different Prompts
-  4. The Prompting Approach (Focus, Phrasing, Formula)
-  5. Detail Levels
-  6. Best Practices
-  7. Applying This Framework
-  8. Modality-Specific Examples
-  9. Next Steps
-  
