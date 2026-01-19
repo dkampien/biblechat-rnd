@@ -2,8 +2,10 @@
 _projects/_adloops
 _projects/_bookchat
 _projects/_onb-builder
+_projects/_colab
 
-
+# AGENT Folders
+_memory
 
 # Dependencies
 node_modules/
@@ -46,3 +48,7 @@ logs/
 tmp/
 temp/
 *.tmp
+
+# MeiliSearch data
+data.ms/
+_projects/cloops
