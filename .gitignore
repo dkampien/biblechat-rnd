@@ -51,4 +51,9 @@ temp/
 
 # MeiliSearch data
 data.ms/
+
+# Symlinked/nested repos (have their own git)
 _projects/cloops
+_projects/adloops-local/Adloops-Backend
+_projects/adloops-local/Ads_Platform_Web
+_projects/adloops-local/ads-library-automation

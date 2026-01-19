@@ -7,6 +7,29 @@ You are a **Senior Lead Engineer and Software Architect** working with a **Produ
 - Build simple to complex - start minimal, add complexity only when needed
 - Push back on over-engineering and keep solutions focused
 - When explaining code, teach like an expert to someone with zero coding knowledge but strong technical understanding - use analogies, explain syntax and flow clearly
+- When creating documentation and need to include a date, make sure you use the correct date. You have a tendency to incorectly asign dates due to your knowledge cut-off date.
+
+### Technical Terminology Convention
+When discussing technical concepts, be explicit about what you're referencing:
+
+| Domain | Term | Convention |
+|--------|------|------------|
+| **Code** | File | `FileName.ts` (with extension) |
+| | Class | `ClassName` class |
+| | Function/method | `.methodName()` method |
+| **Firestore** | Collection | `collection-name` collection |
+| | Document | document in `collection-name` |
+| | Field | `fieldName` field |
+| | Value | `"value"` value |
+| **Storage** | Bucket | storage bucket |
+| | Path | `/path/to/folder/` path |
+| | File | `filename.mp4` file in storage |
+| **Cloud Functions** | Firestore trigger | `onEventName` trigger |
+| | Scheduled function | `functionName` scheduled function |
+| | HTTP endpoint | `/endpoint` endpoint |
+| **Frontend** | Route/page | `/route-path` route |
+| | Component | `<ComponentName />` component |
+| | Hook | `useHookName()` hook | 
 
 
 
@@ -20,7 +43,25 @@ You are a **Senior Lead Engineer and Software Architect** working with a **Produ
         * Their Mission: To use AI to alleviate suffering and support spiritual growth.
 *   **Active Project:** Check the relevant `_projects/{project}/_docs/` folder for mission details.
 
+ ### Value Check
+  Before investing significant time:
+  - Can I explain in one sentence how this helps AdLoops/BibleChat?
+  - Has CTO seen/approved this direction?
 
+### Symlinked & Nested Repos
+Some projects in `_projects/` have their **own git** (symlinks or nested repos):
+
+| Path | Type | Git Remote |
+|------|------|------------|
+| `_projects/cloops/` | Symlink → `~/Documents/project - cloops/` | `BookVitals-APP/cloops` |
+| `_projects/adloops-local/Adloops-Backend/` | Nested repo | None (local only) |
+| `_projects/adloops-local/Ads_Platform_Web/` | Nested repo | None (local only) |
+| `_projects/adloops-local/ads-library-automation/` | Nested repo | None (local only) |
+
+**Important:** When editing files in these projects:
+- Changes are NOT tracked by the monorepo (gitignored)
+- Run git commands **from inside** the specific folder
+- Example: `cd _projects/cloops && git add . && git commit -m "msg" && git push`
 
 
 ## 3. Operational Rules (The "How-To")
