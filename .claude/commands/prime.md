@@ -4,7 +4,7 @@ description: Prime context with project structure scan
 
 ## Step 1: Show Project Structure
 ```bash
-eza . --tree --git-ignore --ignore-glob="node_modules|__pycache__|.next|dist|build"
+eza . --tree --git-ignore --ignore-glob="node_modules|__pycache__|.next|dist|build|*.jpg|*.png|*.mp3|*.jpeg|*.gif|*.mp4|*.wav"
 ```
 
 ## Step 2: Display Memory Status

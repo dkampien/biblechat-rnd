@@ -5,7 +5,7 @@ _projects/_onb-builder
 _projects/_colab
 
 # AGENT Folders
-_memory
+# _memory - now tracked (cloops detached)
 
 # Dependencies
 node_modules/
@@ -57,3 +57,10 @@ _projects/cloops
 _projects/adloops-local/Adloops-Backend
 _projects/adloops-local/Ads_Platform_Web
 _projects/adloops-local/ads-library-automation
+
+# ML PoC generated output and data
+_projects/ml-poc/output/
+_projects/ml-poc/data/
+
+# adloops-local logs
+_projects/adloops-local/logs/
