@@ -64,3 +64,6 @@ _projects/ml-poc/data/
 
 # adloops-local logs
 _projects/adloops-local/logs/
+
+# Specstory (auto-generated)
+.specstory/

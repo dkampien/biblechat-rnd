@@ -74,4 +74,3 @@ Notes
 - Why does it include comic data in the request body?
 
 
-trebuia sa init fire folosind firebase functions through sdk is in folderu functions. in ads library automaiton cum e acolon 

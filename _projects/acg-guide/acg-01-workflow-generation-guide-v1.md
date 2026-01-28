@@ -189,74 +189,103 @@ Result: 30-second video, consistent character
 **Reference (untested):**
 - Relighting, Inpainting, Lipsync, Upscaling, Product Placement, LoRA training
 
-#### Frame Chaining for Continuity
+#### Frame Chaining
 
-**Technique:** Use the last frame of one scene as the first frame of the next
+**Purpose:** Extend a single continuous scene beyond model output duration limits (typically 5-10s).
+
+**Why it's needed:**
+- i2v/t2v models output fixed-duration clips (5s, 8s, 10s)
+- Without chaining, every scene is locked to model output length → robotic pacing
+- Frame chaining allows variable scene lengths (10s, 20s, 30s) based on narrative needs
 
 **How it works:**
-1. Generate Scene 1 video (t2v or i2v)
-2. Extract last frame from Scene 1
-3. Use extracted frame as input for Scene 2 (i2v)
-4. Repeat for subsequent scenes
+1. Generate initial video clip (t2v or i2v)
+2. Extract last frame
+3. Use extracted frame as input for next i2v call
+4. Concatenate clips to form extended scene
 
-**Benefits:**
-- Visual continuity between scenes
-- Maintains lighting, setting, character appearance
-- Extends beyond single generation duration limits
-- Smoother transitions
-
-**Example:**
 ```
-Scene 1: text-to-video → 8-second video
-   ↓ (extract last frame)
-Scene 2: image-to-video (with frame) → 8-second video
-   ↓ (extract last frame)
-Scene 3: image-to-video (with frame) → 8-second video
+[IMAGE] → i2v → [CLIP 1: 10s] → last frame → i2v → [CLIP 2: 10s] → last frame → i2v → [CLIP 3: 10s]
 
-Result: 24 seconds with visual continuity
+Concatenate: CLIP 1 + CLIP 2 + CLIP 3 = 30s continuous scene
 ```
 
-#### Multi-Scene Content & Storytelling
+**Scene duration is quantized:** Built from fixed blocks (10s, 20s, 30s)—not arbitrary lengths.
+
+**Known limitations:**
+
+| Issue | Description |
+|-------|-------------|
+| **Seam** | Motion discontinuity at join points (10s, 20s, etc.). The model generates fresh motion from a static frame—it doesn't know the velocity/direction that led there. Motion "restarts" at each chain. |
+| **Drift** | Cumulative visual artifacts. Each chain introduces small changes (colors shift, details morph). By clip 3-4, noticeable divergence from original. |
+
+**Practical limits:** 2-3 chains max before seam/drift become distracting. Best for extending 10s → 20-30s, not for very long continuous scenes (60s+).
+
+**Prompt strategies (theoretical, needs validation):**
+- Prefer ambient/looping motion (ripples, pulsing) over discrete actions with clear endpoints
+- Camera motion may chain better than subject motion
+- Continuation language ("motion continues...", "sustained drift...") may help
+
+**When to use:**
+- Scene needs 20-30s continuous action
+- Variable pacing required
+
+**When to avoid:**
+- Single clip is sufficient
+- Cuts between shots are acceptable
+- Need more than ~30s continuous
+
+#### Multi-Scene Content
 
 **Planning scenes with model constraints:**
 
-**Duration Limits:**
 - Most models cap at 5-10 seconds per generation
 - Break longer content into scenes
-- Each scene = one generation
-- Use frame chaining or editing to combine
+- Each scene = one generation (or multiple if using frame chaining)
 
-**Extending a Scene:**
-- Option 1: Extract last frame → generate continuation (image-to-video)
-- Option 2: Use first+last frame approach (frames-to-video)
-- Option 3: Generate multiple takes and edit best parts
+**Scene transitions - three options:**
 
-**Scene Structure:**
+| Option | When to use | Trade-off |
+|--------|-------------|-----------|
+| **Cut** | Different angle/setting acceptable | Clean break, no continuity |
+| **Frame chain** | Visual continuity needed (same character, setting) | Seam/drift issues (see Frame Chaining) |
+| **Edit/dissolve** | Hide transition, stylistic choice | Post-processing required |
+
+**Frame chaining use cases:**
+
+| Use Case | Description | Example |
+|----------|-------------|---------|
+| **Scene Extension** | Same action continues beyond model limit | Walking → keeps walking (10s → 20s) |
+| **Scene Transition** | Action changes, visual continuity maintained | Walking → stops → enters shop |
+
+Scene transition is more forgiving—motion change at boundaries is expected, so seams are less jarring.
+
+**Approaches for extending content:**
+- **Frame chaining:** Last frame → i2v continuation (see Frame Chaining section)
+- **First+last frame (i2v_frames):** Define start and end state, model interpolates between
+
+**Scene structure:**
 - Keep scenes focused (one main action/moment)
-- Plan transitions (cut, frame chain, or edit)
+- Plan transitions in advance
 - Consider pacing (fast cuts vs slow progression)
 - Match emotional arc to story goal
 
-**Example Scene Breakdown:**
+**Example scene breakdown:**
 ```
 30-second video → 6 scenes × 5 seconds
 
-Scene planning:
 1. Establish setting (wide shot)
 2. Introduce subject (medium shot)
 3. Main action begins (close-up)
 4. Action continues (different angle)
 5. Resolution (pull back)
 6. Closing (final moment)
-
-Technique: Frame chaining between scenes 2-5 for continuity
 ```
 
-**Key Considerations:**
+**Key considerations:**
 - Plan before generating (saves cost)
 - Account for model duration limits
-- Design transitions in advance
-- Test frame chaining early (visual continuity check)
+- Test frame chaining early if using it
 
 ---
 
