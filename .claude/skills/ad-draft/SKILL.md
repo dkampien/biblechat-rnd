@@ -43,8 +43,8 @@ The product truth for features is the **Mechanisms table on the board**: a featu
 ## The shape of an ad (the vocabulary you author with)
 
 - **Slot**: a named setting the VEHICLE declares; the ad fills it by writing a value (character, treatment, voice, music).
-- **Shelf**: the reusable asset library (`productions/library/`); a beat references a shelf file with its `asset` key instead of generating.
-- **Production sheet**: where landing files the ad's work order: one `planned` row per file the ad needs (stills, videos, vo, music); `estimate` prices them. A referenced shelf file lands ready instead.
+- **Reference**: a beat can play an existing registered file instead of generating: its `asset` key names an Assets row with real bytes behind it (an outside import via `insert-asset`, or another production's file).
+- **Production sheet**: where landing files the ad's work order: one `planned` row per file the ad needs (stills, videos, vo, music); `estimate` prices them. A referenced file lands ready instead.
 
 In one line: the vehicle declares the slots, the framework declares the roles, the beats say the words and what we see, and landing writes the work order.
 
@@ -127,10 +127,10 @@ Write the copy per the playbook: the raw pain in the hook, symptom to solution o
 - `visual`: the stage direction: what we see during this line, prose, no model syntax.
 - `delivery`, optional: the per-beat break from the vehicle's default. `narration` = a narrator speaks the line · `dialogue` = the person in the clip says it (`vo` holds the transcript) · `text` = the line burns as on-screen captions. Empty = the vehicle's default.
 - `prompts`: the model text compiled FROM the visual: `still` (the image prompt, per the prompting guide, with `{LOCK}`/`{STYLE}` placeholders) and `motion` (motion only). You write them; landing files them onto the ad's planned sheet rows (the sheet is their only home; beats stay pure script).
-- `asset`, optional: plug a shelf file instead of generating (below).
+- `asset`, optional: reference an existing file instead of generating (below).
 - **Never author a duration.** Production sizes everything from the words' home: the measured VO when narration, the reading time when text, the file itself when dialogue.
 
-**Referenced footage:** any beat can plug a shelf file: `npm run ads -- shop` browses the shelf, and the beat's `"asset": "<name>"` key links it. A reference costs $0 at production (a referenced still gets its motion generated), and later edits never invalidate it.
+**Referenced footage:** any beat can play an existing registered file (`insert-asset` registers an outside file as a row); the beat's `"asset": "<row name>"` key links it. A reference costs $0 at production (a referenced still gets its motion generated), and later edits never invalidate it.
 
 ### 8. THE GATE: validate, print, stop
 
@@ -169,7 +169,7 @@ Registry writes land one by one; `create-ad` is the atomic call. If `create-ad` 
     {"role": "<a framework role>", "vo": "<the line>", "visual": "<the stage direction>",
      "prompts": {"still": "<prompt with {LOCK}/{STYLE}>", "motion": "<motion only>"}},
     {"role": "<the cta role>", "vo": "<the line>", "visual": "<...>",
-     "delivery": "<optional per-beat break>", "asset": "<optional shelf file>",
+     "delivery": "<optional per-beat break>", "asset": "<optional existing-file row>",
      "prompts": {"still": "<...>", "motion": "<...>"}}
   ]
 }

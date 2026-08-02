@@ -1,6 +1,6 @@
 ---
 name: ad-iterate
-description: Phase 5 (ITERATE) of the BibleChat ad pipeline. Change an EXISTING ad without redrafting it: co-edit an unproduced draft in place (the operator edits board cells, you rewrite through the verbs), or derive copy-on-write variants: a new hook, a different voice or music, a restyled look, one beat's visual, a shelf-file swap. A concept change (new angle, persona, pain, or vehicle on the same story) is triaged here too: the script work runs draft-style, then lands here as a child of the parent. Zero spend; realization routes through ad-produce. Use when an ad already exists (ours by slug, or an outside mp4 decomposed by ad-watch) and the user wants edits, another version, a variant, a batch of hooks, or to act on metrics. Triggers: "iterate on", "make a variant", "change the hook/voice/music/angle", "swap the look", "another cut of <slug>", "batch of hooks", "I edited the board". Not for: inventing a new ad from an idea (ad-draft) or rendering (ad-produce).
+description: Phase 5 (ITERATE) of the BibleChat ad pipeline. Change an EXISTING ad without redrafting it: co-edit an unproduced draft in place (the operator edits board cells, you rewrite through the verbs), or derive copy-on-write variants: a new hook, a different voice or music, a restyled look, one beat's visual, a referenced-file swap. A concept change (new angle, persona, pain, or vehicle on the same story) is triaged here too: the script work runs draft-style, then lands here as a child of the parent. Zero spend; realization routes through ad-produce. Use when an ad already exists (ours by slug, or an outside mp4 decomposed by ad-watch) and the user wants edits, another version, a variant, a batch of hooks, or to act on metrics. Triggers: "iterate on", "make a variant", "change the hook/voice/music/angle", "swap the look", "another cut of <slug>", "batch of hooks", "I edited the board". Not for: inventing a new ad from an idea (ad-draft) or rendering (ad-produce).
 argument-hint: <an existing ad slug, or an outside mp4 path/URL> [what to change]
 allowed-tools: Read, Write, Edit, Bash
 ---
@@ -25,10 +25,10 @@ The Airtable base is a live board the operator watches and edits by hand. When t
 
 Both kinds of child land through one verb (`declare-variant`); the database derives the kind from the changeSet:
 
-- **Iteration**: the concept untouched; execution changes (a hook line, voice, music, one beat's visual, a shelf-file swap). This skill handles it end to end.
+- **Iteration**: the concept untouched; execution changes (a hook line, voice, music, one beat's visual, a referenced-file swap). This skill handles it end to end.
 - **Variation**: a concept pick changes. A new pick rewrites the script through its new lens, and script work is draft's craft: run the script conversation draft-style (ad-draft's steps and its approval gate), then land it here as a child of the parent.
 
-**The structural line (mechanical, from the verb itself):** a variant keeps the parent's beat structure; the verb patches beats one-for-one and cannot add, remove, or re-role them. Any change that breaks the structure (a different framework, a longer band that adds beats, restructuring the arc) is a fresh `ad-draft`, not a variant: when an ask crosses that line, say so in plain words and propose the fresh draft yourself. Winning footage still carries over: `promote-asset` puts it on the shelf, and the new draft references it at $0. **The seam test decides the hook edge:** a new opener that flows into the existing body is a hook iteration; one that forces the body to be rewritten is a new draft.
+**The structural line (mechanical, from the verb itself):** a variant keeps the parent's beat structure; the verb patches beats one-for-one and cannot add, remove, or re-role them. Any change that breaks the structure (a different framework, a longer band that adds beats, restructuring the arc) is a fresh `ad-draft`, not a variant: when an ask crosses that line, say so in plain words and propose the fresh draft yourself. Winning footage still carries over: the new draft references its Assets row (the beat's `asset` key) at $0. **The seam test decides the hook edge:** a new opener that flows into the existing body is a hook iteration; one that forces the body to be rewritten is a new draft.
 
 ## Talk to the operator plainly
 
@@ -51,14 +51,14 @@ The cost is mechanical, by what kind of cell changes (this is the iteration side
 | music | on-top, whole-ad | the music bed only |
 | a beat's `vo` line | copy, per-beat | that beat's VO + its video |
 | a beat's `visual` | in-the-pixels, per-beat | that beat's still + video |
-| **swap a shelf reference** | reference, per-beat | **nothing; a relink is $0** |
+| **swap a file reference** | reference, per-beat | **nothing; a relink is $0** |
 | character / treatment / anchor | in-the-pixels, whole-ad | every GENERATED still + video (the cascade) |
 
 The gender rule survives every change: **voice and character must stay gender-matched**.
 
 **A defect is a reroll, never a variant.** When an asset came out wrong (a glitched video, a mangled hand, a mispronounced line) and nothing about the ad's meaning changes, `declare-variant` will refuse it (nothing differs, and the guard calls a no-diff declaration a lie). Route to `npm run ads -- reroll '{"ad":"<slug>","kind":"still|video|vo|music","order":<n>}'` (a bad FINAL cut is ad-produce's redo, not an asset defect): the bad take archives (the file renamed `.takeN`, its row and spend stay as history), a fresh planned row appears, everything built from it re-plans too, and re-producing regenerates just that. Same ad, same slug, no child.
 
-**The reference exception (load-bearing):** shelf REFERENCES are never touched by any cascade: re-planning means "regenerate", and references were never generated. They change only by explicit re-reference. So on a reference-mix ad, "try a different hook clip" or "a different bed" is a $0 swap: in place via `use-asset` (idea status), or on a child via the beat edit's `"asset": "<shelf name>"` key (it folds into the `copy` changeSet). `shop` lists what's on the shelf.
+**The reference exception (load-bearing):** file REFERENCES are never touched by any cascade: re-planning means "regenerate", and references were never generated. They change only by explicit re-reference. So on a reference-mix ad, "try a different hook clip" or "a different bed" is a $0 swap: in place via `use-asset` (idea status), or on a child via the beat edit's `"asset": "<row name>"` key (it folds into the `copy` changeSet). A reference names any Assets row with a real file behind it.
 
 ### 3a. Edit in place (status `idea` only)
 

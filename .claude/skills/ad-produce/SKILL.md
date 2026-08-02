@@ -42,13 +42,13 @@ When an asset exists but is bad, pick the fix by what went wrong:
 
 Never hand-delete asset rows, links, or files.
 
-**Use a shelf asset on a beat:** `use-asset` links a reusable library asset (shop with `npm run ads -- shop`) into a beat's still or video position, or the ad's music, before generating; the engine then skips it and the estimate prices it $0. Idea-status only:
+**Reference an existing file on a beat:** `use-asset` links any Assets row with a real file into a beat's still or video position, or the ad's music, before generating; the engine then skips it and the estimate prices it $0. Idea-status only:
 
 ```bash
 npm run ads -- use-asset '{"ad":"<slug>","order":<n>,"slot":"still|video|music","asset":"<name>"}'
 ```
 
-(For NEW outside files, `insert-asset` registers them on the shelf first; shelf reuse then goes through use-asset so the guards check type + reusability.)
+(For NEW outside files, `insert-asset` registers the file as a row first; `use-asset` then references it, type-checked by the guards.)
 
 ## 3: Verify the cut
 
