@@ -1,17 +1,19 @@
 ---
 name: ad-produce
-description: Phase 2 (GENERATE) of the BibleChat ad pipeline. Turn an authored ad (a Renders row on the Airtable board, status idea) into a finished 9:16 mp4 via the one-verb generate engine. Spend is GATED behind a dry-run estimate. Use whenever an ad's script is approved and someone wants the actual video made, phrased as render, produce, generate, realize, build, or "make the video for <slug>". Trigger phrases: "produce the ad", "produce <slug>", "render this ad", "generate the video", "ad-produce". Not for: writing the script (ad-draft) or changing an existing ad (ad-iterate).
+description: Phase 2 (GENERATE) of the BibleChat ad pipeline. Turn an authored ad (a Renders row on the Airtable board, status idea) into a finished 9:16 mp4 via the one-verb generate engine. Spend is GATED behind a dry-run estimate. Use whenever an ad's script is approved and someone wants the actual video made, phrased as render, produce, generate, realize, build, or "make the video for <slug>". Trigger phrases: "produce the ad", "produce <slug>", "render this ad", "generate the video", "ad-produce". Not for: authoring or changing an ad (ad-draft owns both).
 argument-hint: <ad slug>
 allowed-tools: Bash, Read, Edit
 ---
 
 # ad-produce: PRODUCE an ad → mp4 (💲 gated)
 
-Make an approved ad real. The engine reads the ad from the Airtable board, and **the planned rows are the work order**: every `planned` row on the ad's sheet gets generated, everything `current` is reused. A fresh ad generates everything; a variant only what its changes re-planned. Same command either way.
+Make an approved ad real. The engine reads the ad from the Airtable board, and **the planned rows are the work order**: every `planned` row on the ad's sheet gets generated, everything `current` is reused. A fresh ad generates everything; a child ad only the positions it didn't inherit. Same command either way.
 
 **User input (ad slug):** $ARGUMENTS
 
 Run from `_projects/cloops-ads/`. Nothing to start; the board is remote and every finished file is recorded on it the moment it lands.
+
+**Discovery:** `npm run ads -- capabilities` prints the verb map; `npm run ads -- describe <verb>` prints one verb's full contract (inputs, errors with recovery, an example). Pull the contract before composing any payload; never guess shapes from memory.
 
 ## 1: Dry-run, the spend gate
 
@@ -35,20 +37,14 @@ Knobs, when needed:
 
 Generation failures (a flagged still, a model that needs swapping) have their moves in `production.md`'s failure modes; model defaults live in `gen/models.json`, never here.
 
-When an asset exists but is bad, pick the fix by what went wrong:
-- **The prompt/line was wrong** (the asset faithfully rendered a bad instruction): fix the instruction. On an unproduced draft, `npm run ads -- update-beat` with the fix (it re-plans the stale rows; the next generate remakes just those); on a produced ad that's a meaning change, so `declare-variant`.
-- **The output is defective** (glitched video, mangled hand, mispronounced line; the instruction was fine): `npm run ads -- reroll '{"ad":"<slug>","kind":"still|video|vo|music","order":<n>}'`. Same ad, no variant: the bad take archives (the file renamed `.takeN`, its row and spend stay as history), a fresh planned row appears, and everything built from it re-plans too (the derived video, the final); status drops to idea, and the next generate regenerates just that. Works on idea and produced; refused on posted.
-- **Only the cut is wrong** (assets all good, the assembly itself needs redoing): `npm run ads -- reroll '{"ad":"<slug>","kind":"final"}'` (no order). Archives just the final as a take and drops status to idea; the next generate re-assembles for $0, nothing regenerates. Render style (caption position, music volume, fades) is code, not board content: it lives in the vehicle's composition module (`assemble/compositions/<name>/editor.ts`), so a style change is a code edit followed by this reroll or `--redo-final`.
+When an asset exists but is bad, pick the fix by what went wrong. **Fixing is two moves now, and the second is yours: the verbs touch one position each, and YOU decide what else the fix invalidates.** The net for that judgment is `npm run ads -- lint <slug>`: its staleness section compares the script against what every row was made from; run it after your fixes, before re-generating.
+- **The prompt/line was wrong** (the asset faithfully rendered a bad instruction): fix the instruction. A script fix (the line, the stage direction) is `update-beat`, which writes ONLY the script; follow it with `replan` on each position the fix invalidates. A prompt-only fix skips update-beat entirely: `replan` carries the new prompt. On a produced ad an instruction fix is a meaning change: a child ad via create-ad with parent (route through `/ad-draft <slug>`).
+- **The output is defective** (glitched video, mangled hand, mispronounced line; the instruction was fine): `reroll` it. Same ad, no child: the bad take archives (the file renamed `.takeN`, its row and spend stay as history) and a fresh planned row takes its position. That ONE position only: then judge the fallout yourself. A video animated from a rerolled still, or sized to a rerolled vo, usually carries the defect: `replan` it. A final containing the defect is now a lie: `reroll final` it. Works on idea and produced; refused on posted.
+- **Only the cut is wrong** (assets all good, the assembly itself needs redoing): `reroll` with kind `final` (no order). Archives just the final as a take and drops status to idea; the next generate re-assembles for $0, nothing regenerates. Render style (caption position, music volume, fades) is code, not board content: it lives in the vehicle's composition module (`assemble/compositions/<name>/editor.ts`), so a style change is a code edit followed by this reroll or `--redo-final`.
 
 Never hand-delete asset rows, links, or files.
 
-**Reference an existing file on a beat:** `use-asset` links any Assets row with a real file into a beat's still or video position, or the ad's music, before generating; the engine then skips it and the estimate prices it $0. Idea-status only:
-
-```bash
-npm run ads -- use-asset '{"ad":"<slug>","order":<n>,"slot":"still|video|music","asset":"<name>"}'
-```
-
-(For NEW outside files, `insert-asset` registers the file as a row first; `use-asset` then references it, type-checked by the guards.)
+**Reference an existing file on a beat:** `use-asset` links any Assets row with a real file into a beat's still or video position, or the ad's music, before generating; the engine then skips it and the estimate prices it $0. Idea-status only. Repointing a still leaves the video generated from the OLD still untouched: judge whether it needs a `replan`. (For NEW outside files, `insert-asset` registers the file as a row first; `use-asset` then references it, type-checked by the guards.)
 
 ## 3: Verify the cut
 
@@ -64,12 +60,12 @@ The ad's status is now `produced` (the engine set it when the final landed); `np
 
 ## 4: STOP for approval (the cut gate)
 
-Hand the mp4 to the human. **Do not auto-proceed.** Posting is a separate human-triggered step (when Meta wiring exists, it ends with `npm run ads -- mark-posted '{"slug":"<slug>","metaAdId":"..."}'`, which refuses without the Meta ad id). Route a bad cut by what's wrong: a defective asset (the concept is fine, one output glitched) = `reroll` + re-generate, same ad; a weak cell (the concept needs a different hook/voice/visual) = `/ad-iterate <slug>`, a variant.
+Hand the mp4 to the human. **Do not auto-proceed.** Posting is a separate human-triggered step (when Meta wiring exists, it ends with `mark-posted`, which refuses without the Meta ad id captured at posting). Route a bad cut by what's wrong: a defective asset (the concept is fine, one output glitched) = `reroll` + re-generate, same ad; a weak cell (the concept needs a different hook/voice/visual) = `/ad-draft <slug>`, a child.
 
 ---
 
 **Gotchas:**
-- **Delivery decides each beat's clock.** A `narration` beat is VO-first (video sized to measured VO + breath). A `text` beat has no VO: footage leads, the line burns as captions at reading-time pacing. A `dialogue` beat plays the file's own audio: the words are IN the file (a referenced file's transcription is cached beside it; a dialogue beat with only a still generates a talking clip speaking its line). Editing a narration beat's `vo` still re-times its video; editing a text beat's line just re-paces captions.
+- **Delivery decides each beat's clock.** A `narration` beat is VO-first (video sized to measured VO + breath). A `text` beat has no VO: footage leads, the line burns as captions at reading-time pacing. A `dialogue` beat plays the file's own audio: the words are IN the file (a referenced file's transcription is cached beside it; a dialogue beat with only a still generates a talking clip speaking its line). The judgment fact behind it: a narration video is SIZED to its measured vo, so a vo change usually means replanning both; a text beat's line change just re-paces captions, footage survives.
 - **The Never list is law at compose:** the voice is never cut or sped, the video never frozen/slowed/looped. A mismatch (footage shorter than its voice, dialogue on a silent file) REFUSES with the fix named; fix the draft, don't fight the engine.
-- **Never bypass the engine to "fix" state.** If the board and disk disagree, the board is the truth; re-run generate. `npm run ads -- lint <slug>` sweeps for structural damage after any hand edits.
+- **Never bypass the engine to "fix" state.** If the board and disk disagree, the board is the truth; re-run generate. `npm run ads -- lint <slug>` sweeps integrity and staleness; run it before any generate that follows edits or fixes.
 - Engine depth (stages, refusals, failure modes, money): `_docs/core-docs/production.md`; prompt fixes: `_docs/skill-reference/prompting-guide-2026.md`.
