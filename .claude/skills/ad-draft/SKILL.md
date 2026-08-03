@@ -68,7 +68,8 @@ npm run ads -- get-ad <slug> --view brief
 | the ask is | that means | route | do NOT |
 |---|---|---|---|
 | a glitched/defective file, instruction was fine | not an authoring change | `reroll` via **ad-produce** | do not land a child for a defect |
-| a different framework, a reordered or re-roled arc, beats inserted mid-script | a structure break | fresh BLANK PAGE draft; carry winning footage as references (`asset` keys) | do not force it into a child; inherit maps by beat order and a restructure makes that mapping a lie. APPENDING beats at the end is NOT a break: existing orders hold, so it lands as a child (same beats + the new ones, inherit every existing position) |
+| a different framework, a reordered or re-roled arc, beats inserted mid-script | a structure break | fresh BLANK PAGE draft; carry winning footage as references (`asset` keys) | do not force it into a child; inherit maps by beat order and a restructure makes that mapping a lie |
+| new beats after the existing arc (extra CTA takes, a longer ending) | an extension | a CHILD: the parent's beats plus the new ones, inherit every existing position (orders hold, the mapping stays honest) | do not regenerate what the append leaves untouched |
 | a new persona/pain/mechanism/angle/vehicle/format/length | a variation | run the picks flow through the new lens, land as a CHILD of the base | do not skip the gate; script work is script work |
 | a hook line, voice, music, one beat's visual, a file swap, a cast member's look | an iteration | judge cost (change economics), then IN PLACE (status `idea` only) or as a CHILD (any status) | do not edit in place on a produced/posted base; do not replan anything before the economics judgment |
 
