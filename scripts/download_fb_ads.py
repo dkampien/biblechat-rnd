@@ -5,7 +5,7 @@ import pandas as pd
 import requests
 
 CSV_PATH = "/Users/dennisk/Downloads/facebook_ads_1781681260992.csv"
-OUT_DIR = "/Users/dennisk/Documents/project - bib content gen/_ads-initiative"
+OUT_DIR = "/Users/dennisk/Hub/focus/client - biblechat/project - bib content gen/_ads-initiative"
 VIDEO_COL = "Відео URL"   # column 15: "Video URL"
 ID_COL = "ID"
 N = 10

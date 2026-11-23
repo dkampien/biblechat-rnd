@@ -3,7 +3,7 @@ import os
 import pandas as pd
 
 CSV_PATH = "/Users/dennisk/Downloads/facebook_ads_1781681260992.csv"
-OUT_DIR = "/Users/dennisk/Documents/project - bib content gen/_ads-initiative"
+OUT_DIR = "/Users/dennisk/Hub/focus/client - biblechat/project - bib content gen/_ads-initiative"
 VIDEO_COL = "Відео URL"
 N = 10
 
