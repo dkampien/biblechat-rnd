@@ -1,12 +1,12 @@
 ---
-description: BibleChat LTV analysis cycle — defines question, loads schema, drafts query, validates, interprets with bias check, confirms with human before logging
+description: Data analysis cycle — drafts question specification, loads schema, drafts query, validates, interprets with bias check, assigns confidence, confirms with human before logging
 argument-hint: <analytical question in plain language>
 allowed-tools: Bash, Read, Edit, Glob, Grep
 ---
 
-# LTV Analysis Cycle
+# Data Analysis Cycle
 
-You are running one cycle of the BibleChat LTV analysis workflow. Follow each step in order. Do not skip steps. Print each step's output visibly so the human can verify.
+You are running one cycle of the data analysis workflow. Follow each step in order. Do not skip steps. Print each step's output visibly so the human can verify.
 
 **User input:** $ARGUMENTS
 
@@ -27,12 +27,21 @@ State the analytical question clearly. Then:
 - State what we'd do if the answer is high vs low vs unexpected
 - Ask the human to sanity-check the expectation
 
-**Scope checklist** (fill in each):
-- Cohort: _who are we looking at?_
-- Time window: _what date range?_
-- Active definition: _what counts as "active"?_
-- Platform: _iOS only unless specified otherwise_
-- Maturity: _is the cohort old enough for this metric?_
+**Question specification — 4 slots.** The agent drafts each slot, the human reviews.
+
+1. **Population** — which users? (cohort definition + platform + country)
+2. **Time window** — when? (date range + cohort maturity check)
+3. **Definition** — what counts? (e.g., "active" = app open? core action? completion?)
+4. **Metric** — how to measure? (count of users, rate, total events, average, distribution)
+
+**How to fill the slots:**
+- Propose a default for each slot based on project conventions (see workflow doc operational definitions) and prior findings in the analysis plan
+- **Flag any slot that requires a business/product judgment call** — do NOT guess these, ask the human directly. Examples: which segment matters, which metric matches the business question, what threshold counts as "engaged."
+- Default platform = iOS unless the question clearly needs Android
+
+**Why this matters:** Same question words with different slots produce different answers. "How many active subscribers?" can mean 123K (billing-active) or ~57K (actually opens the app). Both are correct for their specification. Don't run until all 4 slots are explicit.
+
+Print the draft specification for human review.
 
 **STOP. Wait for human confirmation before proceeding.**
 
@@ -45,7 +54,7 @@ For each table that will be queried, run:
 bq show --schema --format=json [project:]dataset.table_name
 ```
 
-Print the relevant columns, their types, and the partition column. Reference `_projects/biblechat-ltv/_docs/2_reference-docs/data-surface/bc-data-landscape.md` for the full table inventory — do not go from memory.
+Print the relevant columns, their types, and the partition column. Reference `_projects/biblechat-ltv/_docs/2_reference-docs/data-surface/bc-full-data-architecture.md` Section 13 (Table Purpose Index) for the full table inventory — do not go from memory.
 
 **Two projects available:**
 - `genericchatapp-4d046.sandbox_analytics` — behavioral data (19 tables)
@@ -105,6 +114,11 @@ Before interpreting, check:
 - Any anomalous cohorts? (sudden jumps = bot traffic or tracking change?)
 - **Cross-check against existing findings:** Does this number count a population that a previous finding already counted? If so, do they reconcile?
 - **(Optional) Cross-check against CTO's data warehouse:** Search `_archive/bq_export/` for existing queries on the same metric. Compare definitions if found.
+- **Assign a confidence label** to the finding:
+  - **Verified** — cross-checked multiple ways, known current, known source
+  - **Plausible** — exists in the source but not independently verified (might be legacy)
+  - **Stale** — known deprecated or historical
+  Print the label with a one-line reason. It gets logged with the finding in Step 8.
 
 Print validation results.
 
@@ -129,7 +143,7 @@ If Python produces different numbers than what you computed, use Python's number
 
 ## Step 7: Interpret
 
-Follow the three layers strictly. Print each one separately.
+Follow the layers strictly. Print each one separately.
 
 **Observation** (what the data shows — numbers only, no narrative):
 > _state the raw finding_
@@ -138,10 +152,16 @@ Follow the three layers strictly. Print each one separately.
 > Survivorship bias? Selection bias? Regression to the mean? Seasonal effect? Average masking distribution? Correlation ≠ causation?
 > **"What's the most important thing this data DOESN'T tell us?"**
 
-**Interpretation** (what this might mean, given the bias check):
-> _state the interpretation with caveats_
+**Gap** (explicit, not hedged):
+> _state what the data doesn't tell us as a concrete sentence, not a qualifier sprinkled into the observation_
 
-**Hypothesis** (what would confirm or deny this):
+**Draft interpretation — collaborative, not pre-drafted.**
+
+Do NOT present a polished interpretation as if it were a finding. Insights should be built with the human, not written in advance and handed over for acceptance. The act of thinking together is the point — AI-drafted insights look like findings to a reader but carry no verification.
+
+If you have a proposed interpretation, label it explicitly as "DRAFT — for discussion, not validated" and invite conversation. If no interpretation is obvious from the data alone, skip this layer and ask the human what they make of the observation.
+
+**Hypothesis** (what would confirm or deny a proposed interpretation):
 > _state how to test it_
 
 **Never skip from observation to recommendation.**
@@ -154,8 +174,12 @@ Follow the three layers strictly. Print each one separately.
 
 1. **The finding** — one sentence summary
 2. **The key numbers** — list each number and the exact calculation or query that produced it
-3. **How I'd log it** — what goes in the analytical plan
-4. **How I'd visualize it** — if the finding has a visual story, what chart type fits the data shape (or "no visualization needed")
+3. **Source label** — table(s) + scope + time window + population filter (e.g., `adapty_realtime, iOS weekly trial converters, last 83 days`)
+4. **Confidence label** — Verified / Plausible / Stale with a one-line reason
+5. **How I'd log it** — what goes in the analytical plan
+6. **How I'd visualize it** — if the finding has a visual story, what chart type fits the data shape (or "no visualization needed")
+
+**Writing style: don't hedge.** State findings directly. Avoid qualifiers like "this might suggest," "it could possibly indicate," "perhaps users are." Hedging dilutes strong findings by making them sound as uncertain as weak ones. If something is uncertain, mark it "Plausible" or state the gap explicitly — don't sprinkle qualifiers on every sentence.
 
 **Wait for human confirmation before proceeding to Step 8.** If the human questions a number, show the source query and re-verify before logging.
 
