@@ -115,7 +115,7 @@ A faith-native pain is its own angle: skip this step, and know the guard refuses
 
 Angle rows are the shared lens pool, written **persona-neutral**: define the move without a persona's pronouns baked in ("permission to stop, instead of another demand"), plus one example hook line so the row is navigable (an expression of the lens, not the expression). Let reuse emerge; merge duplicates on contact.
 
-**EXPLODE offer:** try this pain from several angles? Each extra angle = a variation of this ad, landed as a child after the base lands.
+**EXPLODE offer:** try this pain from several angles? Each extra angle = a variation of this ad, landed as a child after the base lands. Banking the child is free, but its script must be rewritten through its lens (the flow and the gate, like any variation) before it is produced: a child whose declared angle and actual words disagree is an unfaithful ad nothing catches.
 
 Stop; the operator picks.
 
