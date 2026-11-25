@@ -20,6 +20,10 @@ output/videos/
 output/state.json
 output/**/*.mp4
 output/**/*.zip
+_out/
+
+# Large local input-data dumps (already tracked files remain tracked)
+input-data/
 dist/
 build/
 
@@ -29,6 +33,7 @@ build/
 # IDE
 .vscode/
 .idea/
+.obsidian/
 *.swp
 *.swo
 *~
@@ -53,19 +58,30 @@ data.ms/
 _projects/colab
 
 # Symlinked/nested repos (have their own git)
+_projects/auto-ads-loop
+_projects/auto-ads-three
 _projects/cc-telegram-bot
 _projects/cloops
+_projects/cloops-ads
 _projects/meeting-transcriber
 _projects/biblechat-ltv
 _projects/biblechat-sprint
 _projects/adloops-local/Adloops-Backend
 _projects/adloops-local/Ads_Platform_Web
 _projects/adloops-local/ads-library-automation
+_projects/adloops-local-deprecated/
 
 # Project-specific ignores
 _projects/ml-poc/output/
 _projects/ml-poc/data/
 _projects/adloops-local/logs/
+
+# Ad iterations: keep spec.md, jobs.json, transcripts, and *.receipt.json; drop the media
+_projects/ad-iter/**/*.mp4
+_projects/ad-iter/**/*.png
+_projects/ad-iter/**/*.jpg
+_projects/ad-iter/**/*.mp3
+_projects/ad-iter/**/*.wav
 
 # Specstory (auto-generated)
 .specstory/
@@ -73,7 +89,9 @@ _projects/adloops-local/logs/
 # TTS Hooks (contains API keys)
 .claude/hooks/tts-config.json
 .claude/hooks/tts-debug.log
+.claude/scheduled_tasks.lock
 
 # Backup files and auto-generated Claude config
 *.bak
 .claude/projects/
+_projects/tiktok-dataset/data/
