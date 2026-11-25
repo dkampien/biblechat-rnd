@@ -1,0 +1,690 @@
+<title>BibleChat Metrics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f6f6f3;
+    --card: #fdfdfc;
+    --ink: #101312;
+    --ink-2: #545a58;
+    --muted: #868c89;
+    --grid: #e3e4df;
+    --axis: #c6c8c2;
+    --ring: rgba(16, 19, 18, 0.10);
+    --accent: #2a78d6;
+    --s-blue: #2a78d6;
+    --s-blue-light: #86b6ef;
+    --s-orange: #eb6834;
+    --s-aqua: #1baf7a;
+    --good: #006300;
+    --warn-ink: #8a5a00;
+    --warn-bg: #fff4dc;
+    --tip-bg: #101312;
+    --tip-ink: #f6f6f3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #0f1110;
+      --card: #191b1a;
+      --ink: #f2f3f0;
+      --ink-2: #b7bbb6;
+      --muted: #848a86;
+      --grid: #2a2d2b;
+      --axis: #3a3e3b;
+      --ring: rgba(255, 255, 255, 0.10);
+      --accent: #3987e5;
+      --s-blue: #3987e5;
+      --s-blue-light: #184f95;
+      --s-orange: #d95926;
+      --s-aqua: #199e70;
+      --good: #0ca30c;
+      --warn-ink: #f2c66d;
+      --warn-bg: #2b2415;
+      --tip-bg: #f2f3f0;
+      --tip-ink: #0f1110;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #0f1110;
+    --card: #191b1a;
+    --ink: #f2f3f0;
+    --ink-2: #b7bbb6;
+    --muted: #848a86;
+    --grid: #2a2d2b;
+    --axis: #3a3e3b;
+    --ring: rgba(255, 255, 255, 0.10);
+    --accent: #3987e5;
+    --s-blue: #3987e5;
+    --s-blue-light: #184f95;
+    --s-orange: #d95926;
+    --s-aqua: #199e70;
+    --good: #0ca30c;
+    --warn-ink: #f2c66d;
+    --warn-bg: #2b2415;
+    --tip-bg: #f2f3f0;
+    --tip-ink: #0f1110;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 64px; }
+
+  header { display: flex; flex-direction: column; gap: 6px; margin-bottom: 28px; }
+  header h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+  header .sub { color: var(--ink-2); max-width: 66ch; margin: 0; }
+  .fresh {
+    display: inline-flex; flex-wrap: wrap; gap: 6px 14px; align-items: center;
+    font-size: 12.5px; color: var(--ink-2); margin-top: 6px;
+  }
+  .fresh .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--s-aqua); display: inline-block; margin-right: 6px; }
+  .fresh .dot.off { background: var(--muted); }
+
+  .stack { display: flex; flex-direction: column; gap: 20px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--ring);
+    border-radius: 10px;
+    padding: 20px 22px 16px;
+  }
+  .card-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; margin-bottom: 4px; }
+  .card h2 { font-size: 17px; font-weight: 600; margin: 0; }
+  .card .lede { color: var(--ink-2); font-size: 13.5px; margin: 2px 0 10px; max-width: 78ch; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 8px; }
+  .legend .key { display: inline-flex; align-items: center; gap: 7px; }
+  .legend .sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+  .legend .sw.line { height: 3px; width: 16px; border-radius: 2px; }
+  .legend .sw.hatch { background-image: repeating-linear-gradient(45deg, currentColor 0 2px, transparent 2px 5px); opacity: .7; }
+  .legend .sw.ref { height: 0; width: 16px; border-top: 2px dashed var(--ink-2); border-radius: 0; }
+
+  .chart-wrap { position: relative; }
+  svg.chart { display: block; width: 100%; height: auto; overflow: visible; }
+  svg.chart text { font-family: "Public Sans", system-ui, sans-serif; font-size: 11.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+  svg.chart text.endlabel { fill: var(--ink-2); font-weight: 600; font-size: 11.5px; }
+  svg.chart text.panel { fill: var(--ink-2); font-weight: 600; font-size: 12.5px; }
+  svg.chart text.ref { fill: var(--ink-2); font-size: 11px; }
+  svg.chart .grid { stroke: var(--grid); stroke-width: 1; }
+  svg.chart .base { stroke: var(--axis); stroke-width: 1; }
+  svg.chart .refline { stroke: var(--ink-2); stroke-width: 1.5; stroke-dasharray: 5 4; }
+  svg.chart .hit { fill: transparent; cursor: default; outline: none; }
+  svg.chart .hit:focus-visible + .focus-ring, svg.chart .hit:hover + .focus-ring { opacity: 1; }
+  svg.chart .focus-ring { fill: var(--ink); opacity: 0; pointer-events: none; }
+  svg.chart .mk { stroke: var(--card); stroke-width: 2; }
+  svg.chart .ln { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+
+  .tip {
+    position: absolute; pointer-events: none; z-index: 5;
+    background: var(--tip-bg); color: var(--tip-ink);
+    border-radius: 6px; padding: 8px 10px; font-size: 12px; line-height: 1.45;
+    min-width: 150px; box-shadow: 0 4px 16px rgba(0,0,0,.18);
+    opacity: 0; transition: opacity .12s ease;
+  }
+  .tip.on { opacity: 1; }
+  .tip b { font-weight: 600; display: block; margin-bottom: 3px; }
+  .tip .row { display: flex; justify-content: space-between; gap: 16px; }
+  .tip .row span:first-child { display: inline-flex; align-items: center; gap: 6px; }
+  .tip .sw { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+  @media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
+
+  .caption { font-size: 11.5px; color: var(--muted); margin: 10px 0 0; line-height: 1.5; }
+  .caption .mono { font-size: 11px; }
+
+  .tools { display: flex; gap: 8px; }
+  button.ghost {
+    font: inherit; font-size: 12px; font-weight: 500; color: var(--ink-2);
+    background: transparent; border: 1px solid var(--ring); border-radius: 6px;
+    padding: 3px 10px; cursor: pointer;
+  }
+  button.ghost:hover { border-color: var(--axis); color: var(--ink); }
+  button.ghost:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  button.ghost[aria-pressed="true"] { background: var(--ink); color: var(--card); border-color: var(--ink); }
+
+  .tbl { overflow-x: auto; margin-top: 12px; }
+  .tbl table { border-collapse: collapse; width: 100%; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+  .tbl th, .tbl td { text-align: right; padding: 5px 10px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+  .tbl th:first-child, .tbl td:first-child { text-align: left; }
+  .tbl th { color: var(--ink-2); font-weight: 600; }
+  .tbl td { color: var(--ink); }
+
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 8px; }
+  .tile { border: 1px solid var(--ring); border-radius: 8px; padding: 14px 16px 12px; background: var(--card); display: flex; flex-direction: column; gap: 4px; }
+  .tile .lbl { font-size: 12.5px; color: var(--ink-2); }
+  .tile .val { font-size: 28px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.15; }
+  .tile .basis { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+  .tile .delta { font-size: 12px; color: var(--ink-2); margin-top: 2px; }
+  .tile .delta.up { color: var(--good); }
+
+  .state { padding: 28px 22px; text-align: center; color: var(--ink-2); }
+  .state h2 { font-size: 16px; margin: 0 0 6px; color: var(--ink); }
+  .note { background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px; padding: 10px 14px; font-size: 13px; }
+
+  .defs { color: var(--ink-2); font-size: 13px; max-width: 78ch; }
+  .defs dt { font-weight: 600; color: var(--ink); margin-top: 8px; }
+  .defs dd { margin: 0; }
+  footer { margin-top: 32px; font-size: 12px; color: var(--muted); }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>BibleChat Metrics</h1>
+    <p class="sub">Monthly revenue, ad spend, funnel, return curves and the current subscription base. Refreshed on the 2nd of each month from BigQuery; every number here is read from the artifact database at load.</p>
+    <div class="fresh mono" id="fresh"><span><span class="dot off"></span>Loading from the artifact database</span></div>
+  </header>
+
+  <div class="stack" id="app">
+    <div class="card state" id="state"><h2>Loading</h2><p>Reading the monthly documents.</p></div>
+  </div>
+
+  <footer>
+    <dl class="defs">
+      <dt>Gross and cash</dt>
+      <dd>Gross is what customers paid. Cash (proceeds) is what remains after Apple and Google commission, about 74% of gross blended. Net cash break-even therefore needs a gross return well above 100%.</dd>
+      <dt>Committed floor</dt>
+      <dd>Active subscriptions whose auto-renew is still on. Subscriptions that are cancelled but still inside their paid period are counted in the total, not in the floor.</dd>
+      <dt>ARR</dt>
+      <dd>MRR times 12, a snapshot of the current base, not a forecast.</dd>
+      <dt>Scope</dt>
+      <dd>The BibleChat app only (the kids app is a separate app id). Web and Stripe revenue is counted only where it flows through Adapty.</dd>
+    </dl>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------- formatting ----------
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function monthLabel(id, long) {
+    const [y, m] = id.split("-");
+    return long ? `${MONTHS[+m - 1]} ${y}` : `${MONTHS[+m - 1]} ${y.slice(2)}`;
+  }
+  function dateLabel(iso) {
+    const [y, m, d] = iso.split("-");
+    return `${+d} ${MONTHS[+m - 1]} ${y}`;
+  }
+  const isNum = v => typeof v === "number" && isFinite(v);
+  function money(v, digits) {
+    if (!isNum(v)) return "n/a";
+    const a = Math.abs(v);
+    if (a >= 1e6) return "$" + (v / 1e6).toFixed(digits == null ? 2 : digits) + "M";
+    if (a >= 1e3) return "$" + (v / 1e3).toFixed(digits == null ? 0 : digits) + "K";
+    return "$" + v.toFixed(0);
+  }
+  function moneyTick(v) {
+    if (v === 0) return "0";
+    const a = Math.abs(v);
+    if (a >= 1e6) return "$" + parseFloat((v / 1e6).toFixed(2)) + "M";
+    if (a >= 1e3) return "$" + Math.round(v / 1e3) + "K";
+    return "$" + Math.round(v);
+  }
+  function moneyExact(v) { return isNum(v) ? "$" + Math.round(v).toLocaleString("en-US") : "n/a"; }
+  function money2(v) { return isNum(v) ? "$" + v.toFixed(2) : "n/a"; }
+  function count(v) { return isNum(v) ? Math.round(v).toLocaleString("en-US") : "n/a"; }
+  function countTick(v) {
+    if (v === 0) return "0";
+    if (Math.abs(v) >= 1e6) return (v / 1e6).toFixed(1) + "M";
+    if (Math.abs(v) >= 1e3) return Math.round(v / 1e3) + "K";
+    return String(v);
+  }
+  function pct(v, d) { return isNum(v) ? (v * 100).toFixed(d == null ? 1 : d) + "%" : "n/a"; }
+  function pctTick(v) { return Math.round(v * 100) + "%"; }
+
+  function niceMax(max) {
+    if (!(max > 0)) return 1;
+    const exp = Math.pow(10, Math.floor(Math.log10(max)));
+    const f = max / exp;
+    const step = f <= 1 ? 0.25 : f <= 2 ? 0.5 : f <= 5 ? 1 : 2;
+    return Math.ceil(f / step) * step * exp;
+  }
+  function el(tag, attrs, children) {
+    const n = document.createElement(tag);
+    if (attrs) for (const k in attrs) {
+      if (k === "class") n.className = attrs[k];
+      else if (k === "text") n.textContent = attrs[k];
+      else if (k === "html") n.innerHTML = attrs[k];
+      else n.setAttribute(k, attrs[k]);
+    }
+    (children || []).forEach(c => n.appendChild(c));
+    return n;
+  }
+  const SVGNS = "http://www.w3.org/2000/svg";
+  function sv(tag, attrs, text) {
+    const n = document.createElementNS(SVGNS, tag);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+  // ---------- chart builder ----------
+  // opts: { months:[{id, partial}], series:[{key,label,type:'bar'|'line',color,values:[]}],
+  //         height, tick, valueFmt, yMax, refLine:{value,label}, hideX, panelTitle, top, tip:{title} }
+  function drawPanel(svg, opts, y0) {
+    const W = 960, ML = 62, MR = 60, MT = opts.panelTitle ? 26 : 12, MB = opts.hideX ? 10 : 34;
+    const H = opts.height;
+    const plotW = W - ML - MR, plotH = H - MT - MB;
+    const n = opts.months.length;
+    const slot = plotW / n;
+    const maxVal = opts.yMax != null ? opts.yMax : niceMax(Math.max(0, ...opts.series.flatMap(s => s.values.filter(isNum)), opts.refLine ? opts.refLine.value : 0));
+    const yOf = v => y0 + MT + plotH - (v / maxVal) * plotH;
+    const xOf = i => ML + slot * i + slot / 2;
+    const g = sv("g", {});
+    svg.appendChild(g);
+
+    if (opts.panelTitle) g.appendChild(sv("text", { x: ML, y: y0 + 14, class: "panel" }, opts.panelTitle));
+
+    // grid + y ticks
+    const ticks = 4;
+    for (let t = 0; t <= ticks; t++) {
+      const v = maxVal * t / ticks;
+      const y = yOf(v);
+      g.appendChild(sv("line", { x1: ML, x2: W - MR, y1: y, y2: y, class: t === 0 ? "base" : "grid" }));
+      g.appendChild(sv("text", { x: ML - 8, y: y + 4, "text-anchor": "end" }, opts.tick(v)));
+    }
+
+    // bars
+    const bars = opts.series.filter(s => s.type === "bar");
+    const barW = Math.min(24, (slot - 8) / Math.max(1, bars.length) - 2);
+    const groupW = bars.length * barW + (bars.length - 1) * 2;
+    bars.forEach((s, bi) => {
+      opts.months.forEach((m, i) => {
+        const v = s.values[i];
+        if (!isNum(v) || v <= 0) return;
+        const x = xOf(i) - groupW / 2 + bi * (barW + 2);
+        const yTop = yOf(v), yBase = yOf(0);
+        const h = Math.max(0, yBase - yTop);
+        const r = Math.min(4, h / 2, barW / 2);
+        const d = `M${x},${yBase} V${yTop + r} Q${x},${yTop} ${x + r},${yTop} H${x + barW - r} Q${x + barW},${yTop} ${x + barW},${yTop + r} V${yBase} Z`;
+        const attrs = { d, style: m.partial ? `fill:url(#hatch-${s.patId})` : `fill:${s.color}` };
+        g.appendChild(sv("path", attrs));
+      });
+    });
+
+    // lines
+    opts.series.filter(s => s.type === "line").forEach(s => {
+      let d = "", pen = false;
+      opts.months.forEach((m, i) => {
+        const v = s.values[i];
+        if (!isNum(v)) { pen = false; return; }
+        d += (pen ? " L" : " M") + xOf(i).toFixed(1) + "," + yOf(v).toFixed(1);
+        pen = true;
+      });
+      g.appendChild(sv("path", { d: d.trim(), class: "ln", style: `stroke:${s.color}` }));
+      opts.months.forEach((m, i) => {
+        const v = s.values[i];
+        if (!isNum(v)) return;
+        const c = sv("circle", { cx: xOf(i), cy: yOf(v), r: 4, class: "mk", style: m.partial ? `fill:var(--card);stroke:${s.color}` : `fill:${s.color}` });
+        g.appendChild(c);
+      });
+    });
+
+    // reference line
+    if (opts.refLine) {
+      const y = yOf(opts.refLine.value);
+      g.appendChild(sv("line", { x1: ML, x2: W - MR, y1: y, y2: y, class: "refline" }));
+      g.appendChild(sv("text", { x: W - MR + 6, y: y + 4, class: "ref" }, opts.refLine.label));
+    }
+
+    // end labels: last complete month per series
+    const lastFull = (() => { for (let i = n - 1; i >= 0; i--) if (!opts.months[i].partial) return i; return -1; })();
+    if (lastFull >= 0 && !opts.noEndLabels) {
+      const placed = [];
+      opts.series.forEach(s => {
+        const v = s.values[lastFull];
+        if (!isNum(v) || s.endLabel === false) return;
+        const followed = lastFull < n - 1;
+        let y = yOf(v) - (s.type === "bar" ? 6 : 0) + (s.type === "line" ? (followed ? -10 : 4) : 0);
+        // nudge apart if colliding
+        placed.forEach(p => { if (Math.abs(p - y) < 13) y = p - 13; });
+        placed.push(y);
+        const bi = bars.indexOf(s);
+        const above = s.type === "bar" || followed;
+        const x = s.type === "bar" ? xOf(lastFull) - groupW / 2 + bi * (barW + 2) + barW / 2 : (followed ? xOf(lastFull) : xOf(lastFull) + 9);
+        g.appendChild(sv("text", { x, y, class: "endlabel", "text-anchor": above ? "middle" : "start" }, opts.valueFmt(v)));
+      });
+    }
+
+    // x labels
+    if (!opts.hideX) {
+      opts.months.forEach((m, i) => {
+        g.appendChild(sv("text", { x: xOf(i), y: y0 + H - 18, "text-anchor": "middle" }, monthLabel(m.id)));
+        if (m.partial) g.appendChild(sv("text", { x: xOf(i), y: y0 + H - 5, "text-anchor": "middle", "font-size": "10px" }, "month to date"));
+      });
+    }
+    return { xOf, slot, ML, MR, top: y0 + MT, bottom: y0 + MT + plotH };
+  }
+
+  function buildChart(container, cfg) {
+    // cfg: { months, panels:[panelOpts], tipTitle(i), tipRows(i) -> [{label,color,value}] }
+    const wrap = el("div", { class: "chart-wrap" });
+    const totalH = cfg.panels.reduce((a, p) => a + p.height, 0);
+    const svg = document.createElementNS(SVGNS, "svg");
+    svg.setAttribute("viewBox", `0 0 960 ${totalH}`);
+    svg.setAttribute("class", "chart");
+    svg.setAttribute("role", "img");
+    svg.setAttribute("aria-label", cfg.aria || "");
+    // hatch patterns
+    const defs = sv("defs", {});
+    const pats = new Set();
+    cfg.panels.forEach(p => p.series.forEach(s => {
+      if (s.type === "bar") {
+        s.patId = s.key;
+        if (pats.has(s.key)) return; pats.add(s.key);
+        const pat = sv("pattern", { id: "hatch-" + s.key, width: 6, height: 6, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)" });
+        pat.appendChild(sv("rect", { width: 6, height: 6, style: `fill:${s.color}`, opacity: 0.22 }));
+        pat.appendChild(sv("rect", { width: 2.5, height: 6, style: `fill:${s.color}` }));
+        defs.appendChild(pat);
+      }
+    }));
+    svg.appendChild(defs);
+
+    let y = 0; const geoms = [];
+    cfg.panels.forEach(p => { p.months = cfg.months; geoms.push(drawPanel(svg, p, y)); y += p.height; });
+
+    // hover / focus layer, one hit column per month across all panels
+    const tip = el("div", { class: "tip", role: "status", "aria-live": "polite" });
+    const g0 = geoms[0], gl = geoms[geoms.length - 1];
+    cfg.months.forEach((m, i) => {
+      const x = g0.xOf(i) - g0.slot / 2;
+      const hit = sv("rect", { x, y: g0.top, width: g0.slot, height: gl.bottom - g0.top, class: "hit", tabindex: 0 });
+      const ring = sv("rect", { x: g0.xOf(i) - 0.5, y: g0.top, width: 1, height: gl.bottom - g0.top, class: "focus-ring" });
+      const show = () => {
+        const rows = cfg.tipRows(i);
+        tip.innerHTML = `<b>${esc(monthLabel(m.id, true))}${m.partial ? " (month to date)" : ""}</b>` +
+          rows.map(r => `<div class="row"><span><i class="sw" style="background:${r.color}"></i>${esc(r.label)}</span><span>${esc(r.value)}</span></div>`).join("");
+        tip.classList.add("on");
+        const rect = svg.getBoundingClientRect();
+        const px = (g0.xOf(i) / 960) * rect.width;
+        const left = px > rect.width * 0.6 ? px - 8 - tip.offsetWidth : px + 8;
+        tip.style.left = Math.max(0, left) + "px";
+        tip.style.top = ((g0.top / totalH) * rect.height + 8) + "px";
+      };
+      const hide = () => tip.classList.remove("on");
+      hit.addEventListener("mouseenter", show); hit.addEventListener("mouseleave", hide);
+      hit.addEventListener("focus", show); hit.addEventListener("blur", hide);
+      hit.setAttribute("aria-label", monthLabel(m.id, true));
+      svg.appendChild(hit); svg.appendChild(ring);
+    });
+    wrap.appendChild(svg); wrap.appendChild(tip);
+    container.appendChild(wrap);
+  }
+
+  function legend(items) {
+    return el("div", { class: "legend" }, items.map(it => {
+      const sw = el("span", { class: "sw " + (it.kind || "") });
+      if (it.kind !== "ref") sw.style.background = it.color;
+      if (it.kind === "hatch") { sw.style.backgroundColor = "transparent"; sw.style.color = it.color; }
+      return el("span", { class: "key" }, [sw, el("span", { text: it.label })]);
+    }));
+  }
+
+  function tableView(months, cols) {
+    const t = el("table");
+    const thead = el("thead"); const trh = el("tr");
+    trh.appendChild(el("th", { text: "Month" }));
+    cols.forEach(c => trh.appendChild(el("th", { text: c.label })));
+    thead.appendChild(trh); t.appendChild(thead);
+    const tb = el("tbody");
+    months.forEach((m, i) => {
+      const tr = el("tr");
+      tr.appendChild(el("td", { text: monthLabel(m.id, true) + (m.partial ? " (MTD)" : "") }));
+      cols.forEach(c => tr.appendChild(el("td", { text: c.fmt(c.values[i]) })));
+      tb.appendChild(tr);
+    });
+    t.appendChild(tb);
+    return el("div", { class: "tbl", hidden: "" }, [t]);
+  }
+
+  function card(title, lede, legendItems, chartCfg, tableCols, captionHtml) {
+    const c = el("section", { class: "card" });
+    const tools = el("div", { class: "tools" });
+    const tblBtn = el("button", { class: "ghost", "aria-pressed": "false", text: "Table" });
+    tools.appendChild(tblBtn);
+    c.appendChild(el("div", { class: "card-head" }, [el("h2", { text: title }), tools]));
+    c.appendChild(el("p", { class: "lede", text: lede }));
+    if (legendItems) c.appendChild(legend(legendItems));
+    buildChart(c, chartCfg);
+    const tbl = tableView(chartCfg.months, tableCols);
+    c.appendChild(tbl);
+    tblBtn.addEventListener("click", () => {
+      const on = tblBtn.getAttribute("aria-pressed") !== "true";
+      tblBtn.setAttribute("aria-pressed", String(on));
+      tbl.hidden = !on;
+    });
+    c.appendChild(el("p", { class: "caption", html: captionHtml }));
+    return c;
+  }
+
+  function windowText(months) {
+    if (!months.length) return "";
+    const a = months[0], b = months[months.length - 1];
+    let s = `${monthLabel(a.id, true)} to ${monthLabel(b.id, true)}`;
+    if (b.partial) s += ` (${MONTHS[+b.id.split("-")[1] - 1]} is month to date${b.through ? " through " + dateLabel(b.through) : ""})`;
+    return s;
+  }
+
+  // ---------- render ----------
+  function render(months, snapshots, meta) {
+    const app = document.getElementById("app");
+    app.innerHTML = "";
+    const BLUE = "var(--s-blue)", BLUE_L = "var(--s-blue-light)", ORANGE = "var(--s-orange)", AQUA = "var(--s-aqua)";
+
+    const ms = months.map(m => ({ id: m.id, partial: !!m.partial, through: m.through, d: m }));
+    const v = key => ms.map(m => isNum(m.d[key]) ? m.d[key] : null);
+
+    // 1. Revenue
+    {
+      const gross = v("revenue_gross"), cash = v("revenue_proceeds");
+      app.appendChild(card(
+        "Monthly revenue, gross and cash",
+        "Recognized revenue by the month the payment event landed. Phantom trial-start revenue is excluded and refunds are netted.",
+        [{ label: "Gross", color: BLUE }, { label: "Cash (proceeds after store fees)", color: BLUE_L }, { label: "Month to date", color: BLUE, kind: "hatch" }],
+        {
+          months: ms, aria: "Monthly gross and cash revenue",
+          panels: [{ height: 300, tick: moneyTick, valueFmt: money, series: [
+            { key: "gross", label: "Gross", type: "bar", color: BLUE, values: gross },
+            { key: "cash", label: "Cash", type: "bar", color: BLUE_L, values: cash, endLabel: false }] }],
+          tipRows: i => [
+            { label: "Gross", color: BLUE, value: moneyExact(gross[i]) },
+            { label: "Cash", color: BLUE_L, value: moneyExact(cash[i]) },
+            { label: "iOS gross", color: "transparent", value: moneyExact(ms[i].d.revenue_ios_gross) },
+            { label: "Android gross", color: "transparent", value: moneyExact(ms[i].d.revenue_android_gross) }]
+        },
+        [{ label: "Gross", values: gross, fmt: moneyExact }, { label: "Cash", values: cash, fmt: moneyExact },
+         { label: "iOS gross", values: v("revenue_ios_gross"), fmt: moneyExact }, { label: "Android gross", values: v("revenue_android_gross"), fmt: moneyExact }],
+        `Window: ${esc(windowText(ms))}. Source: <span class="mono">bc-ads-tester.subscription.adapty_realtime</span>, payment events only (renewals, trial conversions, direct starts, one-time purchases, minus refunds), <span class="mono">revenue_usd</span> for gross and <span class="mono">proceeds_usd</span> for cash.`
+      ));
+    }
+
+    // 2. Spend vs trials with CPT
+    {
+      const spend = v("ad_spend"), trials = v("trials"), cpt = v("cpt_blended");
+      app.appendChild(card(
+        "Ad spend, trials and cost per trial",
+        "Three panels on one month axis. Spend and trials move together; CPT is the steering metric and shows whether a spend jump bought trials at the same price.",
+        [{ label: "Ad spend", color: ORANGE }, { label: "Trials started", color: BLUE }, { label: "CPT, blended", color: AQUA, kind: "line" }],
+        {
+          months: ms, aria: "Monthly ad spend, trials and blended cost per trial",
+          panels: [
+            { height: 170, panelTitle: "Ad spend", hideX: true, tick: moneyTick, valueFmt: money, series: [{ key: "spend", label: "Ad spend", type: "bar", color: ORANGE, values: spend }] },
+            { height: 170, panelTitle: "Trials started", hideX: true, tick: countTick, valueFmt: countTick, series: [{ key: "trials", label: "Trials", type: "bar", color: BLUE, values: trials }] },
+            { height: 190, panelTitle: "Cost per trial, blended (all channels, organic included)", tick: v => "$" + Math.round(v), valueFmt: money2, series: [{ key: "cpt", label: "CPT", type: "line", color: AQUA, values: cpt }] }
+          ],
+          tipRows: i => [
+            { label: "Ad spend", color: ORANGE, value: moneyExact(spend[i]) },
+            { label: "Trials", color: BLUE, value: count(trials[i]) },
+            { label: "CPT", color: AQUA, value: money2(cpt[i]) },
+            { label: "New payers", color: "transparent", value: count(ms[i].d.new_payers) },
+            { label: "CPS", color: "transparent", value: money2(ms[i].d.cps_blended) }]
+        },
+        [{ label: "Ad spend", values: spend, fmt: moneyExact }, { label: "Facebook", values: v("spend_facebook"), fmt: moneyExact },
+         { label: "TikTok", values: v("spend_tiktok"), fmt: moneyExact }, { label: "Apple", values: v("spend_apple"), fmt: moneyExact }, { label: "Google", values: v("spend_google"), fmt: moneyExact },
+         { label: "Trials", values: trials, fmt: count }, { label: "New payers", values: v("new_payers"), fmt: count },
+         { label: "CPT", values: cpt, fmt: money2 }, { label: "CPS", values: v("cps_blended"), fmt: money2 }],
+        `Window: ${esc(windowText(ms))}. Spend: <span class="mono">bc-ads-tester.subscription.daily_data</span> (Facebook, TikTok, Apple Search, Google; the table begins Aug 2025, so Jul 2025 has no spend). Trials and payers: <span class="mono">subscription.adapty_realtime</span> trial_started, trial_converted and subscription_started events. CPT = spend / trials, CPS = spend / new payers, both blended.`
+      ));
+    }
+
+    // 3. Month-1 return
+    {
+      const from = ms.findIndex(m => isNum(m.d.m1_ios_gross) || isNum(m.d.m1_android_gross));
+      const sub = from >= 0 ? ms.slice(from) : [];
+      if (sub.length) {
+        const ios = sub.map(m => isNum(m.d.m1_ios_gross) ? m.d.m1_ios_gross : null);
+        const and = sub.map(m => isNum(m.d.m1_android_gross) ? m.d.m1_android_gross : null);
+        app.appendChild(card(
+          "Month-1 return by spend month, gross",
+          "Gross revenue earned in the first 30 days after each month's spend, divided by that spend. The projection model sets month-12 at roughly 3.1x month-1, so 32% is the month-1 level that projects to the 100% month-12 rule.",
+          [{ label: "iOS", color: BLUE, kind: "line" }, { label: "Android", color: ORANGE, kind: "line" }, { label: "32% projects to 100% at month 12", kind: "ref" }],
+          {
+            months: sub, aria: "Month-1 gross return by platform",
+            panels: [{ height: 280, tick: pctTick, valueFmt: v => pct(v, 1), yMax: niceMax(Math.max(0.4, ...ios.filter(isNum), ...and.filter(isNum))),
+              refLine: { value: 0.32, label: "32% (gross)" },
+              series: [{ key: "m1i", label: "iOS", type: "line", color: BLUE, values: ios }, { key: "m1a", label: "Android", type: "line", color: ORANGE, values: and }] }],
+            tipRows: i => [
+              { label: "iOS M1", color: BLUE, value: pct(ios[i]) },
+              { label: "Android M1", color: ORANGE, value: pct(and[i]) },
+              { label: "iOS M12 projected", color: "transparent", value: pct(sub[i].d.m12_projected_ios, 0) },
+              { label: "Android M12 projected", color: "transparent", value: pct(sub[i].d.m12_projected_android, 0) }]
+          },
+          [{ label: "iOS M1", values: ios, fmt: pct }, { label: "Android M1", values: and, fmt: pct },
+           { label: "iOS M12 projected", values: sub.map(m => m.d.m12_projected_ios), fmt: v => pct(v, 0) },
+           { label: "Android M12 projected", values: sub.map(m => m.d.m12_projected_android), fmt: v => pct(v, 0) }],
+          `Window: ${esc(windowText(sub))}; the source tables hold about six rolling months. All figures are GROSS, before store fees (cash is roughly 74% of gross). Spend-weighted by day. iOS: <span class="mono">bc-ads-tester.limited.cpt_master_daily</span>; Android: <span class="mono">limited.cpt_master_daily_regions_android</span> (overall row). A month younger than 30 days is the model's month-1 estimate, which equals the realized 30-day figure once the month matures.`
+        ));
+      }
+    }
+
+    // 4. Trial-to-paid
+    {
+      const ios = v("trial_to_paid_ios"), and = v("trial_to_paid_android");
+      app.appendChild(card(
+        "Trial-to-paid by platform, matured cohorts",
+        "Share of 7-day trials that converted to a paid subscription. Each point is the cohort of trials started from the 15th of the prior month through the 14th of the month shown, so every cohort has fully matured.",
+        [{ label: "iOS", color: BLUE, kind: "line" }, { label: "Android", color: ORANGE, kind: "line" }],
+        {
+          months: ms, aria: "Trial-to-paid conversion by platform",
+          panels: [{ height: 260, tick: pctTick, valueFmt: v => pct(v, 1), yMax: 0.6,
+            series: [{ key: "t2pi", label: "iOS", type: "line", color: BLUE, values: ios }, { key: "t2pa", label: "Android", type: "line", color: ORANGE, values: and }] }],
+          tipRows: i => [
+            { label: "iOS", color: BLUE, value: pct(ios[i]) },
+            { label: "Android", color: ORANGE, value: pct(and[i]) }]
+        },
+        [{ label: "iOS", values: ios, fmt: pct }, { label: "Android", values: and, fmt: pct }],
+        `Window: ${esc(windowText(ms))}; a month with no point has a cohort that has not matured yet (its window must end 10 or more days before the refresh). Source: <span class="mono">bc-ads-tester.subscription.adapty_realtime</span>, trial_started and trial_converted per original transaction, split by store.`
+      ));
+    }
+
+    // 5. Snapshot tiles
+    {
+      const snaps = snapshots.slice().sort((a, b) => a.id < b.id ? -1 : 1);
+      const cur = snaps[snaps.length - 1], prev = snaps.length > 1 ? snaps[snaps.length - 2] : null;
+      const c = el("section", { class: "card" });
+      c.appendChild(el("div", { class: "card-head" }, [el("h2", { text: "Subscription base, latest snapshot" })]));
+      if (cur) {
+        c.appendChild(el("p", { class: "lede", text: `Point-in-time read of every active paid subscription on ${dateLabel(cur.id)}${prev ? ", compared with " + dateLabel(prev.id) : ""}. Each money tile says whether it is gross or cash.` }));
+        const tiles = el("div", { class: "tiles" });
+        const tile = (lbl, val, basis, curV, prevV, fmt) => {
+          const t = el("div", { class: "tile" });
+          t.appendChild(el("div", { class: "lbl", text: lbl }));
+          t.appendChild(el("div", { class: "val", text: fmt(curV) }));
+          t.appendChild(el("div", { class: "basis", text: basis }));
+          if (prev && isNum(prevV) && isNum(curV) && prevV !== 0) {
+            const d = curV / prevV - 1;
+            t.appendChild(el("div", { class: "delta" + (d >= 0 ? " up" : ""), text: (d >= 0 ? "+" : "") + (d * 100).toFixed(1) + "% vs " + dateLabel(prev.id) }));
+          }
+          tiles.appendChild(t);
+        };
+        tile("MRR", 0, "Gross", cur.mrr_gross, prev && prev.mrr_gross, v => money(v, 2));
+        tile("MRR", 0, "Cash, after store fees", cur.mrr_proceeds, prev && prev.mrr_proceeds, v => money(v, 2));
+        tile("Committed floor, MRR", 0, "Gross, auto-renew on", cur.mrr_gross_committed, prev && prev.mrr_gross_committed, v => money(v, 2));
+        tile("Active paid subscriptions", 0, "Count", cur.active_subs, prev && prev.active_subs, count);
+        tile("ARR", 0, "Gross, MRR times 12", cur.arr_gross, prev && prev.arr_gross, v => money(v, 1));
+        tile("ARR", 0, "Cash, MRR times 12", cur.arr_proceeds, prev && prev.arr_proceeds, v => money(v, 1));
+        c.appendChild(tiles);
+        c.appendChild(el("p", { class: "caption", html:
+          `Snapshot ${esc(dateLabel(cur.id))}. Source: <span class="mono">bc-ads-tester.subscription.adapty_realtime</span>, latest state per original transaction: active when the paid entitlement covers now and no refund; last paid price normalized to monthly (weekly x 52/12, annual / 12). Committed = last lifecycle event is not a renewal cancellation. Grace-period users can linger in the total, which is another reason the committed floor is the honest one.` }));
+      } else {
+        c.appendChild(el("p", { class: "lede", text: "No snapshot document found yet." }));
+      }
+      app.appendChild(c);
+    }
+
+    // freshness
+    const f = document.getElementById("fresh");
+    const latest = meta || {};
+    const mtd = ms.find(m => m.partial);
+    const lastFull = ms.filter(m => !m.partial).slice(-1)[0];
+    const mauMonth = ms.slice().reverse().find(m => !m.partial && isNum(m.d.mau));
+    f.innerHTML = `<span><span class="dot"></span>Latest complete month ${esc(lastFull ? monthLabel(lastFull.id, true) : "n/a")}</span>` +
+      (mtd ? `<span>${esc(monthLabel(mtd.id, true))} month to date${mtd.through ? " through " + esc(dateLabel(mtd.through)) : ""}</span>` : "") +
+      (latest.snapshot ? `<span>Subscription snapshot ${esc(dateLabel(latest.snapshot))}</span>` : "") +
+      (mauMonth ? `<span>MAU ${esc(count(mauMonth.d.mau))} (${esc(monthLabel(mauMonth.id, true))}, device level)</span>` : "") +
+      (latest.refreshed_at ? `<span>Refreshed ${esc(String(latest.refreshed_at).replace("T", " ").replace(/:\d\d(\.\d+)?Z$/, " UTC"))}</span>` : "") +
+      (latest.source ? `<span>Source ${esc(latest.source)}</span>` : "");
+  }
+
+  function showState(title, body, warn) {
+    const app = document.getElementById("app");
+    app.innerHTML = "";
+    const c = el("div", { class: "card state" });
+    c.appendChild(el("h2", { text: title }));
+    c.appendChild(el("p", { text: body }));
+    app.appendChild(c);
+    const f = document.getElementById("fresh");
+    f.innerHTML = `<span><span class="dot off"></span>${esc(warn || title)}</span>`;
+  }
+
+  // ---------- load ----------
+  async function load() {
+    let db = null;
+    try { db = await window.claude.use("db"); } catch (e) { db = null; }
+    if (!db) {
+      showState("Database unreachable",
+        "This page renders from the artifact database and this view could not open it. Open the page signed in on claude.ai, or ask the owner to check the artifact's database.",
+        "Database unreachable");
+      return;
+    }
+    async function fetchAll() {
+      const [mSnap, sSnap, metaSnap] = await Promise.all([
+        db.collection("months").limit(1000).get(),
+        db.collection("snapshots").limit(1000).get(),
+        db.doc("meta/latest").get()
+      ]);
+      const months = mSnap.docs.filter(d => d.exists).map(d => Object.assign({ id: d.id }, d.data())).sort((a, b) => a.id < b.id ? -1 : 1);
+      const snapshots = sSnap.docs.filter(d => d.exists).map(d => Object.assign({ id: d.id }, d.data()));
+      const meta = metaSnap.exists ? metaSnap.data() : null;
+      if (!months.length) {
+        showState("No data yet", "The months collection is empty. The monthly refresh writes one document per month; until then there is nothing to chart.", "Database empty");
+        return;
+      }
+      render(months, snapshots, meta);
+    }
+    try { await fetchAll(); }
+    catch (e) {
+      showState("Could not read the database", (e && e.message) ? e.message : "The read failed.", "Read failed");
+      return;
+    }
+    // re-render when the monthly job bumps meta/latest
+    let first = true;
+    db.doc("meta/latest").onSnapshot(() => {
+      if (first) { first = false; return; }
+      fetchAll().catch(() => {});
+    }, () => {});
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", load);
+  else load();
+})();
+</script>
