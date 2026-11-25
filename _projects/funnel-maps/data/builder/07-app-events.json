@@ -1,0 +1,4 @@
+{
+  "finding": "list_app_events returns Apple In-App Events (App Store storefront promo cards) from asc_app_events, not client analytics events. 25 rows, all liturgical feast days (Thanksgiving, All Saints, Exaltation of the Holy Cross, saints days), each with badge SPECIAL_EVENT and per-locale copy. One is live: 2026_09_14_the_exaltation_of_the_holy_cross_nl37vc (asc_event_state PUBLISHED).",
+  "consequence": "No onboarding_started / paywall_shown / trial_started style analytics names are exposed by the builder."
+}

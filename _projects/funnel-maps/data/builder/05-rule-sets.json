@@ -1,0 +1,30 @@
+{
+  "count": 57,
+  "ios_production_looking": {
+    "v6_6_regional_pricing_v1": "global default monthly + yearly.discount1 for rest of world; US weekly + yearly.discount1 (45+ gets monthly + yearly.reduced); GB weekly.notrial + yearly.discount1. Adapty placement all-products.",
+    "us_production_v1": "US weekly + yearly.discount1",
+    "mx_production_v1": "MX weekly + yearly.reduced",
+    "global_default_v1": "fallback weekly + yearly.discount1"
+  },
+  "ios_adaptive_family": "us_adaptive_v2 and ~12 global_adaptive_v2_* clones. Matrix of age x gender x denomination over uniform pricing (pro.weekly + pro.yearly.discount1); presentation varies by cell. Descriptions say DRAFT/test, not production defaults.",
+  "ios_web_checkout": {
+    "global_yearly_only_trial_button_web_v1": "yearly.discount1 only, adds a trial button that opens a web checkout, web price set bc-app2web-v1; hardPaywall added for 45-54 and 55+",
+    "global_elite_weekly_trial_button_web_v1": "elite.weekly.reduced only, same web checkout delta"
+  },
+  "android_by_region": {
+    "android_onboarding_us": "[W-T][Y-H] weekly-premium primary + yearly-premium",
+    "android_onboarding_tier1": "AU/CA/GB/NZ, [W-T][Y-H]",
+    "android_onboarding_latam": "[W-T][Y-H], not yet wired to feature defaults",
+    "android_onboarding_ph": "[M][Y-T] monthly + yearly with trial",
+    "android_onboarding_sa": "ZA KE ZM ZW TZ UG NG BW NA CD MU SC LR, [W-T][Y-H]",
+    "android_onboarding_others": "[W][Y-T] catch-all"
+  },
+  "prices_named_in_descriptions": {
+    "biblechat.pro.yearly.discount1": "$39.99/yr",
+    "biblechat.pro.sixmonths.reduced": "$29.99/6mo",
+    "biblechat.elite.weekly": "$7.99 (vs control $4.99)",
+    "biblechat.elite.yearly.reduced": "$99.99 list with $49.99 first-year intro",
+    "biblechat.standard.weekly.reduced": "PHP 99 intro then 199",
+    "biblechat.standard.yearly.reduced": "PHP 999 intro then 1990"
+  }
+}

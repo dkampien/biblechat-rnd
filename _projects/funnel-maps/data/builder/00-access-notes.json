@@ -1,0 +1,8 @@
+{
+  "app_id": "b76f73e8-a42b-4410-8a3b-9f6fef2e6213",
+  "get_app_context": "FAILED - server resolves apps by host; builder.thebiblechat.com not registered. Known hosts: onboardings.thebiblechat.com (Bible Chat), sambedtimestories.com (Sam).",
+  "list_placements": "EMPTY for this app id (also empty with no app_id arg). Placement feature defaults are the table that names the live onboarding per feature+segment. Not readable with this access.",
+  "list_experiments": "EMPTY for this app id, with and without active_only.",
+  "preview_rule_resolution": "NOT CALLED - requires a placement_id, which list_placements did not return.",
+  "consequence": "Cannot confirm which onboarding is served to live traffic. Mapped the most recently updated published onboarding as the best available proxy."
+}

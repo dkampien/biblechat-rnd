@@ -1,0 +1,188 @@
+<title>Web route, ad view</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #F4F5F2; --surface: #FFFFFF; --ink: #1C2326; --ink-2: #4B5559; --ink-3: #7C878C; --line: #D6DBD8; --band: #ECEEEB;
+    --app: #176F6A; --app-soft: #DCEFEC; --money: #2E6B2E; --money-soft: #E1EEDD; --unknown: #8A9498; --unknown-soft: #ECEEEC;
+    --meta: #3B5BA5; --meta-soft: #E3E9F6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #151A1C; --surface: #1D2427; --ink: #E8ECEA; --ink-2: #B4BDBF; --ink-3: #7F8B8F; --line: #313B3F; --band: #1A2023;
+      --app: #5FC2B8; --app-soft: #17332F; --money: #86C77E; --money-soft: #1E3320; --unknown: #8A9498; --unknown-soft: #262D30;
+      --meta: #8FA8E8; --meta-soft: #1E2739;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #151A1C; --surface: #1D2427; --ink: #E8ECEA; --ink-2: #B4BDBF; --ink-3: #7F8B8F; --line: #313B3F; --band: #1A2023;
+    --app: #5FC2B8; --app-soft: #17332F; --money: #86C77E; --money-soft: #1E3320; --unknown: #8A9498; --unknown-soft: #262D30;
+    --meta: #8FA8E8; --meta-soft: #1E2739;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; font-size: 14px; line-height: 1.45; margin: 0; padding: 36px 24px 64px; }
+  .page { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif; margin: 0; text-wrap: balance; }
+  h1 { font-size: 34px; font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
+  h2 { font-size: 20px; font-weight: 700; }
+  p { margin: 0; max-width: 72ch; }
+  .muted { color: var(--ink-2); }
+  .mono { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 12px; }
+  .eyebrow { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+  a { color: var(--app); }
+  header { display: flex; flex-direction: column; gap: 10px; }
+
+  .world { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow: hidden; }
+  .world > div { padding: 10px 14px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px; }
+  .world > div:first-child { border-left: 0; }
+  .world .k { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+  .world .v { font-weight: 600; font-size: 13.5px; }
+
+  /* the funnel */
+  .funnelwrap { overflow-x: auto; }
+  .funnel { position: relative; width: 1180px; height: 1200px; }
+  .stop { position: absolute; z-index: 2; border: 1.5px solid var(--app); border-radius: 6px; background: var(--surface); padding: 9px 12px 10px; display: flex; flex-direction: column; gap: 3px; text-align: center; }
+  .stop.meta { border-color: var(--meta); }
+  .stop.money { border-color: var(--money); background: var(--money-soft); }
+  .stop.unknown { border-color: var(--unknown); border-style: dashed; background: var(--unknown-soft); }
+  .stop.cohort { border-color: var(--line); background: var(--band); opacity: .9; }
+  .stop .who { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+  .stop .label { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 17px; line-height: 1.15; }
+  .stop .count { font-size: 13px; color: var(--ink-2); }
+  .stop .count b { color: var(--ink); }
+  .stop .col { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 11px; color: var(--ink-3); }
+  .edge { position: absolute; z-index: 3; transform: translate(-50%, -50%); background: var(--surface); border: 1px solid var(--app); border-radius: 14px; padding: 3px 11px; font-size: 12.5px; color: var(--ink); white-space: nowrap; }
+  .edge b { font-weight: 600; }
+  .edge .n { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 11px; color: var(--ink-3); margin-left: 6px; }
+  .edge.unk { border-style: dashed; border-color: var(--unknown); color: var(--ink-2); }
+  .side { position: absolute; z-index: 2; width: 300px; display: flex; flex-direction: column; gap: 3px; font-size: 12.5px; color: var(--ink-2); }
+  .side .h { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+  .side ul { margin: 0; padding-left: 16px; }
+  .side .own { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; color: var(--ink-3); }
+  .side.left { text-align: right; }
+  .side.left ul { padding-left: 0; padding-right: 16px; list-style-position: inside; }
+  .cutline { position: absolute; z-index: 1; left: 40px; right: 40px; border-top: 2px dashed var(--money); }
+  .cutlabel { position: absolute; z-index: 3; font-family: "IBM Plex Mono", Menlo, monospace; font-size: 11px; color: var(--money); background: var(--bg); padding: 0 8px; }
+  svg.edges { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+  svg.edges path { fill: none; stroke: var(--app); stroke-width: 2; }
+  svg.edges path.unk { stroke: var(--unknown); stroke-dasharray: 5 4; }
+  svg.edges path.cohort { stroke: var(--ink-3); stroke-dasharray: 3 4; stroke-width: 1.5; }
+  svg.edges polygon.funnelshape { fill: var(--app-soft); opacity: .35; stroke: none; }
+
+  .cost { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+  th { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); border-top: 0; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td .q { color: var(--unknown); }
+
+  .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .rule { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 12px 14px; font-size: 13px; color: var(--ink-2); }
+  .rule b { color: var(--ink); }
+  footer { color: var(--ink-3); font-size: 12px; border-top: 1px solid var(--line); padding-top: 12px; }
+</style>
+
+<div class="page">
+  <header>
+    <div class="eyebrow">Web route · what one ad can be judged on · WEB account · quiz funnels on verseread.com · numbers 70 days to 2026-09-14</div>
+    <h1>Web route, ad view</h1>
+    <p class="muted">The stretch of the web route you can read per ad: from the impression to the paid intro. Each seam names its rate, where it is read, and the lever behind it. On this route the ad's job ends at the purchase, not at a trial. Everything past it is read per monthly cohort. The app twin is the <a href="https://claude.ai/artifact/7XC7bGow8eVXupovSmDp68">app route ad view</a>; structure lives in the <a href="https://claude.ai/artifact/FgxQZjV9GssNTJ1efWH3s3">funnel map</a>.</p>
+  </header>
+
+  <section class="world">
+    <div><span class="k">Account</span><span class="v">separate WEB account (no internal access)</span></div>
+    <div><span class="k">Door</span><span class="v">WEB family (Sales / Leads on pixel events)</span></div>
+    <div><span class="k">Optimizes for</span><span class="v">CompleteRegistration / Purchase (pixel 1358749622795508)</span></div>
+    <div><span class="k">Window</span><span class="v">7-day click + 1-day view</span></div>
+    <div><span class="k">Judged by</span><span class="v">cost per purchase (CPA), cost per email</span></div>
+  </section>
+
+  <section class="funnelwrap"><div class="funnel" id="funnel"><svg class="edges" id="edges"></svg></div></section>
+
+  <section>
+    <h2>Cost at every depth is one spend pool</h2>
+    <p class="muted" style="margin-bottom:10px">The same ad's spend divided by survivors at each seam. Each cost-per is the previous one divided by the rate between them, so a leak anywhere raises every cost below it.</p>
+    <div class="cost">
+      <table>
+        <tr><th>Depth</th><th>Cost-per</th><th>Blended value (70 days)</th><th>How it is built</th><th>Per ad?</th></tr>
+        <tr><td>Impression</td><td>CPM</td><td class="num">$42-65</td><td>spend ÷ impressions × 1000</td><td>yes</td></tr>
+        <tr><td>Click</td><td>CPC</td><td class="num"><span class="q">?</span> (not in the P&L)</td><td>CPM ÷ CTR</td><td>yes</td></tr>
+        <tr><td>Quiz page</td><td>cost per landing page view</td><td class="num">$0.12-0.43 (Aug reads)</td><td>CPC ÷ page rate</td><td>yes</td></tr>
+        <tr><td>Email</td><td>cost per registration</td><td class="num">$5.23</td><td>cost per page view ÷ email rate</td><td>yes, the WEB door's first target</td></tr>
+        <tr><td>Paid intro</td><td>CPA (cost per purchase)</td><td class="num">$63.5</td><td>cost per email ÷ purchase rate</td><td>yes, the ad's number</td></tr>
+        <tr><td>Renewal 1</td><td>cost per retained buyer</td><td class="num">~$176</td><td>CPA ÷ 36%</td><td>cohort average</td></tr>
+        <tr><td>Month 12</td><td>return on spend</td><td class="num">134% modeled · 33% collected so far</td><td>value per buyer ÷ CPA · $19 intro + 1.58 × $42.20</td><td>cohort only</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Reading an ad without fooling yourself</h2>
+    <div class="rules">
+      <div class="rule"><b>This route pays before it installs.</b> The ad's number is CPA on a $18.99 intro, not CPT. Do not compare it to the app route's CPT; the money shapes differ.</div>
+      <div class="rule"><b>Two registrations per buyer.</b> CompleteRegistration fires at email capture and again on the download click, so registration counts run high on rows with many buyers.</div>
+      <div class="rule"><b>The pixel is 1358749622795508.</b> The "Bible Chat Web" dataset read in Basmo IOS shows none of this; read the WEB account's dataset.</div>
+      <div class="rule"><b>One funnel per pool.</b> Five quiz funnels share this shape with different rates; read an ad against the funnel it sends to, never against the blend.</div>
+      <div class="rule"><b>Modeled is not collected.</b> M12 134% is the colleague's retention model; $180k collected on $542k is the only hard number. Say which one a decision uses.</div>
+      <div class="rule"><b>Starvation is not a verdict.</b> Under 100 impressions there is no read; rerun, do not kill.</div>
+    </div>
+  </section>
+
+  <footer>Sources: the colleague's web2app P&amp;L (adloops.ai, 70 days to 2026-09-14; the model's numbers except revenue collected), the live funnel config read 2026-09-15 (<span class="mono">_docs/core/measurement-map.md</span>), and early-August Ads Manager reads of the paused WEB campaigns on Basmo IOS for CPM and landing-page costs. Per-ad numbers need WEB account access.</footer>
+</div>
+
+<script>
+(function () {
+  var F = document.getElementById("funnel"), svg = document.getElementById("edges"), NS = "http://www.w3.org/2000/svg";
+  var CX = 590;
+  var stops = [
+    { id: "s1", y: 20, w: 640, cls: "meta", who: "Meta shows", label: "Impression", count: "CPM <b>$42-65</b> (Aug to Sep) · spend $542k over 70 days", col: "Impressions · CPM · Frequency" },
+    { id: "s2", y: 190, w: 570, cls: "meta", who: "Meta shows", label: "Link click", count: "cost per click: not in the P&L", col: "Link clicks · CPC · CTR (link)" },
+    { id: "s3", y: 360, w: 500, cls: "", who: "Pixel shows", label: "Quiz page view", count: "PageView on verseread.com · 41 screens follow", col: "Landing page views · PageView" },
+    { id: "s4", y: 530, w: 430, cls: "", who: "Pixel shows", label: "Email captured", count: "cost per email <b>$5.23</b> · skippable step", col: "Registrations completed (CompleteRegistration)" },
+    { id: "s5", y: 700, w: 370, cls: "unknown", who: "Funnel shows", label: "Paywall seen", count: "3 plans: $6.49 trial1w · $18.99 4w · $39.99 12w", col: "no pixel event · PostHog paywall_viewed" },
+    { id: "s6", y: 870, w: 320, cls: "money", who: "The ad's number", label: "Paid intro on Stripe", count: "<b>CPA $63.5</b> · 8,529 purchases in 70 days · $18.99 at the door", col: "Purchases (Purchase pixel) · Cost per purchase" },
+    { id: "s7", y: 1090, w: 280, cls: "cohort", who: "Cohort, not per ad", label: "Renewals at $42.20", count: "renewal 1 <b>36%</b> · 1.58 renewals avg · M12 modeled 134%, collected 33%", col: "Stripe, per month of purchases" }
+  ];
+  var edges = [
+    { a: "s1", b: "s2", rate: "<b>Link CTR</b>", n: "3.6% (P&L, 70 days)", levers: ["Hook and the problem named", "Quiz promise in the ad", "Audience the door buys"], own: "owner: creative" },
+    { a: "s2", b: "s3", rate: "<b>Page reached</b>", n: "96% of clicks", levers: ["Page speed", "Accidental taps"], own: "owner: funnel builder, little to do" },
+    { a: "s3", b: "s4", rate: "<b>Email per page view</b>", n: "27% · the biggest leak: 64% never answer question 1", levers: ["First screens: gender and age gate", "Quiz length and breaks", "Does the quiz match the ad"], own: "owner: funnel (christian-archetype and 4 others)" },
+    { a: "s4", b: "s5", rate: "<b>Paywall reached</b>", n: "not read yet · name and results screens between", unk: true, levers: ["Results page and archetype reveal", "Countdown and promo"], own: "owner: funnel" },
+    { a: "s5", b: "s6", rate: "<b>Purchase per email</b>", n: "8.2% · 2.2% per page view", levers: ["Plan order and intro price", "Intent the ad brought", "Exit offer"], own: "owner: shared: ad audience + paywall" },
+    { a: "s6", b: "s7", rate: "<b>Renewal 1 survives 36%</b>", n: "30-day money-back before it · read per cohort", cohort: true, levers: ["Not the ad, except through who it brought", "Product after sign-in, refunds"], own: "owner: product / finance" }
+  ];
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  var by = {};
+  stops.forEach(function (s) {
+    var d = el("div", "stop " + s.cls); d.style.left = (CX - s.w / 2) + "px"; d.style.top = s.y + "px"; d.style.width = s.w + "px";
+    d.appendChild(el("div", "who", s.who)); d.appendChild(el("div", "label", s.label)); d.appendChild(el("div", "count", s.count)); d.appendChild(el("div", "col", s.col));
+    F.appendChild(d); by[s.id] = d;
+  });
+  function box(n) { return { l: n.offsetLeft, t: n.offsetTop, r: n.offsetLeft + n.offsetWidth, b: n.offsetTop + n.offsetHeight, cx: n.offsetLeft + n.offsetWidth / 2 }; }
+  // funnel silhouette
+  var pts = [];
+  stops.slice(0, 6).forEach(function (s) { var B = box(by[s.id]); pts.push([B.l, B.t]); pts.push([B.l, B.b]); });
+  var right = []; stops.slice(0, 6).forEach(function (s) { var B = box(by[s.id]); right.push([B.r, B.t]); right.push([B.r, B.b]); });
+  var poly = document.createElementNS(NS, "polygon"); poly.setAttribute("class", "funnelshape");
+  poly.setAttribute("points", pts.concat(right.reverse()).map(function (p) { return p.join(","); }).join(" ")); svg.appendChild(poly);
+  var defs = document.createElementNS(NS, "defs"); defs.innerHTML = '<marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="' + getComputedStyle(document.documentElement).getPropertyValue("--app").trim() + '"/></marker><marker id="aru" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="' + getComputedStyle(document.documentElement).getPropertyValue("--unknown").trim() + '"/></marker>'; svg.appendChild(defs);
+  edges.forEach(function (e, i) {
+    var A = box(by[e.a]), B = box(by[e.b]);
+    var p = document.createElementNS(NS, "path"); p.setAttribute("d", "M" + CX + "," + A.b + " L" + CX + "," + (B.t - 2));
+    p.setAttribute("class", e.cohort ? "cohort" : (e.unk ? "unk" : "")); p.setAttribute("marker-end", e.unk ? "url(#aru)" : "url(#ar)"); svg.appendChild(p);
+    var my = (A.b + B.t) / 2;
+    var pill = el("div", "edge" + (e.unk ? " unk" : ""), e.rate + '<span class="n">' + e.n + "</span>"); pill.style.left = CX + "px"; pill.style.top = my + "px"; F.appendChild(pill);
+    var side = el("div", "side " + (i % 2 === 0 ? "right" : "left"));
+    side.appendChild(el("div", "h", "what moves it"));
+    var ul = el("ul"); e.levers.forEach(function (l) { ul.appendChild(el("li", null, l)); }); side.appendChild(ul);
+    side.appendChild(el("div", "own", e.own));
+    side.style.top = (my - (e.cohort ? 92 : 30)) + "px";
+    var wider = Math.max(A.r - A.l, B.r - B.l) / 2;
+    if (i % 2 === 0) side.style.left = (CX + wider + 26) + "px"; else side.style.left = (CX - wider - 26 - 300) + "px";
+    F.appendChild(side);
+  });
+  var cutY = box(by.s7).t - 14;
+  var cl = el("div", "cutline"); cl.style.top = cutY + "px"; F.appendChild(cl);
+  var lab = el("div", "cutlabel", "per-ad reading ends above this line; below is read per monthly cohort and applied back as an average"); lab.style.top = (cutY - 9) + "px"; lab.style.left = "60px"; F.appendChild(lab);
+})();
+</script>

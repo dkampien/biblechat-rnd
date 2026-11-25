@@ -1,0 +1,17 @@
+{
+  "count": 38,
+  "evaluation": "waterfall by priority, first match wins, conditions inside a segment are AND-ed",
+  "deeplink_intent_segments_priority_0_1": ["debug_marius","reinstall_ghost","marriage","catholics","parenting","reengage_discount","man_quiz","audio_bible_study","woman_quiz","web2app_restore","animated_bible_stories","subscriber_churned_active"],
+  "intent_mechanism": "biblechatapp://override-signals/<base64 json> sets ovr_intent, which a Tier-3 feature default uses to serve a dedicated onboarding. Example: biblechatapp://override-signals/eyJpbnRlbnQiOiJjYXRob2xpY3MifQ==",
+  "named_intent_to_onboarding": {
+    "marriage": "V6.6 PE FL - Marriage, 11cac6c6",
+    "parenting": "V6.6 PE FL - Parenting, c62f9363",
+    "catholics": "V6.6 PE FL - Catholic Motivation (US), 06da19e2",
+    "man_quiz": "V6.6 MQ - Man of the Bible Quiz, 1c754ba3",
+    "woman_quiz": "V6.6 WQ - Woman of the Bible Quiz, 3b105c3d",
+    "reengage_paywall_dropoff": "V6.6 NP - Re-engage Short, bbca12c3"
+  },
+  "lifecycle_segments": ["subscriber_churned_active/lapsed","trial_churned_active/lapsed","trial_active","trial_will_expire","active_subscriber","at_risk_subscriber","lapsed_returner_31d","reengage_paywall_dropoff","paywall_resistant_*","veteran_returning_*","new_install_likely_young","new_install_likely_older","new_install","early_free","paywall_bouncer","veteran_first_launch","new_user","default"],
+  "signals_from_ios": ["accessLevel","isFirstOpen","daysSinceInstall","daysSinceLastOpen","onboardingPassedAt","paywallShownInOnboarding","paywallShownAfterOnboarding","country","language","age","gender","uimode","currentSizeCategory","timesOnboardingShown","numberOfPaywallShown","intent"],
+  "resolution_waterfall": ["Tier 1 segment+feature+placement","Tier 2 feature+placement any segment","Tier 3 placement feature defaults"]
+}

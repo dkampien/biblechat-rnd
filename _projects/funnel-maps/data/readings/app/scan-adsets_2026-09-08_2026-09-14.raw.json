@@ -1,0 +1,5478 @@
+{
+ "source": "facebook-ads MCP ads_get_ad_entities, level=adset, act_697155031095732, time_range 2026-09-08..2026-09-14, filtering adset.amount_spent>0, sort=amount_spent_descending, limit=50, 5 paged calls",
+ "fields_requested": [
+  "id",
+  "name",
+  "campaign_id",
+  "campaign_name",
+  "optimization_goal",
+  "promoted_object",
+  "attribution_setting",
+  "effective_status",
+  "destination_type",
+  "amount_spent",
+  "impressions",
+  "reach",
+  "link_click",
+  "omni_landing_page_view",
+  "mobile_app_install",
+  "omni_app_install",
+  "results",
+  "cost_per_result",
+  "omni_purchase"
+ ],
+ "note": "Trimmed to the relevant fields; cost_per_result omitted (derived). amount_spent parsed from the '$X USD' strings the tool returns. results.value 'Not available' is kept verbatim.",
+ "entity_count": 218,
+ "ad_entities": [
+  {
+   "id": "120246661279120160",
+   "name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+   "campaign_id": "120246606714520160",
+   "campaign_name": "Biblechat CPT - US - IOS - August 06, 2026 - Arthur - New Ads",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 13552.42,
+   "impressions": 888901,
+   "reach": 589114,
+   "link_click": 17231,
+   "omni_landing_page_view": 433,
+   "mobile_app_install": 1560,
+   "omni_app_install": 1560,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 467
+   },
+   "omni_purchase": 337
+  },
+  {
+   "id": "120246149962890160",
+   "name": "CPT - US - IOS (20-65) - 88.Spanish lockscreen modificat2 88.Spanish loock screen 3 88.spanish lockscreen alt 88.Spanish brains before and after - July 24, 2026",
+   "campaign_id": "120246149941310160",
+   "campaign_name": "Biblechat CPT - US - IOS - July 24, 2026 - Arthur - Spanish",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 11294.25,
+   "impressions": 1404395,
+   "reach": 744961,
+   "link_click": 14638,
+   "omni_landing_page_view": 381,
+   "mobile_app_install": 4491,
+   "omni_app_install": 4491,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 659
+   },
+   "omni_purchase": 476
+  },
+  {
+   "id": "120246938766340160",
+   "name": "CPT - US - IOS (20-65) - 6 Videos 73ba2d99 - August 30, 2026",
+   "campaign_id": "120246938564210160",
+   "campaign_name": "Biblechat CPT - US - IOS - August 30, 2026 - Arthur - Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 10099.43,
+   "impressions": 623499,
+   "reach": 508196,
+   "link_click": 19019,
+   "omni_landing_page_view": 319,
+   "mobile_app_install": 1727,
+   "omni_app_install": 1727,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 516
+   },
+   "omni_purchase": 347
+  },
+  {
+   "id": "120245704287510160",
+   "name": "CPT - US - IOS (20-65) - 19.1927 daily_1 14.19.DUOMO 19.1925 lockscreen 2 78.14. godly women 2 77.culoare mov - July 06, 2026",
+   "campaign_id": "120245704286730160",
+   "campaign_name": "Biblechat CPT - US - IOS - July 06, 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 9997.56,
+   "impressions": 600621,
+   "reach": 473612,
+   "link_click": 6487,
+   "omni_landing_page_view": 377,
+   "mobile_app_install": 1024,
+   "omni_app_install": 1024,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 309
+   },
+   "omni_purchase": 234
+  },
+  {
+   "id": "120246749118680160",
+   "name": "CPT - US - IOS (18-65) - 7 Videos ca83ab84 - August 17, 2026",
+   "campaign_id": "120246726529900160",
+   "campaign_name": "Biblechat CPT - US - IOS - August 16, 2026 - Arthur - Archetype Women",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 9996.24,
+   "impressions": 353428,
+   "reach": 302076,
+   "link_click": 9906,
+   "omni_landing_page_view": 500,
+   "mobile_app_install": 1626,
+   "omni_app_install": 1626,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 372
+   },
+   "omni_purchase": 290
+  },
+  {
+   "id": "120246149862970160",
+   "name": "CPT - LATAM - IOS (21-65) - 88.Spanish lockscreen modificat3 88.Spanish loock screen 7 88.Spanish telenovela 31.final_es-captioned2 88.Spanish lockscreen Dios2 - July 24, 2026",
+   "campaign_id": "120243884962010160",
+   "campaign_name": "Biblechat CPT - LATAM - IOS - June 05, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 7547.4,
+   "impressions": 7498006,
+   "reach": 4653247,
+   "link_click": 36161,
+   "omni_landing_page_view": 275,
+   "mobile_app_install": 9825,
+   "omni_app_install": 9825,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 646
+   },
+   "omni_purchase": 394
+  },
+  {
+   "id": "120243884962290160",
+   "name": "CPT - LATAM 1- IOS (18-54) - 6 Videos - June 05, 2026",
+   "campaign_id": "120243884962010160",
+   "campaign_name": "Biblechat CPT - LATAM - IOS - June 05, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 7164.03,
+   "impressions": 6347885,
+   "reach": 3252376,
+   "link_click": 27623,
+   "omni_landing_page_view": 342,
+   "mobile_app_install": 9667,
+   "omni_app_install": 9667,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 593
+   },
+   "omni_purchase": 382
+  },
+  {
+   "id": "120246749545260160",
+   "name": "CPT - US - IOS (20-65) - 78.which bible character are u 18.062-remake 18.021-remake 4.comeback.141 4.comeback.54 - August 17, 2026",
+   "campaign_id": "120246749544890160",
+   "campaign_name": "Biblechat CPT - US - IOS - August 17, 2026 - Arthur - Archetype Men",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 6832.26,
+   "impressions": 339135,
+   "reach": 295298,
+   "link_click": 7563,
+   "omni_landing_page_view": 149,
+   "mobile_app_install": 1214,
+   "omni_app_install": 1214,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 259
+   },
+   "omni_purchase": 189
+  },
+  {
+   "id": "120246223473950160",
+   "name": "CPT - LATAM - IOS (20-65) - 88.spanish lockscreen pisicute 88.Spanish Dios 88.Spanish lockscreen modificat1 88.Spanish loock screen 1 - July 28, 2026",
+   "campaign_id": "120246223473400160",
+   "campaign_name": "Biblechat CPT - LATAM - IOS - July 28 - Arthur",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 5517.41,
+   "impressions": 4849749,
+   "reach": 2525799,
+   "link_click": 26213,
+   "omni_landing_page_view": 238,
+   "mobile_app_install": 4529,
+   "omni_app_install": 4529,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 484
+   },
+   "omni_purchase": 346
+  },
+  {
+   "id": "120246777906370160",
+   "name": "CPT - US - IOS (20-65) - 4.comeback.84 18.057-remake 4.comeback.57 4.comeback.146 18.055-remake - August 18, 2026",
+   "campaign_id": "120246777459680160",
+   "campaign_name": "Biblechat CPT - US - IOS - August 18, 2026 - Arthur - Know Like",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 4816.36,
+   "impressions": 342781,
+   "reach": 284028,
+   "link_click": 4692,
+   "omni_landing_page_view": 238,
+   "mobile_app_install": 913,
+   "omni_app_install": 913,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 153
+   },
+   "omni_purchase": 117
+  },
+  {
+   "id": "120246862801310160",
+   "name": "SCALE - US - english - ANDROID - 13 ads - OLDER daily_plan",
+   "campaign_id": "120246862766470160",
+   "campaign_name": "Biblechat CPT Scale - US - ANDROID - 24 August 2026 - auto",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 4311.11,
+   "impressions": 174425,
+   "reach": 134471,
+   "link_click": 3059,
+   "omni_landing_page_view": 107,
+   "mobile_app_install": 1142,
+   "omni_app_install": 1142,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 127
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246749562530160",
+   "name": "CPT - US - IOS (20-65) - 4.comeback.104 4.comeback.40 soldier-selfie-testimonial 18.091-remake 18.014-remake - August 17, 2026",
+   "campaign_id": "120246749544890160",
+   "campaign_name": "Biblechat CPT - US - IOS - August 17, 2026 - Arthur - Archetype Men",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 3721.28,
+   "impressions": 182742,
+   "reach": 160336,
+   "link_click": 2874,
+   "omni_landing_page_view": 109,
+   "mobile_app_install": 481,
+   "omni_app_install": 481,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 94
+   },
+   "omni_purchase": 109
+  },
+  {
+   "id": "120247057499540160",
+   "name": "CPT - US - IOS (20-65) - 6 Videos e64eb00f - September 07, 2026",
+   "campaign_id": "120247057499270160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 07, 2026 - Arthur - Arch",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 3548.25,
+   "impressions": 135070,
+   "reach": 102154,
+   "link_click": 3447,
+   "omni_landing_page_view": 185,
+   "mobile_app_install": 570,
+   "omni_app_install": 570,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 128
+   },
+   "omni_purchase": 82
+  },
+  {
+   "id": "120247057504290160",
+   "name": "CPT - US - IOS (20-65) - 7 Videos 783ebada - September 07, 2026",
+   "campaign_id": "120247057499270160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 07, 2026 - Arthur - Arch",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 3514.19,
+   "impressions": 153690,
+   "reach": 119652,
+   "link_click": 5346,
+   "omni_landing_page_view": 163,
+   "mobile_app_install": 749,
+   "omni_app_install": 749,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 167
+   },
+   "omni_purchase": 104
+  },
+  {
+   "id": "120246777460340160",
+   "name": "CPT - US - IOS (20-65) - 4.comeback.81 4.comeback.55 18.093-remake 19.1984 daily 2 18.027-remake - August 18, 2026",
+   "campaign_id": "120246777459680160",
+   "campaign_name": "Biblechat CPT - US - IOS - August 18, 2026 - Arthur - Know Like",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 3355.86,
+   "impressions": 131870,
+   "reach": 119327,
+   "link_click": 3572,
+   "omni_landing_page_view": 197,
+   "mobile_app_install": 790,
+   "omni_app_install": 790,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 117
+   },
+   "omni_purchase": 78
+  },
+  {
+   "id": "120246223405110160",
+   "name": "CPT - LATAM - ANDROID (20-65) - 88.Spanish lockscreen modificat2 88.Spanish loock screen 3 88.spanish lockscreen alt 88.Spanish brains before and after - July 28, 2026",
+   "campaign_id": "120244281674270160",
+   "campaign_name": "Biblechat CPT - LATAM - Android - June 11, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 3188.03,
+   "impressions": 4290090,
+   "reach": 2819753,
+   "link_click": 37256,
+   "omni_landing_page_view": 492,
+   "mobile_app_install": 19001,
+   "omni_app_install": 19001,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 381
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246862818400160",
+   "name": "SCALE - US - english - ANDROID - 5 ads - YOUNGER daily_plan",
+   "campaign_id": "120246862766470160",
+   "campaign_name": "Biblechat CPT Scale - US - ANDROID - 24 August 2026 - auto",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 3101.62,
+   "impressions": 234269,
+   "reach": 183682,
+   "link_click": 2554,
+   "omni_landing_page_view": 81,
+   "mobile_app_install": 1232,
+   "omni_app_install": 1232,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 147
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246777937870160",
+   "name": "CPT - US - IOS (20-65) - 4.comeback.77 4.comeback.113 4.comeback.144 18.088-remake 18.032-remake - August 18, 2026",
+   "campaign_id": "120246777459680160",
+   "campaign_name": "Biblechat CPT - US - IOS - August 18, 2026 - Arthur - Know Like",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 2901.37,
+   "impressions": 107328,
+   "reach": 93647,
+   "link_click": 2775,
+   "omni_landing_page_view": 113,
+   "mobile_app_install": 393,
+   "omni_app_install": 393,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 76
+   },
+   "omni_purchase": 69
+  },
+  {
+   "id": "120243868633170160",
+   "name": "CPT - US 4 - IOS (18-54) - 477.1770373746283_bible_trivia 18.1236.lockscreen.i3 307.1764353664379 19.1303 lockscreen af 19.893 lockscreen 4 - June 05, 2026",
+   "campaign_id": "120243865986240160",
+   "campaign_name": "Biblechat CPT - FirstUS - IOS - June 05, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 2881.5,
+   "impressions": 285467,
+   "reach": 245904,
+   "link_click": 1391,
+   "omni_landing_page_view": 51,
+   "mobile_app_install": 431,
+   "omni_app_install": 431,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 77
+   },
+   "omni_purchase": 90
+  },
+  {
+   "id": "120247057510380160",
+   "name": "CPT - US - IOS (20-65) - 18.0818.58-duomo-black-remake2 14.8.seedancedrama-nobodytells 18.0820.ep4.1 18.0817.57.1 18.0817.57.5 - September 07, 2026",
+   "campaign_id": "120247057499270160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 07, 2026 - Arthur - Arch",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 2827.31,
+   "impressions": 100050,
+   "reach": 78740,
+   "link_click": 2982,
+   "omni_landing_page_view": 274,
+   "mobile_app_install": 512,
+   "omni_app_install": 512,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 102
+   },
+   "omni_purchase": 67
+  },
+  {
+   "id": "120246223448270160",
+   "name": "CPT - LATAM - IOS (20-65) - 88.Spanish lockscreen modificat2 88.Spanish loock screen 3 88.spanish lockscreen alt 88.Spanish brains before and after - July 28, 2026",
+   "campaign_id": "120243884962010160",
+   "campaign_name": "Biblechat CPT - LATAM - IOS - June 05, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 2709.74,
+   "impressions": 2470138,
+   "reach": 1955515,
+   "link_click": 10112,
+   "omni_landing_page_view": 98,
+   "mobile_app_install": 3554,
+   "omni_app_install": 3554,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 258
+   },
+   "omni_purchase": 246
+  },
+  {
+   "id": "120246375226510160",
+   "name": "CPT - LATAM - IOS (20-65) - 88.9.1310.r1.lockscreen.es-LA 88.307.1764353664379.es-LA 88.4.1504_1_new.es-LA - August 03, 2026",
+   "campaign_id": "120246223473400160",
+   "campaign_name": "Biblechat CPT - LATAM - IOS - July 28 - Arthur",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 2473.73,
+   "impressions": 2417520,
+   "reach": 1818728,
+   "link_click": 8978,
+   "omni_landing_page_view": 82,
+   "mobile_app_install": 2752,
+   "omni_app_install": 2752,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 229
+   },
+   "omni_purchase": 186
+  },
+  {
+   "id": "120246862780310160",
+   "name": "SCALE - US - english - ANDROID - 9 ads - OLDEST competitor_inspired",
+   "campaign_id": "120246862766470160",
+   "campaign_name": "Biblechat CPT Scale - US - ANDROID - 24 August 2026 - auto",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2309.15,
+   "impressions": 96212,
+   "reach": 75814,
+   "link_click": 2228,
+   "omni_landing_page_view": 54,
+   "mobile_app_install": 924,
+   "omni_app_install": 924,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 108
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247051856330160",
+   "name": "SCALE - US - english - ANDROID - 4 ads - remaining",
+   "campaign_id": "120247051855560160",
+   "campaign_name": "Biblechat CPT Scale - US - ANDROID - 7 September 2026 - auto",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2247.84,
+   "impressions": 111920,
+   "reach": 75940,
+   "link_click": 1572,
+   "omni_landing_page_view": 53,
+   "mobile_app_install": 712,
+   "omni_app_install": 712,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 83
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246938568810160",
+   "name": "CPT - US - IOS (20-65) - 7 Videos 9f2cbd0c - August 30, 2026",
+   "campaign_id": "120246938564210160",
+   "campaign_name": "Biblechat CPT - US - IOS - August 30, 2026 - Arthur - Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2245.36,
+   "impressions": 73398,
+   "reach": 54760,
+   "link_click": 1940,
+   "omni_landing_page_view": 62,
+   "mobile_app_install": 267,
+   "omni_app_install": 267,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 79
+   },
+   "omni_purchase": 57
+  },
+  {
+   "id": "120246826703820160",
+   "name": "ad set 3 - 6 new creatives",
+   "campaign_id": "120246273357700160",
+   "campaign_name": "BC Creators campaign 1 - 30 July 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "LEAD"
+   },
+   "attribution_setting": "1d_view_7d_click_1d_ev",
+   "effective_status": "PAUSED",
+   "destination_type": "UNDEFINED",
+   "amount_spent": 1881.28,
+   "impressions": 118561,
+   "reach": 62066,
+   "link_click": 3139,
+   "omni_landing_page_view": 2208,
+   "mobile_app_install": null,
+   "omni_app_install": null,
+   "results": {
+    "indicator": "actions:offsite_conversion.fb_pixel_lead",
+    "value": 571
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246352914060160",
+   "name": "CPT - LATAM - ANDROID (21-65) - 88.4.1504_1_new.es-LA 88.9.1310.r1.lockscreen.es-LA 88.307.1764353664379.es-LA - August 02, 2026",
+   "campaign_id": "120244281674270160",
+   "campaign_name": "Biblechat CPT - LATAM - Android - June 11, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 1798.46,
+   "impressions": 2642413,
+   "reach": 1828729,
+   "link_click": 20533,
+   "omni_landing_page_view": 245,
+   "mobile_app_install": 9113,
+   "omni_app_install": 9113,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 250
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246149868420160",
+   "name": "CPT - LATAM - ANDROID (20-65) - 88.Spanish lockscreen modificat3 88.Spanish loock screen 7 88.Spanish telenovela 31.final_es-captioned2 88.Spanish lockscreen Dios2 - July 24, 2026",
+   "campaign_id": "120244281674270160",
+   "campaign_name": "Biblechat CPT - LATAM - Android - June 11, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 1500.19,
+   "impressions": 2021699,
+   "reach": 1542934,
+   "link_click": 17517,
+   "omni_landing_page_view": 225,
+   "mobile_app_install": 8990,
+   "omni_app_install": 8990,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 183
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247136421440160",
+   "name": "CPT - US - IOS (20-65) - 78.priest lockscreen 78.catholic lockscreen 2 78.catholic_feast_lockscreen_02 78.catholic_feast_lockscreen_03 19.2023 catholic_1 - September 12, 2026",
+   "campaign_id": "120247136242960160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 12, 2026- New Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 1473.64,
+   "impressions": 97655,
+   "reach": 69174,
+   "link_click": 2599,
+   "omni_landing_page_view": 109,
+   "mobile_app_install": 848,
+   "omni_app_install": 848,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 121
+   },
+   "omni_purchase": 65
+  },
+  {
+   "id": "120246824866640160",
+   "name": "CPT - US - IOS (20-65) - 8 Videos f93d3031 - August 21, 2026",
+   "campaign_id": "120246749544890160",
+   "campaign_name": "Biblechat CPT - US - IOS - August 17, 2026 - Arthur - Archetype Men",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 1343.78,
+   "impressions": 63210,
+   "reach": 58140,
+   "link_click": 1346,
+   "omni_landing_page_view": 34,
+   "mobile_app_install": 151,
+   "omni_app_install": 151,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 42
+   },
+   "omni_purchase": 36
+  },
+  {
+   "id": "120246223399220160",
+   "name": "CPT - LATAM - ANDROID (20-65) - 88.spanish lockscreen pisicute 88.Spanish Dios 88.Spanish lockscreen modificat1 88.Spanish loock screen 1 - July 28, 2026",
+   "campaign_id": "120244281674270160",
+   "campaign_name": "Biblechat CPT - LATAM - Android - June 11, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 1334.75,
+   "impressions": 1533207,
+   "reach": 1040193,
+   "link_click": 10180,
+   "omni_landing_page_view": 126,
+   "mobile_app_install": 4286,
+   "omni_app_install": 4286,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 200
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247089509630160",
+   "name": "CPT - US - IOS (20-65) - 7 Videos 201d82f9 - September 09, 2026",
+   "campaign_id": "120246749544890160",
+   "campaign_name": "Biblechat CPT - US - IOS - August 17, 2026 - Arthur - Archetype Men",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 1239.62,
+   "impressions": 54702,
+   "reach": 39449,
+   "link_click": 1317,
+   "omni_landing_page_view": 30,
+   "mobile_app_install": 79,
+   "omni_app_install": 79,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 16
+   },
+   "omni_purchase": 14
+  },
+  {
+   "id": "120246149876010160",
+   "name": "CPT - LATAM - ANDROID (20-65) - 88.Spanish loock screen 2 88.Spanish lockscreen 2 35 88.Spanish lockscreen Dios 88.Spanish lockscreen minecraft 88.Spanish game - July 24, 2026",
+   "campaign_id": "120244281674270160",
+   "campaign_name": "Biblechat CPT - LATAM - Android - June 11, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 1076.25,
+   "impressions": 1219046,
+   "reach": 944741,
+   "link_click": 10265,
+   "omni_landing_page_view": 209,
+   "mobile_app_install": 4583,
+   "omni_app_install": 4583,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 138
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120245229997930160",
+   "name": "female ad set 1",
+   "campaign_id": "120245229807940160",
+   "campaign_name": "Biblechat CPT - PH - ANDROID - June 25, 2026 - Arthur",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 1035.27,
+   "impressions": 2210281,
+   "reach": 1099608,
+   "link_click": 12309,
+   "omni_landing_page_view": 146,
+   "mobile_app_install": 4987,
+   "omni_app_install": 4987,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 162
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247136272090160",
+   "name": "CPT - US - IOS (20-65) - 78.priest green 78.catholic mass 78.catholic_montage2 19.2019 catholic_1 19.2028 catholic meme - September 12, 2026",
+   "campaign_id": "120247136242960160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 12, 2026- New Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 1009.63,
+   "impressions": 47098,
+   "reach": 35633,
+   "link_click": 1515,
+   "omni_landing_page_view": 97,
+   "mobile_app_install": 251,
+   "omni_app_install": 251,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 37
+   },
+   "omni_purchase": 25
+  },
+  {
+   "id": "120247089938270160",
+   "name": "CPT - US - IOS (20-65) - 8 Videos 889e4253 - September 09, 2026",
+   "campaign_id": "120247089553060160",
+   "campaign_name": "Biblechat CPT - IOS - US - September 09, 2026 - Arthur - New Lockscreen",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 978.99,
+   "impressions": 72359,
+   "reach": 59566,
+   "link_click": 684,
+   "omni_landing_page_view": 20,
+   "mobile_app_install": 74,
+   "omni_app_install": 74,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 20
+   },
+   "omni_purchase": 8
+  },
+  {
+   "id": "120247089553460160",
+   "name": "CPT - US - IOS (20-65) - 9 Videos 99dbf4ee - September 09, 2026",
+   "campaign_id": "120247089553060160",
+   "campaign_name": "Biblechat CPT - IOS - US - September 09, 2026 - Arthur - New Lockscreen",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 971.35,
+   "impressions": 65915,
+   "reach": 45685,
+   "link_click": 875,
+   "omni_landing_page_view": 19,
+   "mobile_app_install": 49,
+   "omni_app_install": 49,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 19
+   },
+   "omni_purchase": 17
+  },
+  {
+   "id": "120245230209820160",
+   "name": "mix ads 1",
+   "campaign_id": "120245229807940160",
+   "campaign_name": "Biblechat CPT - PH - ANDROID - June 25, 2026 - Arthur",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 961.54,
+   "impressions": 2587412,
+   "reach": 1675432,
+   "link_click": 16528,
+   "omni_landing_page_view": 182,
+   "mobile_app_install": 6789,
+   "omni_app_install": 6789,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 156
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246149958680160",
+   "name": "CPT - US - IOS (20-65) - 88.Spanish lockscreen modificat3 88.Spanish loock screen 7 88.Spanish telenovela 31.final_es-captioned2 88.Spanish lockscreen Dios2 - July 24, 2026",
+   "campaign_id": "120246149941310160",
+   "campaign_name": "Biblechat CPT - US - IOS - July 24, 2026 - Arthur - Spanish",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 886.83,
+   "impressions": 117282,
+   "reach": 107730,
+   "link_click": 658,
+   "omni_landing_page_view": 8,
+   "mobile_app_install": 264,
+   "omni_app_install": 264,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 31
+   },
+   "omni_purchase": 42
+  },
+  {
+   "id": "120247136243130160",
+   "name": "CPT - US - IOS (20-65) - 19.2027 catholic 19.2021 catholic 19.2026 catholic 19.2030 catholic 78.talking head catholic - September 12, 2026",
+   "campaign_id": "120247136242960160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 12, 2026- New Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 830.84,
+   "impressions": 56739,
+   "reach": 43307,
+   "link_click": 822,
+   "omni_landing_page_view": 63,
+   "mobile_app_install": 178,
+   "omni_app_install": 178,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 35
+   },
+   "omni_purchase": 22
+  },
+  {
+   "id": "120246777961250160",
+   "name": "CPT - US - IOS (20-65) - 6 Videos 6791ec0c - August 18, 2026",
+   "campaign_id": "120246777459680160",
+   "campaign_name": "Biblechat CPT - US - IOS - August 18, 2026 - Arthur - Know Like",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 778.33,
+   "impressions": 32386,
+   "reach": 30041,
+   "link_click": 822,
+   "omni_landing_page_view": 28,
+   "mobile_app_install": 153,
+   "omni_app_install": 153,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 19
+   },
+   "omni_purchase": 23
+  },
+  {
+   "id": "120244281678040160",
+   "name": "CPT - LATAM 1- Android (18-54) - 6 Videos - June 11, 2026",
+   "campaign_id": "120244281674270160",
+   "campaign_name": "Biblechat CPT - LATAM - Android - June 11, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 768.05,
+   "impressions": 866599,
+   "reach": 512845,
+   "link_click": 6697,
+   "omni_landing_page_view": 124,
+   "mobile_app_install": 3107,
+   "omni_app_install": 3107,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 100
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247051862210160",
+   "name": "SCALE - LATAM - spanish - ANDROID - 7 ads - UNKNOWN competitor_inspired+",
+   "campaign_id": "120247051861810160",
+   "campaign_name": "Biblechat CPT Scale - LATAM - ANDROID - 7 September 2026 - auto",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 755.75,
+   "impressions": 594686,
+   "reach": 330483,
+   "link_click": 5298,
+   "omni_landing_page_view": 89,
+   "mobile_app_install": 2614,
+   "omni_app_install": 2614,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 134
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246781196370160",
+   "name": "CPT - ZA en - ANDROID (25-54) - 7 Videos - August 18, 2026",
+   "campaign_id": "120246781103590160",
+   "campaign_name": "Biblechat Geo Expansion CPT - EN - ANDROID - August 18, 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 701.79,
+   "impressions": 625714,
+   "reach": 354914,
+   "link_click": 6097,
+   "omni_landing_page_view": 86,
+   "mobile_app_install": 2880,
+   "omni_app_install": 2880,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 89
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246863178400160",
+   "name": "SCALE - LATAM - spanish - ANDROID - 6 ads - YOUNGER+",
+   "campaign_id": "120246863169810160",
+   "campaign_name": "Biblechat CPT Scale - LATAM - ANDROID - 24 August 2026 - auto",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 695.37,
+   "impressions": 947570,
+   "reach": 693131,
+   "link_click": 5351,
+   "omni_landing_page_view": 80,
+   "mobile_app_install": 2707,
+   "omni_app_install": 2707,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 93
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247055989190160",
+   "name": "CPT - US - IOS (20-65) - 77.andreea_w5_pixaryell_hookH3 77.pixaryell 77.andreea_w5_saysorry 77.andreea_w5_day7_pixar 77.w5_must wach - September 07, 2026",
+   "campaign_id": "120247055982690160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 07, 2026 - Arthur - Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 631.06,
+   "impressions": 38001,
+   "reach": 31147,
+   "link_click": 799,
+   "omni_landing_page_view": 19,
+   "mobile_app_install": 70,
+   "omni_app_install": 70,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 14
+   },
+   "omni_purchase": 8
+  },
+  {
+   "id": "120243871036600160",
+   "name": "CPT - US 5..- IOS (18-54) - 443.1772221340998_lock_screen 19.1681 lockscreen_1 18.1224.study.i3 304.copy_3E716B41-D76A-40FA-A153-5E1DEF239CCB 19.1293 lockscreen 4 - June 05, 2026",
+   "campaign_id": "120243870039440160",
+   "campaign_name": "Biblechat CPT Third - US - IOS - June 05, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 594.63,
+   "impressions": 50378,
+   "reach": 43185,
+   "link_click": 224,
+   "omni_landing_page_view": 7,
+   "mobile_app_install": 61,
+   "omni_app_install": 61,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 10
+   },
+   "omni_purchase": 4
+  },
+  {
+   "id": "120243869161700160",
+   "name": "CPT - US 3.- IOS (18-54) - 8 Videos - June 05, 2026",
+   "campaign_id": "120243868871550160",
+   "campaign_name": "Biblechat CPT - Second US - IOS - June 05, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 591.56,
+   "impressions": 46828,
+   "reach": 43013,
+   "link_click": 392,
+   "omni_landing_page_view": 26,
+   "mobile_app_install": 74,
+   "omni_app_install": 74,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 19
+   },
+   "omni_purchase": 13
+  },
+  {
+   "id": "120243868872830160",
+   "name": "CPT - US 1.- IOS (18-54) - 7 Videos - June 05, 2026",
+   "campaign_id": "120243868871550160",
+   "campaign_name": "Biblechat CPT - Second US - IOS - June 05, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 534.29,
+   "impressions": 43916,
+   "reach": 42536,
+   "link_click": 285,
+   "omni_landing_page_view": 10,
+   "mobile_app_install": 74,
+   "omni_app_install": 74,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 18
+   },
+   "omni_purchase": 5
+  },
+  {
+   "id": "120243870987000160",
+   "name": "CPT - US 4..- IOS (18-54) - 306.1774946629241_lock_screen_hourly_affirmations 475.1772123641629_chat_text GET A NEW V ERSE9 19.1078 lockscreen 30.1709_lock_02 - June 05, 2026",
+   "campaign_id": "120243870039440160",
+   "campaign_name": "Biblechat CPT Third - US - IOS - June 05, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 523.73,
+   "impressions": 44106,
+   "reach": 35051,
+   "link_click": 459,
+   "omni_landing_page_view": 6,
+   "mobile_app_install": 59,
+   "omni_app_install": 59,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 15
+   },
+   "omni_purchase": 5
+  },
+  {
+   "id": "120243870192150160",
+   "name": "CPT - US 4. - IOS (18-54) - Headway Inspired 13 19.lockscreen 30 mar 26 2 441.1771847280829_lock_screen 305.v24044gl0000d3ue1kvog65vu0pdiulg Headway inspired 3 - June 05, 2026",
+   "campaign_id": "120243868871550160",
+   "campaign_name": "Biblechat CPT - Second US - IOS - June 05, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 464.58,
+   "impressions": 37919,
+   "reach": 34787,
+   "link_click": 314,
+   "omni_landing_page_view": 8,
+   "mobile_app_install": 81,
+   "omni_app_install": 81,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 18
+   },
+   "omni_purchase": 10
+  },
+  {
+   "id": "120243870224650160",
+   "name": "CPT - US 2..- IOS (18-54) - 18.1236.lockscreen.i4 309.Feeling Lost 19.1351 lockscreen_1 Headway inspired  12 v24044gl0000d3roouvog65raoiomj30 - June 05, 2026",
+   "campaign_id": "120243870039440160",
+   "campaign_name": "Biblechat CPT Third - US - IOS - June 05, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 461.93,
+   "impressions": 32410,
+   "reach": 28971,
+   "link_click": 249,
+   "omni_landing_page_view": 8,
+   "mobile_app_install": 54,
+   "omni_app_install": 54,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 10
+   },
+   "omni_purchase": 7
+  },
+  {
+   "id": "120243869952550160",
+   "name": "CPT - US 5.- IOS (18-54) - 19.9.1455.lockscreen 3 19.iteration.lockscreen 14 449.1771595728348_lock_screen 307.Reclama 12 GW Headway inspired 9 - June 05, 2026",
+   "campaign_id": "120243868871550160",
+   "campaign_name": "Biblechat CPT - Second US - IOS - June 05, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 457.4,
+   "impressions": 41600,
+   "reach": 37135,
+   "link_click": 226,
+   "omni_landing_page_view": 7,
+   "mobile_app_install": 64,
+   "omni_app_install": 64,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 11
+   },
+   "omni_purchase": 5
+  },
+  {
+   "id": "120243870302630160",
+   "name": "CPT - US 3..- IOS (18-54) - 19.1658 lockscreen_12 Beige Motivational Quotes Facebook Post New ai 302.1028 (6) Test Georgiana_1 - June 05, 2026",
+   "campaign_id": "120243870039440160",
+   "campaign_name": "Biblechat CPT Third - US - IOS - June 05, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 455.42,
+   "impressions": 35799,
+   "reach": 31466,
+   "link_click": 598,
+   "omni_landing_page_view": 4,
+   "mobile_app_install": 53,
+   "omni_app_install": 53,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 7
+   },
+   "omni_purchase": 5
+  },
+  {
+   "id": "120247090842710160",
+   "name": "CPT - US - IOS (20-65) - 6 Videos 4060d517 - September 09, 2026",
+   "campaign_id": "120247090831550160",
+   "campaign_name": "Biblechat CPT - IOS - US - September 09, 2026 - Arthur - CBO - INFLUENCERS",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 441.05,
+   "impressions": 23561,
+   "reach": 20267,
+   "link_click": 458,
+   "omni_landing_page_view": 6,
+   "mobile_app_install": 9,
+   "omni_app_install": 9,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 4
+   },
+   "omni_purchase": 4
+  },
+  {
+   "id": "120243869050720160",
+   "name": "CPT - US 2.- IOS (18-54) - 6 Videos - June 05, 2026",
+   "campaign_id": "120243868871550160",
+   "campaign_name": "Biblechat CPT - Second US - IOS - June 05, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 385.16,
+   "impressions": 30534,
+   "reach": 22290,
+   "link_click": 258,
+   "omni_landing_page_view": 16,
+   "mobile_app_install": 47,
+   "omni_app_install": 47,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 12
+   },
+   "omni_purchase": 7
+  },
+  {
+   "id": "120247142878710160",
+   "name": "CPT - US - IOS (20-65) - 77.yellingbrain-0908-30s-v2 77.dishmom-0911-textwall-v4 77.andreea_w5_saysorry_hookH1 77.andreea_w6_28days_pixar_animated_v4 77.explainbible-chat-v3 - September 13, 2026",
+   "campaign_id": "120247142878230160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 13, 2026 - 2Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 363.53,
+   "impressions": 18098,
+   "reach": 15324,
+   "link_click": 202,
+   "omni_landing_page_view": 13,
+   "mobile_app_install": 32,
+   "omni_app_install": 32,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 3
+   },
+   "omni_purchase": 2
+  },
+  {
+   "id": "120243870042050160",
+   "name": "CPT - US 1..- IOS (18-54) - 19.iteration.lockscreen 10 19.1750 lockscreen_1 19.1658s lockscreen 4.1475_4 Headway inspired 11 - June 05, 2026",
+   "campaign_id": "120243870039440160",
+   "campaign_name": "Biblechat CPT Third - US - IOS - June 05, 2026 - Cristina",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 344.57,
+   "impressions": 25934,
+   "reach": 22213,
+   "link_click": 238,
+   "omni_landing_page_view": 11,
+   "mobile_app_install": 22,
+   "omni_app_install": 22,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 7
+   },
+   "omni_purchase": 2
+  },
+  {
+   "id": "120247146381730160",
+   "name": "CPT - US - IOS (20-65) - 9 Videos b9f6e471 - September 13, 2026",
+   "campaign_id": "120247142878230160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 13, 2026 - 2Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 331.85,
+   "impressions": 15939,
+   "reach": 14221,
+   "link_click": 533,
+   "omni_landing_page_view": 9,
+   "mobile_app_install": 39,
+   "omni_app_install": 39,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 3
+   },
+   "omni_purchase": 1
+  },
+  {
+   "id": "120247055983210160",
+   "name": "CPT - US - IOS (20-65) - 77.andreea_w5_pixaryell_hookH1 77.w5_brokentoy 77.w5_mommytoldastory 77.seminar-yelling-0904-hookfetita-v4 77.andreea_w5_likenobody_hook2_pat - September 07, 2026",
+   "campaign_id": "120247055982690160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 07, 2026 - Arthur - Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 284.01,
+   "impressions": 28433,
+   "reach": 24184,
+   "link_click": 1196,
+   "omni_landing_page_view": 5,
+   "mobile_app_install": 22,
+   "omni_app_install": 22,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 6
+   },
+   "omni_purchase": 4
+  },
+  {
+   "id": "120247136313140160",
+   "name": "CPT - US - IOS (20-65) - 77.seminar-yelling-0904-hookscena-v2 77.w5_patiencemom 77.yellingbrain-0908-30s-v2 14.PREACHER-BOUNDARIES-v1 77.lockscreenmom.3 - September 12, 2026",
+   "campaign_id": "120247136310250160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 12, 2026 - Parenting/Women",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 258.99,
+   "impressions": 15447,
+   "reach": 13164,
+   "link_click": 162,
+   "omni_landing_page_view": 4,
+   "mobile_app_install": 12,
+   "omni_app_install": 12,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 4
+   },
+   "omni_purchase": 3
+  },
+  {
+   "id": "120247136310480160",
+   "name": "CPT - US - IOS (20-65) - 6 Videos 1235a4c7 - September 12, 2026",
+   "campaign_id": "120247136310250160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 12, 2026 - Parenting/Women",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 257.08,
+   "impressions": 9347,
+   "reach": 8529,
+   "link_click": 506,
+   "omni_landing_page_view": 4,
+   "mobile_app_install": 25,
+   "omni_app_install": 25,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 4
+   },
+   "omni_purchase": 4
+  },
+  {
+   "id": "120247142882970160",
+   "name": "CPT - US - IOS (20-65) - 14.17.seedancedrama-simplu 77.w5_patiencemom 77.lockscreenmom.3 31.1927_parenting_1 - September 13, 2026",
+   "campaign_id": "120247142878230160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 13, 2026 - 2Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 244.59,
+   "impressions": 13918,
+   "reach": 11804,
+   "link_click": 324,
+   "omni_landing_page_view": 10,
+   "mobile_app_install": 20,
+   "omni_app_install": 20,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 5
+   },
+   "omni_purchase": 5
+  },
+  {
+   "id": "120247059779670160",
+   "name": "CPT - US - IOS (20-65) - 14.SERMON-PUSHBACK-APP-v1 14.1.melodie 14.1.meshup ms-pastor-church-anxiety - September 07, 2026",
+   "campaign_id": "120247055982690160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 07, 2026 - Arthur - Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 220.1,
+   "impressions": 11547,
+   "reach": 9525,
+   "link_click": 240,
+   "omni_landing_page_view": 4,
+   "mobile_app_install": 13,
+   "omni_app_install": 13,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 2
+   },
+   "omni_purchase": 1
+  },
+  {
+   "id": "120247124703160160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_moment - 11 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 202.78,
+   "impressions": 226882,
+   "reach": 138030,
+   "link_click": 1470,
+   "omni_landing_page_view": 26,
+   "mobile_app_install": 414,
+   "omni_app_install": 414,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 8
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247124733520160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_struggle - 11 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 187.97,
+   "impressions": 207058,
+   "reach": 128357,
+   "link_click": 1515,
+   "omni_landing_page_view": 35,
+   "mobile_app_install": 370,
+   "omni_app_install": 370,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 16
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247072900220160",
+   "name": "CPT - PH - IOS (20-65) - 8 Videos 2b2edd4b - September 08, 2026",
+   "campaign_id": "120247072893220160",
+   "campaign_name": "Biblechat CPT - PH - IOS - September 08, 2026 - Arthur",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 186.91,
+   "impressions": 144519,
+   "reach": 96626,
+   "link_click": 1208,
+   "omni_landing_page_view": 42,
+   "mobile_app_install": 122,
+   "omni_app_install": 122,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 14
+   },
+   "omni_purchase": 14
+  },
+  {
+   "id": "120247154157960160",
+   "name": "CPT - US - IOS (20-65) - 78.catholic lockscreen girl (refacut) 78.catholic_feast_lockscreen_07 78.catholic_feast_lockscreen_05 78.catholic_feast_lockscreen_04 78.catholic_feast_lockscreen_09 - September 14, 2026",
+   "campaign_id": "120247136242960160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 12, 2026- New Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 184.95,
+   "impressions": 10516,
+   "reach": 8161,
+   "link_click": 172,
+   "omni_landing_page_view": 11,
+   "mobile_app_install": 49,
+   "omni_app_install": 49,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 9
+   },
+   "omni_purchase": 4
+  },
+  {
+   "id": "120247124720640160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_role_ambient_widget - 11 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 177.2,
+   "impressions": 217113,
+   "reach": 100507,
+   "link_click": 1403,
+   "omni_landing_page_view": 23,
+   "mobile_app_install": 416,
+   "omni_app_install": 416,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 14
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246609223840160",
+   "name": "CPT - PH - IOS (20-65) - 6 Videos 9e39c6be - August 11, 2026",
+   "campaign_id": "120246608892610160",
+   "campaign_name": "Biblechat CPT - PH - IOS - August 11, 2026 - Arthur",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 176.78,
+   "impressions": 224122,
+   "reach": 179145,
+   "link_click": 1451,
+   "omni_landing_page_view": 21,
+   "mobile_app_install": 138,
+   "omni_app_install": 138,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 17
+   },
+   "omni_purchase": 33
+  },
+  {
+   "id": "120247124754180160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_role_content_library - 11 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 173.96,
+   "impressions": 142707,
+   "reach": 73294,
+   "link_click": 976,
+   "omni_landing_page_view": 29,
+   "mobile_app_install": 226,
+   "omni_app_install": 226,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 7
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247124693890160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_role - 11 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 172.12,
+   "impressions": 94852,
+   "reach": 69818,
+   "link_click": 1608,
+   "omni_landing_page_view": 45,
+   "mobile_app_install": 483,
+   "omni_app_install": 483,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 20
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246608892930160",
+   "name": "CPT - PH - IOS (20-65) - 7 Videos 61be5345 - August 11, 2026",
+   "campaign_id": "120246608892610160",
+   "campaign_name": "Biblechat CPT - PH - IOS - August 11, 2026 - Arthur",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 157.01,
+   "impressions": 122868,
+   "reach": 91262,
+   "link_click": 954,
+   "omni_landing_page_view": 15,
+   "mobile_app_install": 74,
+   "omni_app_install": 74,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 20
+   },
+   "omni_purchase": 42
+  },
+  {
+   "id": "120247154130050160",
+   "name": "CPT - US - IOS (20-65) - 6 Videos d6d04088 - September 14, 2026",
+   "campaign_id": "120247136242960160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 12, 2026- New Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 152.93,
+   "impressions": 7516,
+   "reach": 6020,
+   "link_click": 106,
+   "omni_landing_page_view": 8,
+   "mobile_app_install": 23,
+   "omni_app_install": 23,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 5
+   },
+   "omni_purchase": 3
+  },
+  {
+   "id": "120247153479120160",
+   "name": "SCALE - US - english - ANDROID - 6 ads - OLDEST catholic_daily_plan",
+   "campaign_id": "120247153440560160",
+   "campaign_name": "Biblechat CPT Scale - US - ANDROID - 14 September 2026 - auto",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 149.55,
+   "impressions": 8692,
+   "reach": 7851,
+   "link_click": 95,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 48,
+   "omni_app_install": 48,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 6
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247153441890160",
+   "name": "SCALE - US - english - ANDROID - 6 ads - OLDER",
+   "campaign_id": "120247153440560160",
+   "campaign_name": "Biblechat CPT Scale - US - ANDROID - 14 September 2026 - auto",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 145.31,
+   "impressions": 7209,
+   "reach": 6037,
+   "link_click": 141,
+   "omni_landing_page_view": 7,
+   "mobile_app_install": 52,
+   "omni_app_install": 52,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 5
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247153456610160",
+   "name": "SCALE - US - english - ANDROID - 8 ads - OLDEST",
+   "campaign_id": "120247153440560160",
+   "campaign_name": "Biblechat CPT Scale - US - ANDROID - 14 September 2026 - auto",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 139.92,
+   "impressions": 5829,
+   "reach": 5158,
+   "link_click": 94,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 32,
+   "omni_app_install": 32,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 4
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247153450590160",
+   "name": "SCALE - US - english - ANDROID - 7 ads - YOUNGER",
+   "campaign_id": "120247153440560160",
+   "campaign_name": "Biblechat CPT Scale - US - ANDROID - 14 September 2026 - auto",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 137.59,
+   "impressions": 7466,
+   "reach": 6114,
+   "link_click": 242,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 76,
+   "omni_app_install": 76,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 6
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247076208800160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named-moment-personalized-plan-named-struggle-personalized-p - September 4, 2026 - FB",
+   "campaign_id": "120247076208610160",
+   "campaign_name": "Biblechat CPT Creative Test - PH-en - ANDROID - Daily Six Groups - September 4, 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 126.37,
+   "impressions": 81020,
+   "reach": 62065,
+   "link_click": 771,
+   "omni_landing_page_view": 20,
+   "mobile_app_install": 242,
+   "omni_app_install": 242,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 10
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092964550160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_moment - 9 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 124.61,
+   "impressions": 126736,
+   "reach": 86965,
+   "link_click": 1124,
+   "omni_landing_page_view": 34,
+   "mobile_app_install": 494,
+   "omni_app_install": 494,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 33
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247108435090160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_role_dated_program - 10 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 124.53,
+   "impressions": 167068,
+   "reach": 119904,
+   "link_click": 1069,
+   "omni_landing_page_view": 25,
+   "mobile_app_install": 454,
+   "omni_app_install": 454,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 17
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092979730160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_role_content_library - 9 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 124.45,
+   "impressions": 116373,
+   "reach": 72775,
+   "link_click": 939,
+   "omni_landing_page_view": 28,
+   "mobile_app_install": 438,
+   "omni_app_install": 438,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 13
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092971020160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_role_personalized_plan - 9 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 124.19,
+   "impressions": 65894,
+   "reach": 50348,
+   "link_click": 935,
+   "omni_landing_page_view": 25,
+   "mobile_app_install": 363,
+   "omni_app_install": 363,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 20
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247093105670160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_role+ - 9 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 123.56,
+   "impressions": 127308,
+   "reach": 83493,
+   "link_click": 1599,
+   "omni_landing_page_view": 27,
+   "mobile_app_install": 827,
+   "omni_app_install": 827,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 22
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247108446130160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_struggle - 10 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 123.43,
+   "impressions": 147047,
+   "reach": 103351,
+   "link_click": 874,
+   "omni_landing_page_view": 20,
+   "mobile_app_install": 278,
+   "omni_app_install": 278,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 9
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247093010530160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_moment_personalized_plan - 9 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 122.89,
+   "impressions": 99028,
+   "reach": 76558,
+   "link_click": 1257,
+   "omni_landing_page_view": 13,
+   "mobile_app_install": 426,
+   "omni_app_install": 426,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 10
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247108399700160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_struggle_personalized_plan - 10 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 121.54,
+   "impressions": 105733,
+   "reach": 71369,
+   "link_click": 668,
+   "omni_landing_page_view": 13,
+   "mobile_app_install": 205,
+   "omni_app_install": 205,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 10
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092992460160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_role_ambient_widget - 9 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 121.43,
+   "impressions": 135232,
+   "reach": 73111,
+   "link_click": 1513,
+   "omni_landing_page_view": 37,
+   "mobile_app_install": 749,
+   "omni_app_install": 749,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 30
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247108391760160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_moment_personalized_plan - 10 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 120.48,
+   "impressions": 121570,
+   "reach": 80474,
+   "link_click": 662,
+   "omni_landing_page_view": 19,
+   "mobile_app_install": 183,
+   "omni_app_install": 183,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 8
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247108422260160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_moment_dated_program - 10 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 119.47,
+   "impressions": 156572,
+   "reach": 100043,
+   "link_click": 949,
+   "omni_landing_page_view": 19,
+   "mobile_app_install": 352,
+   "omni_app_install": 352,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 12
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247076218940160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named-moment-dated-program-named-moment-personalized-plan-na - September 5, 2026 - FB",
+   "campaign_id": "120247076218550160",
+   "campaign_name": "Biblechat CPT Creative Test - PH-en - ANDROID - Daily Six Groups - September 5, 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 117.88,
+   "impressions": 93120,
+   "reach": 57168,
+   "link_click": 732,
+   "omni_landing_page_view": 20,
+   "mobile_app_install": 166,
+   "omni_app_install": 166,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 4
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247108412620160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_role_content_library+ - 10 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 117.8,
+   "impressions": 79137,
+   "reach": 66821,
+   "link_click": 1063,
+   "omni_landing_page_view": 30,
+   "mobile_app_install": 389,
+   "omni_app_install": 389,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 14
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247020932430160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - video Cosmin Stefan - 4 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 117.7,
+   "impressions": 11618,
+   "reach": 9816,
+   "link_click": 171,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 58,
+   "omni_app_install": 58,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 58
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247059350400160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_struggle_personalized_plan - 7 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 113.77,
+   "impressions": 91656,
+   "reach": 74983,
+   "link_click": 1372,
+   "omni_landing_page_view": 26,
+   "mobile_app_install": 529,
+   "omni_app_install": 529,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 11
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247058124220160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Debu #1 - 7 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 108.98,
+   "impressions": 13630,
+   "reach": 12139,
+   "link_click": 292,
+   "omni_landing_page_view": 5,
+   "mobile_app_install": 68,
+   "omni_app_install": 68,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 68
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247059330360160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - remaining - 7 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 108.25,
+   "impressions": 224407,
+   "reach": 185751,
+   "link_click": 1684,
+   "omni_landing_page_view": 33,
+   "mobile_app_install": 608,
+   "omni_app_install": 608,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 19
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247154016530160",
+   "name": "CPT - US - IOS (20-65) - 19.1927 rem 2_1 14.4.split 14.2.split 31.1927_parenting - September 14, 2026",
+   "campaign_id": "120247142878230160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 13, 2026 - 2Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 107.44,
+   "impressions": 3724,
+   "reach": 3300,
+   "link_click": 39,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 4,
+   "omni_app_install": 4,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 1
+   },
+   "omni_purchase": 1
+  },
+  {
+   "id": "120247058153400160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Debu #2 - 7 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 105.27,
+   "impressions": 9301,
+   "reach": 8826,
+   "link_click": 156,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 50,
+   "omni_app_install": 50,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 50
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247059335490160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_moment - 7 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 103.99,
+   "impressions": 107735,
+   "reach": 77902,
+   "link_click": 615,
+   "omni_landing_page_view": 13,
+   "mobile_app_install": 154,
+   "omni_app_install": 154,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 6
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247058112490160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Georgian Alexandru #1 - 7 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 103.23,
+   "impressions": 15176,
+   "reach": 12572,
+   "link_click": 155,
+   "omni_landing_page_view": 7,
+   "mobile_app_install": 56,
+   "omni_app_install": 56,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 56
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247072893980160",
+   "name": "CPT - PH - IOS (20-65) - 6 Videos c72cc2ba - September 08, 2026",
+   "campaign_id": "120247072893220160",
+   "campaign_name": "Biblechat CPT - PH - IOS - September 08, 2026 - Arthur",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 101.46,
+   "impressions": 72518,
+   "reach": 53369,
+   "link_click": 423,
+   "omni_landing_page_view": 10,
+   "mobile_app_install": 24,
+   "omni_app_install": 24,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 4
+   },
+   "omni_purchase": 4
+  },
+  {
+   "id": "120247154181350160",
+   "name": "CPT - US - IOS (20-65) - 4.lamb-01-marriage-lust 19.2012 lockscreen 19.2015 lockscreen 19.1987 lockscreen - September 14, 2026",
+   "campaign_id": "120247142878230160",
+   "campaign_name": "Biblechat CPT - US - IOS - September 13, 2026 - 2Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 101.2,
+   "impressions": 7964,
+   "reach": 7415,
+   "link_click": 89,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 19,
+   "omni_app_install": 19,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 2
+   },
+   "omni_purchase": 2
+  },
+  {
+   "id": "120247059340470160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_struggle_ambient_widget - 7 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 100.44,
+   "impressions": 157695,
+   "reach": 130150,
+   "link_click": 1358,
+   "omni_landing_page_view": 27,
+   "mobile_app_install": 571,
+   "omni_app_install": 571,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 19
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247020911250160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Andreea Secher #3 - 4 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 99.03,
+   "impressions": 10701,
+   "reach": 9303,
+   "link_click": 128,
+   "omni_landing_page_view": 8,
+   "mobile_app_install": 53,
+   "omni_app_install": 53,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 53
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075797800160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Georgian Alexandru #1 - 8 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 96.07,
+   "impressions": 16995,
+   "reach": 14151,
+   "link_click": 246,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 146,
+   "omni_app_install": 146,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 146
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246970287100160",
+   "name": "CPI-CREATOR - LATAM - ANDROID - 7 ads - video stancusmart@gmail.com #1 - 1 September 2026",
+   "campaign_id": "120246970214950160",
+   "campaign_name": "Testing Biblechat CPI - LATAM - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 95.73,
+   "impressions": 240240,
+   "reach": 176911,
+   "link_click": 3209,
+   "omni_landing_page_view": 58,
+   "mobile_app_install": 1593,
+   "omni_app_install": 1593,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 1593
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075769790160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Debu #1 - 8 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 94.13,
+   "impressions": 10489,
+   "reach": 8340,
+   "link_click": 311,
+   "omni_landing_page_view": 7,
+   "mobile_app_install": 121,
+   "omni_app_install": 121,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 121
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075727000160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - remaining - 8 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 93.9,
+   "impressions": 14614,
+   "reach": 12524,
+   "link_click": 715,
+   "omni_landing_page_view": 15,
+   "mobile_app_install": 256,
+   "omni_app_install": 256,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 256
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247090831800160",
+   "name": "CPT - US - IOS (20-65) - 31.influencers-batch1-01 31.influencers-batch1-12 31.influencers-batch1-18 31.influencers-batch1-19 31.influencers-batch1-20 - September 09, 2026",
+   "campaign_id": "120247090831550160",
+   "campaign_name": "Biblechat CPT - IOS - US - September 09, 2026 - Arthur - CBO - INFLUENCERS",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 93.9,
+   "impressions": 4172,
+   "reach": 3470,
+   "link_click": 103,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 1,
+   "omni_app_install": 1,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": "Not available"
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075762190160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Debu #2 - 8 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 93.78,
+   "impressions": 9433,
+   "reach": 7856,
+   "link_click": 376,
+   "omni_landing_page_view": 9,
+   "mobile_app_install": 189,
+   "omni_app_install": 189,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 189
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075809910160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Georgian Alexandru #2 - 8 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 92.79,
+   "impressions": 7469,
+   "reach": 6146,
+   "link_click": 152,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 63,
+   "omni_app_install": 63,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 63
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075589710160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Andreea Secher #1 - 8 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 92.39,
+   "impressions": 9317,
+   "reach": 8568,
+   "link_click": 139,
+   "omni_landing_page_view": 6,
+   "mobile_app_install": 64,
+   "omni_app_install": 64,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 64
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246987940610160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Arthur Nastasa #3 - 2 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 92.2,
+   "impressions": 10455,
+   "reach": 9094,
+   "link_click": 266,
+   "omni_landing_page_view": 5,
+   "mobile_app_install": 86,
+   "omni_app_install": 86,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 86
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247090854840160",
+   "name": "CPT - US - IOS (20-65) - 7 Videos bb70391f - September 09, 2026",
+   "campaign_id": "120247090831550160",
+   "campaign_name": "Biblechat CPT - IOS - US - September 09, 2026 - Arthur - CBO - INFLUENCERS",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 91.68,
+   "impressions": 2806,
+   "reach": 2487,
+   "link_click": 53,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 4,
+   "omni_app_install": 4,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 1
+   },
+   "omni_purchase": 1
+  },
+  {
+   "id": "120247072908160160",
+   "name": "CPT - PH - IOS (20-65) - 18.071-remake 4.comeback.77 4.comeback.113 18.032-remake 4.comeback.144 - September 08, 2026",
+   "campaign_id": "120247072893220160",
+   "campaign_name": "Biblechat CPT - PH - IOS - September 08, 2026 - Arthur",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 85.04,
+   "impressions": 33346,
+   "reach": 28950,
+   "link_click": 360,
+   "omni_landing_page_view": 20,
+   "mobile_app_install": 43,
+   "omni_app_install": 43,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 3
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246987911990160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Andreea Secher #1 - 2 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 84.14,
+   "impressions": 8713,
+   "reach": 7545,
+   "link_click": 99,
+   "omni_landing_page_view": 4,
+   "mobile_app_install": 42,
+   "omni_app_install": 42,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 42
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247058100830160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - video Andreea Secher - 7 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 83.56,
+   "impressions": 9986,
+   "reach": 7943,
+   "link_click": 121,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 54,
+   "omni_app_install": 54,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 54
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246973590860160",
+   "name": "CPT - LATAM - IOS (20-65) - 4.duomo-es.biblinyear-chlng-broll 4.duomo-es.v2.biblinyear-howto-stage 4.duomo-es.v2.theology-9x16-es-6 4.duomo-es.v2.biblinyear-testimn-expert-2 4.duomo-es.biblinyear-howto-expert-2 - September 01, 2026",
+   "campaign_id": "120246973411890160",
+   "campaign_name": "Biblechat CPT - LATAM - IOS - September 02, 2026 - Arthur - Scale",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 82.73,
+   "impressions": 23293,
+   "reach": 20028,
+   "link_click": 261,
+   "omni_landing_page_view": 8,
+   "mobile_app_install": 44,
+   "omni_app_install": 44,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 2
+   },
+   "omni_purchase": 5
+  },
+  {
+   "id": "120247020925390160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Andreea Secher #1 - 4 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 81.75,
+   "impressions": 6958,
+   "reach": 6409,
+   "link_click": 112,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 38,
+   "omni_app_install": 38,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 38
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247145944480160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_struggle_ask_anything - 13 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 79.32,
+   "impressions": 56350,
+   "reach": 40952,
+   "link_click": 675,
+   "omni_landing_page_view": 13,
+   "mobile_app_install": 321,
+   "omni_app_install": 321,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 5
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247034881320160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Andreea Secher - 5 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 74.99,
+   "impressions": 6931,
+   "reach": 6249,
+   "link_click": 115,
+   "omni_landing_page_view": 4,
+   "mobile_app_install": 59,
+   "omni_app_install": 59,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 59
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075601150160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Andreea Secher #2 - 8 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 74.17,
+   "impressions": 6700,
+   "reach": 5977,
+   "link_click": 93,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 23,
+   "omni_app_install": 23,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 23
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247145941470160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - remaining - 13 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 74.13,
+   "impressions": 61655,
+   "reach": 44542,
+   "link_click": 554,
+   "omni_landing_page_view": 11,
+   "mobile_app_install": 147,
+   "omni_app_install": 147,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": "Not available"
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247157778430160",
+   "name": "SCALE - US - english - ANDROID - 4 ads - CPTPICK discordant",
+   "campaign_id": "120247157771330160",
+   "campaign_name": "Biblechat CPT Scale - US - ANDROID - 14 September 2026 - cptwin",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 73.8,
+   "impressions": 4189,
+   "reach": 3804,
+   "link_click": 38,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 16,
+   "omni_app_install": 16,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 2
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247107660870160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - video Georgian Alexandru - 10 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 73.22,
+   "impressions": 7651,
+   "reach": 6890,
+   "link_click": 135,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 58,
+   "omni_app_install": 58,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 58
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247051174450160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Andreea Secher #1 - 3 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 72.82,
+   "impressions": 8491,
+   "reach": 7509,
+   "link_click": 104,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 48,
+   "omni_app_install": 48,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 48
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247107566850160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video David #1 - 10 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 72.31,
+   "impressions": 6404,
+   "reach": 5760,
+   "link_click": 116,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 63,
+   "omni_app_install": 63,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 63
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247107575450160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video David #2 - 10 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 71.64,
+   "impressions": 5309,
+   "reach": 4768,
+   "link_click": 91,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 33,
+   "omni_app_install": 33,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 33
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247123977610160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video David - 11 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 71.43,
+   "impressions": 6692,
+   "reach": 6015,
+   "link_click": 126,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 59,
+   "omni_app_install": 59,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 59
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247059345140160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_moment_personalized_plan - 7 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 70.81,
+   "impressions": 39249,
+   "reach": 25993,
+   "link_click": 224,
+   "omni_landing_page_view": 17,
+   "mobile_app_install": 16,
+   "omni_app_install": 16,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 1
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092407420160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video David #1 - 9 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 70.63,
+   "impressions": 5803,
+   "reach": 5010,
+   "link_click": 131,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 55,
+   "omni_app_install": 55,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 55
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092400910160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Debu #1 - 9 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 70.6,
+   "impressions": 6260,
+   "reach": 5410,
+   "link_click": 223,
+   "omni_landing_page_view": 5,
+   "mobile_app_install": 102,
+   "omni_app_install": 102,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 102
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092499930160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Georgian Alexandru #2 - 9 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 70.51,
+   "impressions": 9086,
+   "reach": 7853,
+   "link_click": 209,
+   "omni_landing_page_view": 5,
+   "mobile_app_install": 89,
+   "omni_app_install": 89,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 89
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092490780160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Andreea Secher #1 - 9 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 70.09,
+   "impressions": 7119,
+   "reach": 6506,
+   "link_click": 113,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 48,
+   "omni_app_install": 48,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 48
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092390630160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video David #2 - 9 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 69.24,
+   "impressions": 5966,
+   "reach": 5559,
+   "link_click": 208,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 82,
+   "omni_app_install": 82,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 82
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075662940160",
+   "name": "CPI-IMG - US - ANDROID - 13 ads - image stancusmart@gmail.com - 8 September 2026",
+   "campaign_id": "120247075662080160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - images - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 68.7,
+   "impressions": 11707,
+   "reach": 9222,
+   "link_click": 316,
+   "omni_landing_page_view": 9,
+   "mobile_app_install": 136,
+   "omni_app_install": 136,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 136
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075748060160",
+   "name": "CPI-IMG - US - ANDROID - 5 ads - none biblical_knowledge_mastery image stancusmart@gmail.com - 8 September 2026",
+   "campaign_id": "120247075662080160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - images - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 68.39,
+   "impressions": 9810,
+   "reach": 7621,
+   "link_click": 372,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 68,
+   "omni_app_install": 68,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 68
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247107600910160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - video Victoria Kolomiets - 10 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 68.07,
+   "impressions": 5129,
+   "reach": 4079,
+   "link_click": 73,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 23,
+   "omni_app_install": 23,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 23
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247107613770160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Andreea Secher #3 - 10 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 67.54,
+   "impressions": 7998,
+   "reach": 6752,
+   "link_click": 88,
+   "omni_landing_page_view": 4,
+   "mobile_app_install": 37,
+   "omni_app_install": 37,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 37
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092456690160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Debu #2 - 9 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 67.41,
+   "impressions": 8225,
+   "reach": 6922,
+   "link_click": 264,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 124,
+   "omni_app_install": 124,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 124
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247107590160160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - video Andreea Secher #1 - 10 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 66.61,
+   "impressions": 8176,
+   "reach": 6520,
+   "link_click": 93,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 33,
+   "omni_app_install": 33,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 33
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092480580160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Andreea Secher #2 - 9 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 66.36,
+   "impressions": 10826,
+   "reach": 8887,
+   "link_click": 92,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 39,
+   "omni_app_install": 39,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 39
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092474390160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Andreea Secher #3 - 9 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 66.12,
+   "impressions": 5799,
+   "reach": 5317,
+   "link_click": 90,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 34,
+   "omni_app_install": 34,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 34
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246970271550160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Andreea Secher #1 - 1 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 66.05,
+   "impressions": 6637,
+   "reach": 5902,
+   "link_click": 71,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 30,
+   "omni_app_install": 30,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 30
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247123965140160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - remaining - 11 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 64.98,
+   "impressions": 5224,
+   "reach": 4945,
+   "link_click": 132,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 38,
+   "omni_app_install": 38,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 38
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247058116090160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Georgian Alexandru #2 - 7 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 64.08,
+   "impressions": 9525,
+   "reach": 8619,
+   "link_click": 159,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 65,
+   "omni_app_install": 65,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 65
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247107641450160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Andreea Secher #4 - 10 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 63.89,
+   "impressions": 6672,
+   "reach": 5651,
+   "link_click": 65,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 29,
+   "omni_app_install": 29,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 29
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247157772380160",
+   "name": "SCALE - US - english - ANDROID - 3 ads - CPTWIN agreed",
+   "campaign_id": "120247157771330160",
+   "campaign_name": "Biblechat CPT Scale - US - ANDROID - 14 September 2026 - cptwin",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 63.25,
+   "impressions": 2823,
+   "reach": 2469,
+   "link_click": 33,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 12,
+   "omni_app_install": 12,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 5
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092464190160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Georgian Alexandru #1 - 9 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 62.82,
+   "impressions": 6480,
+   "reach": 5337,
+   "link_click": 196,
+   "omni_landing_page_view": 7,
+   "mobile_app_install": 73,
+   "omni_app_install": 73,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 73
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247123946230160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Andreea Secher - 11 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 61.83,
+   "impressions": 7071,
+   "reach": 6091,
+   "link_click": 95,
+   "omni_landing_page_view": 4,
+   "mobile_app_install": 36,
+   "omni_app_install": 36,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 36
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092420840160",
+   "name": "CPI-CREATOR - LATAM - ANDROID - 5 ads - video stancusmart@gmail.com - 9 September 2026",
+   "campaign_id": "120246970214950160",
+   "campaign_name": "Testing Biblechat CPI - LATAM - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 60.75,
+   "impressions": 182751,
+   "reach": 149121,
+   "link_click": 2105,
+   "omni_landing_page_view": 43,
+   "mobile_app_install": 916,
+   "omni_app_install": 916,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 916
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247051160830160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Andreea Secher #2 - 3 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 60.74,
+   "impressions": 6302,
+   "reach": 5900,
+   "link_click": 106,
+   "omni_landing_page_view": 7,
+   "mobile_app_install": 62,
+   "omni_app_install": 62,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 62
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247123987120160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Debu #1 - 11 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 60.37,
+   "impressions": 6723,
+   "reach": 5222,
+   "link_click": 115,
+   "omni_landing_page_view": 4,
+   "mobile_app_install": 42,
+   "omni_app_install": 42,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 42
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246970280470160",
+   "name": "CPI-CREATOR - LATAM - ANDROID - 6 ads - video stancusmart@gmail.com #4 - 1 September 2026",
+   "campaign_id": "120246970214950160",
+   "campaign_name": "Testing Biblechat CPI - LATAM - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 59.76,
+   "impressions": 141434,
+   "reach": 114117,
+   "link_click": 1739,
+   "omni_landing_page_view": 17,
+   "mobile_app_install": 812,
+   "omni_app_install": 812,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 812
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247034864720160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Cosmin Stefan #2 - 5 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 59.5,
+   "impressions": 4222,
+   "reach": 3975,
+   "link_click": 92,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 39,
+   "omni_app_install": 39,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 39
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247107650120160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Andreea Secher #2 - 10 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 59.3,
+   "impressions": 5615,
+   "reach": 4765,
+   "link_click": 73,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 14,
+   "omni_app_install": 14,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 14
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247124000630160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Debu #2 - 11 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 55.42,
+   "impressions": 6124,
+   "reach": 4830,
+   "link_click": 127,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 55,
+   "omni_app_install": 55,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 55
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247072925540160",
+   "name": "CPT - PH - IOS (20-65) - 18.027-remake 18.093-remake 19.1984 daily 2 4.comeback.81 4.comeback.55 - September 08, 2026",
+   "campaign_id": "120247072893220160",
+   "campaign_name": "Biblechat CPT - PH - IOS - September 08, 2026 - Arthur",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 54.57,
+   "impressions": 20608,
+   "reach": 17942,
+   "link_click": 207,
+   "omni_landing_page_view": 17,
+   "mobile_app_install": 22,
+   "omni_app_install": 22,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 1
+   },
+   "omni_purchase": 1
+  },
+  {
+   "id": "120247153467550160",
+   "name": "SCALE - LATAM - spanish - ANDROID - 8 ads - YOUNGER competitor_inspired",
+   "campaign_id": "120247153432900160",
+   "campaign_name": "Biblechat CPT Scale - LATAM - ANDROID - 14 September 2026 - auto",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 54.51,
+   "impressions": 35839,
+   "reach": 29740,
+   "link_click": 395,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 184,
+   "omni_app_install": 184,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 4
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246987988960160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Arthur Nastasa #1 - 2 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 51.7,
+   "impressions": 4229,
+   "reach": 3883,
+   "link_click": 118,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 39,
+   "omni_app_install": 39,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 39
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092506190160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - video Cosmin Stefan #2 - 9 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 50.54,
+   "impressions": 3645,
+   "reach": 3064,
+   "link_click": 38,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 14,
+   "omni_app_install": 14,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 14
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247153433420160",
+   "name": "SCALE - LATAM - spanish - ANDROID - 4 ads - remaining",
+   "campaign_id": "120247153432900160",
+   "campaign_name": "Biblechat CPT Scale - LATAM - ANDROID - 14 September 2026 - auto",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 50.31,
+   "impressions": 28865,
+   "reach": 25457,
+   "link_click": 228,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 99,
+   "omni_app_install": 99,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 2
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247034897110160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Cosmin Stefan #1 - 5 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 50.17,
+   "impressions": 3600,
+   "reach": 2993,
+   "link_click": 52,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 17,
+   "omni_app_install": 17,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 17
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246987957140160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - video David - 2 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 50.03,
+   "impressions": 3970,
+   "reach": 3591,
+   "link_click": 51,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 25,
+   "omni_app_install": 25,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 25
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247124024510160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Debu #3 - 11 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 49.67,
+   "impressions": 4512,
+   "reach": 3618,
+   "link_click": 124,
+   "omni_landing_page_view": 4,
+   "mobile_app_install": 59,
+   "omni_app_install": 59,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 59
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247020902910160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video David - 4 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 48.37,
+   "impressions": 3196,
+   "reach": 2838,
+   "link_click": 49,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 22,
+   "omni_app_install": 22,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 22
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247136182550160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - remaining+ - 12 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 47.88,
+   "impressions": 4863,
+   "reach": 4228,
+   "link_click": 146,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 60,
+   "omni_app_install": 60,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 60
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159281860160",
+   "name": "SCALE - NZ - english - ANDROID - 7 ads - REOPEN cheap-cpc",
+   "campaign_id": "120247159281320160",
+   "campaign_name": "Biblechat CPT Scale - NZ - ANDROID - 14 September 2026 - reopen",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 47.21,
+   "impressions": 4502,
+   "reach": 3747,
+   "link_click": 68,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 22,
+   "omni_app_install": 22,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 2
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247124062260160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Georgian Alexandru #1 - 11 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 46.45,
+   "impressions": 4259,
+   "reach": 3177,
+   "link_click": 87,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 32,
+   "omni_app_install": 32,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 32
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247020919000160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Andreea Secher #2 - 4 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 45.77,
+   "impressions": 3395,
+   "reach": 3067,
+   "link_click": 39,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 15,
+   "omni_app_install": 15,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 15
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246970225410160",
+   "name": "CPI-CREATOR - LATAM - ANDROID - 6 ads - video stancusmart@gmail.com #5 - 1 September 2026",
+   "campaign_id": "120246970214950160",
+   "campaign_name": "Testing Biblechat CPI - LATAM - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 44.76,
+   "impressions": 98995,
+   "reach": 86061,
+   "link_click": 1617,
+   "omni_landing_page_view": 21,
+   "mobile_app_install": 779,
+   "omni_app_install": 779,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 779
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247153485900160",
+   "name": "SCALE - LATAM - spanish - ANDROID - 13 ads - OLDER competitor_inspired",
+   "campaign_id": "120247153432900160",
+   "campaign_name": "Biblechat CPT Scale - LATAM - ANDROID - 14 September 2026 - auto",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 43.87,
+   "impressions": 17402,
+   "reach": 14032,
+   "link_click": 245,
+   "omni_landing_page_view": 7,
+   "mobile_app_install": 137,
+   "omni_app_install": 137,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 3
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247072915980160",
+   "name": "CPT - PH - IOS (20-65) - 6 Videos 57045ff8 - September 08, 2026",
+   "campaign_id": "120247072893220160",
+   "campaign_name": "Biblechat CPT - PH - IOS - September 08, 2026 - Arthur",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 42.7,
+   "impressions": 17685,
+   "reach": 14479,
+   "link_click": 212,
+   "omni_landing_page_view": 6,
+   "mobile_app_install": 19,
+   "omni_app_install": 19,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 1
+   },
+   "omni_purchase": 2
+  },
+  {
+   "id": "120247159229520160",
+   "name": "SCALE - CA - english - ANDROID - 7 ads - REOPEN cheap-cpc",
+   "campaign_id": "120247159229210160",
+   "campaign_name": "Biblechat CPT Scale - CA - ANDROID - 14 September 2026 - reopen",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 42.28,
+   "impressions": 3331,
+   "reach": 2947,
+   "link_click": 57,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 15,
+   "omni_app_install": 15,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 1
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075778300160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Arthur Nastasa #4 - 8 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 41.87,
+   "impressions": 2931,
+   "reach": 2570,
+   "link_click": 32,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 9,
+   "omni_app_install": 9,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 9
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159291780160",
+   "name": "SCALE - NZ - english - ANDROID - 8 ads - REOPEN high-ctr",
+   "campaign_id": "120247159281320160",
+   "campaign_name": "Biblechat CPT Scale - NZ - ANDROID - 14 September 2026 - reopen",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 38.27,
+   "impressions": 2826,
+   "reach": 2351,
+   "link_click": 54,
+   "omni_landing_page_view": 3,
+   "mobile_app_install": 18,
+   "omni_app_install": 18,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 1
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247090835900160",
+   "name": "CPT - US - IOS (20-65) - 6 Videos 4970140c - September 09, 2026",
+   "campaign_id": "120247090831550160",
+   "campaign_name": "Biblechat CPT - IOS - US - September 09, 2026 - Arthur - CBO - INFLUENCERS",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 37.66,
+   "impressions": 1577,
+   "reach": 1398,
+   "link_click": 25,
+   "omni_landing_page_view": null,
+   "mobile_app_install": null,
+   "omni_app_install": null,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": "Not available"
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247123955760160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Georgian Alexandru #2 - 11 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 37.01,
+   "impressions": 3166,
+   "reach": 2446,
+   "link_click": 61,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 16,
+   "omni_app_install": 16,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 16
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246987927280160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Arthur Nastasa #2 - 2 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 36.89,
+   "impressions": 3986,
+   "reach": 3825,
+   "link_click": 139,
+   "omni_landing_page_view": 5,
+   "mobile_app_install": 63,
+   "omni_app_install": 63,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 63
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075709220160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video David #1 - 8 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 36.8,
+   "impressions": 2214,
+   "reach": 2010,
+   "link_click": 34,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 8,
+   "omni_app_install": 8,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 8
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092426930160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - video Cosmin Stefan #1 - 9 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 34.27,
+   "impressions": 2379,
+   "reach": 1909,
+   "link_click": 24,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 4,
+   "omni_app_install": 4,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 4
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159240190160",
+   "name": "SCALE - CA - english - ANDROID - 8 ads - REOPEN high-ctr",
+   "campaign_id": "120247159229210160",
+   "campaign_name": "Biblechat CPT Scale - CA - ANDROID - 14 September 2026 - reopen",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 34.0,
+   "impressions": 2205,
+   "reach": 1967,
+   "link_click": 38,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 15,
+   "omni_app_install": 15,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 3
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092413760160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Cosmin Stefan #3 - 9 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 33.75,
+   "impressions": 2152,
+   "reach": 1818,
+   "link_click": 23,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 6,
+   "omni_app_install": 6,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 6
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075613650160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Arthur Nastasa #1 - 8 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 32.36,
+   "impressions": 2232,
+   "reach": 1986,
+   "link_click": 21,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 4,
+   "omni_app_install": 4,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 4
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075645590160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Arthur Nastasa #2 - 8 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 30.3,
+   "impressions": 2163,
+   "reach": 2022,
+   "link_click": 26,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 3,
+   "omni_app_install": 3,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 3
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075633860160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video David #2 - 8 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 28.63,
+   "impressions": 1995,
+   "reach": 1742,
+   "link_click": 16,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 4,
+   "omni_app_install": 4,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 4
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247075787750160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Arthur Nastasa #3 - 8 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 27.02,
+   "impressions": 1872,
+   "reach": 1619,
+   "link_click": 26,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 1,
+   "omni_app_install": 1,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 1
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247107582170160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - remaining+ - 10 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 23.05,
+   "impressions": 1797,
+   "reach": 1578,
+   "link_click": 13,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 2,
+   "omni_app_install": 2,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 2
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247145533690160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Georgian Alexandru - 13 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 18.9,
+   "impressions": 1730,
+   "reach": 1430,
+   "link_click": 45,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 12,
+   "omni_app_install": 12,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 12
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247092397570160",
+   "name": "CPI-CREATOR - US - ANDROID - 3 ads - remaining - 9 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 16.84,
+   "impressions": 1377,
+   "reach": 1290,
+   "link_click": 15,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 5,
+   "omni_app_install": 5,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 5
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247051167730160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Andreea Secher #3 - 3 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 15.73,
+   "impressions": 1080,
+   "reach": 1019,
+   "link_click": 16,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 2,
+   "omni_app_install": 2,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 2
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247058141170160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video David #2 - 7 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 13.18,
+   "impressions": 938,
+   "reach": 870,
+   "link_click": 10,
+   "omni_landing_page_view": null,
+   "mobile_app_install": null,
+   "omni_app_install": null,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": "Not available"
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247058093930160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video David #1 - 7 September 2026",
+   "campaign_id": "120246970203110160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 12.46,
+   "impressions": 903,
+   "reach": 837,
+   "link_click": 8,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 1,
+   "omni_app_install": 1,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 1
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246970215250160",
+   "name": "CPI-CREATOR - LATAM - ANDROID - 6 ads - video stancusmart@gmail.com #2 - 1 September 2026",
+   "campaign_id": "120246970214950160",
+   "campaign_name": "Testing Biblechat CPI - LATAM - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 10.49,
+   "impressions": 22204,
+   "reach": 21307,
+   "link_click": 338,
+   "omni_landing_page_view": 4,
+   "mobile_app_install": 175,
+   "omni_app_install": 175,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 175
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247160292270160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_struggle - 14 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 8.17,
+   "impressions": 5989,
+   "reach": 5316,
+   "link_click": 41,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 16,
+   "omni_app_install": 16,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": 1
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120246970238980160",
+   "name": "CPI-CREATOR - LATAM - ANDROID - 6 ads - video stancusmart@gmail.com #6 - 1 September 2026",
+   "campaign_id": "120246970214950160",
+   "campaign_name": "Testing Biblechat CPI - LATAM - ANDROID - by creator - September 2026",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "PAUSED",
+   "destination_type": "APP",
+   "amount_spent": 7.55,
+   "impressions": 14422,
+   "reach": 14093,
+   "link_click": 176,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 87,
+   "omni_app_install": 87,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 87
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247160312640160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_moment - 14 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 7.08,
+   "impressions": 6197,
+   "reach": 5667,
+   "link_click": 25,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 2,
+   "omni_app_install": 2,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": "Not available"
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247160331010160",
+   "name": "CPT-TEST - PH-en - ANDROID (25-54) - named_role_dated_program - 14 September 2026 - FB",
+   "campaign_id": "120246970747210160",
+   "campaign_name": "Biblechat CPT Creative Test - PH - en - ANDROID - Daily Six Groups - September 2026",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "7d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 6.92,
+   "impressions": 3732,
+   "reach": 3318,
+   "link_click": 31,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 12,
+   "omni_app_install": 12,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": "Not available"
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159543620160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Arthur Nastasa #2 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 4.69,
+   "impressions": 510,
+   "reach": 507,
+   "link_click": 13,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 6,
+   "omni_app_install": 6,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 6
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159600990160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - video stancusmart@gmail.com #2 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.88,
+   "impressions": 265,
+   "reach": 259,
+   "link_click": 8,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 4,
+   "omni_app_install": 4,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 4
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159474820160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Ciprian Capalau #2 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.88,
+   "impressions": 253,
+   "reach": 236,
+   "link_click": 6,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 3,
+   "omni_app_install": 3,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 3
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159519530160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - video David #3 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.87,
+   "impressions": 198,
+   "reach": 188,
+   "link_click": 1,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 1,
+   "omni_app_install": 1,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 1
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159484010160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Andreea Secher #2 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.87,
+   "impressions": 230,
+   "reach": 222,
+   "link_click": 5,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 2,
+   "omni_app_install": 2,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 2
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159467820160",
+   "name": "CPI-CREATOR - US - ANDROID - 4 ads - video Arthur Nastasa #1 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.82,
+   "impressions": 233,
+   "reach": 227,
+   "link_click": 6,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 2,
+   "omni_app_install": 2,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 2
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159531450160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - video stancusmart@gmail.com #1 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.8,
+   "impressions": 183,
+   "reach": 180,
+   "link_click": 4,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 4,
+   "omni_app_install": 4,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 4
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159655240160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - video David #4 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.78,
+   "impressions": 204,
+   "reach": 196,
+   "link_click": 5,
+   "omni_landing_page_view": 2,
+   "mobile_app_install": 3,
+   "omni_app_install": 3,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 3
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159547920160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - video David #1 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.76,
+   "impressions": 244,
+   "reach": 240,
+   "link_click": 2,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 1,
+   "omni_app_install": 1,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 1
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159507200160",
+   "name": "CPI-CREATOR - US - ANDROID - 7 ads - video David #2 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.75,
+   "impressions": 188,
+   "reach": 183,
+   "link_click": 4,
+   "omni_landing_page_view": null,
+   "mobile_app_install": null,
+   "omni_app_install": null,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": "Not available"
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159640540160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video stancusmart@gmail.com #3 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.67,
+   "impressions": 235,
+   "reach": 233,
+   "link_click": 5,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 5,
+   "omni_app_install": 5,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 5
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159627450160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Georgian Alexandru #2 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.53,
+   "impressions": 198,
+   "reach": 187,
+   "link_click": 4,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 1,
+   "omni_app_install": 1,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 1
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159497500160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Debu #2 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.51,
+   "impressions": 276,
+   "reach": 262,
+   "link_click": 6,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 4,
+   "omni_app_install": 4,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 4
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159676290160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Georgian Alexandru #1 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.5,
+   "impressions": 214,
+   "reach": 206,
+   "link_click": 6,
+   "omni_landing_page_view": 1,
+   "mobile_app_install": 2,
+   "omni_app_install": 2,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 2
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159589550160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Ciprian Capalau #1 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.5,
+   "impressions": 237,
+   "reach": 222,
+   "link_click": 7,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 2,
+   "omni_app_install": 2,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 2
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159695940160",
+   "name": "CPI-CREATOR - US - ANDROID - 6 ads - video Debu #1 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.47,
+   "impressions": 271,
+   "reach": 262,
+   "link_click": 5,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 3,
+   "omni_app_install": 3,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 3
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159577910160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Andreea Secher #1 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.28,
+   "impressions": 238,
+   "reach": 231,
+   "link_click": 3,
+   "omni_landing_page_view": null,
+   "mobile_app_install": null,
+   "omni_app_install": null,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": "Not available"
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159615930160",
+   "name": "CPI-CREATOR - US - ANDROID - 5 ads - video Debu #3 - 14 September 2026",
+   "campaign_id": "120247123999630160",
+   "campaign_name": "Testing Biblechat CPI - US - ANDROID - by creator - September 2026 (2)",
+   "optimization_goal": "APP_INSTALLS",
+   "promoted_object": {
+    "custom_event_type": null
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 2.17,
+   "impressions": 243,
+   "reach": 233,
+   "link_click": 7,
+   "omni_landing_page_view": null,
+   "mobile_app_install": 1,
+   "omni_app_install": 1,
+   "results": {
+    "indicator": "actions:mobile_app_install",
+    "value": 1
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159187990160",
+   "name": "SCALE - AU - english - ANDROID - 7 ads - REOPEN cheap-cpc",
+   "campaign_id": "120247159187760160",
+   "campaign_name": "Biblechat CPT Scale - AU - ANDROID - 14 September 2026 - reopen",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 1.23,
+   "impressions": 69,
+   "reach": 66,
+   "link_click": 1,
+   "omni_landing_page_view": null,
+   "mobile_app_install": null,
+   "omni_app_install": null,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": "Not available"
+   },
+   "omni_purchase": null
+  },
+  {
+   "id": "120247159193220160",
+   "name": "SCALE - AU - english - ANDROID - 8 ads - REOPEN high-ctr",
+   "campaign_id": "120247159187760160",
+   "campaign_name": "Biblechat CPT Scale - AU - ANDROID - 14 September 2026 - reopen",
+   "optimization_goal": "OFFSITE_CONVERSIONS",
+   "promoted_object": {
+    "custom_event_type": "OTHER"
+   },
+   "attribution_setting": "1d_click",
+   "effective_status": "ACTIVE",
+   "destination_type": "APP",
+   "amount_spent": 0.4,
+   "impressions": 23,
+   "reach": 23,
+   "link_click": null,
+   "omni_landing_page_view": null,
+   "mobile_app_install": null,
+   "omni_app_install": null,
+   "results": {
+    "indicator": "conversions:app_custom_event.purchase_completed",
+    "value": "Not available"
+   },
+   "omni_purchase": null
+  }
+ ]
+}

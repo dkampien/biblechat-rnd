@@ -1,0 +1,259 @@
+<title>BibleChat funnel map</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #F4F5F2; --surface: #FFFFFF; --ink: #1C2326; --ink-2: #4B5559; --ink-3: #7C878C; --line: #D6DBD8; --band: #ECEEEB; --band-alt: #F4F5F2;
+    --web: #176F6A; --web-soft: #DCEFEC; --app: #A8671A; --app-soft: #F6E8D2;
+    --money: #2E6B2E; --money-soft: #E1EEDD; --unknown: #8A9498; --unknown-soft: #ECEEEC; --shared: #4B5559;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #151A1C; --surface: #1D2427; --ink: #E8ECEA; --ink-2: #B4BDBF; --ink-3: #7F8B8F; --line: #313B3F; --band: #1A2023; --band-alt: #181E21;
+      --web: #5FC2B8; --web-soft: #17332F; --app: #E1A455; --app-soft: #3A2C16;
+      --money: #86C77E; --money-soft: #1E3320; --unknown: #8A9498; --unknown-soft: #262D30; --shared: #B4BDBF;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #151A1C; --surface: #1D2427; --ink: #E8ECEA; --ink-2: #B4BDBF; --ink-3: #7F8B8F; --line: #313B3F; --band: #1A2023; --band-alt: #181E21;
+    --web: #5FC2B8; --web-soft: #17332F; --app: #E1A455; --app-soft: #3A2C16;
+    --money: #86C77E; --money-soft: #1E3320; --unknown: #8A9498; --unknown-soft: #262D30; --shared: #B4BDBF;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; font-size: 14px; line-height: 1.45; margin: 0; padding: 36px 24px 64px; }
+  .page { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif; margin: 0; text-wrap: balance; }
+  h1 { font-size: 34px; font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
+  p { margin: 0; max-width: 72ch; }
+  .muted { color: var(--ink-2); }
+  .mono { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 12px; }
+  .eyebrow { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+  header { display: flex; flex-direction: column; gap: 10px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-size: 13px; color: var(--ink-2); }
+  .sw { display: inline-block; width: 22px; height: 0; border-top: 2.5px solid; vertical-align: 3px; margin-right: 6px; }
+  .sw.web { border-color: var(--web); } .sw.app { border-color: var(--app); } .sw.aim { border-top-style: dashed; border-color: var(--ink-3); }
+  .bx { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -1px; margin-right: 6px; border: 1.5px solid; }
+  .bx.money { background: var(--money-soft); border-color: var(--money); }
+  .bx.unk { background: var(--unknown-soft); border-color: var(--unknown); border-style: dashed; }
+
+  .mapwrap { overflow-x: auto; }
+  .map { position: relative; width: 1200px; height: 1420px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+  .lane { position: absolute; left: 0; right: 0; background: var(--band); border-top: 1px solid var(--line); z-index: 0; }
+  .lane:nth-child(even) { background: var(--band-alt); }
+  .lane .lab { position: absolute; left: 16px; top: 14px; width: 130px; display: flex; flex-direction: column; gap: 3px; }
+  .lane .lab .n { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; color: var(--ink-3); letter-spacing: 0.06em; }
+  .lane .lab h3 { font-size: 15px; font-weight: 700; }
+  .lane .lab .commit { font-size: 12px; color: var(--ink-2); line-height: 1.3; }
+  .lane .lab .sees { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; color: var(--ink-3); margin-top: 4px; line-height: 1.3; }
+
+  .node { position: absolute; z-index: 2; border: 1.5px solid var(--line); border-radius: 6px; background: var(--surface); padding: 8px 11px 9px; display: flex; flex-direction: column; gap: 2px; }
+  .node.web { border-color: var(--web); } .node.app { border-color: var(--app); } .node.shared { border-color: var(--shared); border-width: 2px; }
+  .node.money { background: var(--money-soft); border-color: var(--money); }
+  .node.unknown { background: var(--unknown-soft); border-color: var(--unknown); border-style: dashed; }
+  .node .top { display: flex; align-items: baseline; gap: 7px; }
+  .node .step { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10px; padding: 1px 5px; border-radius: 3px; background: var(--ink); color: var(--surface); }
+  .node.web .step, .step.web { background: var(--web); } .node.app .step, .step.app { background: var(--app); } .node.shared .step { background: var(--shared); }
+  .node .label { font-weight: 600; font-size: 13.5px; line-height: 1.22; }
+  .node .meta { display: flex; align-items: center; gap: 8px; margin-top: 3px; font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; color: var(--ink-3); line-height: 1.3; }
+  .node .meta .state { padding: 1px 6px; border-radius: 3px; border: 1px solid var(--line); color: var(--ink-2); white-space: nowrap; }
+  .node .meta .state.perad { border-color: var(--ink-2); color: var(--ink); }
+  .node .meta .state.cohort { border-style: dotted; }
+  .node .meta .state.notread { border-style: dashed; border-color: var(--unknown); color: var(--unknown); }
+  .node .tag { position: absolute; top: -8px; right: 8px; font-family: "IBM Plex Mono", Menlo, monospace; font-size: 9.5px; letter-spacing: 0.05em; padding: 1px 6px; border-radius: 3px; background: var(--surface); border: 1px solid var(--line); color: var(--ink-3); }
+  .door { position: absolute; z-index: 2; border-radius: 6px; border: 1.5px solid; background: var(--surface); padding: 8px 11px 9px; display: flex; flex-direction: column; gap: 2px; }
+  .door.web { border-color: var(--web); } .door.app { border-color: var(--app); }
+  .door .name { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 14px; }
+  .door.web .name { color: var(--web); } .door.app .name { color: var(--app); }
+  .door .aimline { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; color: var(--ink-2); }
+  .aimbadge { position: absolute; z-index: 3; font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; color: var(--ink-2); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 1px 8px 1px 6px; white-space: nowrap; }
+  .aimbadge::before { content: "◎ "; }
+  .note-on-map { position: absolute; z-index: 3; font-size: 11px; color: var(--web); font-weight: 600; width: 128px; line-height: 1.3; }
+
+  svg.links { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+  svg.links path { fill: none; }
+  svg.links path.web { stroke: var(--web); stroke-width: 2.2; }
+  svg.links path.app { stroke: var(--app); stroke-width: 2.2; }
+  svg.links path.aim { stroke: var(--ink-3); stroke-width: 1.2; stroke-dasharray: 4 4; }
+  svg.links path.wshared { stroke: var(--web); stroke-width: 2.2; }
+
+  .notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  .note { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+  .note h3 { font-size: 14px; }
+  .note p, .note li { font-size: 13px; color: var(--ink-2); }
+  .note ul { margin: 0; padding-left: 18px; }
+  footer { color: var(--ink-3); font-size: 12px; border-top: 1px solid var(--line); padding-top: 12px; }
+</style>
+
+<div class="page">
+  <header>
+    <div class="eyebrow">Two routes · six bands · three doors · structure from the funnel config, the builder, the App Store and Ads Manager · no numbers: those live in the ladders</div>
+    <h1>BibleChat funnel map</h1>
+    <p class="muted">Bands are depths: what the person has committed so far. Doors at the top are the campaign families; each aims Meta's delivery at one checkpoint. The two routes are threads through the bands, each in its own order. Every box names a checkpoint, the sensor that counts it, and how finely it can be read: per ad, per monthly cohort, or not read yet. The numbers per route live in the <a href="https://claude.ai/artifact/Fy2SK15Av8MCV999CGdfBS" style="color:var(--web)">web column ladder</a> and the <a href="https://claude.ai/artifact/62v3xLW1258bfv7ZQZVVv3" style="color:var(--app)">app column ladder</a>.</p>
+    <div class="legend">
+      <span><span class="sw web"></span>web route</span>
+      <span><span class="sw app"></span>app route</span>
+      <span><span class="sw aim"></span>where a door aims</span>
+      <span><span class="bx money"></span>money changes hands</span>
+      <span><span class="bx unk"></span>no sensor reads it yet</span>
+    </div>
+  </header>
+
+  <div class="mapwrap"><div class="map" id="map"><svg class="links" id="links"></svg></div></div>
+
+  <section class="notes">
+    <div class="note"><h3>Where the two routes differ</h3><ul><li>Web pays in band 5 before it installs in band 3; the app installs first.</li><li>Web personalizes in band 2 (the quiz); the app personalizes in band 4 (onboarding).</li><li>Web money is a paid intro on Stripe; app money is a store trial that converts, or a direct purchase, or a web checkout by rule.</li><li>Web is read per ad down to the purchase; the app is read per ad down to the trial. Below that, both are read per monthly cohort.</li></ul></div>
+    <div class="note"><h3>Instances under each route</h3><ul><li>Web: 5 quiz funnels (christian-archetype carries about 75% of spend). Same checkpoints, different rates.</li><li>App: 66 custom product pages (64 live) times about 8 onboardings selectable by a deeplink intent on the ad. Which ad pairs with which page is not readable yet.</li><li>The map is the same for every instance; only the rates in the ladders change.</li></ul></div>
+  </section>
+
+  <footer>Sources: <span class="mono">_docs/core/measurement-map.md</span>, <span class="mono">app-onboarding-map.md</span>, <span class="mono">destinations-inventory.md</span>, <span class="mono">01_biblechat-business-overview.md</span>, and the colleague's web2app P&amp;L (70 days to 2026-09-14). Web numbers are the colleague's model except revenue collected. App numbers are August 2026 blended. Doors: WEB on the separate WEB account; CPI and CPT on Basmo IOS.</footer>
+</div>
+
+<script>
+(function () {
+  var map = document.getElementById("map"), svg = document.getElementById("links");
+  var W = 1200;
+  var lanes = [
+    { n: 1, name: "Attention", commit: "gives a second, then a click", sees: "Meta", y: 0, h: 140 },
+    { n: 2, name: "Intent", commit: "gives answers and an email", sees: "pixel (WEB account)", y: 140, h: 210 },
+    { n: 3, name: "Acquisition", commit: "gives phone space", sees: "MMP (Singular), store", y: 350, h: 220 },
+    { n: 4, name: "Activation", commit: "gives attention inside the product", sees: "builder, analytics", y: 570, h: 240 },
+    { n: 5, name: "Conversion", commit: "gives a card", sees: "Stripe / Adapty", y: 810, h: 360 },
+    { n: 6, name: "Realization", commit: "keeps paying", sees: "Stripe / Adapty / BigQuery", y: 1170, h: 250 }
+  ];
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  lanes.forEach(function (l) {
+    var d = el("div", "lane"); d.style.top = l.y + "px"; d.style.height = l.h + "px";
+    var lab = el("div", "lab");
+    lab.appendChild(el("div", "n", "BAND " + l.n)); lab.appendChild(el("h3", null, l.name));
+    lab.appendChild(el("div", "commit", l.commit)); lab.appendChild(el("div", "sees", "sees: " + l.sees));
+    d.appendChild(lab); map.appendChild(d);
+  });
+
+  // doors (band 1 = the ad: impression -> click)
+  var doors = [
+    { id: "dweb", cls: "web", x: 190, y: 30, w: 330, name: "WEB campaigns", aim: "aims: Complete Registration / Purchase · 7d click + 1d view" },
+    { id: "dcpi", cls: "app", x: 690, y: 30, w: 225, name: "CPI campaigns", aim: "aims: install · 1d click · mostly paused tests" },
+    { id: "dcpt", cls: "app", x: 935, y: 30, w: 245, name: "CPT campaigns", aim: "aims: purchase_completed (AEO) · 7d click" }
+  ];
+  doors.forEach(function (d) {
+    var e = el("div", "door " + d.cls); e.id = d.id; e.style.left = d.x + "px"; e.style.top = d.y + "px"; e.style.width = d.w + "px";
+    e.appendChild(el("div", "name", d.name)); e.appendChild(el("div", "aimline", d.aim));
+    map.appendChild(e);
+  });
+
+  // nodes: x,y,w absolute; thread order via step
+  var NW = 300;
+  var nodes = [
+    // web
+    { id: "w1", t: "web", s: 1, x: 190, y: 170, w: NW, label: "Quiz page view", sensor: "pixel PageView", state: "perad" },
+    { id: "w2", t: "web", s: 2, x: 190, y: 270, w: NW, label: "Email captured (registration)", sensor: "pixel CompleteRegistration", state: "perad" },
+    { id: "w3", t: "web", s: 3, x: 190, y: 840, w: NW, label: "Paywall seen (3 plans)", sensor: "PostHog only, no pixel event", state: "notread", unknown: true },
+    { id: "w4", t: "web", s: 4, x: 190, y: 940, w: NW, label: "Paid intro on Stripe", sensor: "pixel Purchase · Stripe", state: "perad", money: true, tag: "MONEY" },
+    { id: "w5", t: "web", s: 5, x: 190, y: 1050, w: NW, label: "Upsells (audio, guides)", sensor: "Stripe", state: "notread", unknown: true, money: true },
+    { id: "w6", t: "web", s: 6, x: 190, y: 380, w: NW, label: "Account created, App Store via Singular link", sensor: "funnel + Singular link", state: "notread", unknown: true },
+    { id: "inst", t: "shared", s: 7, x: 470, y: 480, w: 250, label: "Install", sensor: "MMP app events", state: "notread", unknown: true, shared: true, chips: ["W7", "A2"] },
+    { id: "w7", t: "web", s: 8, x: 190, y: 610, w: NW, label: "Signed in with the paid email, in-app", sensor: "app analytics", state: "notread", unknown: true },
+    { id: "w8", t: "web", s: 9, x: 190, y: 1200, w: NW, label: "Renewal 1 at the full price", sensor: "Stripe", state: "cohort", money: true },
+    { id: "w9", t: "web", s: 10, x: 190, y: 1300, w: NW, label: "Renewal 12", sensor: "Stripe", state: "cohort", money: true },
+    // app
+    { id: "a1", t: "app", s: 1, x: 880, y: 380, w: NW, label: "Custom product page view", sensor: "App Store Connect", state: "notread", unknown: true },
+    { id: "a2", t: "app", s: 3,  x: 880, y: 610, w: NW, label: "Sign-in gate, notification permission", sensor: "builder · app analytics", state: "notread", unknown: true },
+    { id: "a3", t: "app", s: 4, x: 880, y: 710, w: NW, label: "Personalization (branching), trial pre-sell", sensor: "builder · app analytics", state: "notread", unknown: true },
+    { id: "a4", t: "app", s: 5, x: 880, y: 840, w: NW, label: "Paywall shown (dismissible)", sensor: "Adapty placement", state: "notread", unknown: true },
+    { id: "a5", t: "app", s: 6, x: 880, y: 940, w: NW, label: "Trial started", sensor: "Adapty · BigQuery", state: "perad", money: true, tag: "AD'S JOB ENDS" },
+    { id: "a6", t: "app", s: 7, x: 880, y: 1050, w: NW, label: "Paid (first charge or direct)", sensor: "purchase_completed · Adapty", state: "perad", money: true, tag: "MONEY" },
+    { id: "a7", t: "app", s: 8, x: 880, y: 1200, w: NW, label: "Weekly renewals to month 12", sensor: "Adapty · BigQuery", state: "cohort", money: true }
+  ];
+  var byId = {};
+  nodes.forEach(function (d) {
+    var cls = "node " + d.t + (d.money ? " money" : "") + (d.unknown ? " unknown" : "");
+    var n = el("div", cls); n.id = d.id; n.style.left = d.x + "px"; n.style.top = d.y + "px"; n.style.width = d.w + "px";
+    if (d.tag) n.appendChild(el("span", "tag", d.tag));
+    var top = el("div", "top");
+    if (d.chips) { top.appendChild(el("span", "step web", d.chips[0])); top.appendChild(el("span", "step app", d.chips[1])); }
+    else top.appendChild(el("span", "step", (d.t === "web" ? "W" : "A") + d.s));
+    top.appendChild(el("span", "label", d.label)); n.appendChild(top);
+    var states = { perad: "read per ad", cohort: "read per cohort", notread: "not read yet" };
+    n.appendChild(el("div", "meta", '<span class="sensor">' + d.sensor + '</span><span class="state ' + d.state + '">' + states[d.state] + '</span>'));
+    map.appendChild(n); byId[d.id] = n;
+  });
+  ["dweb", "dcpi", "dcpt"].forEach(function (id) { byId[id] = document.getElementById(id); });
+
+  // aim badges
+  [["w2", "WEB aims here"], ["w4", "WEB aims here too"], ["inst", "CPI aims here"], ["a6", "CPT aims here"]].forEach(function (p) {
+    var n = byId[p[0]]; var b = el("div", "aimbadge", p[1]);
+    var side = (p[0] === "inst") ? "left" : (n.classList.contains("web") ? "right" : "left");
+    b.style.top = (n.offsetTop + 8) + "px";
+    if (side === "right") b.style.left = (n.offsetLeft + n.offsetWidth + 10) + "px";
+    else if (p[0] === "inst") b.style.left = (n.offsetLeft + n.offsetWidth + 10) + "px";
+    else b.style.left = (n.offsetLeft - 128) + "px";
+    map.appendChild(b);
+  });
+  var note = el("div", "note-on-map", "WEB dips to the money band, pays, then comes back up to install");
+  note.style.left = "16px"; note.style.top = "1010px"; map.appendChild(note);
+
+  // paths
+  var NS = "http://www.w3.org/2000/svg";
+  function box(n) { return { l: n.offsetLeft, t: n.offsetTop, r: n.offsetLeft + n.offsetWidth, b: n.offsetTop + n.offsetHeight, cx: n.offsetLeft + n.offsetWidth / 2, cy: n.offsetTop + n.offsetHeight / 2 }; }
+  function path(d, cls, marker) { var p = document.createElementNS(NS, "path"); p.setAttribute("d", d); p.setAttribute("class", cls); if (marker) p.setAttribute("marker-end", "url(#arr-" + marker + ")"); svg.appendChild(p); }
+  function color(v) { return getComputedStyle(document.documentElement).getPropertyValue("--" + v).trim(); }
+  function defs() {
+    var d = document.createElementNS(NS, "defs");
+    [["web", "web"], ["app", "app"], ["aim", "ink-3"]].forEach(function (m) {
+      var mk = document.createElementNS(NS, "marker");
+      mk.setAttribute("id", "arr-" + m[0]); mk.setAttribute("viewBox", "0 0 10 10"); mk.setAttribute("refX", "8"); mk.setAttribute("refY", "5");
+      mk.setAttribute("markerWidth", "7"); mk.setAttribute("markerHeight", "7"); mk.setAttribute("orient", "auto");
+      var p = document.createElementNS(NS, "path"); p.setAttribute("d", "M0,0 L10,5 L0,10 z"); p.setAttribute("fill", color(m[1]));
+      mk.appendChild(p); d.appendChild(mk);
+    });
+    svg.appendChild(d);
+  }
+  function down(a, b, cls, dx) { // a above b: bezier from a bottom to b top
+    var A = box(a), B = box(b); var ax = A.cx + (dx || 0), bx = B.cx + (dx || 0);
+    var my = (A.b + B.t) / 2;
+    path("M" + ax + "," + A.b + " C" + ax + "," + my + " " + bx + "," + my + " " + bx + "," + (B.t - 2), cls, cls);
+  }
+  function side(a, b, cls, x) { // loop along a vertical rail at x from a's side to b's side
+    var A = box(a), B = box(b);
+    var ax = (x < A.cx) ? A.l : A.r, bx = (x < B.cx) ? B.l : B.r;
+    path("M" + ax + "," + A.cy + " C" + x + "," + A.cy + " " + x + "," + B.cy + " " + (bx + (x < B.cx ? -2 : 2)) + "," + B.cy, cls, cls);
+  }
+  function draw() {
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    defs();
+    // web thread
+    down(byId.dweb, byId.w1, "web");
+    down(byId.w1, byId.w2, "web");
+    side(byId.w2, byId.w3, "web", 176);          // long dip past bands 3 and 4 along the left rail
+    down(byId.w3, byId.w4, "web");
+    down(byId.w4, byId.w5, "web");
+    side(byId.w5, byId.w6, "web", 158);          // loop back up a second left rail to the account/store box
+    var A = box(byId.w6), I = box(byId.inst);    // account box -> shared install
+    path("M" + A.r + "," + (A.cy + 10) + " C" + (A.r + 60) + "," + (A.cy + 10) + " " + (I.cx - 80) + "," + (I.t - 40) + " " + (I.l - 2) + "," + (I.cy - 12), "web", "web");
+    var Wn = box(byId.w7);                       // install -> web in-app
+    path("M" + I.l + "," + (I.cy + 14) + " C" + (I.l - 80) + "," + (I.cy + 40) + " " + (Wn.cx + 60) + "," + (Wn.t - 40) + " " + (Wn.cx + 60) + "," + (Wn.t - 2), "web", "web");
+    side(byId.w7, byId.w8, "web", 690);          // in-app -> renewals along the gap right of the web column
+    down(byId.w8, byId.w9, "web");
+    // app thread
+    down(byId.dcpi, byId.a1, "app", -40);
+    down(byId.dcpt, byId.a1, "app", 40);
+    var P = box(byId.a1);                        // CPP -> shared install
+    path("M" + P.l + "," + (P.cy + 10) + " C" + (P.l - 60) + "," + (P.cy + 10) + " " + (I.cx + 80) + "," + (I.t - 40) + " " + (I.r + 2) + "," + (I.cy - 12), "app", "app");
+    var S = box(byId.a2);                        // install -> sign-in gate
+    path("M" + I.r + "," + (I.cy + 14) + " C" + (I.r + 80) + "," + (I.cy + 40) + " " + (S.cx - 60) + "," + (S.t - 40) + " " + (S.cx - 60) + "," + (S.t - 2), "app", "app");
+    down(byId.a2, byId.a3, "app");
+    down(byId.a3, byId.a4, "app");
+    down(byId.a4, byId.a5, "app");
+    down(byId.a5, byId.a6, "app");
+    down(byId.a6, byId.a7, "app");
+    // door aims (dashed)
+    function aim(from, to, x) { var F = box(from), T = box(to); path("M" + (F.cx + x) + "," + F.b + " C" + (F.cx + x) + "," + (F.b + 60) + " " + (T.cx + x) + "," + (T.t - 60) + " " + (T.cx + x) + "," + (T.t - 3), "aim", "aim"); }
+    aim(byId.dweb, byId.w2, 120);
+    aim(byId.dcpi, byId.inst, -70);
+    var D = box(byId.dcpt), T6 = box(byId.a6);   // CPT aim: down the right margin, into the paid box's right edge
+    path("M" + (D.r - 12) + "," + D.b + " C" + (D.r - 12) + "," + (D.b + 40) + " 1192," + (D.b + 60) + " 1192," + (D.b + 120) + " L1192," + (T6.cy - 30) + " C1192," + (T6.cy - 6) + " " + (T6.r + 10) + "," + T6.cy + " " + (T6.r + 3) + "," + T6.cy, "aim", "aim");
+  }
+  draw();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  setTimeout(draw, 800);
+})();
+</script>

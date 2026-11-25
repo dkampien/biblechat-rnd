@@ -1,0 +1,17 @@
+{
+  "list_paywalls_ios": "Returned ~120 rows, all keyed harvest_<hex>, association_count 0, all updated 2026-08-05. These are harvested historical snapshots of past paywalls and past experiment arms, not the paywall the live onboarding shows.",
+  "live_onboarding_paywall": {
+    "where": "defined inline on onboarding page 24 (paywall_config + data.paywallPage), not in the paywalls table",
+    "adapty_placement": "all-products",
+    "template": "trial_vs_direct",
+    "kind": "horizon",
+    "productIds": ["biblechat.pro.weekly", "biblechat.pro.yearly.discount1"],
+    "trial_days": 7,
+    "price_shown_in_trial_timeline": "$4.99/wk on day 7",
+    "close_button": true,
+    "plans": [
+      {"id": "trial", "title": "Free", "detail": "7 days", "badge": "No Payment Now", "requiresTrial": true},
+      {"id": "paid", "title": "1 {period}", "detail": "{price}"}
+    ]
+  }
+}

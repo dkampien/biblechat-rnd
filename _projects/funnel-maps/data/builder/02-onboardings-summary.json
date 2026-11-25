@@ -1,0 +1,13 @@
+{
+  "total_returned": 50,
+  "note": "mobile_list_onboardings caps at 50, sorted by updated_at desc. No platform field and no locale field on the rows. Status is published or draft only; published does not mean live.",
+  "published_recent": [
+    {"id":"5c6ff30a-0341-45a3-a210-24cca226a837","name":"V6.6 PE FL - Name Personalized Paywall + paywall swap horizon","updated":"2026-09-14"},
+    {"id":"06da19e2-85a9-48b3-91e1-89e46b061544","name":"V6.6 PE FL - Catholic Motivation (US)","updated":"2026-09-14"},
+    {"id":"205d52ff-4675-479f-b0f1-4a60003c04c4","name":"bible_motivivation_spotify_style_plan","updated":"2026-09-10"},
+    {"id":"a13fd924-aebb-41f6-86f7-0430a00a5a51","name":"V6.6 PE FL - Reclaimed Time + Temptation Deck","updated":"2026-09-10"},
+    {"id":"dbbf0818-3446-4a39-a03f-4ef270f69408","name":"V6.6 PE FL - Marriage + Spiritual Archetype Motivations v2","updated":"2026-08-25"},
+    {"id":"1c754ba3-47d3-4ac1-8305-7754f29a34ac","name":"V6.6 MQ - Man of the Bible Quiz","updated":"2026-08-12"},
+    {"id":"3b105c3d-5420-420c-b083-44d037afa3ee","name":"V6.6 WQ - Woman of the Bible Quiz","updated":"2026-08-12"}
+  ]
+}

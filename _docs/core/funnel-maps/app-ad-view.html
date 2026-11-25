@@ -1,0 +1,188 @@
+<title>App route, ad view</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #F4F5F2; --surface: #FFFFFF; --ink: #1C2326; --ink-2: #4B5559; --ink-3: #7C878C; --line: #D6DBD8; --band: #ECEEEB;
+    --app: #A8671A; --app-soft: #F6E8D2; --money: #2E6B2E; --money-soft: #E1EEDD; --unknown: #8A9498; --unknown-soft: #ECEEEC;
+    --meta: #3B5BA5; --meta-soft: #E3E9F6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #151A1C; --surface: #1D2427; --ink: #E8ECEA; --ink-2: #B4BDBF; --ink-3: #7F8B8F; --line: #313B3F; --band: #1A2023;
+      --app: #E1A455; --app-soft: #3A2C16; --money: #86C77E; --money-soft: #1E3320; --unknown: #8A9498; --unknown-soft: #262D30;
+      --meta: #8FA8E8; --meta-soft: #1E2739;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #151A1C; --surface: #1D2427; --ink: #E8ECEA; --ink-2: #B4BDBF; --ink-3: #7F8B8F; --line: #313B3F; --band: #1A2023;
+    --app: #E1A455; --app-soft: #3A2C16; --money: #86C77E; --money-soft: #1E3320; --unknown: #8A9498; --unknown-soft: #262D30;
+    --meta: #8FA8E8; --meta-soft: #1E2739;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; font-size: 14px; line-height: 1.45; margin: 0; padding: 36px 24px 64px; }
+  .page { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif; margin: 0; text-wrap: balance; }
+  h1 { font-size: 34px; font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
+  h2 { font-size: 20px; font-weight: 700; }
+  p { margin: 0; max-width: 72ch; }
+  .muted { color: var(--ink-2); }
+  .mono { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 12px; }
+  .eyebrow { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+  a { color: var(--app); }
+  header { display: flex; flex-direction: column; gap: 10px; }
+
+  .world { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow: hidden; }
+  .world > div { padding: 10px 14px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px; }
+  .world > div:first-child { border-left: 0; }
+  .world .k { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+  .world .v { font-weight: 600; font-size: 13.5px; }
+
+  /* the funnel */
+  .funnelwrap { overflow-x: auto; }
+  .funnel { position: relative; width: 1180px; height: 1200px; }
+  .stop { position: absolute; z-index: 2; border: 1.5px solid var(--app); border-radius: 6px; background: var(--surface); padding: 9px 12px 10px; display: flex; flex-direction: column; gap: 3px; text-align: center; }
+  .stop.meta { border-color: var(--meta); }
+  .stop.money { border-color: var(--money); background: var(--money-soft); }
+  .stop.unknown { border-color: var(--unknown); border-style: dashed; background: var(--unknown-soft); }
+  .stop.cohort { border-color: var(--line); background: var(--band); opacity: .9; }
+  .stop .who { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+  .stop .label { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 17px; line-height: 1.15; }
+  .stop .count { font-size: 13px; color: var(--ink-2); }
+  .stop .count b { color: var(--ink); }
+  .stop .col { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 11px; color: var(--ink-3); }
+  .edge { position: absolute; z-index: 3; transform: translate(-50%, -50%); background: var(--surface); border: 1px solid var(--app); border-radius: 14px; padding: 3px 11px; font-size: 12.5px; color: var(--ink); white-space: nowrap; }
+  .edge b { font-weight: 600; }
+  .edge .n { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 11px; color: var(--ink-3); margin-left: 6px; }
+  .edge.unk { border-style: dashed; border-color: var(--unknown); color: var(--ink-2); }
+  .side { position: absolute; z-index: 2; width: 300px; display: flex; flex-direction: column; gap: 3px; font-size: 12.5px; color: var(--ink-2); }
+  .side .h { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
+  .side ul { margin: 0; padding-left: 16px; }
+  .side .own { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; color: var(--ink-3); }
+  .side.left { text-align: right; }
+  .side.left ul { padding-left: 0; padding-right: 16px; list-style-position: inside; }
+  .cutline { position: absolute; z-index: 1; left: 40px; right: 40px; border-top: 2px dashed var(--money); }
+  .cutlabel { position: absolute; z-index: 3; font-family: "IBM Plex Mono", Menlo, monospace; font-size: 11px; color: var(--money); background: var(--bg); padding: 0 8px; }
+  svg.edges { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+  svg.edges path { fill: none; stroke: var(--app); stroke-width: 2; }
+  svg.edges path.unk { stroke: var(--unknown); stroke-dasharray: 5 4; }
+  svg.edges path.cohort { stroke: var(--ink-3); stroke-dasharray: 3 4; stroke-width: 1.5; }
+  svg.edges polygon.funnelshape { fill: var(--app-soft); opacity: .35; stroke: none; }
+
+  .cost { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+  th { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); border-top: 0; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td .q { color: var(--unknown); }
+
+  .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .rule { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 12px 14px; font-size: 13px; color: var(--ink-2); }
+  .rule b { color: var(--ink); }
+  footer { color: var(--ink-3); font-size: 12px; border-top: 1px solid var(--line); padding-top: 12px; }
+</style>
+
+<div class="page">
+  <header>
+    <div class="eyebrow">App route · what one ad can be judged on · Basmo IOS · CPT door · numbers Aug to Sep 2026</div>
+    <h1>App route, ad view</h1>
+    <p class="muted">The stretch of the app route you can read per ad: from the impression to the trial start. Each seam names its rate, the Ads Manager column that shows it, and the lever behind it. Everything past trial start is read per monthly cohort, not per ad. Structure lives in the <a href="https://claude.ai/artifact/FgxQZjV9GssNTJ1efWH3s3">funnel map</a>.</p>
+  </header>
+
+  <section class="world">
+    <div><span class="k">Account</span><span class="v">Basmo IOS · 697155031095732</span></div>
+    <div><span class="k">Door</span><span class="v">CPT family (APP_INSTALLS, app-event optimized)</span></div>
+    <div><span class="k">Optimizes for</span><span class="v">purchase_completed</span></div>
+    <div><span class="k">Window</span><span class="v">7-day click</span></div>
+    <div><span class="k">Judged by</span><span class="v">cost per trial, daily</span></div>
+  </section>
+
+  <section class="funnelwrap"><div class="funnel" id="funnel"><svg class="edges" id="edges"></svg></div></section>
+
+  <section>
+    <h2>Cost at every depth is one spend pool</h2>
+    <p class="muted" style="margin-bottom:10px">The same ad's spend divided by survivors at each seam. Each cost-per is the previous one divided by the rate between them, so a leak anywhere raises every cost below it.</p>
+    <div class="cost">
+      <table>
+        <tr><th>Depth</th><th>Cost-per</th><th>Blended value</th><th>How it is built</th><th>Per ad?</th></tr>
+        <tr><td>Impression</td><td>CPM</td><td class="num">$9-21</td><td>spend ÷ impressions × 1000</td><td>yes</td></tr>
+        <tr><td>Click</td><td>CPC</td><td class="num">$1.16-1.47</td><td>CPM ÷ CTR</td><td>yes</td></tr>
+        <tr><td>Store page</td><td>cost per page view</td><td class="num"><span class="q">?</span></td><td>CPC ÷ page rate</td><td>Apple side</td></tr>
+        <tr><td>Install</td><td>CPI</td><td class="num"><span class="q">?</span> (not read)</td><td>cost per page view ÷ install rate</td><td>yes (MMP)</td></tr>
+        <tr><td>Trial</td><td>CPT</td><td class="num">$16.7</td><td>CPI ÷ trial rate</td><td>yes, the steering number</td></tr>
+        <tr><td>Paid</td><td>CPS</td><td class="num">$40</td><td>CPT ÷ trial-to-paid (42%)</td><td>cohort average</td></tr>
+        <tr><td>Month 12</td><td>return on spend</td><td class="num">96% projected · 142% matured</td><td>value per trial ÷ CPT</td><td>cohort only</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Reading an ad without fooling yourself</h2>
+    <div class="rules">
+      <div class="rule"><b>Compare only inside one door.</b> A CPT row and a CPI row differ in optimization event and window; their CPCs and CPIs are not comparable.</div>
+      <div class="rule"><b>Landing page views are not a leak here.</b> The click lands on Apple's page, where no pixel lives. Blank means no sensor, not no people.</div>
+      <div class="rule"><b>100 impressions before reading anything; 200 to compare two ads.</b> Below that the rates are noise.</div>
+      <div class="rule"><b>A cheap CPT can be a bad CPT.</b> If the ad pulls low-intent trials, the cohort's trial-to-paid falls and nothing per ad shows it. Watch trial-to-paid by channel as the tripwire.</div>
+      <div class="rule"><b>Never buy a trial above $22 gross</b> (that is 100% projected month-12 return); $16 is cash break-even after the store cut. Say which rule a ceiling is built on.</div>
+      <div class="rule"><b>Starvation is not a verdict.</b> An ad Meta never delivered has no read; rerun it, do not kill it.</div>
+    </div>
+  </section>
+
+  <footer>Sources: <span class="mono">_docs/core/measurement-map.md</span>, <span class="mono">app-onboarding-map.md</span>, <span class="mono">destinations-inventory.md</span>, <span class="mono">01_biblechat-business-overview.md</span>, <span class="mono">experiment-design-cheatsheet.md</span>. Ranges are early-August Ads Manager reads; CPT, CPS, trial-to-paid and returns are August 2026 blended from BigQuery. The web route gets its own ad view.</footer>
+</div>
+
+<script>
+(function () {
+  var F = document.getElementById("funnel"), svg = document.getElementById("edges"), NS = "http://www.w3.org/2000/svg";
+  var CX = 590;
+  var stops = [
+    { id: "s1", y: 20, w: 640, cls: "meta", who: "Meta shows", label: "Impression", count: "CPM <b>$9-21</b> · frequency ~1.4", col: "Impressions · CPM · Frequency" },
+    { id: "s2", y: 190, w: 570, cls: "meta", who: "Meta shows", label: "Link click", count: "CPC <b>$1.16-1.47</b>", col: "Link clicks · CPC · CTR (link)" },
+    { id: "s3", y: 360, w: 500, cls: "unknown", who: "Apple shows", label: "Store page view", count: "custom product page, one of <b>66</b>", col: "App Store Connect analytics · no Ads Manager column" },
+    { id: "s4", y: 530, w: 430, cls: "", who: "MMP shows", label: "Install", count: "attributed by Singular, per ad", col: "App installs · Cost per install" },
+    { id: "s5", y: 700, w: 370, cls: "unknown", who: "Builder / analytics show", label: "Paywall shown", count: "trial vs direct · dismissible for most", col: "no Ads Manager column" },
+    { id: "s6", y: 870, w: 320, cls: "money", who: "The ad's number", label: "Trial started", count: "<b>CPT $16.7</b> blended Aug · ceiling $22 gross / $16 cash", col: "Results · Cost per result (purchase_completed)" },
+    { id: "s7", y: 1090, w: 280, cls: "cohort", who: "Cohort, not per ad", label: "Paid, then renewals", count: "trial to paid <b>42%</b> · CPS $40 · M12 96% projected", col: "BigQuery / Adapty, per month of trials" }
+  ];
+  var edges = [
+    { a: "s1", b: "s2", rate: "<b>Link CTR</b>", n: "0.75-1.44% video · 9-12% statics", levers: ["Hook: the first second, the problem named", "Format and visual treatment", "Audience the door buys"], own: "owner: creative" },
+    { a: "s2", b: "s3", rate: "<b>Store page reached</b>", n: "not readable: no pixel on Apple's page", unk: true, levers: ["Store redirect speed", "Accidental taps: cheap, low-intent clicks"], own: "owner: Meta / Apple, little to do" },
+    { a: "s3", b: "s4", rate: "<b>Install rate</b>", n: "not read yet · Apple reports it per page", unk: true, levers: ["Does the page keep the ad's promise", "Rating, price framing"], own: "owner: CPP, paired with the ad" },
+    { a: "s4", b: "s5", rate: "<b>Onboarding to paywall</b>", n: "not read yet · 24 pages, branching", unk: true, levers: ["Onboarding variant the deeplink intent selects", "Sign-in gate and permission friction"], own: "owner: product (builder), not the ad" },
+    { a: "s5", b: "s6", rate: "<b>Trial start rate</b>", n: "not read yet · trials per click ≈ 7-9% derived", unk: true, levers: ["Intent the ad brought (audience quality)", "Paywall copy, plan order, hard vs soft"], own: "owner: shared: ad audience + paywall" },
+    { a: "s6", b: "s7", rate: "<b>Trial to paid 42%</b>", n: "iOS 48 · Android 27 · read per cohort", cohort: true, levers: ["Not the ad, except through who it brought", "Product, pricing, retention"], own: "owner: product / finance" }
+  ];
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  var by = {};
+  stops.forEach(function (s) {
+    var d = el("div", "stop " + s.cls); d.style.left = (CX - s.w / 2) + "px"; d.style.top = s.y + "px"; d.style.width = s.w + "px";
+    d.appendChild(el("div", "who", s.who)); d.appendChild(el("div", "label", s.label)); d.appendChild(el("div", "count", s.count)); d.appendChild(el("div", "col", s.col));
+    F.appendChild(d); by[s.id] = d;
+  });
+  function box(n) { return { l: n.offsetLeft, t: n.offsetTop, r: n.offsetLeft + n.offsetWidth, b: n.offsetTop + n.offsetHeight, cx: n.offsetLeft + n.offsetWidth / 2 }; }
+  // funnel silhouette
+  var pts = [];
+  stops.slice(0, 6).forEach(function (s) { var B = box(by[s.id]); pts.push([B.l, B.t]); pts.push([B.l, B.b]); });
+  var right = []; stops.slice(0, 6).forEach(function (s) { var B = box(by[s.id]); right.push([B.r, B.t]); right.push([B.r, B.b]); });
+  var poly = document.createElementNS(NS, "polygon"); poly.setAttribute("class", "funnelshape");
+  poly.setAttribute("points", pts.concat(right.reverse()).map(function (p) { return p.join(","); }).join(" ")); svg.appendChild(poly);
+  var defs = document.createElementNS(NS, "defs"); defs.innerHTML = '<marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="' + getComputedStyle(document.documentElement).getPropertyValue("--app").trim() + '"/></marker><marker id="aru" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="' + getComputedStyle(document.documentElement).getPropertyValue("--unknown").trim() + '"/></marker>'; svg.appendChild(defs);
+  edges.forEach(function (e, i) {
+    var A = box(by[e.a]), B = box(by[e.b]);
+    var p = document.createElementNS(NS, "path"); p.setAttribute("d", "M" + CX + "," + A.b + " L" + CX + "," + (B.t - 2));
+    p.setAttribute("class", e.cohort ? "cohort" : (e.unk ? "unk" : "")); p.setAttribute("marker-end", e.unk ? "url(#aru)" : "url(#ar)"); svg.appendChild(p);
+    var my = (A.b + B.t) / 2;
+    var pill = el("div", "edge" + (e.unk ? " unk" : ""), e.rate + '<span class="n">' + e.n + "</span>"); pill.style.left = CX + "px"; pill.style.top = my + "px"; F.appendChild(pill);
+    var side = el("div", "side " + (i % 2 === 0 ? "right" : "left"));
+    side.appendChild(el("div", "h", "what moves it"));
+    var ul = el("ul"); e.levers.forEach(function (l) { ul.appendChild(el("li", null, l)); }); side.appendChild(ul);
+    side.appendChild(el("div", "own", e.own));
+    side.style.top = (my - (e.cohort ? 62 : 30)) + "px";
+    var wider = Math.max(A.r - A.l, B.r - B.l) / 2;
+    if (i % 2 === 0) side.style.left = (CX + wider + 26) + "px"; else side.style.left = (CX - wider - 26 - 300) + "px";
+    F.appendChild(side);
+  });
+  var cutY = box(by.s7).t - 14;
+  var cl = el("div", "cutline"); cl.style.top = cutY + "px"; F.appendChild(cl);
+  var lab = el("div", "cutlabel", "per-ad reading ends above this line; below is read per monthly cohort and applied back as an average"); lab.style.top = (cutY - 9) + "px"; lab.style.left = "60px"; F.appendChild(lab);
+})();
+</script>

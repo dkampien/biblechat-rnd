@@ -1,0 +1,200 @@
+<title>Web route column ladder</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #F4F5F2; --surface: #FFFFFF; --ink: #1C2326; --ink-2: #4B5559; --ink-3: #7C878C; --line: #D6DBD8; --band: #ECEEEB;
+    --web: #176F6A; --web-soft: #D9EEEB; --money: #2E6B2E; --money-soft: #E1EEDD; --unknown: #8A9498; --unknown-soft: #ECEEEC;
+    --count: #3B5BA5; --rate: #6B4FA0; --cost: #176F6A;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #151A1C; --surface: #1D2427; --ink: #E8ECEA; --ink-2: #B4BDBF; --ink-3: #7F8B8F; --line: #313B3F; --band: #1A2023;
+      --web: #5FC2B8; --web-soft: #17302E; --money: #86C77E; --money-soft: #1E3320; --unknown: #8A9498; --unknown-soft: #262D30;
+      --count: #8FA8E8; --rate: #B39BE0; --cost: #5FC2B8;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #151A1C; --surface: #1D2427; --ink: #E8ECEA; --ink-2: #B4BDBF; --ink-3: #7F8B8F; --line: #313B3F; --band: #1A2023;
+    --web: #5FC2B8; --web-soft: #17302E; --money: #86C77E; --money-soft: #1E3320; --unknown: #8A9498; --unknown-soft: #262D30;
+    --count: #8FA8E8; --rate: #B39BE0; --cost: #5FC2B8;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; font-size: 14px; line-height: 1.45; margin: 0; padding: 36px 24px 64px; }
+  .page { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 26px; }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif; margin: 0; text-wrap: balance; }
+  h1 { font-size: 34px; font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
+  h2 { font-size: 19px; font-weight: 700; }
+  p { margin: 0; max-width: 74ch; }
+  .muted { color: var(--ink-2); }
+  .mono { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 12px; }
+  .eyebrow { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+  a { color: var(--web); }
+  header { display: flex; flex-direction: column; gap: 10px; }
+
+  .world { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow: hidden; }
+  .world > div { padding: 9px 13px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 1px; }
+  .world > div:first-child { border-left: 0; }
+  .world .k { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+  .world .v { font-weight: 600; font-size: 13px; }
+
+  .levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .lvl { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 9px 12px; font-size: 12.5px; color: var(--ink-2); }
+  .lvl b { color: var(--ink); font-family: "Bricolage Grotesque", sans-serif; font-size: 14px; display: block; margin-bottom: 2px; }
+
+  .diagwrap { overflow-x: auto; }
+  .diag { position: relative; width: 1180px; height: 1290px; }
+  .nd { position: absolute; z-index: 2; border-radius: 6px; background: var(--surface); border: 1.5px solid var(--count); padding: 8px 12px 9px; display: flex; flex-direction: column; gap: 2px; text-align: center; }
+  .nd .col { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 11.5px; color: var(--ink-2); }
+  .nd .val { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 21px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .nd .val small { font-family: "IBM Plex Sans", sans-serif; font-weight: 500; font-size: 11.5px; color: var(--ink-2); }
+  .nd .note { font-size: 11.5px; color: var(--ink-3); line-height: 1.3; }
+  .nd .chk { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+  .nd.cost { border-color: var(--cost); text-align: left; }
+  .nd.cost .val { font-size: 18px; }
+  .nd.spend { border-color: var(--ink); background: var(--band); text-align: left; }
+  .nd.money { border-color: var(--money); background: var(--money-soft); }
+  .nd.blank { border-style: dashed; border-color: var(--unknown); background: var(--unknown-soft); }
+  .nd.blank .col { text-decoration: line-through; text-decoration-color: var(--unknown); }
+  .nd.blank .val { color: var(--unknown); font-size: 14px; font-weight: 600; }
+  .nd.notread .val { color: var(--unknown); font-size: 15px; font-weight: 600; }
+  .nd.cohort { border-color: var(--line); background: var(--band); }
+  .nd.outside { border-style: dashed; border-color: var(--cost); }
+  .ed { position: absolute; z-index: 3; transform: translate(-50%, -50%); background: var(--surface); border: 1px solid var(--rate); border-radius: 14px; padding: 3px 11px; font-size: 12.5px; color: var(--ink); white-space: nowrap; }
+  .ed .col { font-family: "IBM Plex Mono", Menlo, monospace; font-size: 11px; color: var(--rate); margin-right: 6px; }
+  .ed.blank { border-style: dashed; border-color: var(--unknown); color: var(--ink-2); }
+  .ed.blank .col { color: var(--unknown); text-decoration: line-through; }
+  .ed.derived::after { content: " custom metric"; font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10px; color: var(--ink-3); }
+  .lbl { position: absolute; z-index: 2; font-family: "IBM Plex Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+  .lbl.count { color: var(--count); } .lbl.cost { color: var(--cost); } .lbl.rate { color: var(--rate); }
+  .cutline { position: absolute; z-index: 1; left: 30px; right: 30px; border-top: 2px dashed var(--money); }
+  .cutlabel { position: absolute; z-index: 3; font-family: "IBM Plex Mono", Menlo, monospace; font-size: 11px; color: var(--money); background: var(--bg); padding: 0 8px; }
+  svg.wires { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+  svg.wires path { fill: none; }
+  svg.wires path.spine { stroke: var(--count); stroke-width: 2; }
+  svg.wires path.spine.blank { stroke: var(--unknown); stroke-dasharray: 5 4; }
+  svg.wires path.tether { stroke: var(--cost); stroke-width: 1.4; }
+  svg.wires path.pool { stroke: var(--cost); stroke-width: 1.2; stroke-dasharray: 2 4; }
+  svg.wires path.cohort { stroke: var(--ink-3); stroke-width: 1.5; stroke-dasharray: 3 4; }
+  svg.wires polygon.silhouette { fill: var(--count); opacity: .06; }
+
+  .keys { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 12.5px; color: var(--ink-2); }
+  .keys .sw { display: inline-block; width: 11px; height: 11px; border-radius: 2px; vertical-align: -1px; margin-right: 6px; border: 1px solid var(--line); }
+  .keys .sw.blank { background: var(--unknown-soft); }
+  .keys .sw.money { background: var(--money-soft); border-color: var(--money); }
+
+  .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .rule { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); padding: 12px 14px; font-size: 13px; color: var(--ink-2); }
+  .rule b { color: var(--ink); }
+  footer { color: var(--ink-3); font-size: 12px; border-top: 1px solid var(--line); padding-top: 12px; }
+</style>
+
+<div class="page">
+  <header>
+    <div class="eyebrow">Web route · the Ads Manager columns in funnel order · WEB account · WEB door · values 70 days to 2026-09-14, blended across five quiz funnels</div>
+    <h1>Web route column ladder</h1>
+    <p class="muted">Same grammar as the app ladder: counts are the nodes, rates sit on the edges, cost-pers hang off each node and all divide the same spend. Every box is an Ads Manager column, named as Ads Manager names it, read in the WEB account against pixel 1358749622795508. The signature is the inverse of an app row: landing page and registration columns fill, install columns stay blank. The journey behind these columns is drawn in the <a href="https://claude.ai/artifact/6J93DauCiQ2Vx68c5pZSFW">web route ad view</a>; the structure in the <a href="https://claude.ai/artifact/FgxQZjV9GssNTJ1efWH3s3">funnel map</a>; the app version in the <a href="https://claude.ai/artifact/62v3xLW1258bfv7ZQZVVv3">app route column ladder</a>.</p>
+  </header>
+
+  <section class="world">
+    <div><span class="k">Account</span><span class="v">WEB account · no read access yet</span></div>
+    <div><span class="k">Door</span><span class="v">WEB campaigns</span></div>
+    <div><span class="k">Optimization event</span><span class="v">pixel Purchase (some ad sets: CompleteRegistration)</span></div>
+    <div><span class="k">Attribution</span><span class="v">7-day click + 1-day view</span></div>
+    <div><span class="k">Column preset</span><span class="v">Funnel LTR - web · to build</span></div>
+    <div><span class="k">Read on</span><span class="v">one pool: ad, ad set, or campaign</span></div>
+  </section>
+
+  <section class="levels">
+    <div class="lvl"><b>Ad</b>Creative decisions. Read only past 100 impressions; 200 per ad to compare two. At $42-65 CPM that is $4-13 of spend before a first read.</div>
+    <div class="lvl"><b>Ad set</b>Where experiments are read: one arena, one door, one funnel. Five quiz funnels exist; an ad set that sends to two of them blends two ladders.</div>
+    <div class="lvl"><b>Campaign</b>Where budget moves. Read it for spend and purchases, not for seams; the seams belong to the ad set's funnel.</div>
+  </section>
+
+  <section class="diagwrap"><div class="diag" id="diag"><svg class="wires" id="wires"></svg></div></section>
+
+  <div class="keys">
+    <span><span class="sw blank"></span>blank by design: no sensor can fire here on this route</span>
+    <span><span class="sw"></span>derived: not an Ads Manager read, computed from the P&amp;L</span>
+    <span><span class="sw money"></span>money rungs</span>
+  </div>
+
+  <section>
+    <h2>Reading the ladder</h2>
+    <div class="rules">
+      <div class="rule"><b>Every cost-per is one spend pool.</b> Cost-per at a rung = cost-per at the rung above ÷ the rate in. The biggest seam is registrations per landing page view, 27%: it alone turns a $1-2 page view into a $5 email.</div>
+      <div class="rule"><b>Results change meaning per ad set.</b> A registration-optimized row shows cost per result near $5; a purchase-optimized row near $63. Both are "Cost per result". Read the fine print before the number.</div>
+      <div class="rule"><b>The signature inverts the app row.</b> Landing page views and registrations fill; App installs and Cost per app install stay blank. A web row with installs is misconfigured, not successful.</div>
+      <div class="rule"><b>Purchase counts trials too.</b> The pixel fires Purchase on the $6.49 one-week trial as well as the $18.99 intro. Splitting them is a Stripe or PostHog read, not a column.</div>
+      <div class="rule"><b>Two registrations per buyer.</b> CompleteRegistration fires at email capture and again on the download click after payment, so registrations run up to 8% high on rows with many buyers.</div>
+      <div class="rule"><b>The ladder ends at the paid intro.</b> Renewal at $42.20 is a cohort question. Keep the tripwire rung visible so a cheap CPA and a bad cohort cannot coexist unnoticed.</div>
+    </div>
+  </section>
+
+  <footer>Values: the colleague's web2app P&amp;L (adloops.ai, 70 days to 2026-09-14; spend $542k, 8,529 purchases, CTR 3.6%, page rate 96%, email rate 27%, purchase rate 8.2%); CPM and the $0.12-0.43 landing-page cost from early-August Ads Manager reads of the paused WEB campaigns on Basmo IOS; pixel and event wiring from the live funnel config (<span class="mono">_docs/core/measurement-map.md</span>). Impressions, clicks and page views are derived from those rates, not read. Per-ad numbers need WEB account access.</footer>
+</div>
+
+<script>
+(function () {
+  var D = document.getElementById("diag"), svg = document.getElementById("wires"), NS = "http://www.w3.org/2000/svg";
+  var CX = 470, COSTX = 800, SPX = 800;
+  var counts = [
+    { id: "c1", y: 70, w: 520, cls: "notread", chk: "impression · counted by Meta", col: "Impressions", val: "~10M <small>70 days, derived: spend ÷ CPM</small>", note: "Reach and Frequency sit beside it", cost: { col: "CPM (cost per 1,000 impressions)", val: "$42-65", note: "3-5× the app route's CPM: US, older, female, sales objective" } },
+    { id: "c2", y: 230, w: 460, cls: "notread", chk: "click · counted by Meta", col: "Link clicks", val: "~370k <small>70 days, derived: impressions × CTR</small>", note: "not Clicks (all), which counts likes and expands", cost: { cls: "notread", col: "CPC (cost per link click)", val: "$1.2-1.8 <small>derived</small>", note: "= CPM ÷ CTR ÷ 10 · not in the P&L" } },
+    { id: "c3", y: 390, w: 400, cls: "notread", chk: "landing page · verseread.com, pixel PageView", col: "Landing page views", val: "~355k <small>70 days, derived: clicks × 96%</small>", note: "fills on web rows: our pixel fires on the quiz page", cost: { col: "Cost per landing page view", val: "$0.12-0.43 <small>Aug reads</small>", note: "from Basmo IOS's paused web campaigns; the P&L's CPM and CTR imply $1.2-1.9. Two pools, two answers" } },
+    { id: "c4", y: 550, w: 350, chk: "email · pixel CompleteRegistration", col: "Registrations completed", val: "~104k <small>70 days = spend ÷ $5.23</small>", note: "the WEB door's first target · runs high: fires again on download", cost: { col: "Cost per registration", val: "$5.23", note: "= cost per page view ÷ 27%" } },
+    { id: "c5", y: 710, w: 300, cls: "blank", chk: "paywall · no pixel event", col: "Content views / paywall", val: "blank by design", note: "PostHog paywall_viewed only; results and name screens sit between email and paywall", cost: { cls: "blank", col: "Cost per paywall view", val: "blank by design", note: "drop from the web preset" } },
+    { id: "c6", y: 870, w: 270, cls: "money", chk: "purchase · pixel Purchase, the optimization event", col: "Purchases", val: "8,529 <small>70 days</small>", note: "$18.99 intro or $6.49 trial; Stripe checkout, Apple Pay and card", cost: { col: "Cost per purchase (CPA)", val: "$63.5", note: "the ad's number · = cost per registration ÷ 8.2%" } }
+  ];
+  var edges = [
+    { a: "c1", b: "c2", col: "CTR (link click-through rate)", val: "3.6% (P&L, 70 days)" },
+    { a: "c2", b: "c3", col: "Landing page views ÷ Link clicks", val: "96%", derived: true },
+    { a: "c3", b: "c4", col: "Registrations ÷ Landing page views", val: "27% · the biggest leak", derived: true },
+    { a: "c4", b: "c5", col: "Paywall reached", val: "not readable here", blank: true },
+    { a: "c5", b: "c6", col: "Purchases ÷ Registrations", val: "8.2% · 2.2% per page view", derived: true }
+  ];
+  function el(tag, cls, html) { var x = document.createElement(tag); if (cls) x.className = cls; if (html != null) x.innerHTML = html; return x; }
+  function box(n) { return { l: n.offsetLeft, t: n.offsetTop, r: n.offsetLeft + n.offsetWidth, b: n.offsetTop + n.offsetHeight, cx: n.offsetLeft + n.offsetWidth / 2, cy: n.offsetTop + n.offsetHeight / 2 }; }
+  function path(d, cls) { var p = document.createElementNS(NS, "path"); p.setAttribute("d", d); p.setAttribute("class", cls); svg.appendChild(p); }
+  var l1 = el("div", "lbl count", "count columns · how many got here"); l1.style.left = (CX - 260) + "px"; l1.style.top = "40px"; D.appendChild(l1);
+  var l2 = el("div", "lbl cost", "cost-per columns · one spend pool ÷ each count"); l2.style.left = COSTX + "px"; l2.style.top = "40px"; D.appendChild(l2);
+  var l3 = el("div", "lbl rate", "rate columns sit on the edges"); l3.style.left = "40px"; l3.style.top = "190px"; D.appendChild(l3);
+  var sp = el("div", "nd spend"); sp.style.left = SPX + "px"; sp.style.top = "0px"; sp.style.width = "330px";
+  sp.innerHTML = '<span class="col">Amount spent</span><span class="val">$542k <small>70 days, five funnels</small></span><span class="note">the pool every cost-per below divides</span>'; D.appendChild(sp);
+  var by = {};
+  counts.forEach(function (c) {
+    var n = el("div", "nd " + (c.cls || "")); n.style.left = (CX - c.w / 2) + "px"; n.style.top = c.y + "px"; n.style.width = c.w + "px";
+    n.innerHTML = '<span class="chk">' + c.chk + '</span><span class="col">' + c.col + '</span><span class="val">' + c.val + '</span><span class="note">' + c.note + '</span>';
+    D.appendChild(n); by[c.id] = n;
+    var k = el("div", "nd cost " + (c.cost.cls || "")); k.style.left = COSTX + "px"; k.style.top = (c.y + 6) + "px"; k.style.width = "330px";
+    k.innerHTML = '<span class="col">' + c.cost.col + '</span><span class="val">' + c.cost.val + '</span><span class="note">' + c.cost.note + '</span>';
+    D.appendChild(k); by[c.id + "k"] = k;
+  });
+  var L = [], R = [];
+  counts.forEach(function (c) { var B = box(by[c.id]); L.push([B.l, B.t], [B.l, B.b]); R.push([B.r, B.t], [B.r, B.b]); });
+  var poly = document.createElementNS(NS, "polygon"); poly.setAttribute("class", "silhouette");
+  poly.setAttribute("points", L.concat(R.reverse()).map(function (p) { return p.join(","); }).join(" ")); svg.appendChild(poly);
+  edges.forEach(function (e) {
+    var A = box(by[e.a]), B = box(by[e.b]);
+    path("M" + CX + "," + A.b + " L" + CX + "," + B.t, "spine" + (e.blank ? " blank" : ""));
+    var pill = el("div", "ed" + (e.blank ? " blank" : "") + (e.derived ? " derived" : ""), '<span class="col">' + e.col + '</span>' + e.val);
+    pill.style.left = CX + "px"; pill.style.top = ((A.b + B.t) / 2) + "px"; D.appendChild(pill);
+  });
+  var S = box(sp);
+  counts.forEach(function (c) {
+    var A = box(by[c.id]), K = box(by[c.id + "k"]);
+    path("M" + A.r + "," + A.cy + " L" + K.l + "," + K.cy, "tether");
+    path("M" + (S.l + 24) + "," + S.b + " L" + (S.l + 24) + "," + K.t, "pool");
+  });
+  var last = box(by.c6);
+  var cutY = last.b + 40;
+  var cl = el("div", "cutline"); cl.style.top = cutY + "px"; D.appendChild(cl);
+  var lab = el("div", "cutlabel", "Ads Manager reading ends here · below is per monthly cohort in Stripe, applied back to ads as an average"); lab.style.top = (cutY - 9) + "px"; lab.style.left = "50px"; D.appendChild(lab);
+  var tw = el("div", "nd cohort"); tw.style.left = (CX - 150) + "px"; tw.style.top = (cutY + 40) + "px"; tw.style.width = "300px";
+  tw.innerHTML = '<span class="chk">tripwire · renewal at $42.20, per month of purchases</span><span class="col">Renewal 1</span><span class="val">36% <small>1.58 renewals avg · 30-day money-back before it</small></span><span class="note">if it falls while CPA holds, the ads are buying buyers who leave</span>'; D.appendChild(tw);
+  var tk = el("div", "nd cost cohort"); tk.style.left = COSTX + "px"; tk.style.top = (cutY + 46) + "px"; tk.style.width = "330px";
+  tk.innerHTML = '<span class="col">Cost per retained buyer</span><span class="val">~$176</span><span class="note">= CPA ÷ 36% · M12 return 134% modeled, 33% collected so far</span>'; D.appendChild(tk);
+  var T = box(tw), TK = box(tk);
+  path("M" + CX + "," + last.b + " L" + CX + "," + T.t, "cohort");
+  path("M" + T.r + "," + T.cy + " L" + TK.l + "," + TK.cy, "tether");
+})();
+</script>

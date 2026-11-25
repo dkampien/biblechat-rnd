@@ -1,0 +1,805 @@
+{
+ "data": [
+  {
+   "type": "appCustomProductPages",
+   "id": "f68c6ec8-ee5a-445c-9a1d-cd75536f758a",
+   "attributes": {
+    "name": "APPLOVIN Man of the Bible Quiz",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=f68c6ec8-ee5a-445c-9a1d-cd75536f758a",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/f68c6ec8-ee5a-445c-9a1d-cd75536f758a"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "e53c9d3a-0861-4979-8ae1-52f6c0823974",
+   "attributes": {
+    "name": "Advent_2025",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=e53c9d3a-0861-4979-8ae1-52f6c0823974",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/e53c9d3a-0861-4979-8ae1-52f6c0823974"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "442de23b-1700-45a3-a4c4-adc38fbdc383",
+   "attributes": {
+    "name": "Animated Bible Stories 2026",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=442de23b-1700-45a3-a4c4-adc38fbdc383",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/442de23b-1700-45a3-a4c4-adc38fbdc383"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "db05c0eb-1914-49ab-abce-85931c0975e3",
+   "attributes": {
+    "name": "Anxiety Teo",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=db05c0eb-1914-49ab-abce-85931c0975e3",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/db05c0eb-1914-49ab-abce-85931c0975e3"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "f99fe876-07d5-4542-a141-66b18f189a50",
+   "attributes": {
+    "name": "AppLovin Women of the Bible Quiz",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=f99fe876-07d5-4542-a141-66b18f189a50",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/f99fe876-07d5-4542-a141-66b18f189a50"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "a0c1dc72-1aaf-4df9-b714-e01a6b848a00",
+   "attributes": {
+    "name": "Audio Bible",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=a0c1dc72-1aaf-4df9-b714-e01a6b848a00",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/a0c1dc72-1aaf-4df9-b714-e01a6b848a00"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "ce55fae0-49f9-4e0c-88cf-0a576f5a3f4f",
+   "attributes": {
+    "name": "Bible Affirmations",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=ce55fae0-49f9-4e0c-88cf-0a576f5a3f4f",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/ce55fae0-49f9-4e0c-88cf-0a576f5a3f4f"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "a66d43db-5a05-41d3-b293-647defeb02a3",
+   "attributes": {
+    "name": "Bible Stories 2",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=a66d43db-5a05-41d3-b293-647defeb02a3",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/a66d43db-5a05-41d3-b293-647defeb02a3"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "0a7c70b4-a312-4782-944a-6d10d7001d9f",
+   "attributes": {
+    "name": "Bible Study Plans - For Godly Women (Teo)",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=0a7c70b4-a312-4782-944a-6d10d7001d9f",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/0a7c70b4-a312-4782-944a-6d10d7001d9f"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "7ab71dc8-c7e8-4148-b5e4-60b781640d5b",
+   "attributes": {
+    "name": "Bible Trivia (Teo)",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=7ab71dc8-c7e8-4148-b5e4-60b781640d5b",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/7ab71dc8-c7e8-4148-b5e4-60b781640d5b"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "211630ef-0345-4a6c-bd32-8fd37e594955",
+   "attributes": {
+    "name": "Bible V1",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=211630ef-0345-4a6c-bd32-8fd37e594955",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/211630ef-0345-4a6c-bd32-8fd37e594955"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "2a6ed3fa-837f-44a8-a366-4934845a73d3",
+   "attributes": {
+    "name": "Bible V2",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=2a6ed3fa-837f-44a8-a366-4934845a73d3",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/2a6ed3fa-837f-44a8-a366-4934845a73d3"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "3816f538-79ad-40f4-b568-341271343348",
+   "attributes": {
+    "name": "Biblia Trivia",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=3816f538-79ad-40f4-b568-341271343348",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/3816f538-79ad-40f4-b568-341271343348"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "078b7fe7-1d5c-4fe8-a280-de099574b42b",
+   "attributes": {
+    "name": "Black_Friday",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=078b7fe7-1d5c-4fe8-a280-de099574b42b",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/078b7fe7-1d5c-4fe8-a280-de099574b42b"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "918a0029-eca6-40b8-adcc-7af7fcf0bdec",
+   "attributes": {
+    "name": "Brazil Catholic (Teo)",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=918a0029-eca6-40b8-adcc-7af7fcf0bdec",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/918a0029-eca6-40b8-adcc-7af7fcf0bdec"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "3c664573-638c-4068-a384-33fff2b16673",
+   "attributes": {
+    "name": "CPP WEB FB Campaign",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=3c664573-638c-4068-a384-33fff2b16673",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/3c664573-638c-4068-a384-33fff2b16673"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "92791336-17a1-439b-b515-ca4ae1c7c16a",
+   "attributes": {
+    "name": "Calendar Catholic Widget",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=92791336-17a1-439b-b515-ca4ae1c7c16a",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/92791336-17a1-439b-b515-ca4ae1c7c16a"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "1cf286cb-42e0-4127-8574-0ee0d2d01a14",
+   "attributes": {
+    "name": "Calendar V1",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=1cf286cb-42e0-4127-8574-0ee0d2d01a14",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/1cf286cb-42e0-4127-8574-0ee0d2d01a14"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "ddf4a4f0-df44-48a8-a5f3-84d21301c830",
+   "attributes": {
+    "name": "Calendar V2",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=ddf4a4f0-df44-48a8-a5f3-84d21301c830",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/ddf4a4f0-df44-48a8-a5f3-84d21301c830"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "04e6f5ba-f662-425d-b1ab-4f3a2c5134d5",
+   "attributes": {
+    "name": "Catholic (Teo)",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=04e6f5ba-f662-425d-b1ab-4f3a2c5134d5",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/04e6f5ba-f662-425d-b1ab-4f3a2c5134d5"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "14ec91c4-4ab0-493f-afad-76cbebc27082",
+   "attributes": {
+    "name": "Chat V1",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=14ec91c4-4ab0-493f-afad-76cbebc27082",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/14ec91c4-4ab0-493f-afad-76cbebc27082"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "fc8f5f8c-3585-446d-b3ce-7a81a6b344c2",
+   "attributes": {
+    "name": "Chat V2",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=fc8f5f8c-3585-446d-b3ce-7a81a6b344c2",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/fc8f5f8c-3585-446d-b3ce-7a81a6b344c2"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "dd285908-3abd-4b51-8f2f-526f6e57de1b",
+   "attributes": {
+    "name": "Custom Journey",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=dd285908-3abd-4b51-8f2f-526f6e57de1b",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/dd285908-3abd-4b51-8f2f-526f6e57de1b"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "7380c983-fd06-4425-899a-eed19e5a5261",
+   "attributes": {
+    "name": "Custom Journey Test 2026",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=7380c983-fd06-4425-899a-eed19e5a5261",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/7380c983-fd06-4425-899a-eed19e5a5261"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "ec6c9fc6-110d-4cb6-9905-395b5f1a60ea",
+   "attributes": {
+    "name": "Custom Journey _ Godly Woman",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=ec6c9fc6-110d-4cb6-9905-395b5f1a60ea",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/ec6c9fc6-110d-4cb6-9905-395b5f1a60ea"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "10050feb-9ec8-493f-9dfb-728daffe026d",
+   "attributes": {
+    "name": "Daily Plan New Generalist 2026",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=10050feb-9ec8-493f-9dfb-728daffe026d",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/10050feb-9ec8-493f-9dfb-728daffe026d"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "e41e2bb6-01a0-46d6-ae65-7c64e91c2ee3",
+   "attributes": {
+    "name": "Godly MEN Teo",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=e41e2bb6-01a0-46d6-ae65-7c64e91c2ee3",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/e41e2bb6-01a0-46d6-ae65-7c64e91c2ee3"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "67e720ff-4c34-46b0-8061-5bf3579cc171",
+   "attributes": {
+    "name": "Godly Woman",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=67e720ff-4c34-46b0-8061-5bf3579cc171",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/67e720ff-4c34-46b0-8061-5bf3579cc171"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "1f430842-915d-493b-8808-aaeb647d3d85",
+   "attributes": {
+    "name": "Godly Woman Affirmations",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=1f430842-915d-493b-8808-aaeb647d3d85",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/1f430842-915d-493b-8808-aaeb647d3d85"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "79e53110-fa88-4fad-978b-49b251e9dce3",
+   "attributes": {
+    "name": "Godly Woman Affirmations 2",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=79e53110-fa88-4fad-978b-49b251e9dce3",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/79e53110-fa88-4fad-978b-49b251e9dce3"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "ee89c005-c056-4ebd-a129-d20a63ce35c1",
+   "attributes": {
+    "name": "Godly Woman _ Audio Bible",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=ee89c005-c056-4ebd-a129-d20a63ce35c1",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/ee89c005-c056-4ebd-a129-d20a63ce35c1"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "8962e867-f575-4777-a2cc-7063b39defb8",
+   "attributes": {
+    "name": "Godly Woman _ Calendar",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=8962e867-f575-4777-a2cc-7063b39defb8",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/8962e867-f575-4777-a2cc-7063b39defb8"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "6345325b-067c-4dc2-8026-12bc3c71a878",
+   "attributes": {
+    "name": "Godly Woman _ Chat",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=6345325b-067c-4dc2-8026-12bc3c71a878",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/6345325b-067c-4dc2-8026-12bc3c71a878"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "9cf62220-427a-441e-b3d4-daef48573e9f",
+   "attributes": {
+    "name": "Godly Woman _ Community",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=9cf62220-427a-441e-b3d4-daef48573e9f",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/9cf62220-427a-441e-b3d4-daef48573e9f"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "2a88e024-8942-456c-a587-8b730347aca3",
+   "attributes": {
+    "name": "Godly Woman _ Live Prayer",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=2a88e024-8942-456c-a587-8b730347aca3",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/2a88e024-8942-456c-a587-8b730347aca3"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "80367279-7d6a-4d5a-bfc0-b6c1787a7015",
+   "attributes": {
+    "name": "Godly Woman _ Quiz",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=80367279-7d6a-4d5a-bfc0-b6c1787a7015",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/80367279-7d6a-4d5a-bfc0-b6c1787a7015"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "4a68cf89-09fa-4cba-96bd-e8fdb91b6153",
+   "attributes": {
+    "name": "Godly Woman_Bible Reading",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=4a68cf89-09fa-4cba-96bd-e8fdb91b6153",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/4a68cf89-09fa-4cba-96bd-e8fdb91b6153"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "83d63f3c-877f-432f-82ca-0755349f494b",
+   "attributes": {
+    "name": "Godly Woman_Bible Study",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=83d63f3c-877f-432f-82ca-0755349f494b",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/83d63f3c-877f-432f-82ca-0755349f494b"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "d9f52323-0f0a-4cab-9b7e-9a351b33cef4",
+   "attributes": {
+    "name": "Godly Women Teo 2026",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=d9f52323-0f0a-4cab-9b7e-9a351b33cef4",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/d9f52323-0f0a-4cab-9b7e-9a351b33cef4"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "c799a38d-552b-429c-97d6-b3aa9bb76676",
+   "attributes": {
+    "name": "Godly_Woman",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=c799a38d-552b-429c-97d6-b3aa9bb76676",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/c799a38d-552b-429c-97d6-b3aa9bb76676"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "a217b2ec-564a-4380-b49d-4de6365a589e",
+   "attributes": {
+    "name": "Groups",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=a217b2ec-564a-4380-b49d-4de6365a589e",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/a217b2ec-564a-4380-b49d-4de6365a589e"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "451be0c3-5052-459f-949e-5d189fd34cfb",
+   "attributes": {
+    "name": "Know God For Yourself",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=451be0c3-5052-459f-949e-5d189fd34cfb",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/451be0c3-5052-459f-949e-5d189fd34cfb"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "ca9a9ae2-029b-4b48-bdb7-7230acc4d874",
+   "attributes": {
+    "name": "Know the Bible - Audio Lessons",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=ca9a9ae2-029b-4b48-bdb7-7230acc4d874",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/ca9a9ae2-029b-4b48-bdb7-7230acc4d874"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "5c3e6d53-c159-44c2-b431-bcb0b0bde19b",
+   "attributes": {
+    "name": "Lockscreen Widget V1",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=5c3e6d53-c159-44c2-b431-bcb0b0bde19b",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/5c3e6d53-c159-44c2-b431-bcb0b0bde19b"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "106f1482-a1c5-4338-b1ee-9edfc7bbc2f0",
+   "attributes": {
+    "name": "Lockscreen Widget V2",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=106f1482-a1c5-4338-b1ee-9edfc7bbc2f0",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/106f1482-a1c5-4338-b1ee-9edfc7bbc2f0"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "1e7de500-3021-4813-92e7-e95014e91653",
+   "attributes": {
+    "name": "Lockscreen Widget V3",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=1e7de500-3021-4813-92e7-e95014e91653",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/1e7de500-3021-4813-92e7-e95014e91653"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "99cebdff-7e0d-418c-bdd1-f292ee00afe4",
+   "attributes": {
+    "name": "Logos - Spiritual Companion",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=99cebdff-7e0d-418c-bdd1-f292ee00afe4",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/99cebdff-7e0d-418c-bdd1-f292ee00afe4"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "ee1aeaa3-8388-47b2-8043-9e3921904b0c",
+   "attributes": {
+    "name": "Marriage Problems 2026",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=ee1aeaa3-8388-47b2-8043-9e3921904b0c",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/ee1aeaa3-8388-47b2-8043-9e3921904b0c"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "2f669d1a-fd29-42ea-a9d8-44a352703211",
+   "attributes": {
+    "name": "Marriage V2",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=2f669d1a-fd29-42ea-a9d8-44a352703211",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/2f669d1a-fd29-42ea-a9d8-44a352703211"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "040943c4-81fb-473f-91b9-6997b288f092",
+   "attributes": {
+    "name": "Meditations",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=040943c4-81fb-473f-91b9-6997b288f092",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/040943c4-81fb-473f-91b9-6997b288f092"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "a658f244-5cf4-4b71-a4af-ee6a8f226c1a",
+   "attributes": {
+    "name": "Men of the Bible Quiz",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=a658f244-5cf4-4b71-a4af-ee6a8f226c1a",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/a658f244-5cf4-4b71-a4af-ee6a8f226c1a"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "4d68968c-62eb-4086-b39e-3304a77c1807",
+   "attributes": {
+    "name": "New_Lockscreen",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=4d68968c-62eb-4086-b39e-3304a77c1807",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/4d68968c-62eb-4086-b39e-3304a77c1807"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "74c0e8e2-5028-4964-817a-c315959f115e",
+   "attributes": {
+    "name": "Parenting V1",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=74c0e8e2-5028-4964-817a-c315959f115e",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/74c0e8e2-5028-4964-817a-c315959f115e"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "63f8fee8-02ba-4042-aaaa-eb16f4bfa536",
+   "attributes": {
+    "name": "Prayer Wall V1",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=63f8fee8-02ba-4042-aaaa-eb16f4bfa536",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/63f8fee8-02ba-4042-aaaa-eb16f4bfa536"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "9dbf968d-50d4-427d-9e9f-c338c1d0274c",
+   "attributes": {
+    "name": "Prayer Wall V2",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=9dbf968d-50d4-427d-9e9f-c338c1d0274c",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/9dbf968d-50d4-427d-9e9f-c338c1d0274c"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "963dee8c-8d12-462d-b072-a99a13a96755",
+   "attributes": {
+    "name": "Prayer Warrior V1",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=963dee8c-8d12-462d-b072-a99a13a96755",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/963dee8c-8d12-462d-b072-a99a13a96755"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "66890fb8-7316-4000-b41a-a5ece6de220d",
+   "attributes": {
+    "name": "Quiz",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=66890fb8-7316-4000-b41a-a5ece6de220d",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/66890fb8-7316-4000-b41a-a5ece6de220d"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "d26d84db-7267-4fd0-b23c-0961ce1803f5",
+   "attributes": {
+    "name": "Selah -  Spiritual Companion",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=d26d84db-7267-4fd0-b23c-0961ce1803f5",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/d26d84db-7267-4fd0-b23c-0961ce1803f5"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "297f5fe9-7e34-42f8-9ddd-ceecc1522603",
+   "attributes": {
+    "name": "Study Plans V1",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=297f5fe9-7e34-42f8-9ddd-ceecc1522603",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/297f5fe9-7e34-42f8-9ddd-ceecc1522603"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "7c71e210-8e7d-479d-a22f-addc38433a10",
+   "attributes": {
+    "name": "Study Plans V2",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=7c71e210-8e7d-479d-a22f-addc38433a10",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/7c71e210-8e7d-479d-a22f-addc38433a10"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "926907a1-6aac-4c60-ba46-9d146d4bf64e",
+   "attributes": {
+    "name": "Thanksgiving_2025",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=926907a1-6aac-4c60-ba46-9d146d4bf64e",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/926907a1-6aac-4c60-ba46-9d146d4bf64e"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "f40cbb4d-8ce6-40c1-80d9-f14149777d3f",
+   "attributes": {
+    "name": "Widget - Vanessa Ad",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=f40cbb4d-8ce6-40c1-80d9-f14149777d3f",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/f40cbb4d-8ce6-40c1-80d9-f14149777d3f"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "207d8e7c-dd7d-4692-8632-92fbf1b5536a",
+   "attributes": {
+    "name": "Widget to Widget V1",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=207d8e7c-dd7d-4692-8632-92fbf1b5536a",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/207d8e7c-dd7d-4692-8632-92fbf1b5536a"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "d3d05403-3f82-4de1-b5ab-dec522183b97",
+   "attributes": {
+    "name": "Women of the Bible Quiz",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=d3d05403-3f82-4de1-b5ab-dec522183b97",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/d3d05403-3f82-4de1-b5ab-dec522183b97"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "b5ed57f2-fcf4-46f0-82d7-d768197b2243",
+   "attributes": {
+    "name": "testestest",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=b5ed57f2-fcf4-46f0-82d7-d768197b2243",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/b5ed57f2-fcf4-46f0-82d7-d768197b2243"
+   }
+  },
+  {
+   "type": "appCustomProductPages",
+   "id": "09de2f31-f988-47a5-94ad-a51ca3142681",
+   "attributes": {
+    "name": "web2app test",
+    "url": "https://apps.apple.com/us/app/bible-chat-daily-devotional/id6448849666?ppid=09de2f31-f988-47a5-94ad-a51ca3142681",
+    "visible": true
+   },
+   "links": {
+    "self": "https://api.appstoreconnect.apple.com/v1/appCustomProductPages/09de2f31-f988-47a5-94ad-a51ca3142681"
+   }
+  }
+ ],
+ "links": {
+  "self": "https://api.appstoreconnect.apple.com/v1/apps/6448849666/appCustomProductPages?fields%5BappCustomProductPages%5D=visible%2Cname%2Curl&limit=200"
+ },
+ "meta": {
+  "paging": {
+   "total": 66,
+   "limit": 200
+  }
+ }
+}

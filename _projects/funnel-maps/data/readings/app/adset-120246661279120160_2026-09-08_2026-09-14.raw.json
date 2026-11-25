@@ -1,0 +1,689 @@
+{
+  "pulled_at": "2026-09-15T14:09:55Z",
+  "tool": "facebook-ads MCP / ads_get_ad_entities",
+  "calls": [
+    {
+      "label": "ad-set level",
+      "params": {
+        "ad_account_id": "697155031095732",
+        "level": "adset",
+        "time_range": {
+          "since": "2026-09-08",
+          "until": "2026-09-14"
+        },
+        "sort": "amount_spent_descending",
+        "limit": 30,
+        "fields": [
+          "id",
+          "name",
+          "campaign_id",
+          "campaign_name",
+          "optimization_goal",
+          "promoted_object",
+          "attribution_setting",
+          "status",
+          "effective_status",
+          "amount_spent",
+          "impressions",
+          "reach",
+          "frequency",
+          "clicks",
+          "link_click",
+          "unique_link_click",
+          "outbound_clicks",
+          "cpc",
+          "cpm",
+          "ctr",
+          "cost_per_action_type",
+          "cost_per_conversion",
+          "mobile_app_install",
+          "omni_app_install",
+          "omni_landing_page_view",
+          "omni_purchase",
+          "results",
+          "cost_per_result",
+          "purchase_roas"
+        ]
+      },
+      "note": "Response held 30 ad sets; only the target ad set's entity is kept here, verbatim.",
+      "response_entity": {
+        "id": "120246661279120160",
+        "name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+        "campaign_id": "120246606714520160",
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "promoted_object": {
+          "pixel_id": null,
+          "custom_event_type": "OTHER",
+          "pixel_rule": null
+        },
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "campaign_name": "Biblechat CPT - US - IOS - August 06, 2026 - Arthur - New Ads",
+        "attribution_setting": "7d_click",
+        "amount_spent": "$13,552.35 USD",
+        "impressions": "888895",
+        "reach": "589114",
+        "frequency": "1.508868",
+        "clicks": "17549",
+        "link_click": "17231",
+        "unique_link_click": "15421",
+        "outbound_clicks": "17231",
+        "cpc": "$0.77 USD",
+        "cpm": "$15.25 USD",
+        "ctr": "1.97%",
+        "cost_per_omni_purchase": "40.214688",
+        "cost_per_action_type:link_click": "0.78651",
+        "cost_per_action_type:omni_activate_app": "22.000568",
+        "cost_per_action_type:initiate_checkout": "35.947878",
+        "cost_per_action_type:omni_custom": "0.940548",
+        "cost_per_omni_landing_page_view": "31.29873",
+        "cost_per_action_type:post_engagement": "0.036835",
+        "cost_per_action_type:page_engagement": "0.036835",
+        "cost_per_action_type:purchase": "40.214688",
+        "cost_per_action_type:like": "13552.35",
+        "cost_per_action_type:post_interaction_gross": "1.832885",
+        "cost_per_omni_app_install": "8.687404",
+        "cost_per_action_type:app_custom_event.fb_mobile_initiated_checkout": "35.947878",
+        "cost_per_omni_initiated_checkout": "35.947878",
+        "cost_per_action_type:app_custom_event.fb_mobile_purchase": "40.214688",
+        "cost_per_action_type:mobile_app_install": "8.687404",
+        "cost_per_action_type:app_custom_event": "0.861068",
+        "cost_per_action_type:app_custom_event.fb_mobile_activate_app": "22.000568",
+        "cost_per_action_type:video_view": "0.039477",
+        "cost_per_conversion:app_custom_event.purchase_completed": "29.020021",
+        "mobile_app_install": "1560",
+        "omni_app_install": "1560",
+        "omni_landing_page_view": "433",
+        "omni_purchase": "337",
+        "results": {
+          "indicator": "conversions:app_custom_event.purchase_completed",
+          "values": [
+            {
+              "attribution_windows": [
+                "default"
+              ],
+              "value": "467"
+            }
+          ]
+        },
+        "cost_per_result": {
+          "value": "$29.02 USD (purchase_completed)"
+        },
+        "purchase_roas": "0.053931"
+      }
+    },
+    {
+      "label": "ad level",
+      "params": {
+        "ad_account_id": "697155031095732",
+        "level": "ad",
+        "time_range": {
+          "since": "2026-09-08",
+          "until": "2026-09-14"
+        },
+        "filtering": [
+          {
+            "field": "ad.adset_id",
+            "operator": "EQUAL",
+            "value": [
+              "120246661279120160"
+            ]
+          }
+        ],
+        "sort": "amount_spent_descending",
+        "limit": 100,
+        "include_additional_context": false,
+        "fields": [
+          "id",
+          "name",
+          "adset_id",
+          "adset_name",
+          "campaign_id",
+          "status",
+          "effective_status",
+          "amount_spent",
+          "impressions",
+          "reach",
+          "frequency",
+          "clicks",
+          "link_click",
+          "unique_link_click",
+          "cpc",
+          "cpm",
+          "ctr",
+          "mobile_app_install",
+          "omni_app_install",
+          "omni_landing_page_view",
+          "omni_purchase",
+          "results",
+          "cost_per_result"
+        ]
+      },
+      "note": "Full response, 16 entities, no pagination cursor returned.",
+      "response_entities": [
+        {
+          "id": "120246661281720160",
+          "name": "77.andreea_W1_textwall_06_v3",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "ACTIVE",
+          "effective_status": "ACTIVE",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$5,543.53 USD",
+          "impressions": "396993",
+          "reach": "305312",
+          "frequency": "1.300286",
+          "clicks": "3939",
+          "link_click": "3281",
+          "unique_link_click": "2900",
+          "cpc": "$1.41 USD",
+          "cpm": "$13.96 USD",
+          "ctr": "0.99%",
+          "mobile_app_install": "585",
+          "omni_app_install": "585",
+          "omni_landing_page_view": "204",
+          "omni_purchase": "131",
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "values": [
+              {
+                "attribution_windows": [
+                  "default"
+                ],
+                "value": "179"
+              }
+            ]
+          },
+          "cost_per_result": {
+            "value": "$30.97 USD (purchase_completed)"
+          }
+        },
+        {
+          "id": "120247071781150160",
+          "name": "77.seminar-yelling-0904-hookfetita-v4",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "ACTIVE",
+          "effective_status": "ACTIVE",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$4,385.57 USD",
+          "impressions": "295894",
+          "reach": "224345",
+          "frequency": "1.318924",
+          "clicks": "10941",
+          "link_click": "11236",
+          "unique_link_click": "10562",
+          "cpc": "$0.40 USD",
+          "cpm": "$14.82 USD",
+          "ctr": "3.70%",
+          "mobile_app_install": "562",
+          "omni_app_install": "562",
+          "omni_landing_page_view": "146",
+          "omni_purchase": "119",
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "values": [
+              {
+                "attribution_windows": [
+                  "default"
+                ],
+                "value": "174"
+              }
+            ]
+          },
+          "cost_per_result": {
+            "value": "$25.20 USD (purchase_completed)"
+          }
+        },
+        {
+          "id": "120246661287540160",
+          "name": "77.andreea_w2_ugc2",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$1,864.65 USD",
+          "impressions": "96901",
+          "reach": "85299",
+          "frequency": "1.136016",
+          "clicks": "1118",
+          "link_click": "1163",
+          "unique_link_click": "1028",
+          "cpc": "$1.67 USD",
+          "cpm": "$19.24 USD",
+          "ctr": "1.15%",
+          "mobile_app_install": "224",
+          "omni_app_install": "224",
+          "omni_landing_page_view": "47",
+          "omni_purchase": "30",
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "values": [
+              {
+                "attribution_windows": [
+                  "default"
+                ],
+                "value": "52"
+              }
+            ]
+          },
+          "cost_per_result": {
+            "value": "$35.86 USD (purchase_completed)"
+          }
+        },
+        {
+          "id": "120246932892340160",
+          "name": "14.10.seedancedrama-not a bad mom",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "ACTIVE",
+          "effective_status": "ACTIVE",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$1,013.28 USD",
+          "impressions": "49011",
+          "reach": "43581",
+          "frequency": "1.124596",
+          "clicks": "983",
+          "link_click": "967",
+          "unique_link_click": "878",
+          "cpc": "$1.03 USD",
+          "cpm": "$20.67 USD",
+          "ctr": "2.01%",
+          "mobile_app_install": "118",
+          "omni_app_install": "118",
+          "omni_landing_page_view": "25",
+          "omni_purchase": "41",
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "values": [
+              {
+                "attribution_windows": [
+                  "default"
+                ],
+                "value": "43"
+              }
+            ]
+          },
+          "cost_per_result": {
+            "value": "$23.56 USD (purchase_completed)"
+          }
+        },
+        {
+          "id": "120246661286570160",
+          "name": "77.andreea_w2_ugc12",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$568.71 USD",
+          "impressions": "36737",
+          "reach": "30877",
+          "frequency": "1.189785",
+          "clicks": "400",
+          "link_click": "411",
+          "unique_link_click": "366",
+          "cpc": "$1.42 USD",
+          "cpm": "$15.48 USD",
+          "ctr": "1.09%",
+          "mobile_app_install": "49",
+          "omni_app_install": "49",
+          "omni_landing_page_view": "7",
+          "omni_purchase": "14",
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "values": [
+              {
+                "attribution_windows": [
+                  "default"
+                ],
+                "value": "13"
+              }
+            ]
+          },
+          "cost_per_result": {
+            "value": "$43.75 USD (purchase_completed)"
+          }
+        },
+        {
+          "id": "120246661282630160",
+          "name": "77.andreea_w2_ugc",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "ACTIVE",
+          "effective_status": "ACTIVE",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$148.90 USD",
+          "impressions": "11535",
+          "reach": "10377",
+          "frequency": "1.111593",
+          "clicks": "153",
+          "link_click": "156",
+          "unique_link_click": "144",
+          "cpc": "$0.97 USD",
+          "cpm": "$12.91 USD",
+          "ctr": "1.33%",
+          "mobile_app_install": "22",
+          "omni_app_install": "22",
+          "omni_landing_page_view": "2",
+          "omni_purchase": "2",
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "values": [
+              {
+                "attribution_windows": [
+                  "default"
+                ],
+                "value": "6"
+              }
+            ]
+          },
+          "cost_per_result": {
+            "value": "$24.82 USD (purchase_completed)"
+          }
+        },
+        {
+          "id": "120246661280720160",
+          "name": "77.andreea_w1_ugc",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "ACTIVE",
+          "effective_status": "ACTIVE",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$17.60 USD",
+          "impressions": "1042",
+          "reach": "1010",
+          "frequency": "1.031683",
+          "clicks": "8",
+          "link_click": "10",
+          "unique_link_click": "8",
+          "cpc": "$2.20 USD",
+          "cpm": "$16.89 USD",
+          "ctr": "0.77%",
+          "mobile_app_install": null,
+          "omni_app_install": null,
+          "omni_landing_page_view": "1",
+          "omni_purchase": null,
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "value": "Not available"
+          },
+          "cost_per_result": {
+            "value": "Not available (purchase_completed)"
+          }
+        },
+        {
+          "id": "120246661288550160",
+          "name": "77.andreea_W1_static12",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "ACTIVE",
+          "effective_status": "ACTIVE",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$8.60 USD",
+          "impressions": "689",
+          "reach": "593",
+          "frequency": "1.161889",
+          "clicks": "7",
+          "link_click": "7",
+          "unique_link_click": "6",
+          "cpc": "$1.23 USD",
+          "cpm": "$12.48 USD",
+          "ctr": "1.02%",
+          "mobile_app_install": null,
+          "omni_app_install": null,
+          "omni_landing_page_view": "1",
+          "omni_purchase": null,
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "value": "Not available"
+          },
+          "cost_per_result": {
+            "value": "Not available (purchase_completed)"
+          }
+        },
+        {
+          "id": "120246932894060160",
+          "name": "14.2.seedanceanimation-wish i had known",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "ACTIVE",
+          "effective_status": "ACTIVE",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$1.02 USD",
+          "impressions": "61",
+          "reach": "57",
+          "frequency": "1.070175",
+          "clicks": "0",
+          "link_click": null,
+          "unique_link_click": null,
+          "cpc": null,
+          "cpm": "$16.72 USD",
+          "ctr": "0.00%",
+          "mobile_app_install": null,
+          "omni_app_install": null,
+          "omni_landing_page_view": null,
+          "omni_purchase": null,
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "value": "Not available"
+          },
+          "cost_per_result": {
+            "value": "Not available (purchase_completed)"
+          }
+        },
+        {
+          "id": "120246847136720160",
+          "name": "77.andreea_w2_pod3_xpost_2",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "ACTIVE",
+          "effective_status": "ACTIVE",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$0.34 USD",
+          "impressions": "22",
+          "reach": "22",
+          "frequency": "1",
+          "clicks": "0",
+          "link_click": null,
+          "unique_link_click": null,
+          "cpc": null,
+          "cpm": "$15.45 USD",
+          "ctr": "0.00%",
+          "mobile_app_install": null,
+          "omni_app_install": null,
+          "omni_landing_page_view": null,
+          "omni_purchase": null,
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "value": "Not available"
+          },
+          "cost_per_result": {
+            "value": "Not available (purchase_completed)"
+          }
+        },
+        {
+          "id": "120246847137150160",
+          "name": "77.HOOK-09-office-bible-speaker",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "ACTIVE",
+          "effective_status": "ACTIVE",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$0.14 USD",
+          "impressions": "8",
+          "reach": "8",
+          "frequency": "1",
+          "clicks": "0",
+          "link_click": null,
+          "unique_link_click": null,
+          "cpc": null,
+          "cpm": "$17.50 USD",
+          "ctr": "0.00%",
+          "mobile_app_install": null,
+          "omni_app_install": null,
+          "omni_landing_page_view": null,
+          "omni_purchase": null,
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "value": "Not available"
+          },
+          "cost_per_result": {
+            "value": "Not available (purchase_completed)"
+          }
+        },
+        {
+          "id": "120246847138030160",
+          "name": "77.andreea_w2_try_hook_P2",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "ACTIVE",
+          "effective_status": "ACTIVE",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$0.01 USD",
+          "impressions": "2",
+          "reach": "1",
+          "frequency": "2",
+          "clicks": "0",
+          "link_click": null,
+          "unique_link_click": null,
+          "cpc": null,
+          "cpm": "$5.00 USD",
+          "ctr": "0.00%",
+          "mobile_app_install": null,
+          "omni_app_install": null,
+          "omni_landing_page_view": null,
+          "omni_purchase": null,
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "value": "Not available"
+          },
+          "cost_per_result": {
+            "value": "Not available (purchase_completed)"
+          }
+        },
+        {
+          "id": "120247168793680160",
+          "name": "77.andreea_W1_reddit_textwall_06_v3_static",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "ACTIVE",
+          "effective_status": "ACTIVE",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$0.00 USD",
+          "impressions": "0",
+          "reach": "0",
+          "frequency": "0",
+          "clicks": "0",
+          "link_click": null,
+          "unique_link_click": null,
+          "cpc": null,
+          "cpm": null,
+          "ctr": null,
+          "mobile_app_install": null,
+          "omni_app_install": null,
+          "omni_landing_page_view": null,
+          "omni_purchase": null,
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "value": "Not available"
+          },
+          "cost_per_result": {
+            "value": "Not available (purchase_completed)"
+          }
+        },
+        {
+          "id": "120247168790850160",
+          "name": "77.bookpage-0911-textwall-v1",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "ACTIVE",
+          "effective_status": "ACTIVE",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$0.00 USD",
+          "impressions": "0",
+          "reach": "0",
+          "frequency": "0",
+          "clicks": "0",
+          "link_click": null,
+          "unique_link_click": null,
+          "cpc": null,
+          "cpm": null,
+          "ctr": null,
+          "mobile_app_install": null,
+          "omni_app_install": null,
+          "omni_landing_page_view": null,
+          "omni_purchase": null,
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "value": "Not available"
+          },
+          "cost_per_result": {
+            "value": "Not available (purchase_completed)"
+          }
+        },
+        {
+          "id": "120246661284890160",
+          "name": "77.CAKE-PODCAST-v2",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "ACTIVE",
+          "effective_status": "ACTIVE",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$0.00 USD",
+          "impressions": "0",
+          "reach": "0",
+          "frequency": "0",
+          "clicks": "0",
+          "link_click": null,
+          "unique_link_click": null,
+          "cpc": null,
+          "cpm": null,
+          "ctr": null,
+          "mobile_app_install": null,
+          "omni_app_install": null,
+          "omni_landing_page_view": null,
+          "omni_purchase": null,
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "value": "Not available"
+          },
+          "cost_per_result": {
+            "value": "Not available (purchase_completed)"
+          }
+        },
+        {
+          "id": "120246661283960160",
+          "name": "77.andreea_w2_ugc13",
+          "adset_id": "120246661279120160",
+          "campaign_id": "120246606714520160",
+          "status": "PAUSED",
+          "effective_status": "PAUSED",
+          "adset_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+          "amount_spent": "$0.00 USD",
+          "impressions": "0",
+          "reach": "0",
+          "frequency": "0",
+          "clicks": "0",
+          "link_click": null,
+          "unique_link_click": null,
+          "cpc": null,
+          "cpm": null,
+          "ctr": null,
+          "mobile_app_install": null,
+          "omni_app_install": null,
+          "omni_landing_page_view": null,
+          "omni_purchase": null,
+          "results": {
+            "indicator": "conversions:app_custom_event.purchase_completed",
+            "value": "Not available"
+          },
+          "cost_per_result": {
+            "value": "Not available (purchase_completed)"
+          }
+        }
+      ]
+    }
+  ]
+}

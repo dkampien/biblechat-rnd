@@ -1,0 +1,2436 @@
+{
+ "funnel": "christian-archetype",
+ "configVersion": "47.10",
+ "resume": true,
+ "language": "en",
+ "screens": [
+  {
+   "id": "gender",
+   "key": "gender",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "DISCOVER YOUR\nSPIRITUAL ARCHETYPE",
+    "options": [
+     {
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/m_gender.webp",
+      "label": "Male",
+      "value": "male"
+     },
+     {
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/f_gender.webp",
+      "label": "Female",
+      "value": "female"
+     }
+    ],
+    "subtext": "Pass this quiz to get the right subscription plan for you",
+    "subtitle": "AND HOW TO DEVELOP IT WITH GOD",
+    "legalLine": "By continuing you agree to our [Terms of Service](/terms-and-conditions) | [Privacy Policy](/privacy-policy) | [Subscription Policy](/subscription-policy) | [Cookie Policy](/cookie-policy)",
+    "legalNote": "",
+    "ratingNote": "Believers around the world grow with the Bible Chat app",
+    "ratingBrand": "App Store",
+    "ratingValue": "4.9"
+   },
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/m_gender.webp",
+    "https://cdn-static.verseread.com/christian-archetype/assets/f_gender.webp"
+   ],
+   "hideProgress": true,
+   "hideBack": true,
+   "optionTemplate": "\n      <button class=\"dp-card dl-card\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\">\n        <img src=\"{{image}}\" alt=\"\" decoding=\"sync\">\n        <span class=\"dp-pill\"><span class=\"dp-pill-text\">{{label}}</span><span class=\"dp-chev\" aria-hidden=\"true\"><svg viewBox=\"0 0 20 20\" fill=\"none\"><path fill=\"#2c2d31\" fill-rule=\"evenodd\" d=\"M6.91 4.41a.83.83 0 0 1 1.18 0l5 5c.32.33.32.85 0 1.18l-5 5A.83.83 0 0 1 6.9 14.4l4.42-4.4-4.4-4.41a.83.83 0 0 1 0-1.18\" clip-rule=\"evenodd\"/></svg></span></span>\n      </button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "age",
+   "key": "age",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "Please choose your age group",
+    "options": [
+     {
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/m_age_18_34.webp",
+      "label": "18-34",
+      "value": "18-34"
+     },
+     {
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/m_age_35_44.webp",
+      "label": "35-44",
+      "value": "35-44"
+     },
+     {
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/m_age_45_54.webp",
+      "label": "45-54",
+      "value": "45-54"
+     },
+     {
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/m_age_55_plus.webp",
+      "label": "55+",
+      "value": "55+"
+     }
+    ]
+   },
+   "overrides": [
+    {
+     "when": [
+      {
+       "key": "gender",
+       "type": "value",
+       "values": [
+        "female"
+       ]
+      }
+     ],
+     "set": {
+      "options": [
+       {
+        "image": "https://cdn-static.verseread.com/christian-archetype/assets/f_age_18_34.webp",
+        "label": "18-34",
+        "value": "18-34"
+       },
+       {
+        "image": "https://cdn-static.verseread.com/christian-archetype/assets/f_age_35_44.webp",
+        "label": "35-44",
+        "value": "35-44"
+       },
+       {
+        "image": "https://cdn-static.verseread.com/christian-archetype/assets/f_age_45_54.webp",
+        "label": "45-54",
+        "value": "45-54"
+       },
+       {
+        "image": "https://cdn-static.verseread.com/christian-archetype/assets/f_age_55_plus.webp",
+        "label": "55+",
+        "value": "55+"
+       }
+      ]
+     }
+    }
+   ],
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/m_age_18_34.webp",
+    "https://cdn-static.verseread.com/christian-archetype/assets/m_age_35_44.webp",
+    "https://cdn-static.verseread.com/christian-archetype/assets/m_age_45_54.webp",
+    "https://cdn-static.verseread.com/christian-archetype/assets/m_age_55_plus.webp"
+   ],
+   "hideProgress": true,
+   "optionTemplate": "\n      <button class=\"dp-card\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\">\n        <img src=\"{{image}}\" alt=\"\" decoding=\"sync\">\n        <span class=\"dp-pill\"><span class=\"dp-pill-text\">{{label}}</span><span class=\"dp-chev\" aria-hidden=\"true\"><svg viewBox=\"0 0 20 20\" fill=\"none\"><path fill=\"#2c2d31\" fill-rule=\"evenodd\" d=\"M6.91 4.41a.83.83 0 0 1 1.18 0l5 5c.32.33.32.85 0 1.18l-5 5A.83.83 0 0 1 6.9 14.4l4.42-4.4-4.4-4.41a.83.83 0 0 1 0-1.18\" clip-rule=\"evenodd\"/></svg></span></span>\n      </button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "welcome",
+   "savesType": "none",
+   "behavior": "info",
+   "params": {
+    "image": "https://cdn-static.verseread.com/christian-archetype/assets/break1.webp",
+    "title": "Ready to discover who you are?",
+    "subtext": "Learn how to genuinely grow in your faith, based on how you personally connect with God",
+    "ctaLabel": "Continue"
+   },
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/break1.webp"
+   ],
+   "hideProgress": true,
+   "transition": "fade"
+  },
+  {
+   "id": "bibleVerse",
+   "key": "bibleVerse",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "Pick a Bible verse that speaks to your heart",
+    "options": [
+     {
+      "label": "\"Be still and know that I am God\" - Psalm 46:10",
+      "value": "\"Be still and know that I am God\" - Psalm 46:10"
+     },
+     {
+      "label": "\"Where you go I will go\" - Ruth 1:16",
+      "value": "\"Where you go I will go\" - Ruth 1:16"
+     },
+     {
+      "label": "\"For such a time as this\" - Esther 4:14",
+      "value": "\"For such a time as this\" - Esther 4:14"
+     },
+     {
+      "label": "\"Be strong and courageous\" - Joshua 1:9",
+      "value": "\"Be strong and courageous\" - Joshua 1:9"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "quote",
+   "key": "quote",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "Pick a quote that resonates",
+    "options": [
+     {
+      "label": "\"Let go and trust God\"",
+      "value": "\"Let go and trust God\""
+     },
+     {
+      "label": "\"Faith over fear\"",
+      "value": "\"Faith over fear\""
+     },
+     {
+      "label": "\"You were made for this exact moment\"",
+      "value": "\"You were made for this exact moment\""
+     },
+     {
+      "label": "\"I can do all things through Christ\"",
+      "value": "\"I can do all things through Christ\""
+     },
+     {
+      "label": "\"God\u2019s timing is always perfect\"",
+      "value": "\"God\u2019s timing is always perfect\""
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "bibleStory",
+   "key": "bibleStory",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "Pick a Bible story that inspires you most",
+    "options": [
+     {
+      "label": "Noah and the ark",
+      "value": "Noah and the ark"
+     },
+     {
+      "label": "Moses leading his people to the promised land",
+      "value": "Moses leading his people to the promised land"
+     },
+     {
+      "label": "Daniel and the lions den",
+      "value": "Daniel and the lions den"
+     },
+     {
+      "label": "Jesus bringing Lazarus back",
+      "value": "Jesus bringing Lazarus back"
+     },
+     {
+      "label": "The birth of Jesus",
+      "value": "The birth of Jesus"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "break1",
+   "savesType": "none",
+   "behavior": "info",
+   "params": {
+    "image": "https://cdn-static.verseread.com/christian-archetype/assets/break2.webp",
+    "title": "Your answers are shaping your spiritual profile",
+    "subtext": "This helps us understand what direction will be most helpful for you",
+    "ctaLabel": "Continue",
+    "noteIcon": "\ud83d\ude4f",
+    "noteText": "Now let\u2019s look at what shapes your spiritual rhythm"
+   },
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/break2.webp"
+   ],
+   "hideProgress": true,
+   "transition": "fade"
+  },
+  {
+   "id": "feelDuring",
+   "key": "feelDuring",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "How do you usually feel on a normal day?",
+    "options": [
+     {
+      "label": "Calm",
+      "value": "Calm"
+     },
+     {
+      "label": "Focused",
+      "value": "Focused"
+     },
+     {
+      "label": "Sensitive",
+      "value": "Sensitive"
+     },
+     {
+      "label": "Hopeful",
+      "value": "Hopeful"
+     },
+     {
+      "label": "Energetic",
+      "value": "Energetic"
+     },
+     {
+      "label": "Overwhelmed",
+      "value": "Overwhelmed"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "helpsRelax",
+   "key": "helpsRelax",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "What helps you relax after a long day?",
+    "options": [
+     {
+      "label": "Quiet time on my own",
+      "value": "Quiet time on my own"
+     },
+     {
+      "label": "Connection with someone I love",
+      "value": "Connection with someone I love"
+     },
+     {
+      "label": "Getting outside",
+      "value": "Getting outside"
+     },
+     {
+      "label": "Fresh air and exercise",
+      "value": "Fresh air and exercise"
+     },
+     {
+      "label": "Simple tasks that calm me",
+      "value": "Simple tasks that calm me"
+     },
+     {
+      "label": "Something creative or cosy",
+      "value": "Something creative or cosy"
+     },
+     {
+      "label": "Something else",
+      "value": "Something else"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "peopleSay",
+   "key": "peopleSay",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "What do people often say is your strength?",
+    "options": [
+     {
+      "label": "A peaceful presence",
+      "value": "Apeacefulspirit"
+     },
+     {
+      "label": "Wise and practical thinking",
+      "value": "Wiseandpractical"
+     },
+     {
+      "label": "A kind, gentle heart",
+      "value": "Agentlekindheart"
+     },
+     {
+      "label": "A gift for new ideas",
+      "value": "Agiftforideas"
+     },
+     {
+      "label": "Something else",
+      "value": "Other"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "doFirst",
+   "key": "doFirst",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "When the unexpected happens, what do you do first?",
+    "options": [
+     {
+      "label": "React quickly",
+      "value": "Reactquickly"
+     },
+     {
+      "label": "Pause and think",
+      "value": "Stopandthink"
+     },
+     {
+      "label": "Try staying calm",
+      "value": "Trytostaycalm"
+     },
+     {
+      "label": "Check how others feel",
+      "value": "Lookathowothersfeel"
+     },
+     {
+      "label": "Try to understand why it happened",
+      "value": "Trytounderstandwhy"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "givesInspiration",
+   "key": "givesInspiration",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "What usually gives you inspiration?",
+    "options": [
+     {
+      "label": "Beautiful things around me",
+      "value": "Beautiful things around me"
+     },
+     {
+      "label": "People\u2019s stories",
+      "value": "People\u2019s stories"
+     },
+     {
+      "label": "Learning something new",
+      "value": "Learning something new"
+     },
+     {
+      "label": "Seeing real progress",
+      "value": "Seeing real progress"
+     },
+     {
+      "label": "Brave choices",
+      "value": "Brave choices"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "careAboutSomeone",
+   "key": "careAboutSomeone",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "When you care about someone, what do you do first?",
+    "options": [
+     {
+      "label": "Listen",
+      "value": "Listen"
+     },
+     {
+      "label": "Help with something practical",
+      "value": "Help with something practical"
+     },
+     {
+      "label": "Say something encouraging",
+      "value": "Say something encouraging"
+     },
+     {
+      "label": "Try to understand their problem",
+      "value": "Try to understand their problem"
+     },
+     {
+      "label": "Bring calm to the situation",
+      "value": "Bring calm to the situation"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "describesWay",
+   "key": "describesWay",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "What describes your way of thinking?",
+    "options": [
+     {
+      "label": "Logical",
+      "value": "Logical"
+     },
+     {
+      "label": "Intuitive",
+      "value": "Intuitive"
+     },
+     {
+      "label": "Emotional",
+      "value": "Emotional"
+     },
+     {
+      "label": "Big-picture",
+      "value": "Big-picture"
+     },
+     {
+      "label": "Practical",
+      "value": "Practical"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "stayOnTrack",
+   "key": "stayOnTrack",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "What helps you stay on track during the day?",
+    "options": [
+     {
+      "label": "A clear plan to follow",
+      "value": "A clear plan to follow"
+     },
+     {
+      "label": "A strong sense of purpose",
+      "value": "A strong sense of purpose"
+     },
+     {
+      "label": "A calm head",
+      "value": "A calm head"
+     },
+     {
+      "label": "Feeling inspired",
+      "value": "Feeling inspired"
+     },
+     {
+      "label": "Managing my time well",
+      "value": "Managing my time well"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "challenge",
+   "key": "challenge",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "How do you approach a new challenge?",
+    "options": [
+     {
+      "label": "Try right away",
+      "value": "Try right away"
+     },
+     {
+      "label": "Think it through first",
+      "value": "Think it through first"
+     },
+     {
+      "label": "Follow my first instinct",
+      "value": "Follow my first instinct"
+     },
+     {
+      "label": "Break it into steps",
+      "value": "Break it into steps"
+     },
+     {
+      "label": "Ask for advice",
+      "value": "Ask for advice"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "break2",
+   "savesType": "none",
+   "behavior": "info",
+   "params": {
+    "image": "https://cdn-static.verseread.com/christian-archetype/assets/break3.webp",
+    "title": "We\u2019ve put together a part of your profile",
+    "subtext": "Your earlier answers helped us understand your personality and your strengths.",
+    "ctaLabel": "Continue",
+    "noteIcon": "\ud83d\ude4f",
+    "noteText": "Next, we\u2019ll ask a few questions about your faith so we can complete your profile accurately"
+   },
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/break3.webp"
+   ],
+   "hideProgress": true,
+   "transition": "fade"
+  },
+  {
+   "id": "bibleExperience",
+   "key": "bibleExperience",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "How would you describe your Bible study experience so far?",
+    "options": [
+     {
+      "label": "I\u2019m a beginner",
+      "value": "I\u2019m a beginner"
+     },
+     {
+      "label": "I know some of it",
+      "value": "I know some of it"
+     },
+     {
+      "label": "I\u2019ve studied it deeply",
+      "value": "I\u2019ve studied it deeply"
+     },
+     {
+      "label": "Not sure",
+      "value": "Not sure"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "readingEmotions",
+   "key": "readingEmotions",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "How do you feel when reading the Word?",
+    "options": [
+     {
+      "label": "Uplifted",
+      "value": "Uplifted"
+     },
+     {
+      "label": "Calm",
+      "value": "Calm"
+     },
+     {
+      "label": "Focused",
+      "value": "Focused"
+     },
+     {
+      "label": "Don\u2019t read much yet",
+      "value": "Don\u2019t read much yet"
+     },
+     {
+      "label": "Not sure",
+      "value": "Not sure"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "currentRelationship",
+   "key": "currentRelationship",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "Describe your current relationship with God",
+    "options": [
+     {
+      "label": "Strong and growing",
+      "value": "Strong and growing"
+     },
+     {
+      "label": "In need of a fresh start",
+      "value": "In need of a fresh start"
+     },
+     {
+      "label": "I\u2019m not sure",
+      "value": "I\u2019m not sure"
+     },
+     {
+      "label": "Something else",
+      "value": "Something else"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "comfortableReading",
+   "key": "comfortableReading",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "Where do you feel most comfortable reading the Bible?",
+    "options": [
+     {
+      "label": "Cozy corner at home",
+      "value": "Cozy corner at home"
+     },
+     {
+      "label": "Outdoors in nature",
+      "value": "Outdoors in nature"
+     },
+     {
+      "label": "In a church or quiet sanctuary",
+      "value": "In a church or quiet sanctuary"
+     },
+     {
+      "label": "At a desk with my notes",
+      "value": "At a desk with my notes"
+     },
+     {
+      "label": "In bed early morning or late night",
+      "value": "In bed early morning or late night"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "break3",
+   "savesType": "none",
+   "behavior": "info",
+   "params": {
+    "image": "https://cdn-static.verseread.com/christian-archetype/assets/break4.webp",
+    "title": "We\u2019ve gathered most of your spiritual profile",
+    "subtext": "Knowing your archetype is important, but what matters even more is learning how to apply it in everyday life. Your answers showed us how you naturally connect with God",
+    "ctaLabel": "Continue",
+    "noteIcon": "\ud83d\ude4f",
+    "noteText": "Now let\u2019s pick the kind of practical support that fits your spiritual archetype"
+   },
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/break4.webp"
+   ],
+   "hideProgress": true,
+   "transition": "fade"
+  },
+  {
+   "id": "dailySupport",
+   "key": "dailySupport",
+   "savesType": "string_list",
+   "behavior": "multiChoice",
+   "params": {
+    "title": "What area of life do you most want God to transform?",
+    "options": [
+     {
+      "label": "Daily habits and discipline",
+      "value": "Daily habits and discipline"
+     },
+     {
+      "label": "Thoughts and mindset",
+      "value": "Thoughts and mindset"
+     },
+     {
+      "label": "Relationships",
+      "value": "Relationships"
+     },
+     {
+      "label": "Marriage",
+      "value": "Marriage"
+     },
+     {
+      "label": "Starting over after divorce",
+      "value": "Starting over after divorce"
+     },
+     {
+      "label": "Peace of mind",
+      "value": "Peace of mind"
+     },
+     {
+      "label": "Confidence and self-worth",
+      "value": "Confidence and self-worth"
+     },
+     {
+      "label": "Finances and provision",
+      "value": "Finances and provision"
+     },
+     {
+      "label": "Parenting",
+      "value": "Parenting"
+     },
+     {
+      "label": "Career",
+      "value": "Career"
+     },
+     {
+      "label": "Something else",
+      "value": "Something else"
+     }
+    ],
+    "subtext": "Select all that apply",
+    "ctaLabel": "Continue",
+    "minSelections": 1
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row dm-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "areaOfLife",
+   "key": "areaOfLife",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "When life gets hard, where do you turn for guidance?",
+    "options": [
+     {
+      "label": "I read the Word and reflect",
+      "value": "I read the Word and reflect"
+     },
+     {
+      "label": "I listen to someone who\u2019s been through it",
+      "value": "I listen to someone who\u2019s been through it"
+     },
+     {
+      "label": "I find peace in quiet prayer",
+      "value": "I find peace in quiet prayer"
+     },
+     {
+      "label": "I look for stories of faith and hope",
+      "value": "I look for stories of faith and hope"
+     },
+     {
+      "label": "Other",
+      "value": "Other"
+     }
+    ]
+   },
+   "images": [],
+   "optionTemplate": "\n      <button class=\"qf-row\" type=\"button\" data-value=\"{{value}}\" data-label=\"{{label}}\"><span class=\"qf-row-content\">{{label}}</span></button>\n      ",
+   "transition": "fade"
+  },
+  {
+   "id": "strengthen",
+   "key": "strengthen",
+   "savesType": "string",
+   "behavior": "choice",
+   "params": {
+    "title": "Are you ready to discover who God created you to be?",
+    "noLabel": "No",
+    "yesLabel": "Yes"
+   },
+   "images": [],
+   "transition": "fade"
+  },
+  {
+   "id": "analyzed",
+   "savesType": "none",
+   "behavior": "info",
+   "params": {
+    "title": "Your answers have been analyzed",
+    "subtext": "Your spiritual archetype is now ready",
+    "ctaLabel": "Reveal My Archetype",
+    "ctaSubLabel": "Click here"
+   },
+   "images": [],
+   "hideProgress": true,
+   "transition": "fade"
+  },
+  {
+   "id": "revealLoader",
+   "savesType": "none",
+   "behavior": "loaderQuestions",
+   "params": {
+    "title": "Revealing your spiritual archetype",
+    "phases": [
+     {
+      "label": "Analyzing your spiritual patterns",
+      "weight": 1
+     },
+     {
+      "label": "Identifying your core strengths",
+      "weight": 1
+     },
+     {
+      "label": "Matching your unique archetype",
+      "weight": 1
+     },
+     {
+      "label": "Preparing your personal plan",
+      "weight": 1
+     }
+    ],
+    "floorMs": 15000,
+    "questions": [
+     {
+      "at": 0.37,
+      "key": "uniquePurpose",
+      "noLabel": "No",
+      "question": "Do you believe God created you with a unique purpose?",
+      "yesLabel": "Yes"
+     },
+     {
+      "at": 0.62,
+      "key": "readyToSee",
+      "noLabel": "No",
+      "question": "Are you ready to see how your faith shapes who you are?",
+      "yesLabel": "Yes"
+     },
+     {
+      "at": 0.87,
+      "key": "revealNow",
+      "noLabel": "No",
+      "question": "Your archetype is almost ready. Want to reveal it?",
+      "yesLabel": "Yes"
+     }
+    ],
+    "modalEyebrow": "To move forward, specify"
+   },
+   "images": [],
+   "hideProgress": true,
+   "hideBack": true,
+   "transition": "fade"
+  },
+  {
+   "id": "summary",
+   "savesType": "none",
+   "behavior": "info",
+   "params": {
+    "image": "https://cdn-static.verseread.com/christian-archetype/assets/paul_archetype.webp",
+    "item1": "Your unique spiritual archetype revealed",
+    "item2": "What it means for your life and faith",
+    "item3": "Your spiritual strengths profile",
+    "item4": "Daily practices shaped around who you are",
+    "title": "Your archetype has been identified",
+    "subtext": "We\u2019ve built a complete profile and personal plan around it",
+    "ctaLabel": "Continue",
+    "listHeading": "What\u2019s inside your Archetype Plan:"
+   },
+   "overrides": [
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "abraham"
+       ]
+      }
+     ],
+     "set": {
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/abraham_archetype.webp"
+     }
+    },
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "moses"
+       ]
+      }
+     ],
+     "set": {
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/moses_archetype.webp"
+     }
+    },
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "david"
+       ]
+      }
+     ],
+     "set": {
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/david_archetype.webp"
+     }
+    },
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "paul"
+       ]
+      }
+     ],
+     "set": {
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/paul_archetype.webp"
+     }
+    },
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "ruth"
+       ]
+      }
+     ],
+     "set": {
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/ruth_archetype.webp"
+     }
+    },
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "mary"
+       ]
+      }
+     ],
+     "set": {
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/mary_archetype.webp"
+     }
+    },
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "deborah"
+       ]
+      }
+     ],
+     "set": {
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/deborah_archetype.webp"
+     }
+    },
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "esther"
+       ]
+      }
+     ],
+     "set": {
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/esther_archetype.webp"
+     }
+    }
+   ],
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/paul_archetype.webp"
+   ],
+   "hideProgress": true,
+   "transition": "fade"
+  },
+  {
+   "id": "emailCapture",
+   "key": "email",
+   "savesType": "email",
+   "behavior": "email",
+   "params": {
+    "title": "Enter your email to access your archetype and personalized plan",
+    "eyebrow": "Where should we send your results?",
+    "ctaLabel": "Continue",
+    "required": true,
+    "privacyUrl": "/privacy-policy",
+    "placeholder": "Enter your email",
+    "privacyNote": "We respect your privacy and are committed to protecting your personal data. Your data will be processed according to our",
+    "suggestDomains": true,
+    "privacyLinkText": "Privacy policy"
+   },
+   "images": [],
+   "hideProgress": true,
+   "transition": "fade"
+  },
+  {
+   "id": "firstName",
+   "key": "firstName",
+   "savesType": "string",
+   "behavior": "textInput",
+   "params": {
+    "title": "What\u2019s your first name?",
+    "ctaLabel": "Continue",
+    "required": false,
+    "autofocus": true,
+    "maxLength": 40,
+    "skipLabel": "Skip",
+    "placeholder": "First name"
+   },
+   "images": [],
+   "hideProgress": true,
+   "transition": "fade"
+  },
+  {
+   "id": "cardStack",
+   "savesType": "none",
+   "behavior": "sequence",
+   "params": {
+    "mode": "reveal",
+    "lines": [
+     "Most people learn their archetype and forget it the next day",
+     "But when you live it daily, your faith, decisions, and confidence grow",
+     "We\u2019ve created a simple plan to help you do exactly that"
+    ],
+    "holdMs": 2900
+   },
+   "images": [],
+   "hideProgress": true,
+   "transition": "fade",
+   "background": "linear-gradient(0deg, rgba(255,235,244,0.70) 2.43%, rgba(201,197,250,0.70) 51.21%, rgba(163,159,212,0.70) 100%)"
+  },
+  {
+   "id": "pricing",
+   "savesType": "none",
+   "behavior": "paywallPlans",
+   "params": {
+    "plans": [
+     "trial1w",
+     "plan4w",
+     "plan12w"
+    ],
+    "weeks": [
+     {
+      "days": [
+       {
+        "body": "Who God says you are",
+        "title": "Day 1"
+       },
+       {
+        "body": "Your strength, named",
+        "title": "Day 2"
+       },
+       {
+        "body": "A prayer in your words",
+        "title": "Day 3"
+       },
+       {
+        "body": "Scripture for your season",
+        "title": "Day 4"
+       },
+       {
+        "body": "The habit that fits you",
+        "title": "Day 5"
+       },
+       {
+        "body": "When doubt shows up",
+        "title": "Day 6"
+       },
+       {
+        "body": "Rest and reflect",
+        "title": "Day 7"
+       }
+      ],
+      "label": "Week 1"
+     },
+     {
+      "days": [
+       {
+        "body": "Living it at home",
+        "title": "Day 8"
+       },
+       {
+        "body": "Praying through the hard part",
+        "title": "Day 9"
+       },
+       {
+        "body": "A step you can keep",
+        "title": "Day 10"
+       },
+       {
+        "body": "Listening for direction",
+        "title": "Day 11"
+       },
+       {
+        "body": "Carrying it to others",
+        "title": "Day 12"
+       },
+       {
+        "body": "What has changed",
+        "title": "Day 13"
+       },
+       {
+        "body": "The next stretch",
+        "title": "Day 14"
+       }
+      ],
+      "label": "Week 2"
+     }
+    ],
+    "barCta": "Get my plan",
+    "ctaLabel": "Get my plan",
+    "featured": "plan4w",
+    "features": [
+     {
+      "body": "A complete breakdown of your archetype: strengths, challenges, and what makes you unique",
+      "icon": "profile",
+      "title": "Your full spiritual archetype profile"
+     },
+     {
+      "body": "Short Bible-based actions that fit into busy days and help you stay centered",
+      "icon": "clock",
+      "title": "5-minute practices"
+     },
+     {
+      "body": "Direction that adapts to you. No rigid rules, just wisdom for your own choices",
+      "icon": "compass",
+      "title": "Flexible guidance"
+     },
+     {
+      "body": "Clear, practical steps to live out your spiritual identity day by day",
+      "icon": "book",
+      "title": "Rooted in Scripture and real life"
+     },
+     {
+      "body": "Easy to follow even on tired, distracted, or overwhelming days",
+      "icon": "feather",
+      "title": "No pressure, no complexity"
+     }
+    ],
+    "promoSub": "off your first purchase. Standard pricing applies on renewal.",
+    "legalLine": "By tapping \u201cGet my plan\u201d you agree that if you don\u2019t cancel before the end of the 4 weeks introductory period, you will automatically be charged the full price of US$42.20 every 4 weeks until you cancel by contacting [help@thebiblechat.com](mailto:help@thebiblechat.com). Learn more about cancellation and refund policy in [Subscription Terms.](/subscription-policy)",
+    "lockLabel": "Unlock with a plan",
+    "promoCode": "special",
+    "shareLine": "Only 30% of people share your archetype",
+    "trait1Pct": 68,
+    "trustLine": "Pay safe and secure",
+    "barMinutes": "09",
+    "barSeconds": "59",
+    "trait1Name": "Patience",
+    "trait1Note": "32% left to grow",
+    "trait2Name": "Obedience",
+    "trait3Name": "Faith",
+    "trait4Name": "Hope",
+    "unlockLine": "Unlock your full profile and personalized daily plan",
+    "compareLine": "",
+    "compareNote": "",
+    "madeForBody": "Everything here is designed to help you live out your strengths in daily life",
+    "review1Name": "Momof5Boys1357",
+    "review1Text": "When I needed a prayer to help me with my marriage and struggling to put food on the table, it generated an amazing prayer I can keep and pray. ...you have nothing to lose!",
+    "review2Name": "Cherio27",
+    "review2Text": "It\u2019s great to open this app and read a scripture that really connects with you to help your healing flow through Jesus. Godspeed",
+    "review3Name": "Reabetsoe 24",
+    "review3Text": "I really enjoy these scriptures and prayers as they talk to me with what I am currently going through and struggling with. They actually given me hope and revived my spirit",
+    "supportLine": "Need help? [help@thebiblechat.com](mailto:help@thebiblechat.com)",
+    "whatHeading": "What you get",
+    "headlineLead": "Your Spiritual Growth Path",
+    "madeForTitle": "This plan was made for you",
+    "offerMinutes": 10,
+    "overviewBody": "Your strength: trusting God and stepping forward even when you can\u2019t see the whole road. Your challenge: in long seasons of waiting, doubt sets in and you try to force the outcome yourself. Inside, how to hold onto faith and let God set the pace.",
+    "plansHeading": "Choose your plan",
+    "promoHeading": "Your promo code applied!",
+    "archetypeName": "Paul",
+    "headline2Lead": "Your Spiritual Archetype Plan",
+    "archetypeImage": "https://cdn-static.verseread.com/christian-archetype/assets/paul_archetype.webp",
+    "archetypeTitle": "Your spiritual archetype",
+    "companyAddress": "BookVitals Inc, 2093 Philadelphia Pike, Claymont, DE 19703",
+    "giftBannerLead": "Get your personalized plan with up to",
+    "giftBannerTail": "discount",
+    "headlineAccent": "is ready for you",
+    "reviewsHeading": "What believers say about Bible Chat",
+    "headline2Accent": "is ready for you",
+    "overviewHeading": "Overview",
+    "traitLockedNote": "% left to grow",
+    "prevDiscountLabel": "Previous discount:",
+    "promoHeadingOffer": "New promo code applied!"
+   },
+   "overrides": [
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "abraham"
+       ]
+      }
+     ],
+     "set": {
+      "shareLine": "Only 30% of people share your archetype",
+      "trait1Pct": 68,
+      "trait1Name": "Patience",
+      "trait1Note": "32% left to grow",
+      "trait2Name": "Obedience",
+      "trait3Name": "Faith",
+      "trait4Name": "Hope",
+      "overviewBody": "Your strength: trusting God and stepping forward even when you can't see the whole road. Your challenge: in long seasons of waiting, doubt sets in and you try to force the outcome yourself. Inside, how to hold onto faith and peace while you wait.",
+      "archetypeName": "Abraham",
+      "archetypeImage": "https://cdn-static.verseread.com/christian-archetype/assets/abraham_archetype.webp",
+      "archetypeTitle": "The Faithful Pathfinder"
+     }
+    },
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "moses"
+       ]
+      }
+     ],
+     "set": {
+      "shareLine": "Only 11% of people share your archetype",
+      "trait1Pct": 68,
+      "trait1Name": "Leadership",
+      "trait1Note": "32% left to grow",
+      "trait2Name": "Intercession",
+      "trait3Name": "Courage",
+      "trait4Name": "Discernment",
+      "overviewBody": "Your strength: faithfulness that keeps going through the longest, hardest seasons. Your challenge: a quiet voice keeps asking who am I? and you feel you're never quite enough. Inside, how to walk in your calling even when you don't feel ready.",
+      "archetypeName": "Moses",
+      "archetypeImage": "https://cdn-static.verseread.com/christian-archetype/assets/moses_archetype.webp",
+      "archetypeTitle": "The Reluctant Leader"
+     }
+    },
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "david"
+       ]
+      }
+     ],
+     "set": {
+      "shareLine": "Only 13% of people share your archetype",
+      "trait1Pct": 68,
+      "trait1Name": "Worship",
+      "trait1Note": "32% left to grow",
+      "trait2Name": "Courage",
+      "trait3Name": "Repentance",
+      "trait4Name": "Leadership",
+      "overviewBody": "Your strength: an honest, wholehearted heart that holds nothing back from God. Your challenge: your highs run high and your lows run low, and feelings can take the wheel. Inside, how to bring your whole heart to God without being swept away by it.",
+      "archetypeName": "David",
+      "archetypeImage": "https://cdn-static.verseread.com/christian-archetype/assets/david_archetype.webp",
+      "archetypeTitle": "The Warrior-Poet"
+     }
+    },
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "paul"
+       ]
+      }
+     ],
+     "set": {
+      "shareLine": "Only 45% of people share your archetype",
+      "trait1Pct": 68,
+      "trait1Name": "Discernment",
+      "trait1Note": "32% left to grow",
+      "trait2Name": "Teaching",
+      "trait3Name": "Apostleship",
+      "trait4Name": "Boldness",
+      "overviewBody": "Your strength: deep conviction and drive that move you, and everyone around you, forward. Your challenge: you push so hard that rest feels like failure, and burnout creeps up on you. Inside, how to keep your fire without letting it burn you out.",
+      "archetypeName": "Paul",
+      "archetypeImage": "https://cdn-static.verseread.com/christian-archetype/assets/paul_archetype.webp",
+      "archetypeTitle": "The Transformative Messenger"
+     }
+    },
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "ruth"
+       ]
+      }
+     ],
+     "set": {
+      "shareLine": "Only 37% of people share your archetype",
+      "trait1Pct": 68,
+      "trait1Name": "Loyalty",
+      "trait1Note": "32% left to grow",
+      "trait2Name": "Kindness",
+      "trait3Name": "Perseverance",
+      "trait4Name": "Faithfulness",
+      "overviewBody": "Your strength: staying faithful and steady when everyone else walks away.  Your challenge: you pour so much into others that you forget to ask what you need. Inside, how to love loyally without losing yourself.",
+      "archetypeName": "Ruth",
+      "archetypeImage": "https://cdn-static.verseread.com/christian-archetype/assets/ruth_archetype.webp",
+      "archetypeTitle": "The Loyal Soul"
+     }
+    },
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "mary"
+       ]
+      }
+     ],
+     "set": {
+      "shareLine": "Only 14% of people share your archetype",
+      "trait1Pct": 68,
+      "trait1Name": "Compassion",
+      "trait1Note": "32% left to grow",
+      "trait2Name": "Obedience",
+      "trait3Name": "Faith",
+      "trait4Name": "Wisdom",
+      "overviewBody": "Your strength: a calm, surrendered heart that trusts deeply and stays steady under pressure. Your challenge: you carry too much in silence and rarely let anyone help you. Inside, how to stay at peace without carrying it all alone.",
+      "archetypeName": "Mary",
+      "archetypeImage": "https://cdn-static.verseread.com/christian-archetype/assets/mary_archetype.webp",
+      "archetypeTitle": "The Devoted Nurturer"
+     }
+    },
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "deborah"
+       ]
+      }
+     ],
+     "set": {
+      "shareLine": "Only 11% of people share your archetype",
+      "trait1Pct": 68,
+      "trait1Name": "Leadership",
+      "trait1Note": "32% left to grow",
+      "trait2Name": "Discernment",
+      "trait3Name": "Courage",
+      "trait4Name": "Wisdom",
+      "overviewBody": "Your strength: wisdom and clarity that others naturally turn to. Your challenge: you're always the strong one, and it's hard to rest or let someone carry you. Inside, how to lead without burning out, and let yourself be held too.",
+      "archetypeName": "Deborah",
+      "archetypeImage": "https://cdn-static.verseread.com/christian-archetype/assets/deborah_archetype.webp",
+      "archetypeTitle": "The Prophetic Warrior"
+     }
+    },
+    {
+     "when": [
+      {
+       "key": "archetype",
+       "type": "value",
+       "values": [
+        "esther"
+       ]
+      }
+     ],
+     "set": {
+      "shareLine": "Only 36% of people share your archetype",
+      "trait1Pct": 68,
+      "trait1Name": "Wisdom",
+      "trait1Note": "32% left to grow",
+      "trait2Name": "Inner Strength",
+      "trait3Name": "Discernment",
+      "trait4Name": "Faithfulness",
+      "overviewBody": "Your strength: quiet courage that shows up exactly when it's needed most. Your challenge: you hesitate at the edge of bold moments, waiting until you feel ready. Inside, how to use your voice before the moment passes.",
+      "archetypeName": "Esther",
+      "archetypeImage": "https://cdn-static.verseread.com/christian-archetype/assets/esther_archetype.webp",
+      "archetypeTitle": "The Courageous Leader"
+     }
+    }
+   ],
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/paul_archetype.webp",
+    "https://cdn-static.verseread.com/christian-archetype/assets/exit-offer-gift.webp"
+   ],
+   "hideChrome": true,
+   "transition": "fade"
+  },
+  {
+   "id": "checkout",
+   "savesType": "none",
+   "behavior": "exitOfferGate",
+   "params": {
+    "total": "US$18.99",
+    "heading": "Your plan for discovering who God made you to be",
+    "payLabel": "Pay",
+    "promoCode": "special",
+    "errorCases": [
+     {
+      "body": "You have not been charged. A different card usually works.",
+      "code": "insufficient_funds",
+      "title": "Not enough funds on that card"
+     },
+     {
+      "body": "This is common. Another card usually goes straight through.",
+      "code": "do_not_honor",
+      "title": "Your bank declined this payment"
+     },
+     {
+      "body": "This is common. Another card usually goes straight through.",
+      "code": "generic_decline",
+      "title": "Your bank declined this payment"
+     },
+     {
+      "body": "Some cards do not allow subscriptions. A different one will.",
+      "code": "transaction_not_allowed",
+      "title": "That card blocks payments like this"
+     },
+     {
+      "body": "Any card that is still in date will work.",
+      "code": "expired_card",
+      "title": "That card has expired"
+     },
+     {
+      "body": "Check it for a typo, or use another card.",
+      "code": "invalid_account",
+      "title": "That card number did not work"
+     },
+     {
+      "body": "Your discount is still saved. Try again, or use another card.",
+      "code": "try_again_later",
+      "title": "Your bank is not responding"
+     },
+     {
+      "body": "Finish the check they sent you, or use another card.",
+      "code": "payment_intent_authentication_failure",
+      "title": "Your bank needs to confirm this"
+     },
+     {
+      "body": "You have not been charged. Another card usually works.",
+      "code": "default",
+      "title": "That payment did not go through"
+     }
+    ],
+    "promoLabel": "Applied promo code:",
+    "renewLabel": "After",
+    "renewTotal": "US$42.20",
+    "totalLabel": "Total",
+    "offerScreen": "exitOffer",
+    "savingsLine": "You just saved US$23.21",
+    "supportLine": "Need help? [help@thebiblechat.com](mailto:help@thebiblechat.com)",
+    "regularLabel": "Regular",
+    "regularPrice": "US$42.20",
+    "discountLabel": "55% Intro discount",
+    "errCloseLabel": "Not now",
+    "errRetryLabel": "Try another card",
+    "guaranteeBody": "If your faith doesn\u2019t feel stronger, we refund every cent. [See refund policy](/subscription-policy).",
+    "discountAmount": "-US$23.21",
+    "guaranteeHeadline": "30-day money-back guarantee."
+   },
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/pay-error-card.webp"
+   ],
+   "hideChrome": true,
+   "keepMounted": true,
+   "resume": false,
+   "requires": "pricing",
+   "transition": "fade"
+  },
+  {
+   "id": "almostThere",
+   "savesType": "none",
+   "behavior": "info",
+   "params": {
+    "rows": [
+     {
+      "icon": "mail",
+      "text": "You will also receive an email with login link after setting up your account.",
+      "chipBg": "#efe9fb",
+      "chipFg": "#6d3fd4"
+     }
+    ],
+    "image": "https://cdn-static.verseread.com/christian-archetype/assets/almost-there.webp",
+    "title": "Almost there!",
+    "subtext": "Please proceed to the next page to create your account and gain access to your plan",
+    "ctaLabel": "Create account",
+    "circleTint": "#efe9fb"
+   },
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/almost-there.webp"
+   ],
+   "hideProgress": true,
+   "hideBack": true,
+   "transition": "fade"
+  },
+  {
+   "id": "accountReady",
+   "savesType": "none",
+   "behavior": "info",
+   "params": {
+    "rows": [
+     {
+      "icon": "sparkle",
+      "text": "Your full archetype profile",
+      "chipBg": "#e4f4ea",
+      "chipFg": "#12864a"
+     },
+     {
+      "icon": "check",
+      "text": "5-minute practices for busy days",
+      "chipBg": "#e4f4ea",
+      "chipFg": "#12864a"
+     },
+     {
+      "icon": "book",
+      "text": "Guidance that adapts to you",
+      "chipBg": "#e4f4ea",
+      "chipFg": "#12864a"
+     }
+    ],
+    "image": "https://cdn-static.verseread.com/christian-archetype/assets/account-ready.webp",
+    "title": "Your account created!",
+    "subtext": "",
+    "ctaLabel": "Continue",
+    "circleTint": "#fdf1d5"
+   },
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/account-ready.webp"
+   ],
+   "hideProgress": true,
+   "hideBack": true,
+   "transition": "fade"
+  },
+  {
+   "id": "offerAudio",
+   "savesType": "none",
+   "behavior": "upsell",
+   "params": {
+    "steps": [
+     {
+      "n": "1",
+      "text": "Start with today's reading",
+      "title": "Open a lesson"
+     },
+     {
+      "n": "2",
+      "text": "Pick a voice, save it for offline, and press play",
+      "title": "Hit Listen"
+     },
+     {
+      "n": "3",
+      "text": "Follow the prayer prompts as you go",
+      "title": "Pray along"
+     },
+     {
+      "n": "4",
+      "text": "A few minutes a day keeps Scripture close",
+      "title": "Keep it daily"
+     }
+    ],
+    "title": "Unlock the full listening experience",
+    "upsell": {
+     "priceId": "price_1U4kj8Ed4ZpYjLtU60sZJA7q"
+    },
+    "reviews": [
+     {
+      "body": "Helps me stay consistent with the Bible thanks to the daily verse and prayer. It also allows me to listen to the Bible while working!",
+      "title": "The best app",
+      "author": "FollowerOfChrist9"
+     },
+     {
+      "body": "It makes it easier for visual and hearing learning as you can listen to the bible. I also enjoy how it gives you different prayers that help you strengthen you",
+      "title": "Great help",
+      "author": "MelanieRdgz25"
+     },
+     {
+      "body": "Love how we get to read or listen to and lots of fun gives u choices of how ur feeling",
+      "title": "Amazing",
+      "author": "Sight up now"
+     }
+    ],
+    "stepper": [
+     {
+      "line1": "Create",
+      "line2": "account",
+      "state": "done"
+     },
+     {
+      "line1": "Sign-up",
+      "line2": "offer",
+      "state": "active"
+     },
+     {
+      "line1": "Get",
+      "line2": "started",
+      "state": "todo"
+     }
+    ],
+    "subtext": "Hear Scripture and prayer in a voice you like, online or off, at any point in your day.",
+    "benefits": [
+     {
+      "icon": "sparkle",
+      "text": "Stay in the Word when reading is hard"
+     },
+     {
+      "icon": "cross",
+      "text": "Quiet the noise and refocus on truth"
+     },
+     {
+      "icon": "voice",
+      "text": "Pick a voice that speaks to you"
+     },
+     {
+      "icon": "book",
+      "text": "Make staying consistent simple"
+     }
+    ],
+    "giftIcon": "gift",
+    "giftText": "50 animated Bible stories and 25 guided meditations, yours to keep",
+    "sections": [
+     {
+      "body": "When the day fills up, Audio Mode keeps your reading going. Save lessons and listen on the drive, at the sink, or before bed, even with no signal.",
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/audio-anywhere.webp",
+      "title": "Take Scripture with you"
+     },
+     {
+      "body": "Some days sitting down to read is too much. Let Audio Mode say Scripture and prayer out loud in a voice you like. No rush, no pressure.",
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/audio-voice.webp",
+      "title": "A voice that suits you"
+     },
+     {
+      "body": "Hearing it helps truth settle in. Carry God's Word through the day and let it shape how you think.",
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/audio-stays.webp",
+      "title": "His Word stays with you"
+     }
+    ],
+    "giftLines": [
+     {
+      "name": "50 animated Bible stories",
+      "pill": "Gift"
+     },
+     {
+      "name": "25 Bible meditations",
+      "pill": "Gift"
+     }
+    ],
+    "heroImage": "https://cdn-static.verseread.com/christian-archetype/assets/audio-mode-hero.webp",
+    "legalLine": "By clicking **\u201cBuy\u201d**, you authorise an immediate **one-time charge of $29.99** for the selected add-ons to the payment method you previously provided. This is a one-time purchase, not a subscription. The charge will be processed **automatically** when you click the button.",
+    "priceName": "Premium Audio Mode",
+    "bannerText": "",
+    "offerGroup": "extras",
+    "priceLabel": "$29.99",
+    "acceptLabel": "Buy",
+    "giftBadgeBg": "linear-gradient(135deg, #2e9e63, #16704a)",
+    "giftEyebrow": "Special gift included",
+    "priceStrike": "",
+    "ratingScore": "4.9",
+    "ratingTitle": "Join our satisfied users",
+    "declineLabel": "No thank you",
+    "priceHeading": "",
+    "ratingSource": "500K+ App Store ratings",
+    "stepsHeading": "How it works",
+    "sectionsHeading": "Audio Mode wherever life takes you"
+   },
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/audio-anywhere.webp",
+    "https://cdn-static.verseread.com/christian-archetype/assets/audio-voice.webp",
+    "https://cdn-static.verseread.com/christian-archetype/assets/audio-stays.webp",
+    "https://cdn-static.verseread.com/christian-archetype/assets/audio-mode-hero.webp"
+   ],
+   "hideProgress": true,
+   "hideBack": true,
+   "transition": "fade"
+  },
+  {
+   "id": "offerAudioSave",
+   "savesType": "none",
+   "behavior": "info",
+   "params": {
+    "title": "Stay grounded in God's Word with Audio Mode",
+    "barATop": 194,
+    "barBTop": 40,
+    "caption": "",
+    "ctaLabel": "Got it",
+    "statText": "**82%** of **Bible Chat users** said they keep up with daily reading more easily with Audio Mode",
+    "arrowPath": "M233 68 l -10.5 24 l 21 0 z",
+    "barALabel": "Reading only",
+    "barBLabel": "With Audio Mode",
+    "curvePath": "M87 232 C 159 234, 225 168, 233 92",
+    "offerIcon": "discount",
+    "offerText": "We want to help you succeed, so we're offering an **additional 20% discount**",
+    "barAHeight": 76,
+    "barBHeight": 230,
+    "chartImage": "",
+    "offerGroup": "extras",
+    "barAPercent": 28,
+    "barBPercent": 85
+   },
+   "images": [],
+   "hideProgress": true,
+   "hideChrome": true,
+   "hideBack": true,
+   "transition": "fade"
+  },
+  {
+   "id": "offerAudio20",
+   "savesType": "none",
+   "behavior": "upsell",
+   "params": {
+    "steps": [
+     {
+      "n": "1",
+      "text": "Start with today's reading",
+      "title": "Open a lesson"
+     },
+     {
+      "n": "2",
+      "text": "Pick a voice, save it for offline, and press play",
+      "title": "Hit Listen"
+     },
+     {
+      "n": "3",
+      "text": "Follow the prayer prompts as you go",
+      "title": "Pray along"
+     },
+     {
+      "n": "4",
+      "text": "A few minutes a day keeps Scripture close",
+      "title": "Keep it daily"
+     }
+    ],
+    "title": "Unlock the full listening experience",
+    "upsell": {
+     "priceId": "price_1U4kj8Ed4ZpYjLtUuA7zlubC"
+    },
+    "reviews": [
+     {
+      "body": "Helps me stay consistent with the Bible thanks to the daily verse and prayer. It also allows me to listen to the Bible while working!",
+      "title": "The best app",
+      "author": "FollowerOfChrist9"
+     },
+     {
+      "body": "It makes it easier for visual and hearing learning as you can listen to the bible. I also enjoy how it gives you different prayers that help you strengthen you",
+      "title": "Great help",
+      "author": "MelanieRdgz25"
+     },
+     {
+      "body": "Love how we get to read or listen to and lots of fun gives u choices of how ur feeling",
+      "title": "Amazing",
+      "author": "Sight up now"
+     }
+    ],
+    "stepper": [
+     {
+      "line1": "Create",
+      "line2": "account",
+      "state": "done"
+     },
+     {
+      "line1": "Sign-up",
+      "line2": "offer",
+      "state": "active"
+     },
+     {
+      "line1": "Get",
+      "line2": "started",
+      "state": "todo"
+     }
+    ],
+    "subtext": "Hear Scripture and prayer in a voice you like, online or off, at any point in your day.",
+    "benefits": [
+     {
+      "icon": "sparkle",
+      "text": "Stay in the Word when reading is hard"
+     },
+     {
+      "icon": "cross",
+      "text": "Quiet the noise and refocus on truth"
+     },
+     {
+      "icon": "voice",
+      "text": "Pick a voice that speaks to you"
+     },
+     {
+      "icon": "book",
+      "text": "Make staying consistent simple"
+     }
+    ],
+    "giftIcon": "gift",
+    "giftText": "50 animated Bible stories and 25 guided meditations, yours to keep",
+    "sections": [
+     {
+      "body": "When the day fills up, Audio Mode keeps your reading going. Save lessons and listen on the drive, at the sink, or before bed, even with no signal.",
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/audio-anywhere.webp",
+      "title": "Take Scripture with you"
+     },
+     {
+      "body": "Some days sitting down to read is too much. Let Audio Mode say Scripture and prayer out loud in a voice you like. No rush, no pressure.",
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/audio-voice.webp",
+      "title": "A voice that suits you"
+     },
+     {
+      "body": "Hearing it helps truth settle in. Carry God's Word through the day and let it shape how you think.",
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/audio-stays.webp",
+      "title": "His Word stays with you"
+     }
+    ],
+    "giftLines": [
+     {
+      "name": "50 animated Bible stories",
+      "pill": "Gift"
+     },
+     {
+      "name": "25 Bible meditations",
+      "pill": "Gift"
+     }
+    ],
+    "heroImage": "https://cdn-static.verseread.com/christian-archetype/assets/audio-mode-hero.webp",
+    "legalLine": "By clicking **\u201cBuy\u201d**, you authorise an immediate **one-time charge of $23.99** for the selected add-ons to the payment method you previously provided. This is a one-time purchase, not a subscription. The charge will be processed **automatically** when you click the button.",
+    "priceName": "Premium Audio Mode",
+    "bannerText": "Your extra 20% discount has been applied.",
+    "offerGroup": "extras",
+    "priceLabel": "$23.99",
+    "acceptLabel": "Buy",
+    "giftBadgeBg": "linear-gradient(135deg, #2e9e63, #16704a)",
+    "giftEyebrow": "Special gift included",
+    "priceStrike": "$29.99",
+    "ratingScore": "4.9",
+    "ratingTitle": "Join our satisfied users",
+    "declineLabel": "No thank you",
+    "priceHeading": "Get it with 20% off",
+    "ratingSource": "500K+ App Store ratings",
+    "stepsHeading": "How it works",
+    "sectionsHeading": "Audio Mode wherever life takes you"
+   },
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/audio-anywhere.webp",
+    "https://cdn-static.verseread.com/christian-archetype/assets/audio-voice.webp",
+    "https://cdn-static.verseread.com/christian-archetype/assets/audio-stays.webp",
+    "https://cdn-static.verseread.com/christian-archetype/assets/audio-mode-hero.webp"
+   ],
+   "hideProgress": true,
+   "hideBack": true,
+   "transition": "fade"
+  },
+  {
+   "id": "offerBundle",
+   "savesType": "none",
+   "behavior": "upsell",
+   "params": {
+    "title": "Exclusive sign-up offer",
+    "offers": [
+     {
+      "id": "both",
+      "badge": "50% off",
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/opt-bundle.webp",
+      "label": "Meaningful Prayer + Christian Meditation",
+      "priceId": "price_1U4iKdEd4ZpYjLtUzqEVu3kk",
+      "selected": "true",
+      "priceLabel": "$17.49 only",
+      "strikeLabel": "$34.49"
+     },
+     {
+      "id": "prayer",
+      "badge": "",
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/opt-praying.webp",
+      "label": "Meaningful Prayer Guide",
+      "priceId": "price_1U4iKeEd4ZpYjLtUa9gskgBg",
+      "selected": "false",
+      "priceLabel": "$12.99 only",
+      "strikeLabel": ""
+     },
+     {
+      "id": "meditation",
+      "badge": "",
+      "image": "https://cdn-static.verseread.com/christian-archetype/assets/opt-meditation.webp",
+      "label": "Christian Meditation Guide",
+      "priceId": "price_1U4iKfEd4ZpYjLtU7w1AtVWY",
+      "selected": "false",
+      "priceLabel": "$12.99 only",
+      "strikeLabel": ""
+     }
+    ],
+    "stepper": [
+     {
+      "line1": "Create",
+      "line2": "account",
+      "state": "done"
+     },
+     {
+      "line1": "Sign-up",
+      "line2": "offer",
+      "state": "active"
+     },
+     {
+      "line1": "Get",
+      "line2": "started",
+      "state": "todo"
+     }
+    ],
+    "features": [
+     {
+      "icon": "check",
+      "text": "Pay once, yours to keep"
+     },
+     {
+      "icon": "check",
+      "text": "Simple ways to build patience and stay with it"
+     },
+     {
+      "icon": "check",
+      "text": "Breathing and calming exercises"
+     },
+     {
+      "icon": "check",
+      "text": "How to shape your prayers"
+     },
+     {
+      "icon": "check",
+      "text": "Verses to sit with and reflect on"
+     }
+    ],
+    "legalLine": "By tapping Buy you authorise an immediate one-time charge of $17.49 to the card you just paid with. This is a one-time purchase, not a subscription. The charge is processed as soon as you tap.",
+    "offerGroup": "extras",
+    "acceptLabel": "Buy",
+    "declineLabel": "No thank you",
+    "legalTemplate": "By tapping Buy you authorise an immediate one-time charge of {price} to the card you just paid with. This is a one-time purchase, not a subscription. The charge is processed as soon as you tap."
+   },
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/opt-bundle.webp",
+    "https://cdn-static.verseread.com/christian-archetype/assets/opt-praying.webp",
+    "https://cdn-static.verseread.com/christian-archetype/assets/opt-meditation.webp"
+   ],
+   "hideProgress": true,
+   "hideBack": true,
+   "transition": "fade"
+  },
+  {
+   "id": "handoff",
+   "savesType": "none",
+   "behavior": "handoff",
+   "params": {
+    "step1": "Download **Bible Chat** using the button below.",
+    "step2": "Open the app and tap **\u201cI have an Account\u201d**",
+    "step3": "**Sign in with the email above.** Your plan will be waiting.",
+    "title": "Your plan is ready in Bible Chat",
+    "subtext": "Two steps and you can start today. Use the same email you paid with.",
+    "autoBody": "Tap the button below to access Bible Chat, and you will be signed in to your account automatically",
+    "ctaLabel": "Go to App Store",
+    "helpLine": "Need help? help@thebiblechat.com",
+    "storeUrl": "https://biblechatdaily.sng.link/Eryen/hfap",
+    "autoTitle": "Sign In Automatically",
+    "copyLabel": "Copy",
+    "emailNote": "We sent this to your inbox too.",
+    "mockImage": "https://cdn-static.verseread.com/christian-archetype/assets/handoff-mockup.webp",
+    "manualTitle": "Sign In Manually",
+    "dividerLabel": "or",
+    "downloadLabel": "Download Bible Chat",
+    "emailFallback": "the email you paid with",
+    "stepDoneLabel": "Purchase",
+    "stepCurrentLabel": "Sign In"
+   },
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/handoff-mockup.webp"
+   ],
+   "hideProgress": true,
+   "hideBack": true,
+   "transition": "fade"
+  },
+  {
+   "id": "exitOffer",
+   "savesType": "none",
+   "behavior": "exitOffer",
+   "params": {
+    "body": "We want you to **strengthen** your spiritual practice and feel lifted up, so we are offering an **additional discount** on your **Personalized Spiritual Archetype Plan**.",
+    "title": "Special offer for you",
+    "ctaLabel": "Claim your additional discount",
+    "paywallScreen": "pricing"
+   },
+   "images": [
+    "https://cdn-static.verseread.com/christian-archetype/assets/exit-offer-gift.webp"
+   ],
+   "hideChrome": true,
+   "transition": "fade"
+  }
+ ],
+ "sections": [
+  {
+   "label": "About you",
+   "startScreenId": "gender"
+  },
+  {
+   "label": "Your rhythm",
+   "startScreenId": "feelDuring"
+  },
+  {
+   "label": "Your faith",
+   "startScreenId": "bibleExperience"
+  }
+ ],
+ "derived": {
+  "archetype": {
+   "map": {
+    "male_Calm_Reactquickly_Other": "paul",
+    "male_Calm_Stopandthink_Other": "paul",
+    "male_Calm_Trytostaycalm_Other": "paul",
+    "female_Calm_Reactquickly_Other": "esther",
+    "female_Calm_Stopandthink_Other": "esther",
+    "female_Calm_Trytostaycalm_Other": "esther",
+    "male_Focused_Reactquickly_Other": "paul",
+    "male_Focused_Stopandthink_Other": "paul",
+    "male_Hopeful_Reactquickly_Other": "paul",
+    "male_Hopeful_Stopandthink_Other": "paul",
+    "male_Focused_Trytostaycalm_Other": "paul",
+    "male_Hopeful_Trytostaycalm_Other": "paul",
+    "female_Focused_Reactquickly_Other": "esther",
+    "female_Focused_Stopandthink_Other": "esther",
+    "female_Hopeful_Reactquickly_Other": "esther",
+    "female_Hopeful_Stopandthink_Other": "esther",
+    "male_Energetic_Reactquickly_Other": "paul",
+    "male_Energetic_Stopandthink_Other": "paul",
+    "male_Sensitive_Reactquickly_Other": "paul",
+    "male_Sensitive_Stopandthink_Other": "paul",
+    "female_Focused_Trytostaycalm_Other": "esther",
+    "female_Hopeful_Trytostaycalm_Other": "esther",
+    "male_Calm_Trytounderstandwhy_Other": "paul",
+    "male_Energetic_Trytostaycalm_Other": "paul",
+    "male_Sensitive_Trytostaycalm_Other": "paul",
+    "female_Energetic_Reactquickly_Other": "esther",
+    "female_Energetic_Stopandthink_Other": "esther",
+    "female_Sensitive_Reactquickly_Other": "esther",
+    "female_Sensitive_Stopandthink_Other": "esther",
+    "male_Calm_Lookathowothersfeel_Other": "paul",
+    "male_Overwhelmed_Reactquickly_Other": "paul",
+    "male_Overwhelmed_Stopandthink_Other": "paul",
+    "female_Calm_Trytounderstandwhy_Other": "esther",
+    "female_Energetic_Trytostaycalm_Other": "esther",
+    "female_Sensitive_Trytostaycalm_Other": "esther",
+    "male_Calm_Reactquickly_Agiftforideas": "david",
+    "male_Calm_Stopandthink_Agiftforideas": "paul",
+    "male_Overwhelmed_Trytostaycalm_Other": "paul",
+    "female_Calm_Lookathowothersfeel_Other": "esther",
+    "female_Overwhelmed_Reactquickly_Other": "esther",
+    "female_Overwhelmed_Stopandthink_Other": "esther",
+    "male_Calm_Trytostaycalm_Agiftforideas": "abraham",
+    "male_Focused_Trytounderstandwhy_Other": "paul",
+    "male_Hopeful_Trytounderstandwhy_Other": "paul",
+    "female_Calm_Reactquickly_Agiftforideas": "deborah",
+    "female_Calm_Stopandthink_Agiftforideas": "esther",
+    "female_Overwhelmed_Trytostaycalm_Other": "esther",
+    "male_Calm_Reactquickly_Apeacefulspirit": "abraham",
+    "male_Calm_Stopandthink_Apeacefulspirit": "paul",
+    "male_Focused_Lookathowothersfeel_Other": "paul",
+    "male_Hopeful_Lookathowothersfeel_Other": "paul",
+    "female_Calm_Trytostaycalm_Agiftforideas": "ruth",
+    "female_Focused_Trytounderstandwhy_Other": "esther",
+    "female_Hopeful_Trytounderstandwhy_Other": "esther",
+    "male_Calm_Reactquickly_Agentlekindheart": "abraham",
+    "male_Calm_Reactquickly_Wiseandpractical": "david",
+    "male_Calm_Stopandthink_Agentlekindheart": "paul",
+    "male_Calm_Stopandthink_Wiseandpractical": "paul",
+    "male_Calm_Trytostaycalm_Apeacefulspirit": "moses",
+    "male_Energetic_Trytounderstandwhy_Other": "paul",
+    "male_Focused_Reactquickly_Agiftforideas": "david",
+    "male_Focused_Stopandthink_Agiftforideas": "paul",
+    "male_Hopeful_Reactquickly_Agiftforideas": "david",
+    "male_Hopeful_Stopandthink_Agiftforideas": "abraham",
+    "male_Sensitive_Trytounderstandwhy_Other": "paul",
+    "female_Calm_Reactquickly_Apeacefulspirit": "ruth",
+    "female_Calm_Stopandthink_Apeacefulspirit": "esther",
+    "female_Focused_Lookathowothersfeel_Other": "esther",
+    "female_Hopeful_Lookathowothersfeel_Other": "esther",
+    "male_Calm_Trytostaycalm_Agentlekindheart": "moses",
+    "male_Calm_Trytostaycalm_Wiseandpractical": "paul",
+    "male_Energetic_Lookathowothersfeel_Other": "paul",
+    "male_Focused_Trytostaycalm_Agiftforideas": "abraham",
+    "male_Hopeful_Trytostaycalm_Agiftforideas": "abraham",
+    "male_Sensitive_Lookathowothersfeel_Other": "paul",
+    "female_Calm_Reactquickly_Agentlekindheart": "ruth",
+    "female_Calm_Reactquickly_Wiseandpractical": "deborah",
+    "female_Calm_Stopandthink_Agentlekindheart": "esther",
+    "female_Calm_Stopandthink_Wiseandpractical": "esther",
+    "female_Calm_Trytostaycalm_Apeacefulspirit": "mary",
+    "female_Energetic_Trytounderstandwhy_Other": "esther",
+    "female_Focused_Reactquickly_Agiftforideas": "deborah",
+    "female_Focused_Stopandthink_Agiftforideas": "esther",
+    "female_Hopeful_Reactquickly_Agiftforideas": "deborah",
+    "female_Hopeful_Stopandthink_Agiftforideas": "ruth",
+    "female_Sensitive_Trytounderstandwhy_Other": "esther",
+    "male_Energetic_Reactquickly_Agiftforideas": "david",
+    "male_Energetic_Stopandthink_Agiftforideas": "david",
+    "male_Focused_Reactquickly_Apeacefulspirit": "david",
+    "male_Focused_Stopandthink_Apeacefulspirit": "paul",
+    "male_Hopeful_Reactquickly_Apeacefulspirit": "abraham",
+    "male_Hopeful_Stopandthink_Apeacefulspirit": "moses",
+    "male_Overwhelmed_Trytounderstandwhy_Other": "paul",
+    "male_Sensitive_Reactquickly_Agiftforideas": "david",
+    "male_Sensitive_Stopandthink_Agiftforideas": "abraham",
+    "female_Calm_Trytostaycalm_Agentlekindheart": "mary",
+    "female_Calm_Trytostaycalm_Wiseandpractical": "esther",
+    "female_Energetic_Lookathowothersfeel_Other": "esther",
+    "female_Focused_Trytostaycalm_Agiftforideas": "ruth",
+    "female_Hopeful_Trytostaycalm_Agiftforideas": "ruth",
+    "female_Sensitive_Lookathowothersfeel_Other": "esther",
+    "male_Calm_Trytounderstandwhy_Agiftforideas": "paul",
+    "male_Energetic_Trytostaycalm_Agiftforideas": "david",
+    "male_Focused_Reactquickly_Agentlekindheart": "david",
+    "male_Focused_Reactquickly_Wiseandpractical": "david",
+    "male_Focused_Stopandthink_Agentlekindheart": "paul",
+    "male_Focused_Stopandthink_Wiseandpractical": "paul",
+    "male_Focused_Trytostaycalm_Apeacefulspirit": "moses",
+    "male_Hopeful_Reactquickly_Agentlekindheart": "abraham",
+    "male_Hopeful_Reactquickly_Wiseandpractical": "david",
+    "male_Hopeful_Stopandthink_Agentlekindheart": "abraham",
+    "male_Hopeful_Stopandthink_Wiseandpractical": "paul",
+    "male_Hopeful_Trytostaycalm_Apeacefulspirit": "moses",
+    "male_Overwhelmed_Lookathowothersfeel_Other": "paul",
+    "male_Sensitive_Trytostaycalm_Agiftforideas": "abraham",
+    "female_Energetic_Reactquickly_Agiftforideas": "deborah",
+    "female_Energetic_Stopandthink_Agiftforideas": "deborah",
+    "female_Focused_Reactquickly_Apeacefulspirit": "deborah",
+    "female_Focused_Stopandthink_Apeacefulspirit": "esther",
+    "female_Hopeful_Reactquickly_Apeacefulspirit": "ruth",
+    "female_Hopeful_Stopandthink_Apeacefulspirit": "mary",
+    "female_Overwhelmed_Trytounderstandwhy_Other": "esther",
+    "female_Sensitive_Reactquickly_Agiftforideas": "deborah",
+    "female_Sensitive_Stopandthink_Agiftforideas": "ruth",
+    "male_Calm_Lookathowothersfeel_Agiftforideas": "abraham",
+    "male_Energetic_Reactquickly_Apeacefulspirit": "david",
+    "male_Energetic_Stopandthink_Apeacefulspirit": "david",
+    "male_Focused_Trytostaycalm_Agentlekindheart": "abraham",
+    "male_Focused_Trytostaycalm_Wiseandpractical": "paul",
+    "male_Hopeful_Trytostaycalm_Agentlekindheart": "moses",
+    "male_Hopeful_Trytostaycalm_Wiseandpractical": "paul",
+    "male_Overwhelmed_Reactquickly_Agiftforideas": "david",
+    "male_Overwhelmed_Stopandthink_Agiftforideas": "abraham",
+    "male_Sensitive_Reactquickly_Apeacefulspirit": "abraham",
+    "male_Sensitive_Stopandthink_Apeacefulspirit": "moses",
+    "female_Calm_Trytounderstandwhy_Agiftforideas": "esther",
+    "female_Energetic_Trytostaycalm_Agiftforideas": "deborah",
+    "female_Focused_Reactquickly_Agentlekindheart": "deborah",
+    "female_Focused_Reactquickly_Wiseandpractical": "deborah",
+    "female_Focused_Stopandthink_Agentlekindheart": "esther",
+    "female_Focused_Stopandthink_Wiseandpractical": "esther",
+    "female_Focused_Trytostaycalm_Apeacefulspirit": "mary",
+    "female_Hopeful_Reactquickly_Agentlekindheart": "ruth",
+    "female_Hopeful_Reactquickly_Wiseandpractical": "deborah",
+    "female_Hopeful_Stopandthink_Agentlekindheart": "ruth",
+    "female_Hopeful_Stopandthink_Wiseandpractical": "esther",
+    "female_Hopeful_Trytostaycalm_Apeacefulspirit": "mary",
+    "female_Overwhelmed_Lookathowothersfeel_Other": "esther",
+    "female_Sensitive_Trytostaycalm_Agiftforideas": "ruth",
+    "male_Calm_Trytounderstandwhy_Apeacefulspirit": "moses",
+    "male_Energetic_Reactquickly_Agentlekindheart": "david",
+    "male_Energetic_Reactquickly_Wiseandpractical": "david",
+    "male_Energetic_Stopandthink_Agentlekindheart": "david",
+    "male_Energetic_Stopandthink_Wiseandpractical": "paul",
+    "male_Energetic_Trytostaycalm_Apeacefulspirit": "moses",
+    "male_Overwhelmed_Trytostaycalm_Agiftforideas": "abraham",
+    "male_Sensitive_Reactquickly_Agentlekindheart": "abraham",
+    "male_Sensitive_Reactquickly_Wiseandpractical": "david",
+    "male_Sensitive_Stopandthink_Agentlekindheart": "abraham",
+    "male_Sensitive_Stopandthink_Wiseandpractical": "paul",
+    "male_Sensitive_Trytostaycalm_Apeacefulspirit": "moses",
+    "female_Calm_Lookathowothersfeel_Agiftforideas": "ruth",
+    "female_Energetic_Reactquickly_Apeacefulspirit": "deborah",
+    "female_Energetic_Stopandthink_Apeacefulspirit": "deborah",
+    "female_Focused_Trytostaycalm_Agentlekindheart": "ruth",
+    "female_Focused_Trytostaycalm_Wiseandpractical": "esther",
+    "female_Hopeful_Trytostaycalm_Agentlekindheart": "mary",
+    "female_Hopeful_Trytostaycalm_Wiseandpractical": "esther",
+    "female_Overwhelmed_Reactquickly_Agiftforideas": "deborah",
+    "female_Overwhelmed_Stopandthink_Agiftforideas": "ruth",
+    "female_Sensitive_Reactquickly_Apeacefulspirit": "ruth",
+    "female_Sensitive_Stopandthink_Apeacefulspirit": "mary",
+    "male_Calm_Lookathowothersfeel_Apeacefulspirit": "moses",
+    "male_Calm_Trytounderstandwhy_Agentlekindheart": "abraham",
+    "male_Calm_Trytounderstandwhy_Wiseandpractical": "paul",
+    "male_Energetic_Trytostaycalm_Agentlekindheart": "abraham",
+    "male_Energetic_Trytostaycalm_Wiseandpractical": "david",
+    "male_Focused_Trytounderstandwhy_Agiftforideas": "paul",
+    "male_Hopeful_Trytounderstandwhy_Agiftforideas": "abraham",
+    "male_Overwhelmed_Reactquickly_Apeacefulspirit": "abraham",
+    "male_Overwhelmed_Stopandthink_Apeacefulspirit": "abraham",
+    "male_Sensitive_Trytostaycalm_Agentlekindheart": "moses",
+    "male_Sensitive_Trytostaycalm_Wiseandpractical": "paul",
+    "female_Calm_Trytounderstandwhy_Apeacefulspirit": "mary",
+    "female_Energetic_Reactquickly_Agentlekindheart": "deborah",
+    "female_Energetic_Reactquickly_Wiseandpractical": "deborah",
+    "female_Energetic_Stopandthink_Agentlekindheart": "deborah",
+    "female_Energetic_Stopandthink_Wiseandpractical": "esther",
+    "female_Energetic_Trytostaycalm_Apeacefulspirit": "mary",
+    "female_Overwhelmed_Trytostaycalm_Agiftforideas": "ruth",
+    "female_Sensitive_Reactquickly_Agentlekindheart": "ruth",
+    "female_Sensitive_Reactquickly_Wiseandpractical": "deborah",
+    "female_Sensitive_Stopandthink_Agentlekindheart": "ruth",
+    "female_Sensitive_Stopandthink_Wiseandpractical": "esther",
+    "female_Sensitive_Trytostaycalm_Apeacefulspirit": "mary",
+    "male_Calm_Lookathowothersfeel_Agentlekindheart": "moses",
+    "male_Calm_Lookathowothersfeel_Wiseandpractical": "paul",
+    "male_Focused_Lookathowothersfeel_Agiftforideas": "abraham",
+    "male_Hopeful_Lookathowothersfeel_Agiftforideas": "abraham",
+    "male_Overwhelmed_Reactquickly_Agentlekindheart": "abraham",
+    "male_Overwhelmed_Reactquickly_Wiseandpractical": "david",
+    "male_Overwhelmed_Stopandthink_Agentlekindheart": "abraham",
+    "male_Overwhelmed_Stopandthink_Wiseandpractical": "paul",
+    "male_Overwhelmed_Trytostaycalm_Apeacefulspirit": "moses",
+    "female_Calm_Lookathowothersfeel_Apeacefulspirit": "mary",
+    "female_Calm_Trytounderstandwhy_Agentlekindheart": "ruth",
+    "female_Calm_Trytounderstandwhy_Wiseandpractical": "esther",
+    "female_Energetic_Trytostaycalm_Agentlekindheart": "ruth",
+    "female_Energetic_Trytostaycalm_Wiseandpractical": "deborah",
+    "female_Focused_Trytounderstandwhy_Agiftforideas": "esther",
+    "female_Hopeful_Trytounderstandwhy_Agiftforideas": "ruth",
+    "female_Overwhelmed_Reactquickly_Apeacefulspirit": "ruth",
+    "female_Overwhelmed_Stopandthink_Apeacefulspirit": "ruth",
+    "female_Sensitive_Trytostaycalm_Agentlekindheart": "mary",
+    "female_Sensitive_Trytostaycalm_Wiseandpractical": "esther",
+    "male_Energetic_Trytounderstandwhy_Agiftforideas": "david",
+    "male_Focused_Trytounderstandwhy_Apeacefulspirit": "abraham",
+    "male_Hopeful_Trytounderstandwhy_Apeacefulspirit": "moses",
+    "male_Overwhelmed_Trytostaycalm_Agentlekindheart": "abraham",
+    "male_Overwhelmed_Trytostaycalm_Wiseandpractical": "paul",
+    "male_Sensitive_Trytounderstandwhy_Agiftforideas": "abraham",
+    "female_Calm_Lookathowothersfeel_Agentlekindheart": "mary",
+    "female_Calm_Lookathowothersfeel_Wiseandpractical": "esther",
+    "female_Focused_Lookathowothersfeel_Agiftforideas": "ruth",
+    "female_Hopeful_Lookathowothersfeel_Agiftforideas": "ruth",
+    "female_Overwhelmed_Reactquickly_Agentlekindheart": "ruth",
+    "female_Overwhelmed_Reactquickly_Wiseandpractical": "deborah",
+    "female_Overwhelmed_Stopandthink_Agentlekindheart": "ruth",
+    "female_Overwhelmed_Stopandthink_Wiseandpractical": "esther",
+    "female_Overwhelmed_Trytostaycalm_Apeacefulspirit": "mary",
+    "male_Energetic_Lookathowothersfeel_Agiftforideas": "david",
+    "male_Focused_Lookathowothersfeel_Apeacefulspirit": "moses",
+    "male_Focused_Trytounderstandwhy_Agentlekindheart": "abraham",
+    "male_Focused_Trytounderstandwhy_Wiseandpractical": "paul",
+    "male_Hopeful_Lookathowothersfeel_Apeacefulspirit": "moses",
+    "male_Hopeful_Trytounderstandwhy_Agentlekindheart": "abraham",
+    "male_Hopeful_Trytounderstandwhy_Wiseandpractical": "paul",
+    "male_Sensitive_Lookathowothersfeel_Agiftforideas": "abraham",
+    "female_Energetic_Trytounderstandwhy_Agiftforideas": "deborah",
+    "female_Focused_Trytounderstandwhy_Apeacefulspirit": "ruth",
+    "female_Hopeful_Trytounderstandwhy_Apeacefulspirit": "mary",
+    "female_Overwhelmed_Trytostaycalm_Agentlekindheart": "ruth",
+    "female_Overwhelmed_Trytostaycalm_Wiseandpractical": "esther",
+    "female_Sensitive_Trytounderstandwhy_Agiftforideas": "ruth",
+    "male_Energetic_Trytounderstandwhy_Apeacefulspirit": "david",
+    "male_Focused_Lookathowothersfeel_Agentlekindheart": "abraham",
+    "male_Focused_Lookathowothersfeel_Wiseandpractical": "paul",
+    "male_Hopeful_Lookathowothersfeel_Agentlekindheart": "moses",
+    "male_Hopeful_Lookathowothersfeel_Wiseandpractical": "abraham",
+    "male_Overwhelmed_Trytounderstandwhy_Agiftforideas": "abraham",
+    "male_Sensitive_Trytounderstandwhy_Apeacefulspirit": "moses",
+    "female_Energetic_Lookathowothersfeel_Agiftforideas": "deborah",
+    "female_Focused_Lookathowothersfeel_Apeacefulspirit": "mary",
+    "female_Focused_Trytounderstandwhy_Agentlekindheart": "ruth",
+    "female_Focused_Trytounderstandwhy_Wiseandpractical": "esther",
+    "female_Hopeful_Lookathowothersfeel_Apeacefulspirit": "mary",
+    "female_Hopeful_Trytounderstandwhy_Agentlekindheart": "ruth",
+    "female_Hopeful_Trytounderstandwhy_Wiseandpractical": "esther",
+    "female_Sensitive_Lookathowothersfeel_Agiftforideas": "ruth",
+    "male_Energetic_Lookathowothersfeel_Apeacefulspirit": "moses",
+    "male_Energetic_Trytounderstandwhy_Agentlekindheart": "david",
+    "male_Energetic_Trytounderstandwhy_Wiseandpractical": "paul",
+    "male_Overwhelmed_Lookathowothersfeel_Agiftforideas": "abraham",
+    "male_Sensitive_Lookathowothersfeel_Apeacefulspirit": "moses",
+    "male_Sensitive_Trytounderstandwhy_Agentlekindheart": "abraham",
+    "male_Sensitive_Trytounderstandwhy_Wiseandpractical": "paul",
+    "female_Energetic_Trytounderstandwhy_Apeacefulspirit": "deborah",
+    "female_Focused_Lookathowothersfeel_Agentlekindheart": "ruth",
+    "female_Focused_Lookathowothersfeel_Wiseandpractical": "esther",
+    "female_Hopeful_Lookathowothersfeel_Agentlekindheart": "mary",
+    "female_Hopeful_Lookathowothersfeel_Wiseandpractical": "ruth",
+    "female_Overwhelmed_Trytounderstandwhy_Agiftforideas": "ruth",
+    "female_Sensitive_Trytounderstandwhy_Apeacefulspirit": "mary",
+    "male_Energetic_Lookathowothersfeel_Agentlekindheart": "abraham",
+    "male_Energetic_Lookathowothersfeel_Wiseandpractical": "david",
+    "male_Overwhelmed_Trytounderstandwhy_Apeacefulspirit": "abraham",
+    "male_Sensitive_Lookathowothersfeel_Agentlekindheart": "moses",
+    "male_Sensitive_Lookathowothersfeel_Wiseandpractical": "abraham",
+    "female_Energetic_Lookathowothersfeel_Apeacefulspirit": "mary",
+    "female_Energetic_Trytounderstandwhy_Agentlekindheart": "deborah",
+    "female_Energetic_Trytounderstandwhy_Wiseandpractical": "esther",
+    "female_Overwhelmed_Lookathowothersfeel_Agiftforideas": "ruth",
+    "female_Sensitive_Lookathowothersfeel_Apeacefulspirit": "mary",
+    "female_Sensitive_Trytounderstandwhy_Agentlekindheart": "ruth",
+    "female_Sensitive_Trytounderstandwhy_Wiseandpractical": "esther",
+    "male_Overwhelmed_Lookathowothersfeel_Apeacefulspirit": "moses",
+    "male_Overwhelmed_Trytounderstandwhy_Agentlekindheart": "abraham",
+    "male_Overwhelmed_Trytounderstandwhy_Wiseandpractical": "paul",
+    "female_Energetic_Lookathowothersfeel_Agentlekindheart": "ruth",
+    "female_Energetic_Lookathowothersfeel_Wiseandpractical": "deborah",
+    "female_Overwhelmed_Trytounderstandwhy_Apeacefulspirit": "ruth",
+    "female_Sensitive_Lookathowothersfeel_Agentlekindheart": "mary",
+    "female_Sensitive_Lookathowothersfeel_Wiseandpractical": "ruth",
+    "male_Overwhelmed_Lookathowothersfeel_Agentlekindheart": "abraham",
+    "male_Overwhelmed_Lookathowothersfeel_Wiseandpractical": "abraham",
+    "female_Overwhelmed_Lookathowothersfeel_Apeacefulspirit": "mary",
+    "female_Overwhelmed_Trytounderstandwhy_Agentlekindheart": "ruth",
+    "female_Overwhelmed_Trytounderstandwhy_Wiseandpractical": "esther",
+    "female_Overwhelmed_Lookathowothersfeel_Agentlekindheart": "ruth",
+    "female_Overwhelmed_Lookathowothersfeel_Wiseandpractical": "ruth"
+   },
+   "from": [
+    "gender",
+    "feelDuring",
+    "doFirst",
+    "peopleSay"
+   ],
+   "fallback": "paul"
+  }
+ },
+ "stripeAppearance": {
+  "rules": {
+   ".Tab": {
+    "border": "1px solid #edeef0",
+    "backgroundColor": "#ffffff"
+   },
+   ".Input": {
+    "border": "1px solid #edeef0",
+    "boxShadow": "none",
+    "backgroundColor": "#f6f7f9"
+   },
+   ".Label": {
+    "color": "#4a4d52",
+    "fontWeight": "600"
+   },
+   ".Tab:hover": {
+    "color": "#2c2d31"
+   },
+   ".Input:focus": {
+    "border": "1px solid #904e96",
+    "boxShadow": "0 0 0 1px rgba(144,78,150,0.35)"
+   },
+   ".Tab--selected": {
+    "boxShadow": "0 0 0 1px #904e96",
+    "borderColor": "#904e96"
+   }
+  },
+  "theme": "stripe",
+  "labels": "above",
+  "variables": {
+   "colorText": "#2c2d31",
+   "fontFamily": "Poppins, system-ui, sans-serif",
+   "colorDanger": "#d9483f",
+   "spacingUnit": "5px",
+   "borderRadius": "12px",
+   "colorPrimary": "#904e96",
+   "fontSizeBase": "17px",
+   "colorBackground": "#ffffff",
+   "colorTextSecondary": "#4a4d52",
+   "colorTextPlaceholder": "#a9adb4"
+  }
+ },
+ "postPurchase": [
+  "almostThere",
+  "accountReady",
+  "offerAudio",
+  "offerAudioSave",
+  "offerAudio20",
+  "offerBundle",
+  "handoff",
+  "exitOffer"
+ ],
+ "firstPaymentsScreen": "emailCapture"
+}

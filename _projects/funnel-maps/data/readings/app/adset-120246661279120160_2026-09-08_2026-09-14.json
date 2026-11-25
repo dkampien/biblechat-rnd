@@ -1,0 +1,180 @@
+{
+ "world": {
+  "route": "app",
+  "account_id": "act_697155031095732",
+  "account_name": "Basmo iOS",
+  "door": "CPT",
+  "level": "adset",
+  "pool_id": "120246661279120160",
+  "pool_name": "CPT - US - IOS (20-65) - 8 Videos 173fcfa4 - August 13, 2026",
+  "campaign_id": "120246606714520160",
+  "campaign_name": "Biblechat CPT - US - IOS - August 06, 2026 - Arthur - New Ads",
+  "optimization_event": "purchase_completed",
+  "attribution_window": "7d_click",
+  "date_from": "2026-09-08",
+  "date_to": "2026-09-14",
+  "currency": "USD",
+  "read_at": "2026-09-15T14:09:55Z",
+  "read_by": "facebook-ads MCP via subagent",
+  "notes": "Pulled with the facebook-ads MCP tool ads_get_ad_entities, two calls, both with time_range {\"since\":\"2026-09-08\",\"until\":\"2026-09-14\"} (explicit dates, no preset). Call 1: level=adset, sort=amount_spent_descending, limit=30 -- the ad set was picked out of that page by name. Call 2: level=ad, filtering ad.adset_id EQUAL 120246661279120160, sort=amount_spent_descending, limit=100; 16 ads came back with no next_cursor, so that is the whole ad set. Field names were verified first with ads_get_field_context. RESULTS: the tool returns results.indicator = \"conversions:app_custom_event.purchase_completed\" and cost_per_result \"$29.02 USD (purchase_completed)\", so results maps to the app custom event purchase_completed -- 467 at ad-set level. This is NOT the same as Meta's generic purchase metric: omni_purchase (action_type app_custom_event.fb_mobile_purchase) is 337 at $40.21, recorded separately in counts.purchases. INSTALLS: yes, installs came through -- mobile_app_install = omni_app_install = 1560 ($8.69 each). ATTRIBUTION: the ad set's attribution_setting field reads 7d_click, and every results value is tagged attribution_windows [\"default\"], i.e. that same 7-day-click setting. No per-window breakdown was requested or returned. OPTIMIZATION: optimization_goal = OFFSITE_CONVERSIONS; promoted_object = {pixel_id: null, custom_event_type: \"OTHER\", pixel_rule: null}, so the specific event is not named in promoted_object -- purchase_completed is taken from the results indicator / cost_per_result label. NULLS: counts.trials is null -- the tool exposes no trial/start_trial field (unknown_fields on ads_get_field_context for start_trial, mobile_app_trial, trials_started); purchase_completed may or may not be the trial event, not verified here. Per-ad nulls: 10 of 16 ads returned results \"Not available\" and null installs -- Meta suppresses these on tiny volume, and 4 of them had zero spend and zero impressions, so those are null (not read), not verified zeros. RECONCILIATION: the 16 ad rows sum exactly to the ad-set totals (spend 13552.35, impressions 888895, link_clicks 17231, installs 1560, results 467, purchases 337, LPV 433) -- so nothing is missing despite the suppressed per-ad cells. DID NOT MATCH EXPECTATIONS: the brief said roughly $11.7k over the last 7 days and about 12 active ads; the pull returns $13,552.35 and 16 ads in the ad set (13 ACTIVE, 3 PAUSED), of which 12 had any spend. Spend is higher than expected -- possibly a different 7-day window was quoted. ODD: omni_landing_page_view = 433 is tiny next to 17,231 link clicks; for an iOS app-install destination LPV is not a meaningful step, treat it as noise rather than a funnel stage. Also note clicks (all) 17,549 is LOWER than link_click 17,231 only in aggregate; on one ad (77.seminar-yelling-0904-hookfetita-v4) link_click 11,236 exceeds clicks 10,941, which is a Meta reporting artifact, not a mapping error. Read-only pull; nothing was changed.",
+  "destination": "App Store custom product page 'Parenting V1' (ppid 74c0e8e2-5028-4964-817a-c315959f115e), all 16 ads, no deep link"
+ },
+ "counts": {
+  "spend": 13552.35,
+  "impressions": 888895,
+  "reach": 589114,
+  "link_clicks": 17231,
+  "landing_page_views": 433,
+  "app_installs": 1560,
+  "trials": null,
+  "results": 467,
+  "result_event": "purchase_completed",
+  "purchases": 337
+ },
+ "ads": [
+  {
+   "ad_id": "120246661281720160",
+   "ad_name": "77.andreea_W1_textwall_06_v3",
+   "spend": 5543.53,
+   "impressions": 396993,
+   "link_clicks": 3281,
+   "app_installs": 585,
+   "results": 179
+  },
+  {
+   "ad_id": "120247071781150160",
+   "ad_name": "77.seminar-yelling-0904-hookfetita-v4",
+   "spend": 4385.57,
+   "impressions": 295894,
+   "link_clicks": 11236,
+   "app_installs": 562,
+   "results": 174
+  },
+  {
+   "ad_id": "120246661287540160",
+   "ad_name": "77.andreea_w2_ugc2",
+   "spend": 1864.65,
+   "impressions": 96901,
+   "link_clicks": 1163,
+   "app_installs": 224,
+   "results": 52
+  },
+  {
+   "ad_id": "120246932892340160",
+   "ad_name": "14.10.seedancedrama-not a bad mom",
+   "spend": 1013.28,
+   "impressions": 49011,
+   "link_clicks": 967,
+   "app_installs": 118,
+   "results": 43
+  },
+  {
+   "ad_id": "120246661286570160",
+   "ad_name": "77.andreea_w2_ugc12",
+   "spend": 568.71,
+   "impressions": 36737,
+   "link_clicks": 411,
+   "app_installs": 49,
+   "results": 13
+  },
+  {
+   "ad_id": "120246661282630160",
+   "ad_name": "77.andreea_w2_ugc",
+   "spend": 148.9,
+   "impressions": 11535,
+   "link_clicks": 156,
+   "app_installs": 22,
+   "results": 6
+  },
+  {
+   "ad_id": "120246661280720160",
+   "ad_name": "77.andreea_w1_ugc",
+   "spend": 17.6,
+   "impressions": 1042,
+   "link_clicks": 10,
+   "app_installs": null,
+   "results": null
+  },
+  {
+   "ad_id": "120246661288550160",
+   "ad_name": "77.andreea_W1_static12",
+   "spend": 8.6,
+   "impressions": 689,
+   "link_clicks": 7,
+   "app_installs": null,
+   "results": null
+  },
+  {
+   "ad_id": "120246932894060160",
+   "ad_name": "14.2.seedanceanimation-wish i had known",
+   "spend": 1.02,
+   "impressions": 61,
+   "link_clicks": null,
+   "app_installs": null,
+   "results": null
+  },
+  {
+   "ad_id": "120246847136720160",
+   "ad_name": "77.andreea_w2_pod3_xpost_2",
+   "spend": 0.34,
+   "impressions": 22,
+   "link_clicks": null,
+   "app_installs": null,
+   "results": null
+  },
+  {
+   "ad_id": "120246847137150160",
+   "ad_name": "77.HOOK-09-office-bible-speaker",
+   "spend": 0.14,
+   "impressions": 8,
+   "link_clicks": null,
+   "app_installs": null,
+   "results": null
+  },
+  {
+   "ad_id": "120246847138030160",
+   "ad_name": "77.andreea_w2_try_hook_P2",
+   "spend": 0.01,
+   "impressions": 2,
+   "link_clicks": null,
+   "app_installs": null,
+   "results": null
+  },
+  {
+   "ad_id": "120247168793680160",
+   "ad_name": "77.andreea_W1_reddit_textwall_06_v3_static",
+   "spend": 0.0,
+   "impressions": 0,
+   "link_clicks": null,
+   "app_installs": null,
+   "results": null
+  },
+  {
+   "ad_id": "120247168790850160",
+   "ad_name": "77.bookpage-0911-textwall-v1",
+   "spend": 0.0,
+   "impressions": 0,
+   "link_clicks": null,
+   "app_installs": null,
+   "results": null
+  },
+  {
+   "ad_id": "120246661284890160",
+   "ad_name": "77.CAKE-PODCAST-v2",
+   "spend": 0.0,
+   "impressions": 0,
+   "link_clicks": null,
+   "app_installs": null,
+   "results": null
+  },
+  {
+   "ad_id": "120246661283960160",
+   "ad_name": "77.andreea_w2_ugc13",
+   "spend": 0.0,
+   "impressions": 0,
+   "link_clicks": null,
+   "app_installs": null,
+   "results": null
+  }
+ ]
+}

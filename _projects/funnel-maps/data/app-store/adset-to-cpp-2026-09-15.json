@@ -1,0 +1,649 @@
+{
+ "120246223473950160": {
+  "cpp_name": "mixed: Lockscreen Widget V1 (5) + Chat V1 (2) + Custom Journey (1)",
+  "platform": "ios_app_store",
+  "ads": 8,
+  "deep_links": []
+ },
+ "120243884962290160": {
+  "cpp_name": "mixed: Lockscreen Widget V1 (5) + Chat V1 (2)",
+  "platform": "ios_app_store",
+  "ads": 7,
+  "deep_links": [
+   "chat_text",
+   "lock_screen"
+  ]
+ },
+ "120246749545260160": {
+  "cpp_name": "Men of the Bible Quiz",
+  "platform": "ios_app_store",
+  "ads": 10,
+  "deep_links": []
+ },
+ "120247168914180160": {
+  "cpp_name": "Know the Bible - Audio Lessons",
+  "platform": "ios_app_store",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120247168908780160": {
+  "cpp_name": "Know the Bible - Audio Lessons",
+  "platform": "ios_app_store",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120246661279120160": {
+  "cpp_name": "Parenting V1",
+  "platform": "ios_app_store",
+  "ads": 13,
+  "deep_links": []
+ },
+ "120247168656070160": {
+  "cpp_name": "Daily Plan New Generalist 2026",
+  "platform": "ios_app_store",
+  "ads": 7,
+  "deep_links": []
+ },
+ "120247160331010160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 13,
+  "deep_links": []
+ },
+ "120247160312640160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 11,
+  "deep_links": []
+ },
+ "120247160292270160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 10,
+  "deep_links": []
+ },
+ "120247159695940160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 6,
+  "deep_links": []
+ },
+ "120247159676290160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 6,
+  "deep_links": []
+ },
+ "120247159655240160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 6,
+  "deep_links": []
+ },
+ "120247159640540160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120247159627450160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 4,
+  "deep_links": []
+ },
+ "120247159615930160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 4,
+  "deep_links": []
+ },
+ "120247159600990160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 6,
+  "deep_links": []
+ },
+ "120247159589550160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120247159577910160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 3,
+  "deep_links": []
+ },
+ "120247159547920160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 7,
+  "deep_links": []
+ },
+ "120247159543620160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 3,
+  "deep_links": []
+ },
+ "120247159531450160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 6,
+  "deep_links": []
+ },
+ "120247159519530160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 7,
+  "deep_links": []
+ },
+ "120247159507200160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120247159497500160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 4,
+  "deep_links": []
+ },
+ "120247159484010160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120247159474820160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 3,
+  "deep_links": []
+ },
+ "120247159467820160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 2,
+  "deep_links": []
+ },
+ "120247159291780160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 8,
+  "deep_links": []
+ },
+ "120247159281860160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 7,
+  "deep_links": []
+ },
+ "120247159240190160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 8,
+  "deep_links": []
+ },
+ "120247159229520160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 7,
+  "deep_links": []
+ },
+ "120247159193220160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 8,
+  "deep_links": []
+ },
+ "120247159187990160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 7,
+  "deep_links": []
+ },
+ "120247157778430160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 4,
+  "deep_links": []
+ },
+ "120247157772380160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 3,
+  "deep_links": []
+ },
+ "120247154157960160": {
+  "cpp_name": "Calendar Catholic Widget",
+  "platform": "ios_app_store",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120247154130050160": {
+  "cpp_name": "Catholic (Teo)",
+  "platform": "ios_app_store",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120247153485900160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 13,
+  "deep_links": []
+ },
+ "120247153479120160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 6,
+  "deep_links": []
+ },
+ "120247153467550160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 8,
+  "deep_links": []
+ },
+ "120247153456610160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 8,
+  "deep_links": []
+ },
+ "120247153450590160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 7,
+  "deep_links": []
+ },
+ "120247153441890160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 6,
+  "deep_links": []
+ },
+ "120247153433420160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 4,
+  "deep_links": []
+ },
+ "120247145944480160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 8,
+  "deep_links": []
+ },
+ "120247145941470160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 3,
+  "deep_links": []
+ },
+ "120247145533690160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 2,
+  "deep_links": []
+ },
+ "120246777906370160": {
+  "cpp_name": "Know the Bible - Audio Lessons",
+  "platform": "ios_app_store",
+  "ads": 9,
+  "deep_links": []
+ },
+ "120246777460340160": {
+  "cpp_name": "Know the Bible - Audio Lessons",
+  "platform": "ios_app_store",
+  "ads": 6,
+  "deep_links": []
+ },
+ "120247136421440160": {
+  "cpp_name": "Calendar Catholic Widget",
+  "platform": "ios_app_store",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120247136272090160": {
+  "cpp_name": "Catholic (Teo)",
+  "platform": "ios_app_store",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120247136243130160": {
+  "cpp_name": "Catholic (Teo)",
+  "platform": "ios_app_store",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120247136182550160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 3,
+  "deep_links": []
+ },
+ "120246149862970160": {
+  "cpp_name": "mixed: Lockscreen Widget V1 (5) + Custom Journey (2) + Chat V1 (1)",
+  "platform": "ios_app_store",
+  "ads": 8,
+  "deep_links": []
+ },
+ "120246149962890160": {
+  "cpp_name": "mixed: Lockscreen Widget V1 (5) + Custom Journey (3) + Chat V1 (1)",
+  "platform": "ios_app_store",
+  "ads": 9,
+  "deep_links": []
+ },
+ "120246749118680160": {
+  "cpp_name": "Women of the Bible Quiz",
+  "platform": "ios_app_store",
+  "ads": 9,
+  "deep_links": []
+ },
+ "120245704287510160": {
+  "cpp_name": "mixed: Custom Journey (7) + Parenting V1 (3) + Chat V1 (1)",
+  "platform": "ios_app_store",
+  "ads": 11,
+  "deep_links": []
+ },
+ "120247057504290160": {
+  "cpp_name": "Women of the Bible Quiz",
+  "platform": "ios_app_store",
+  "ads": 7,
+  "deep_links": []
+ },
+ "120247057499540160": {
+  "cpp_name": "Women of the Bible Quiz",
+  "platform": "ios_app_store",
+  "ads": 6,
+  "deep_links": []
+ },
+ "120247051862210160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 7,
+  "deep_links": []
+ },
+ "120247051856330160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 4,
+  "deep_links": []
+ },
+ "120246938766340160": {
+  "cpp_name": "Parenting V1",
+  "platform": "ios_app_store",
+  "ads": 6,
+  "deep_links": []
+ },
+ "120246938568810160": {
+  "cpp_name": "mixed: Custom Journey (5) + Parenting V1 (1)",
+  "platform": "ios_app_store",
+  "ads": 6,
+  "deep_links": []
+ },
+ "120246863178400160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 6,
+  "deep_links": []
+ },
+ "120246862818400160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 4,
+  "deep_links": []
+ },
+ "120246862801310160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 11,
+  "deep_links": []
+ },
+ "120246862780310160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 9,
+  "deep_links": []
+ },
+ "120246781196370160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 7,
+  "deep_links": []
+ },
+ "120243871036600160": {
+  "cpp_name": "mixed: Custom Journey (3) + default store page (2) + Audio Bible (1) + Lockscreen Widget V1 (1)",
+  "platform": "ios_app_store",
+  "ads": 7,
+  "deep_links": [
+   "audio_bible",
+   "daily_plan",
+   "lock_screen"
+  ]
+ },
+ "120243870987000160": {
+  "cpp_name": "mixed: Lockscreen Widget V1 (5) + Chat V1 (1) + Bible Affirmations (1)",
+  "platform": "ios_app_store",
+  "ads": 7,
+  "deep_links": [
+   "chat_text",
+   "lock_screen",
+   "lock_screen_hourly_affirmations"
+  ]
+ },
+ "120243870224650160": {
+  "cpp_name": "mixed: Custom Journey (3) + Lockscreen Widget V1 (3)",
+  "platform": "ios_app_store",
+  "ads": 6,
+  "deep_links": [
+   "daily_plan",
+   "lock_screen"
+  ]
+ },
+ "120246352914060160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 3,
+  "deep_links": []
+ },
+ "120246223405110160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 4,
+  "deep_links": []
+ },
+ "120246223399220160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 4,
+  "deep_links": []
+ },
+ "120246149876010160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120246149868420160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120245230209820160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120245229997930160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 6,
+  "deep_links": []
+ },
+ "120244281678040160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 6,
+  "deep_links": []
+ },
+ "120243870192150160": {
+  "cpp_name": "mixed: Custom Journey (2) + Lockscreen Widget V1 (2) + Bible Affirmations (1)",
+  "platform": "ios_app_store",
+  "ads": 5,
+  "deep_links": [
+   "daily_plan",
+   "lock_screen",
+   "lock_screen_hourly_affirmations"
+  ]
+ },
+ "120243870042050160": {
+  "cpp_name": "mixed: Lockscreen Widget V1 (3) + Custom Journey (1)",
+  "platform": "ios_app_store",
+  "ads": 4,
+  "deep_links": [
+   "daily_plan",
+   "lock_screen"
+  ]
+ },
+ "120243869952550160": {
+  "cpp_name": "mixed: Lockscreen Widget V1 (3) + Custom Journey (1)",
+  "platform": "ios_app_store",
+  "ads": 4,
+  "deep_links": [
+   "daily_plan",
+   "lock_screen"
+  ]
+ },
+ "120243869161700160": {
+  "cpp_name": "mixed: Lockscreen Widget V1 (5) + Bible Affirmations (2) + Custom Journey (1)",
+  "platform": "ios_app_store",
+  "ads": 8,
+  "deep_links": [
+   "daily_plan",
+   "lock_screen",
+   "lock_screen_hourly_affirmations"
+  ]
+ },
+ "120243869050720160": {
+  "cpp_name": "mixed: Bible Affirmations (2) + Custom Journey (1) + Study Plans V1 (1) + Lockscreen Widget V1 (1) + default store page (1)",
+  "platform": "ios_app_store",
+  "ads": 6,
+  "deep_links": [
+   "daily_plan",
+   "lock_screen",
+   "lock_screen_hourly_affirmations",
+   "study_plans"
+  ]
+ },
+ "120243868872830160": {
+  "cpp_name": "mixed: Lockscreen Widget V1 (3) + Bible Affirmations (2) + Bible Trivia (Teo) (1)",
+  "platform": "ios_app_store",
+  "ads": 6,
+  "deep_links": [
+   "bible_trivia",
+   "lock_screen",
+   "lock_screen_hourly_affirmations"
+  ]
+ },
+ "120239003901610160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 4,
+  "deep_links": []
+ },
+ "120238799626770160": {
+  "cpp_name": "web onboarding",
+  "platform": "web",
+  "ads": 8,
+  "deep_links": []
+ },
+ "120238799533260160": {
+  "cpp_name": "web onboarding",
+  "platform": "web",
+  "ads": 3,
+  "deep_links": []
+ },
+ "120238799519600160": {
+  "cpp_name": "web onboarding",
+  "platform": "web",
+  "ads": 2,
+  "deep_links": []
+ },
+ "120238788493970160": {
+  "cpp_name": "Lockscreen Widget V1",
+  "platform": "ios_app_store",
+  "ads": 1,
+  "deep_links": [
+   "launchInAppOnboardingPlacement:ios_lock_screen_widget_in_app|lock_screen_widget_in_app + onboarding:chapters.widget.promoting.onboarding.v9_12"
+  ]
+ },
+ "120238537688880160": {
+  "cpp_name": "Play (no page id exposed)",
+  "platform": "google_play",
+  "ads": 1,
+  "deep_links": []
+ },
+ "120238205529750160": {
+  "cpp_name": "Lockscreen Widget V1",
+  "platform": "ios_app_store",
+  "ads": 1,
+  "deep_links": [
+   "launchInAppOnboardingPlacement:ios_lock_screen_widget_in_app|lock_screen_widget_in_app + onboarding:chapters.widget.promoting.onboarding.v9_12"
+  ]
+ },
+ "120238008752920160": {
+  "cpp_name": "web onboarding",
+  "platform": "web",
+  "ads": 1,
+  "deep_links": []
+ },
+ "120237781250180160": {
+  "cpp_name": "web onboarding",
+  "platform": "web",
+  "ads": 5,
+  "deep_links": []
+ },
+ "120237779587800160": {
+  "cpp_name": "web onboarding",
+  "platform": "web",
+  "ads": 7,
+  "deep_links": []
+ },
+ "120237777903080160": {
+  "cpp_name": "web onboarding",
+  "platform": "web",
+  "ads": 4,
+  "deep_links": []
+ },
+ "120237661745420160": {
+  "cpp_name": "web onboarding",
+  "platform": "web",
+  "ads": 7,
+  "deep_links": []
+ },
+ "120237660110150160": {
+  "cpp_name": "web onboarding",
+  "platform": "web",
+  "ads": 7,
+  "deep_links": []
+ },
+ "120237499431570160": {
+  "cpp_name": "web onboarding",
+  "platform": "web",
+  "ads": 4,
+  "deep_links": []
+ },
+ "120237497630800160": {
+  "cpp_name": "web onboarding",
+  "platform": "web",
+  "ads": 5,
+  "deep_links": []
+ }
+}
