@@ -48,7 +48,7 @@ When discussing technical concepts, be explicit about what you're referencing:
         * Scale: Over 10 million downloads, 4M+ monthly active users.
         * Market Position: #1 App in the US Reference Category; highly popular in Europe.
         * Their Mission: To use AI to alleviate suffering and support spiritual growth.
-*   **Active Project:** Check the relevant `_projects/{project}/_docs/` folder for mission details.
+*   **Active Project: `_projects/cloops-ads/`** (BibleChat ad system). Active line: **auto-ads**, the creative factory that produces image ad creatives and publishes them into AdLoops (which posts and reports back). Start at `_projects/cloops-ads/auto-ads/plan.md` (strategy, state, next steps). The earlier video lane (Airtable board, `npm run realize`, the ad skills) is parked.
     *   Company reference repos live in `_reference-repos/` (biblechat-cloud, biblechat-ios, adloops, ccbot, onboarding-builder, soulstream-kb).
 
  ### Value Check
@@ -66,6 +66,7 @@ Some projects have their **own git** (symlinks or nested repos):
 | `_projects/adloops-local/Adloops-Backend/` | Nested repo | None (local only) |
 | `_projects/adloops-local/Ads_Platform_Web/` | Nested repo | None (local only) |
 | `_projects/adloops-local/ads-library-automation/` | Nested repo | None (local only) |
+| `_projects/cloops-ads/` | Symlink → `~/Documents/project - cloops-ads/` | None (local only) |
 
 **Important:** When editing files in these projects:
 - Changes are NOT tracked by the monorepo (gitignored)
@@ -81,6 +82,7 @@ _memory/       # Knowledge base & conversation history
 
 ### Project Instructions
 Each project has its own CLAUDE.md that loads when you access files in that folder:
+- `_projects/cloops-ads/CLAUDE.md` — the BibleChat ad system; active line is auto-ads (start at `auto-ads/plan.md`)
 - `_projects/biblechat-ltv/CLAUDE.md` — BibleChat LTV initiative
 - `_projects/cloops/CLAUDE.md` — Cloops content generation
 
@@ -91,11 +93,11 @@ Each project has its own CLAUDE.md that loads when you access files in that fold
 - **Strategy Threads**: Focus on architecture, decision matrices, and "Why".
 - **Execution Threads**: Focus on specific implementation.
 - **Context Passing**: Always export key artifacts (like schemas or strategy docs) to files so the next thread can load them cheaply.
+- **Current setup (cloops-ads):** one R&D thread holds deep context; execution threads do the tasks (start at `_projects/cloops-ads/auto-ads/plan.md`) and report back plainly.
 
-### The Perplexity Bridge
-*   **Knowledge Cutoff:** Assume you do *not* have the latest info (post-2024).
-*   **Workflow:** When a "State of the Art" question arises (e.g., latest iOS API, new ML tools), generate a **Precise Prompt**.
-*   **Action:** The user will run it in Perplexity. You will synthesize the result into the plan immediately.
+### Fresh Information (Perplexity)
+*   **Knowledge Cutoff:** Assume you do *not* have the latest info. For "state of the art" questions (model capabilities, APIs, pricing, market data), do not answer from memory.
+*   **Workflow:** Use the Perplexity MCP tools directly (`perplexity_search` / `perplexity_ask` / `perplexity_research`); synthesize the result into the plan. Manual relay through the user is only the fallback when the tools are unavailable.
 
 
 
@@ -109,7 +111,7 @@ Each project has its own CLAUDE.md that loads when you access files in that fold
 5.  **Deploy:** Ship to production.
 
 ### Documentation Structure
-Use this folder structure to organize your output:
+Use this folder structure for NEW projects. An existing project's own conventions win (e.g. cloops-ads uses `_docs/core-docs` + `_docs/_dev` + `_docs/skill-reference`, mapped in its `doc-inventory.md`):
 
 ```text
 _projects/{project}/_docs/

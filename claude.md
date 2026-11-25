@@ -1,1 +1,0 @@
-Reference @agents.md for single truth source
